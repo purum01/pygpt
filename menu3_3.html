@@ -1,0 +1,136 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+
+
+<div class="faq-container">
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            파이썬의 논리연산자에 대해 설명해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <table>
+                <tr><td colspan="2" class="em">and 연산자</td></tr>
+                <tr><td>
+                    <ul>
+                    <li>- and 연산자는 모든 조건이 참(True)일 때만 참을 반환합니다.</li>
+                    <li>- 두 조건 중 하나라도 거짓(False)이면 거짓을 반환합니다.</li>
+                    <li>- 예: True and False는 False를 반환합니다.</li>
+                    </ul>
+                </td></tr>
+                <tr><td colspan="2" class="em">or 연산자</td></tr>
+                <tr><td>
+                    <ul>
+                        <li>- or 연산자는 두 조건 중 하나라도 참일 때 참을 반환합니다.</li>
+                        <li>- 모든 조건이 거짓일 때만 거짓을 반환합니다.</li>
+                        <li>- 예: True or False는 True를 반환합니다.</li>
+                    </ul>
+                </td></tr>
+                <tr><td colspan="2" class="em">not 연산자</td></tr>
+                <tr><td>
+                    <ul>
+                        <li>- not 연산자는 조건의 논리 상태를 반전시킵니다.</li>
+                        <li>- 참을 거짓으로, 거짓을 참으로 만듭니다.</li>
+                        <li>- 예: not True는 False를 반환합니다.</li>
+                    </ul>
+                </td></tr>
+                <tr><td colspan="2" class="em">논리 연산자의 연산 우선순위</td></tr>
+                <tr><td>
+                    <ul>
+                        <li>- not 연산자가 가장 높은 우선순위를 가지며, 다음으로 and, 그리고 or 연산자의 순으로 우선순위가 낮아집니다.</li>
+                        <li>- 복잡한 논리 연산을 수행할 때는 괄호 ()를 사용하여 연산의 순서를 명확히 할 수 있습니다.</li>
+                    </ul>
+                </td></tr>
+            </table>
+<pre>
+<code class="language-python"">
+    x = True
+    y = False
+    
+    # and 연산 예제
+    print(x and y)  # 출력: False
+    
+    # or 연산 예제
+    print(x or y)   # 출력: True
+    
+    # not 연산 예제
+    print(not x)    # 출력: False
+    
+    # 복합 논리 연산 예제
+    print((x and y) or (not y))  # 출력: True
+</code>    
+</pre>            
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            연습문제
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <ol class="mission">
+                <li> 다음 코드의 출력 결과를 고르세요</li>
+                <div class="highlight"> print(True and False)</div>   
+                    <ul>
+                        <li><input type="radio" name="1"> True</li>
+                        <li><input type="radio" name="1"> False</li>                
+                        <li><input type="radio" name="1"> None</li>
+                        <li><input type="radio" name="1"> SyntaxError</li>
+                    </ul>
+
+                <li>다음 코드의 출력 결과를 고르세요</li>
+                <div class="highlight">print(False or True)</div>   
+                <ul>
+                    <li><input type="radio" name="2"> True</li>
+                    <li><input type="radio" name="2"> False</li>                
+                    <li><input type="radio" name="2"> None</li>
+                    <li><input type="radio" name="2"> SyntaxError</li>
+                </ul>        
+
+                <li>다음 코드의 출력 결과를 고르세요</li>
+                <div class="highlight">print(not True)</div>   
+                <ul>
+                    <li><input type="radio" name="3"> True</li>
+                    <li><input type="radio" name="3"> False</li>                
+                    <li><input type="radio" name="3"> None</li>
+                    <li><input type="radio" name="3"> SyntaxError</li>
+                </ul>        
+    
+                <li>다음 코드의 출력 결과를 고르세요</li>
+                <div class="highlight">print(True or False and not True)</div>   
+                <ul>
+                    <li><input type="radio" name="4"> True</li>
+                    <li><input type="radio" name="4"> False</li>                
+                    <li><input type="radio" name="4"> None</li>
+                    <li><input type="radio" name="4"> SyntaxError</li>
+                </ul>        
+            </ol>
+            <button id="answerButton">정답</button>
+            <div id="answerText" style="display:none;">
+                <ul>
+                    <li>(1) False</li>
+                    <li>(2) True</li>
+                    <li>(3) False</li>
+                    <li>(4) True</li>
+                </ul>
+            </div>            
+        </div>
+    </div>
+</div>    
+
+<script src="content.js"></script>
+<script>
+    // "정답" 버튼 클릭 시 메시지 토글
+    document.getElementById("answerButton").onclick = function() {
+        var answerText = document.getElementById("answerText");
+        if (answerText.style.display === "none") {
+            answerText.style.display = "block";
+        } else {
+            answerText.style.display = "none";
+        }
+    };
+    </script>

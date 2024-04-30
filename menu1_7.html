@@ -1,0 +1,62 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+
+<div class="faq-container">
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px"  >
+            파이썬의  set 타입에 대해 설명해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <img src="gpt.png">
+            파이썬에서 set 타입은 중복을 허용하지 않는 요소들의 집합을 나타내는 데 사용됩니다. set은 수학적인 집합 개념과 유사하며, 중괄호 {} 또는 set() 함수를 사용하여 생성할 수 있습니다. set은 순서가 없기 때문에, 인덱스를 사용한 접근이 불가능합니다.
+            <h3>주요 특징: </h3>
+            <ul>
+                <li><b>순서 없음</b> : set 내의 요소들은 특정한 순서를 갖지 않습니다. 따라서, set을 순회(traverse)하거나 set 내의 요소를 출력할 때, 요소들이 추가된 순서와 다를 수 있습니다.</li>
+                <li><b>변경 가능</b> : set은 요소의 추가와 삭제가 가능합니다. 그러나, set 자체는 변경 가능(mutable)하기 때문에 해시 가능한(hashable) 컨테이너 타입(예: dict의 키)으로는 사용할 수 없습니다.</li>
+                <li><b>다양한 연산 지원 </b> : set은 수학적 집합 연산을 지원합니다. 합집합(|), 교집합(&), 차집합(-), 대칭 차집합(^) 등의 연산을 사용할 수 있습니다.</li>
+            </ul>
+            <pre>
+                <code class=".language-python">
+# set 생성하기
+my_set = {1, 2, 3}
+print(my_set)  # 출력: {1, 2, 3}
+
+# 중복된 요소를 포함하여 set 생성하기
+duplicate_set = {1, 2, 2, 3, 4}
+print(duplicate_set)  # 출력: {1, 2, 3, 4}
+                </code>
+            </pre>            
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png"width="30px" height="30"  >
+            다음 중 set 에 관한 특징은 아닌것은 무엇일까요?
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer"  id="choices1">
+            <ol>
+                <li>Set의 요소들은 순서가 유지되지 않는다</li>
+                <li>Set의 요소들은 수정, 삭제, 추가 작업이 가능하다</li>
+                <li>Set의 요소들은 index를 갖는다</li>
+                <li>Set의 요소들은 값이 중복되지 않는다</li>
+            </ol>
+            <button class="answer-btn" onclick="correct_answer()">정답</button>
+        </div>
+    </div>
+
+</div>
+<script>
+    function correct_answer(){
+        const correctAnswer = document.querySelector('#choices1 ol li:nth-child(3)');
+        correctAnswer.classList.add('correct-answer');
+    }
+</script>
+
+
+
+<script src="content.js"></script>

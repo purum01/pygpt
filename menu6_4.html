@@ -1,0 +1,190 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+
+
+<div class="faq-container">
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            파이썬의 set 객체가 가지는 메소드들에 대해 설명해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <img src="gpt.png">
+            파이썬에서 tuple은 변경 불가능한(immutable) 시퀀스 타입입니다. 이 변경 불가능한 특성 때문에, tuple은 리스트(list)에 비해 상대적으로 제한된 수의 메소드만을 가집니다. 주로 tuple 객체가 가지는 메소드는 요소를 조회하거나 요소가 tuple 내에 몇 번 등장하는지 세는 데 사용됩니다. 아래는 tuple 객체의 주요 메소드들에 대한 설명입니다:
+            <h3>요소 추가 및 제거</h3>
+            <ul>
+                <li>add(elem): 집합에 요소 elem을 추가합니다.</li>
+                <li>remove(elem): 집합에서 요소 elem을 제거합니다. 요소가 집합에 없으면 KeyError가 발생합니다.</li>
+                <li>discard(elem): 집합에서 요소 elem을 제거합니다. 요소가 집합에 없어도 오류가 발생하지 않습니다.</li>  
+                <li>pop(): 집합에서 한 요소를 무작위로 제거하고 그 요소를 반환합니다. 집합이 비어있으면 KeyError가 발생합니다.</li>              
+                <li>clear(): 집합의 모든 요소를 제거합니다.</li>              
+            </ul>
+            <h3>집합 연산</h3>
+            <ul>
+                <li>union(*others): 여러 집합의 합집합을 반환합니다. (| 연산자 사용 가능)</li>
+                <li>intersection(*others): 여러 집합의 교집합을 반환합니다. (& 연산자 사용 가능)</li>
+                <li>difference(*others): 여러 집합과의 차집합을 반환합니다. (- 연산자 사용 가능)</li>
+                <li>symmetric_difference(other): 두 집합의 대칭 차집합을 반환합니다. (^ 연산자 사용 가능)</li>
+                <li>update(*others): 여러 집합의 합집합을 현재 집합에 추가합니다.</li>
+                <li>intersection_update(*others): 여러 집합의 교집합을 현재 집합에 저장합니다.</li>
+                <li>difference_update(*others): 여러 집합과의 차집합을 현재 집합에 저장합니다.</li>
+                <li>symmetric_difference_update(other): 두 집합의 대칭 차집합을 현재 집합에 저장합니다.</li>
+            </ul> 
+            <h3>집합 검사</h3>
+            <ul>
+                <li>issubset(other): 현재 집합이 other 집합의 부분집합인지 검사합니다.</li>
+                <li>issuperset(other): 현재 집합이 other 집합을 포함하는지 검사합니다.</li>
+                <li>isdisjoint(other): 두 집합이 겹치는 요소가 없는지 검사합니다. </li>         
+            </ul>
+                     
+        </div>
+    </div>
+
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="30px" height="30" >
+            파이썬의 set 객체의 메소드들을 학습하기 위한 예제코드를 작성해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python" >                
+# 집합 생성
+my_set = {1, 2, 3}
+
+# 요소 추가
+my_set.add(4)
+print("요소 추가 후:", my_set)
+
+# 요소 제거
+my_set.remove(2)
+print("요소 제거 후:", my_set)
+
+# 요소 제거 (없는 요소를 제거해도 오류 발생하지 않음)
+my_set.discard(5)
+print("없는 요소 제거 시도 후:", my_set)
+
+# 무작위 요소 제거
+removed_item = my_set.pop()
+print("제거된 요소:", removed_item)
+print("무작위 요소 제거 후:", my_set)
+
+# 모든 요소 제거
+my_set.clear()
+print("모든 요소 제거 후:", my_set)
+# 집합 정의
+a = {1, 2, 3, 4}
+b = {3, 4, 5, 6}
+
+# 합집합
+union_set = a.union(b)
+print("합집합:", union_set)
+
+# 교집합
+intersection_set = a.intersection(b)
+print("교집합:", intersection_set)
+
+# 차집합
+difference_set = a.difference(b)
+print("차집합:", difference_set)
+
+# 대칭 차집합
+symmetric_difference_set = a.symmetric_difference(b)
+print("대칭 차집합:", symmetric_difference_set)
+# 집합 정의
+set1 = {1, 2, 3}
+set2 = {1, 2, 3, 4, 5}
+set3 = {10, 11, 12}
+
+# 부분집합 검사
+print("set1은 set2의 부분집합인가?", set1.issubset(set2))
+
+# 상위집합 검사
+print("set2는 set1을 포함하는가?", set2.issuperset(set1))
+
+# 교집합 없음 검사
+print("set1과 set3는 교집합이 없는가?", set1.isdisjoint(set3))
+                </code>
+            </pre>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png"width="30px" height="30">
+            학급 애완동물 조사하기
+            <i class="fas fa-chevron-down"></i>
+        </div>
+
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python" >                
+# 학급에서 각자 좋아하는 애완동물을 조사했습니다.
+pets_survey = {'강아지', '고양이', '햄스터', '강아지', '토끼', '고양이'}
+
+# 중복을 제거한 애완동물 집합을 확인해봅시다.
+unique_pets = pets_survey
+print("학급에서 좋아하는 애완동물들:", unique_pets)
+                </code>
+            </pre>
+        </div>
+    </div>
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            운동회 종목 선택하기
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python">
+# 1반과 2반에서 선택한 운동회 종목입니다.
+class1_sports = {'달리기', '높이뛰기', '멀리뛰기'}
+class2_sports = {'달리기', '축구', '농구'}
+
+# 두 반 모두에서 선택한 종목을 알아봅시다.
+common_sports = class1_sports.intersection(class2_sports)
+print("두 반 모두에서 선택한 종목:", common_sports)
+
+# 1반에서만 선택한 종목을 알아봅시다.
+class1_unique_sports = class1_sports.difference(class2_sports)
+print("1반에서만 선택한 종목:", class1_unique_sports)
+                     </code>
+            </pre>
+        </div>
+    </div>    
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            동아리 회원 명단 정리하기
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python">
+# 과학 동아리와 수학 동아리의 회원 명단입니다.
+science_club = {'지우', '철수', '영희'}
+math_club = {'민수', '영희', '지우'}
+
+# 두 동아리 모두 가입한 학생을 알아봅시다.
+both_clubs = science_club.intersection(math_club)
+print("과학 동아리와 수학 동아리 모두 가입한 학생:", both_clubs)
+
+# 과학 동아리에만 가입한 학생을 알아봅시다.
+science_only = science_club.difference(math_club)
+print("과학 동아리에만 가입한 학생:", science_only)
+                     </code>
+            </pre>
+        </div>
+    </div>    
+
+   
+    
+</div>
+
+
+<script src="content.js"></script>

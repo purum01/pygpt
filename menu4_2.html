@@ -1,0 +1,58 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+
+
+<div class="faq-container">
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            type() 함수에 대해 예제 코드를 보여주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python">
+    # type() 함수를 활용한 예제 코드
+
+    # 여러 가지 데이터 타입의 변수 선언
+    number = 42
+    floating_point = 3.14
+    text = "Hello, World!"
+    boolean_value = True
+    list_example = [1, 2, 3, 4]
+    tuple_example = (5, 6, 7)
+    set_example = {'apple', 'banana', 'cherry'}
+    dictionary_example = {'name': 'John', 'age': 30}
+    
+    # 변수와 객체의 타입 출력
+    print(type(number))  # 출력:  int
+    print(type(floating_point))  # 출력:  float
+    print(type(text))  # 출력:  str
+    print(type(boolean_value))  # 출력: bool
+    print(type(list_example))  # 출력: list
+    print(type(tuple_example))  # 출력: tuple
+    print(type(set_example))  # 출력: set
+    print(type(dictionary_example))  # 출력: dict
+    
+    # 타입 비교
+    if type(text) is str:
+        print("Yes, it's a string!")
+    else:
+        print("No, it's not a string.")
+                                        
+                </code>
+            </pre>
+        </div>
+    </div>
+
+</div>
+<script>
+    function correct_answer(id, num){
+        quiz = "#"+id+" ul li:nth-child("+num+")"
+        const correctAnswer = document.querySelector(quiz);
+        correctAnswer.classList.add('correct-answer');
+    }
+</script>
+<script src="content.js"></script>
+

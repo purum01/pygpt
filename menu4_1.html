@@ -1,0 +1,391 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+
+
+<div class="faq-container">
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            int(), float(), bool(), str(), list(), tuple(), set(), dict() 함수에 대해 설명해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <table>
+                <tr><td colspan="2" class="em">int( )</td></tr>
+                <tr><td>
+                    <ul>
+                    <li>- 지정된 값을 정수(int)로 변환합니다.</li>
+                    <li>- 소수점 이하는 버립니다. 문자열이 숫자 형태일 때도 정수로 변환할 수 있습니다. </li>
+                    <li>- 예: int(3.5)는 3을 반환합니다.</li>
+                    </ul>
+                </td></tr>
+                <tr><td colspan="2" class="em">float( )</td></tr>
+                <tr><td>
+                    <ul>
+                        <li>- 지정된 값을 부동소수점 수(float)로 변환합니다.</li>
+                        <li>- 문자열이 숫자 형태일 때도 부동소수점 수로 변환할 수 있습니다.</li>
+                        <li>- 예: float("3.5")는 3.5를 반환합니다.</li>
+                    </ul>
+                </td></tr>
+                <tr><td colspan="2" class="em">bool( )</td></tr>
+                <tr><td>
+                    <ul>
+                        <li>- 주어진 값의 불리언(bool) 값을 반환합니다.</li>
+                        <li>- 대부분의 값은 True로 평가되나, None, 0, 빈 시퀀스([], (), ''), 빈 매핑({}) 등은 False로 평가됩니다.</li>
+                        <li>- 예: bool(0)는 False를 반환합니다.</li>
+                    </ul>
+                </td></tr>
+                <tr><td colspan="2" class="em">str( )</td></tr>
+                <tr><td>
+                    <ul>
+                        <li>- 객체를 문자열(str) 표현으로 변환합니다.</li>
+                        <li>- 숫자, 리스트, 튜플 등 거의 모든 것을 문자열로 변환할 수 있습니다.</li>
+                        <li>- 예: str(123)는 "123"을 반환합니다.</li>
+                    </ul>
+                </td></tr>
+                <tr><td colspan="2" class="em">list( )</td></tr>
+                <tr><td>
+                    <ul>
+                        <li>- 반복 가능한(iterable) 객체를 리스트(list)로 변환합니다.</li>
+                        <li>- 문자열을 리스트로 변환할 때는 각 문자가 리스트의 요소가 됩니다.</li>
+                        <li>- 예: list("abc")는 ['a', 'b', 'c']를 반환합니다.</li>
+                    </ul>
+                </td></tr>
+                <tr><td colspan="2" class="em">tuple( )</td></tr>
+                <tr><td>
+                    <ul>
+                        <li>- 반복 가능한 객체를 튜플(tuple)로 변환합니다.</li>
+                        <li>- 리스트와 유사하게 작동하지만, 반환된 튜플은 변경할 수 없습니다(immutable).</li>
+                        <li>- 예: tuple([1, 2, 3])는 (1, 2, 3)을 반환합니다.</li>
+                    </ul>
+                </td></tr>
+                <tr><td colspan="2" class="em">set( )</td></tr>
+                <tr><td>
+                    <ul>
+                        <li>- 반복 가능한 객체를 집합(set)으로 변환합니다.</li>
+                        <li>- 집합은 중복을 허용하지 않으멀로 중복된 요소는 자동으로 제거됩니다.</li>
+                        <li>- 예: set([1, 2, 2, 3])는 {1, 2, 3}을 반환합니다.</li>
+                    </ul>
+                </td></tr>
+                <tr><td colspan="2" class="em">dict( )</td></tr>
+                <tr><td>
+                    <ul>
+                        <li>- 키-값 쌍의 시퀀스를 딕셔너리(dict)로 변환합니다.</li>
+                        <li>- 또한, 키워드 인자를 사용하여 딕셔너리를 생성할 수 있습니다.</li>
+                        <li>- 예: dict([(1, 'one'), (2, 'two')])는 {1: 'one', 2: 'two'}를 반환합니다.</li>
+                    </ul>
+                </td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            int() 를 사용하는 예제코드를 생성해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" >
+<pre>
+<code class="language-python">
+    # 문자열을 정수로 변환
+    str_to_int = int("123")
+    print(str_to_int)  # 출력: 123
+
+    # 부동소수점 수를 정수로 변환 (소수점 이하 버림)
+    float_to_int = int(3.14)
+    print(float_to_int)  # 출력: 3
+
+    # 불리언 값을 정수로 변환
+    bool_to_int = int(True)
+    print(bool_to_int)  # 출력: 1
+
+    # 진법 변환: 문자열 형태의 숫자를 해당하는 진법으로 변환
+    binary_to_int = int("1010", 2)  # 2진수 '1010'을 10진수로 변환
+    print(binary_to_int)  # 출력: 10
+
+    hex_to_int = int("A", 16)  # 16진수 'A'를 10진수로 변환
+    print(hex_to_int)  # 출력: 10
+
+    octal_to_int = int("12", 8)  # 8진수 '12'를 10진수로 변환
+    print(octal_to_int)  # 출력: 10
+
+    # 문자열이 숫자 형태가 아니면 ValueError 예외 발생
+    # 다음 코드는 예외를 발생시킵니다. 주석 처리를 해제하고 실행해 보세요.
+    # invalid_str_to_int = int("Python")
+    # print(invalid_str_to_int)
+</code>    
+</pre>         
+        </div>
+    </div> 
+
+      
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            bool() 을 사용한 예제 코드를 생성해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" >
+            <pre>
+                <code class="language-python">        
+    # 숫자를 불리언으로 변환: 0이면 False, 나머지는 True
+    int_to_bool = bool(0)
+    print(int_to_bool)  # 출력: False
+    int_to_bool = bool(1)
+    print(int_to_bool)  # 출력: True
+    
+    # 부동소수점 수도 동일한 규칙을 따릅니다.
+    float_to_bool = bool(0.0)
+    print(float_to_bool)  # 출력: False
+    float_to_bool = bool(3.14)
+    print(float_to_bool)  # 출력: True
+    
+    # 빈 문자열은 False, 그 외 문자열은 True
+    str_to_bool = bool("")
+    print(str_to_bool)  # 출력: False
+    str_to_bool = bool("Python")
+    print(str_to_bool)  # 출력: True
+    
+    # 빈 리스트, 튜플, 집합, 딕셔너리는 False, 요소가 있는 경우 True
+    list_to_bool = bool([])
+    print(list_to_bool)  # 출력: False
+    list_to_bool = bool([1, 2, 3])
+    print(list_to_bool)  # 출력: True
+    
+    tuple_to_bool = bool(())
+    print(tuple_to_bool)  # 출력: False
+    tuple_to_bool = bool((1, 2, 3))
+    print(tuple_to_bool)  # 출력: True
+    
+    set_to_bool = bool(set())
+    print(set_to_bool)  # 출력: False
+    set_to_bool = bool({1, 2, 3})
+    print(set_to_bool)  # 출력: True
+    
+    dict_to_bool = bool({})
+    print(dict_to_bool)  # 출력: False
+    dict_to_bool = bool({1: "one", 2: "two"})
+    print(dict_to_bool)  # 출력: True
+    
+    # None은 False로 변환됩니다.
+    none_to_bool = bool(None)
+    print(none_to_bool)  # 출력: False
+    
+                </code>
+            </pre>    
+        </div>
+    </div>    
+      
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            str() 을 사용한 예제 코드를 생성해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" >
+            <pre>
+                <code class="language-python">  
+    # 정수를 문자열로 변환
+    int_to_str = str(100)
+    print(int_to_str)  # 출력: "100"
+    
+    # 부동소수점 수를 문자열로 변환
+    float_to_str = str(3.14)
+    print(float_to_str)  # 출력: "3.14"
+    
+    # 불리언 값을 문자열로 변환
+    bool_to_str = str(True)
+    print(bool_to_str)  # 출력: "True"
+    
+    # 리스트를 문자열로 변환
+    list_to_str = str([1, 2, 3])
+    print(list_to_str)  # 출력: "[1, 2, 3]"
+    
+    # 튜플을 문자열로 변환
+    tuple_to_str = str((4, 5, 6))
+    print(tuple_to_str)  # 출력: "(4, 5, 6)"
+    
+    # 집합을 문자열로 변환
+    set_to_str = str({7, 8, 9})
+    print(set_to_str)  # 출력: "{8, 9, 7}" (집합의 출력 순서는 무작위)
+    
+    # 딕셔너리를 문자열로 변환
+    dict_to_str = str({"name": "Alice", "age": 25})
+    print(dict_to_str)  # 출력: "{'name': 'Alice', 'age': 25}"
+    
+                </code>
+            </pre>         
+        </div>
+    </div>    
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            list()을 활용한 예제 코드를 생성해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python">
+    # 문자열을 리스트로 변환
+    str_to_list = list("hello")
+    print(str_to_list)  # 출력: ['h', 'e', 'l', 'l', 'o']
+    
+    # 튜플을 리스트로 변환
+    tuple_to_list = list((1, 2, 3))
+    print(tuple_to_list)  # 출력: [1, 2, 3]
+    
+    # 집합을 리스트로 변환
+    set_to_list = list({4, 5, 6})
+    print(set_to_list)  # 출력: [4, 5, 6] 또는 다른 순서
+    
+    # 딕셔너리의 키를 리스트로 변환
+    dict_keys_to_list = list({"name": "Alice", "age": 25})
+    print(dict_keys_to_list)  # 출력: ['name', 'age']
+    
+    # 딕셔너리의 값들을 리스트로 변환
+    dict_values_to_list = list({"name": "Alice", "age": 25}.values())
+    print(dict_values_to_list)  # 출력: ['Alice', 25]
+    
+    # 빈 리스트 생성
+    empty_list = list()
+    print(empty_list)  # 출력: []
+                    
+                </code>
+            </pre>
+
+        </div>
+    </div> 
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            tuple()을 활용한 예제코드를 생성해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" >
+            <pre>
+                <code class="language-python">
+    # 리스트를 튜플로 변환
+    list_to_tuple = tuple([1, 2, 3, 4])
+    print(list_to_tuple)  # 출력: (1, 2, 3, 4)
+    
+    # 문자열을 튜플로 변환
+    str_to_tuple = tuple("hello")
+    print(str_to_tuple)  # 출력: ('h', 'e', 'l', 'l', 'o')
+    
+    # 집합을 튜플로 변환
+    set_to_tuple = tuple({5, 6, 7})
+    print(set_to_tuple)  # 출력은 집합의 원소 순서에 따라 달라질 수 있음. 예: (5, 6, 7)
+    
+    # 딕셔너리의 키를 튜플로 변환
+    dict_keys_to_tuple = tuple({"name": "Alice", "age": 25})
+    print(dict_keys_to_tuple)  # 출력: ('name', 'age')
+    
+    # 딕셔너리의 값들을 튜플로 변환
+    dict_values_to_tuple = tuple({"name": "Alice", "age": 25}.values())
+    print(dict_values_to_tuple)  # 출력: ('Alice', 25)
+    
+    # 빈 튜플 생성
+    empty_tuple = tuple()
+    print(empty_tuple)  # 출력: ()
+                    
+                </code>
+            </pre>
+        </div>
+    </div>
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            set()을 활용한 예제코드를 생성해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" >
+            <pre>
+                <code class="language-python">
+    # 리스트에서 중복을 제거하여 집합 생성
+    list_to_set = set([1, 2, 2, 3, 4, 4, 5])
+    print(list_to_set)  # 출력: {1, 2, 3, 4, 5}
+    
+    # 문자열에서 고유 문자를 찾아 집합 생성
+    str_to_set = set("hello")
+    print(str_to_set)  # 출력은 문자의 순서에 따라 달라질 수 있음. 예: {'e', 'h', 'l', 'o'}
+    
+    # 튜플에서 집합 생성
+    tuple_to_set = set((6, 7, 7, 8))
+    print(tuple_to_set)  # 출력: {6, 7, 8}
+    
+    # 딕셔너리의 키를 사용하여 집합 생성
+    dict_to_set = set({"name": "Alice", "age": 25})
+    print(dict_to_set)  # 출력: {'name', 'age'}
+    
+    # 빈 집합 생성
+    # 주의: 빈 집합을 만들기 위해서는 set() 함수를 사용해야 합니다. {}는 빈 딕셔너리를 의미합니다.
+    empty_set = set()
+    print(empty_set)  # 출력: set()
+                </code>
+            </pre>
+        </div>
+    </div>
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            dict()을 활용한 예제코드를 생성해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python">
+    # 키-값 쌍의 시퀀스로부터 딕셔너리 생성
+    list_of_tuples = [(1, 'one'), (2, 'two'), (3, 'three')]
+    dict_from_tuples = dict(list_of_tuples)
+    print(dict_from_tuples)  # 출력: {1: 'one', 2: 'two', 3: 'three'}
+    
+    # 키워드 인자를 사용하여 딕셔너리 생성
+    dict_from_kwargs = dict(name="Alice", age=25, city="New York")
+    print(dict_from_kwargs)  # 출력: {'name': 'Alice', 'age': 25, 'city': 'New York'}
+    
+    # 빈 딕셔너리 생성
+    empty_dict = dict()
+    print(empty_dict)  # 출력: {}
+    
+    # 리스트의 중첩된 리스트를 사용하여 딕셔너리 생성
+    list_of_lists = [['name', 'Bob'], ['age', 30], ['city', 'Chicago']]
+    dict_from_lists = dict(list_of_lists)
+    print(dict_from_lists)  # 출력: {'name': 'Bob', 'age': 30, 'city': 'Chicago'}
+    
+    # 튜플의 리스트를 이용하여 딕셔너리의 생성 (키-값 쌍)
+    tuple_pairs = (('key1', 'value1'), ('key2', 'value2'))
+    dict_from_tuple_pairs = dict(tuple_pairs)
+    print(dict_from_tuple_pairs)  # 출력: {'key1': 'value1', 'key2': 'value2'}
+    
+    # zip() 함수와 리스트를 이용하여 딕셔너리 생성
+    keys = ['a', 'b', 'c']
+    values = [1, 2, 3]
+    dict_from_zip = dict(zip(keys, values))
+    print(dict_from_zip)  # 출력: {'a': 1, 'b': 2, 'c': 3}
+    
+    # fromkeys() 메소드 사용
+    # 주어진 키 목록으로, 모든 키에 대해 같은 값을 갖는 딕셔너리를 생성
+    keys = ['a', 'b', 'c']
+    default_value = 0
+    dict_from_keys = dict.fromkeys(keys, default_value)
+    print(dict_from_keys)  # 출력: {'a': 0, 'b': 0, 'c': 0}
+                                        
+                </code>
+            </pre>
+        </div>
+    </div>
+
+</div>
+<script>
+    function correct_answer(id, num){
+        quiz = "#"+id+" ul li:nth-child("+num+")"
+        const correctAnswer = document.querySelector(quiz);
+        correctAnswer.classList.add('correct-answer');
+    }
+</script>
+<script src="content.js"></script>
+

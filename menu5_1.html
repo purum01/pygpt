@@ -1,0 +1,329 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+
+
+<div class="faq-container">
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            파이썬 if문 3가지 스타일에 대해 설명해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <img src="gpt.png">
+            파이썬의 if 문은 조건을 평가하여 그 조건이 참(True)일 때만 특정 코드 블록을 실행하도록 하는 조건문입니다. 파이썬에서는 주로 세 가지 스타일의 if 문을 사용할 수 있습니다.
+            <h3>기본 사용법 : </h3>
+            <ol>
+                <li>if문</li>
+                <img src="image/5_1_1.jpg" width="60%" height="60%">
+                <li>if-else문</li>
+                <img src="image/5_1_2.jpg"  width="60%" height="60%">
+                <li>if-elif-else문</li>
+                <img src="image/5_1_3.jpg"  width="60%" height="60%">
+            </ol>
+            <h3>예제 : </h3>
+            <ol>
+                <li>if문</li>
+                <pre>
+                    <code class="language-python">
+    age = 20
+    if age >= 18:
+        print("You are an adult.")
+                    </code>
+                </pre>
+                <li>if-else문</li>
+                <pre>
+                    <code class="language-python">
+    age = 16
+    if age >= 18:
+        print("You are an adult.")
+    else:
+        print("You are a minor.")
+                    </code>
+                </pre>
+                <li>if-elif-else문</li>
+                <pre>
+                    <code class="language-python">
+    score = 75
+    if score >= 90:
+        print("Grade: A")
+    elif score >= 80:
+        print("Grade: B")
+    elif score >= 70:
+        print("Grade: C")
+    else:
+        print("Grade: F")
+                    </code>
+                </pre>
+            </ol>            
+        </div>
+    </div>
+
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="30px" height="30" >
+            if 문
+            <i class="fas fa-chevron-down"></i>
+        </div>
+
+        <div class="faq-answer">
+        <pre>
+            <code class="language-python" >                
+    # 정수 설정
+    num = 9
+    
+    # 정수가 짝수인지 판단
+    if num % 2 == 0:
+        print(f"{num}은(는) 짝수입니다.")
+        </code>
+        </pre>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png"width="30px" height="30">
+            if ~ else 문
+            <i class="fas fa-chevron-down"></i>
+        </div>
+
+        <div class="faq-answer">
+<pre>
+<code class="language-python" >                
+    # 두 개의 정수 설정
+    num1 = 15
+    num2 = 22
+    
+    # 두 정수를 비교하여 큰 값 출력
+    if num1 > num2:
+        larger_value = num1
+    else:
+        larger_value = num2
+    
+    print(f"두 정수 중 큰 값은 {larger_value}입니다.")
+</code>
+</pre>
+        </div>
+    </div>
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png"width="30px" height="30">
+            if ~ elif ~ else 문
+            <i class="fas fa-chevron-down"></i>
+        </div>
+
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python" >                
+    # 계절 입력 설정값 예제 (직접 입력 대신 설정값 사용)
+    season = "가을"  # 사용자 입력 대신 설정값 사용
+    
+    # 계절에 따른 특징 출력
+    if season == "봄":
+        print("봄은 꽃이 피는 계절입니다.")
+    elif season == "여름":
+        print("여름은 더운 날씨와 함께 수박과 같은 여름 과일이 많은 계절입니다.")
+    elif season == "가을":
+        print("가을은 낙엽이 지고, 서늘한 바람이 부는 계절입니다.")
+    elif season == "겨울":
+        print("겨울은 눈이 오고, 크리스마스가 있는 계절입니다.")
+    else:
+        print("잘못된 계절을 입력하셨습니다.")
+                </code>
+            </pre>
+            </div>
+    </div>
+
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            연습 문제
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <ol>
+                <li> 아래 코드를 실행하면 'NameError : name 'a' is not definded'라는 오류가 출력됩니다. 그 이유를 보기에서 고르세요</li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+if a >  10 :
+    print( 'a가 10보다 큽니다')                                
+                            </code>
+                        </pre>                        
+                    </div>
+                    <ul>
+                        <li><input type="radio" name="1"> 문법에 맞지 않게 코드가 작성되어서</li>
+                        <li><input type="radio" name="1"> a 변수를 사용하지만 이를 정의한 코드가 없어서</li>
+                        <li><input type="radio" name="1">  if문의 조건이 거짓이어서</li>
+                        <li><input type="radio" name="1"> 10에 따옴표가 붙어 있지 않아서</li>
+                    </ul>
+                <li class="m1"> 1=10 이라고 변수가 정의되어 있을때 아래 코드가 참과 거짓중 무엇에 해당하는지 고르세요</li>
+                    <ul>
+                        <li><input type="radio" name="2"> if a > 5  (참, 거짓)</li>
+                        <li><input type="radio" name="2"> if a==0   (참, 거짓) </li>
+                        <li><input type="radio" name="2"> if a != 3 (참, 거짓) </li>
+                        <li><input type="radio" name="2"> if a < 7  (참, 거짓)</li>
+                    </ul>
+                
+                <li class="m1"> a = '30' 이라고 정의되어 있을때 아래 코드를 실행하면 무슨 결과가 출력되는지 작성하세요 </li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+if (a==30) :
+    print('a는 정수형 30입니다')           
+if(a=='30') :
+    print('a는 문자형 30d입니다')
+                            </code>
+                        </pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>                    
+
+                <li>a=10 이고, b=40일 때 아래 조건이 참과 거짓 중 어디에 해당하는지 고르세요</li>
+                    <ul>
+                        <li><input type="radio" name="3"> if a>5 and b==40 (참, 거짓) </li>
+                        <li><input type="radio" name="3"> if a>20 and b==40 (참, 거짓)</li>
+                        <li><input type="radio" name="3"> if a>5 or b==30 (참, 거짓)</li>
+                        <li><input type="radio" name="3"> if a>20 or b==40 (참, 거짓)</li>
+                        <li><input type="radio" name="3"> if a>20 or b==30 (참, 거짓)</li>
+                    </ul>
+                <li class="m1"> 다음 코드를 실행하면  SyntaxError : invalid SyntaxError라는 오류가 출력됩니다. 그 이유를 보기에서 고르세요 </li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+a = 10
+if (a >10) 
+    print('a는 20보다 큽니다.')           
+                            </code>
+                        </pre>
+                    </div>
+                    <ul>
+                        <li><input type="radio" name="4"> if 문장의 끝에 콜론(:)이 없어서</li>
+                        <li><input type="radio" name="4"> a 변수를 사용하지만 이를 정의한 코드가 없어서</li>
+                        <li><input type="radio" name="4"> if문의 조건이 거짓이여서</li>
+                        <li><input type="radio" name="4"> 10에 따옴표가 붙어 있지 않아서</li>
+                    </ul>         
+
+                <li class="m1">다음 코드를 실행하면 어떤 결과가 출력되는지 작성하세요 </li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+day = ['월요일','화요일','수요일','목요일']
+if '화요일' in day:
+    print('리스트에 화요일이 포함되어 있습니다.')                                
+if '토요일' in day:
+    print('리스트에 토요일이 포함되어 있습니다.')
+                            </code>
+                        </pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+                <li class="m1"> a=80 이라고 변수를 정의하고 아래 코드를 실행하면 이떤 결과가 출력되는지 작성하세요 </li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+if a>=90 :
+    print('a가 90보다 크거나 같습니다.')
+elif a>=80 :
+    print('a가 80보다 크거나 같습니다.')    
+else :
+    print('a는 80보다 작습니다.')    
+                            </code>
+                        </pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+                <li class="m1"> 코드를 실행하고 '초등학생'이라고 작성하면 어떤 결과가 출력되는지 작성하세요</li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+a = input('학생 종류를 입력하세요')
+if a=='대학생':
+    print('대학생입니다.')
+elif a=='고등학생':
+    print('고등학생입니다.')
+elif a=='중학생':
+    print('중학생입니다.')
+elif a=='초등학생' :
+    print('초등학생입니다.')
+else :
+    print('학생이 아닙니다.')   
+                            </code>
+                        </pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+                <li class="m1"> 다음 코드를 실행하면 어떻게 결과가 출력되는지 작성하세요</li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+a = 'z'
+if a == '0' :
+    print('a가 0입니다.')  
+elif a == 'X' :
+    print('a가 X입니다.')
+else:
+    print('a는 0도 아니고 X도 아닙니다.')
+                            </code>
+                        </pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+                <li class="m1"> 코드를 실행하고 '딸기'라고 작성하면 어떤 어떤 문장이 출력되는지 작성하세요</li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+a = input('막고 싶은 과일을 입력하세요')
+냉장고 = ['사과', '오렌지', '포도', '바나나']
+if a in 냉장고 :
+    print(f'냉장고에 {a}가 있습니다.')
+else:
+    print(f'냉장고에 {a}가 없습니다.')  
+                            </code>
+                        </pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+                <li class="m1">다음과 같이 코드를 작성하면 'SyntaxError:invalid syntax'라는 오류가 발생합니다. 그 이유를 작성하세요 </li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+a = 10
+else:
+print('a 변수에는 {a}가 할당되어 있습니다.')  
+                            </code>
+                        </pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+
+                <li>다음 코드를 실행하고 100 을 입력하면 '성공'이 아니라 '실패'라고 출력됩니다. 그 이유를 설명하세요</li>
+                    <div class="highlight"> 
+                        <pre>
+                            <code class="language-python" >   
+val = input('숫자를 입력하세요.')
+if val == 100 :
+    print('성공')
+else :
+    print('실패')    
+                            </code>
+                        </pre>
+                        </div>
+                        <div>정답: <input type="text" size="80%" class="answer"></div>
+                    </div>  
+  
+
+
+
+                </ol>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+<script src="content.js"></script>

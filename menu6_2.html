@@ -1,0 +1,350 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+
+
+<div class="faq-container">
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            파이썬의 list 객체가 가지는 메소드들에 대해 설명해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <img src="gpt.png">
+
+            파이썬의 list 객체는 순서가 있는 요소의 집합을 다루기 위한 다양한 메소드를 제공합니다. 이러한 메소드들을 활용하여 리스트 내 요소를 추가, 삭제, 검색, 정렬 등 다양한 작업을 수행할 수 있습니다. 아래는 list 객체의 주요 메소드들에 대한 설명입니다:
+            <h3>추가 및 확장</h3>
+            <ul>
+                <li>append(x): 리스트의 끝에 요소 x를 추가합니다.</li>
+                <li>extend(iterable): 리스트의 끝에 주어진 iterable의 모든 요소를 추가합니다.</li>
+                <li>insert(i, x): 지정된 위치 i에 요소 x를 삽입합니다.</li>
+            </ul>
+            <h3>요소 제거</h3>
+            <ul>
+                <li>remove(x): 리스트에서 값이 x와 같은 첫 번째 항목을 삭제합니다. 해당 요소가 없으면 오류를 발생시킵니다.</li>
+                <li>pop([i]): 지정된 위치 i에 있는 요소를 리스트에서 제거하고, 그 요소를 반환합니다. i가 지정되지 않으면, 리스트의 마지막 요소를 제거하고 반환합니다.</li>
+                <li>clear(): 리스트의 모든 요소를 삭제합니다.</li>
+            </ul>           
+            <h3>조회 및 검색</h3>
+            <ul>
+                <li>index(x[, start[, end]]): 리스트에서 x와 값이 같은 첫 번째 항목의 위치를 반환합니다. 해당 요소가 없으면 오류를 발생시킵니다.</li>
+                <li>reverse(): 리스트의 요소 순서를 뒤집습니다.</li>
+            </ul> 
+            <h3>정렬</h3>
+            <ul>
+                <li>sort(key=None, reverse=False): 리스트의 요소를 정렬합니다. key 매개변수는 정렬 기준을 지정하며, reverse가 True이면 내림차순으로 정렬합니다.</li>
+                <li>reverse(): 리스트의 요소 순서를 뒤집습니다.</li>
+            </ul>        
+            <h3>복사</h3>
+            <ul>
+                <li>copy(): 리스트의 얕은 복사본을 반환합니다.</li>
+            </ul>                           
+        </div>
+    </div>
+
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="30px" height="30" >
+            파이썬의 list 객체의 메소드들을 학습하기 위한 예제코드를 작성해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python" >                
+# 리스트 생성하기
+animals = ['dog', 'cat', 'bird']
+
+# append() 메소드로 리스트 끝에 요소 추가
+animals.append('fish')
+print("append() 사용 후:", animals)
+
+# insert() 메소드로 특정 인덱스에 요소 추가
+animals.insert(1, 'hamster')
+print("insert() 사용 후:", animals)
+
+# extend() 메소드로 리스트 확장
+more_animals = ['turtle', 'rabbit']
+animals.extend(more_animals)
+print("extend() 사용 후:", animals)
+
+# 요소 제거하기
+animals.remove('cat')  # 첫 번째로 발견된 'cat' 제거
+print("remove() 사용 후:", animals)
+
+popped_animal = animals.pop(2)  # 인덱스 2의 요소 제거 및 반환
+print("pop() 사용 후:", animals)
+print("pop()으로 제거된 요소:", popped_animal)
+
+animals.clear()  # 모든 요소 제거
+print("clear() 사용 후:", animals)
+
+# 검색 및 정렬
+fruits = ['orange', 'apple', 'banana', 'kiwi', 'apple', 'banana']
+
+# count() 메소드로 요소 개수 찾기
+print("apple의 개수:", fruits.count('apple'))
+
+# index() 메소드로 요소 인덱스 찾기
+print("banana 위치:", fruits.index('banana'))
+
+# sort() 메소드로 정렬
+fruits.sort()
+print("sort() 사용 후:", fruits)
+
+# reverse() 메소드로 순서 뒤집기
+fruits.reverse()
+print("reverse() 사용 후:", fruits)
+
+# 복사
+original_list = [1, 2, 3, 4, 5]
+copied_list = original_list.copy()
+print("원본 리스트:", original_list)
+print("복사된 리스트:", copied_list)
+
+
+
+                </code>
+            </pre>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png"width="30px" height="30">
+            동물원에 새 동물들이 왔어요!
+            <i class="fas fa-chevron-down"></i>
+        </div>
+
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python" >                
+# 동물원 리스트 생성
+zoo = ['사자', '코끼리', '기린']
+
+# 새로 온 동물들 추가하기
+zoo.append('판다')
+print("새로운 동물이 왔어요:", zoo)
+
+# 두 마리의 원숭이가 더 왔어요
+zoo.extend(['원숭이', '원숭이'])
+print("원숭이가 두 마리 더 왔어요:", zoo)
+
+# 사자가 다른 곳으로 이사갔어요
+zoo.remove('사자')
+print("사자가 이사갔어요:", zoo)
+                    
+                </code>
+            </pre>
+        </div>
+    </div>
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            내 친구들의 생일 파티 준비
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python">
+# 생일 파티에 초대할 친구 목록
+friends = ['영희', '철수', '민수']
+
+# 새로운 친구 초대
+friends.append('수진')
+print("초대 목록:", friends)
+
+# 민수가 파티에 올 수 없게 되었어요
+friends.remove('민수')
+print("변경된 초대 목록:", friends)
+
+# 파티 목록 순서대로 정렬하기
+friends.sort()
+print("정렬된 초대 목록:", friends)
+                                
+                </code>
+            </pre>
+        </div>
+    </div>    
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            책장 정리하기    
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python">
+# 책장에 있는 책들
+books = ['수학', '과학', '영어', '사회']
+
+# '미술' 책을 책장에 추가
+books.append('미술')
+print("책장에 있는 책들:", books)
+
+# 책장에서 '영어' 책을 찾아보세요
+print("영어 책의 위치:", books.index('영어'))
+
+# 책장의 책 순서를 뒤집어 보세요
+books.reverse()
+print("순서를 뒤집은 책장:", books)
+                    </code>
+            </pre>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            연습문제    
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <ol>
+
+                <li>다음 중 리스트의 끝에 새로운 요소를 추가하는 메소드는 무엇인가?</li>
+                    <ul>
+                        <li><input type="radio" name="1"> append()
+                        <li><input type="radio" name="1"> index()
+                        <li><input type="radio" name="1"> insert()
+                        <li><input type="radio" name="1"> remove()
+                    </ul>
+                <li> 다음 코드를 실행했을 때 출력되는 값은 무엇인가요?</li>
+                    <div class="highlight">
+                        <pre><code class="language-python">
+alist =['바나나', '오렌지', '사과', '포도'] <br>
+alist.insert('귤', 2) <br>
+alist.remove('포도') <br>
+print(alist)
+                        </code></pre>
+                    </div>    
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+                <li>scores 변수에 점수들이 저장되어 있습니다. 다음 코드의 밑줄을 채우세요</li>
+                    <div class="highlight">
+                        <pre><code class="language-python">
+scores = [98, 72, 85, 92, 95]
+
+# 점수 합계
+_______________________ 
+# 점수 평균
+_______________________ 
+# 최고 점수
+_______________________ 
+# 최저 점수
+_______________________ 
+                        </code></pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+                    <li>밑줄에 scores 리스트 요소들을 내림차순으로 정렬하는 코드를 작성하세요</li>
+                    <div class="highlight">
+                        <pre><code class="language-python">
+scores = [98, 72, 85, 92, 95]
+
+# scores 리스트 요소들을 내림차순으로 정렬
+_________________________
+
+for rank, item in enumerate(scores, 1) :
+    print(rank, item)
+
+# 출력 결과
+# 1 98
+# 2 95
+# 3 92
+# 4 85
+# 5 72
+                        </code></pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+                    <li>name 변수와  scores 변수의 index가 서로 매칭되어 있습니다.예를 들어 '홍길동'의 점수는 98점, '이순신'의 점수는 72점입니다. 다음 코드의 맡줄에 점수가 1등인 사람의 이름을 출력하는 코드를 작성하세요.   </li>
+                    <div class="highlight">
+                        <pre><code class="language-python">
+name = ['홍길동', '이순신', '유관순','강감찬', '정약용']
+scores = [98, 72, 85, 92, 95]
+# 점수 오름 차순 정렬
+scores.sort()
+print(scores)  #출력 결과 : [72, 85, 92, 95, 98]
+
+# 점수가 1등인 사람의 이름 출력
+____________________________
+                        </code></pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+                    <li> scores 리스트에는 점수가 정렬되어 저장되어 있습니다. scores 리스트에서 1등부터 5등까지의 점수만 추출하는 코드를 작성하세요</li>
+                    <div class="highlight">
+                        <pre><code class="language-python">
+scores = [99, 98, 95, 92, 88, 85, 84, 75, 72, 65]
+# 1등부터 5등까지의 점수만 출력
+print( __________________  )
+                        </code></pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+
+
+
+
+
+
+
+                <li>alist  리스트에서 '포도'의 인덱스를 출력하기위해 밑줄에 들어가야 하는 코드를 작성하세요</li>
+                    <div class="highlight">
+                        <pre><code class="language-python">
+alist = ['바나나', '오렌지', '사과', '포도']
+# '포도'의 인덱스 추출
+______________________
+                        </code></pre>                        
+                        
+                        </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+                <li>다음 코드를 실행하면 ValueError가 발생합니다. 그 이유를 설명하세요</li>
+                    <div class="highlight"> 
+                        <pre><code class="language-python">
+alist = ['바나나','오렌지','사과','포도'] 
+alist.remove('수박')
+                        </code></pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+                    
+                <li>다음과 같이 리스트가 정의되었을 경우, 첫번째와 마지막 항목을 출력하는 코드를 작성하세요.</li>                    
+                    <div class="highlight">
+                        <pre><code class="language-python">
+color_list = ['Red','Green','White','Black']
+# 첫번째 요소 추출
+______________________
+# 마지막 요소 추출
+______________________
+                        </code></pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+                
+                <li>다음 코드의 밑줄 친 부분에 입력받은 문자열을 fruits 리스트에 새로운 요소로 추가되는 코드를 작성하세요 </li>                    
+                    <div class="highlight">
+                        <pre><code class="language-python">
+fruits  = [ ]
+
+for item in range(5) :
+    name = input('과일:')
+    # fruits 리스트에 name 값 추가
+    ____________________________
+
+print(fruits)                            
+                        </code></pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>                        
+                
+            </ol>
+        </div>
+    </div>    
+</div>
+
+
+<script src="content.js"></script>

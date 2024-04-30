@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />   
+<title>코딩 미션</title>
+</head>
+<body>
+    
+    <ol class="mission">
+        <li> 임의의 정수를 입력 받아 거듭제곱을 반환하는 getPower() 함수를 정의하세요</li>
+        <div class="highlight">
+            <pre>
+                <code class="language-python">
+# 함수 정의 부분
+  _________________________
+
+# 함수 호출 부분
+val = int(input('입력값'))    # 입력값 : 2
+print('계산 결과:', getPower(val))  # 계산 결과 : 4
+                </code>
+            </pre>
+        </div>
+        <textarea rows="6" class="answer"></textarea> 
+
+        <li> 다음은 더하기와 빼기 함수를 정의하고 있습니다. 더하기와 빼기 함수를 참고하여 곱하기와 나누기를 위한 함수를 정의하세요</li>
+        <div class="highlight">
+            <pre>
+                <code class="language-python">
+
+# 더하기 함수
+def plus(a, b):
+    result = a + b
+    print(' 더하기 결과:', result())
+    return result 
+
+
+# 빼기 함수
+def minus(a, b):
+    result = a- b
+    print('빼기 결과:', result)
+    return result 
+
+
+# 곱하기 함수
+_______________________________
+
+# 나누기 함수
+_______________________________
+                </code>
+            </pre>
+        </div>
+        <textarea rows="6" class="answer"></textarea>         
+
+
+        <li> 입력받은 숫자를 함수의 인자로 사용하고 이 값이 3의 배수인지를 알려주는 함수를 정의하고자 한다. isThreeMultiple()이라는 함수명과 n 이라는 인자를 사용해 함수를 정의하세요 </li>
+        <textarea rows="6" class="answer"></textarea>         
+
+
+        <li>다음 코드를 실향하면 어떤 결과가 출력되는지 작성하세요</li>
+        <div class="highlight">
+        <pre>
+            <code class="language-python" >   
+def sumValue(n) :
+    sum = 0
+    for x in range(n) :
+        sum = sum + x
+    return sum 
+
+print('계산 결과:', sumValue(10))
+            </code>
+        </pre>
+        </div>
+        <div>정답: <input type="text" size="80%" class="answer"></div>
+
+        <li>다음과 같이 문자열을 함수의 인자로 사용하고, 콤마(,)를 기준으로 문자열을 분리한 결과를 리스트로 반환하도록 getItems() 함수를 정의하세요. (힌트:문자열을 콤마를 기준으로 분리하고 이를 리스트로 반환하기 위해  spli('.')를 사용합니다.)</li>
+        <div class="highlight">
+            <pre>
+                <code class="language-python" >   
+# 함수 정의 부분
+_________________________
+
+# 함수 호출 부분
+msg = 'I,Love,Python'
+alist = getItems(msg)
+                </code>
+            </pre>
+        </div>
+        <textarea rows="6" class="answer"></textarea>     
+
+        <li>리스트 변수인 scores를 함수의 인자로 사용하고, 리스트 항목 중 짝수 값에 대한 합계를 계산하여 이를 반환하는 sumEvenValues() 함수를 정의하세요</li>
+        <div class="highlight">
+            <pre>
+                <code class="language-python" >   
+# 함수 정의 부분
+_________________________
+
+# 함수 호출 부분
+scores = [5, 6, 4, 7, 8, 2]
+alist = sumEvenValues(scores)
+                </code>
+            </pre>
+        </div>
+        <textarea rows="6" class="answer"></textarea>     
+
+        <li> 다음과 같이 릿그트와 기준값을 함수의 인자로 사용하고, 리스트의 각 항목 중 기준값 이상만 반환한는 filtering() 함수를 정의하세요</li>
+        <div class="highlight">
+            <pre>
+                <code class="language-python">
+# 함수 정의 부분
+_________________________
+
+# 함수 호출 부분
+alist = [90, 50, 65, 73, 100, 80]
+criteria = 90
+
+result = filtering(alist, criteria)
+print('반환값: ', result)
+                </code>
+            </pre>
+        </div>
+        <textarea rows="6" class="answer"></textarea> 
+
+
+        <li> 리스트 변수를 인자로 사용하여 중복된 숫자가 없는 리스트를 반환하는 getUniqueValue()함수를 정의하세요</li>
+        <div class="highlight">
+            <pre>
+                <code class="language-python">
+# 함수 정의 부분
+_________________________
+
+# 함수 호출 부분
+alist = [1,2,2,3,5,4,3,1]
+
+result = (alist,getUniqueValue(alist))
+print('반환값: ', result)  # 반환값 : [1,2,3,4,5]
+                </code>
+            </pre>
+        </div>
+        <textarea rows="6" class="answer"></textarea> 
+
+        <li> 임의의 숫자를 입력받아 이 숫자가 0 ~ 100 사이의 값이면 True을 반환하고, 그렇지 않으면 False를 반환하는 checkRange()함수를 정의하세요</li>
+        <textarea rows="6" class="answer"></textarea> 
+
+        <li> 하이폰(-)으로 연결된 문자열을 인자로 받아 정렬된 형태로 반환하는 fruitSort()함수를 정의하세요. 조건과 힌트는 다음과 같습니다.</li>
+        <ul>
+            <li>- 입력값 : apple-grape-banana-strawberry</li>
+            <li>- 반환값 : apple-banana-grape-strawberry</li>
+            <li>- 하이폰을 기준으로 문자열을 분리해서 리스트로 저장하기 위해서는 split() 함수를 사용합니다.</li>
+            <li>- 리스트의 항목을 '-'를 이용하여 연결하때는 join()함수를 사용합니다.</li>
+            <li>- 리스트 항목을 정렬하기 위해 sorted() 함수를 사용합니다.</li>
+        </ul>
+        <textarea rows="6" class="answer"></textarea> 
+
+
+    </ol>
+</body>
+</html>

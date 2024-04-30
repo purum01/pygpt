@@ -1,0 +1,206 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+
+
+<div class="faq-container">
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            파이썬의 len(), sum(), max(), min() 내장 함수에 대해 설명해주세요
+
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <img src="gpt.png">
+            Python에는 다양한 내장 함수가 있으며, len(), sum(), max(), min()은 그 중에서도 자주 사용되는 함수입니다. 이 함수들은 시퀀스(예: 리스트, 튜플, 문자열)나 컬렉션(예: 집합, 사전) 등과 같은 반복 가능한(iterable) 객체에 대해 유용한 연산을 제공합니다.
+
+            <h3>len( ) </h3>
+            len() 함수는 입력으로 주어진 반복 가능한(iterable) 객체의 요소 개수를 반환합니다. 예를 들어, 리스트의 길이나 문자열의 문자 개수를 알고 싶을 때 사용할 수 있습니다.
+            <pre>
+                <code class="language-python">
+my_list = [1, 2, 3]
+print(len(my_list))  # 출력: 3
+
+my_string = "hello"
+print(len(my_string))  # 출력: 5
+                </code>
+            </pre>   
+
+            <h3>sum( ) </h3>
+            sum() 함수는 첫 번째 인자로 주어진 반복 가능한 객체의 모든 요소의 합을 반환합니다. 선택적으로 두 번째 인자로 시작 값(start value)을 제공할 수 있으며, 이 값은 총합에 더해집니다.
+            <pre>
+                <code class="language-python">
+my_list = [1, 2, 3]
+print(sum(my_list))  # 출력: 6
+
+print(sum(my_list, 10))  # 출력: 16
+                </code>
+            </pre>   
+
+            <h3>max( ) </h3>
+            max() 함수는 반복 가능한 객체의 요소 중 최댓값을 반환합니다. 또한, 두 개 이상의 인자가 주어졌을 경우에는 최댓값을 가진 인자를 반환합니다.
+            <pre>
+                <code class="language-python">
+my_list = [1, 2, 3]
+print(max(my_list))  # 출력: 3
+print(max(1, 2, 3))  # 출력: 3
+                </code>
+            </pre>   
+
+            <h3>min( ) </h3>
+            min() 함수는 반복 가능한 객체의 요소 중 최솟값을 반환합니다. max() 함수와 마찬가지로, 두 개 이상의 인자가 주어졌을 경우에는 최솟값을 가진 인자를 반환합니다.
+            <pre>
+                <code class="language-python">
+my_list = [1, 2, 3]
+print(min(my_list))  # 출력: 1
+print(min(1, 2, 3))  # 출력: 1
+                </code>
+            </pre>   
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            len() 함수를 활용한 예제
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python" >   
+# 예제 1: 리스트의 길이 구하기
+my_list = [1, 2, 3, 4, 5]
+list_length = len(my_list)
+
+# 예제 2: 문자열의 길이 구하기
+my_string = "Hello, World!"
+string_length = len(my_string)
+
+# 예제 3: 딕셔너리의 키의 개수 구하기
+my_dict = {'name': 'Alice', 'age': 25, 'city': 'New York'}
+dict_length = len(my_dict)
+
+# 예제 4: 세트의 요소 개수 구하기
+my_set = {1, 2, 3, 4, 5, 6}
+set_length = len(my_set)
+
+print("리스트 길이:", list_length)
+print("문자열 길이:", string_length)
+print("딕셔너리 키의 개수:", dict_length)
+print("세트 요소 개수:", set_length)
+                </code>
+            </pre>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            sum() 함수를 활용한 예제
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python" >   
+# 예제 1: 리스트의 요소 합 구하기
+numbers = [1, 2, 3, 4, 5]
+total_sum = sum(numbers)
+
+# 예제 2: 튜플의 요소 합 구하기
+num_tuple = (10, 20, 30, 40)
+tuple_sum = sum(num_tuple)
+
+# 예제 3: 리스트의 요소 합에 시작 값(10) 추가하기
+start_value = 10
+total_sum_with_start = sum(numbers, start_value)
+
+print("리스트의 요소 합:", total_sum)
+print("튜플의 요소 합:", tuple_sum)
+print("시작 값(10)을 포함한 리스트의 요소 합:", total_sum_with_start)
+                </code>
+            </pre>
+        </div>
+    </div>
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            max() 함수를 활용한 예제
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python" >   
+# 예제 1: 리스트 내의 최대값 찾기
+number_list = [10, 20, 30, 40, 50]
+max_number = max(number_list)
+
+# 예제 2: 문자열 내의 최대 문자 찾기 (알파벳 순서로 가장 뒤에 있는 문자)
+char_string = "helloworld"
+max_char = max(char_string)
+
+# 예제 3: 여러 개의 인자 중 최대값 찾기
+max_of_args = max(1, 2, 3, 4, 5)
+
+# 예제 4: 키 함수를 사용하여 커스텀 기준으로 최대값 찾기
+# 각 튜플의 두 번째 요소를 기준으로 최대값을 찾습니다.
+points = [(1, 2), (3, 4), (5, 6), (7, 8)]
+max_point = max(points, key=lambda x: x[1])
+
+print("리스트 내의 최대값:", max_number)
+print("문자열 내의 최대 문자:", max_char)
+print("여러 개의 인자 중 최대값:", max_of_args)
+print("키 함수를 사용한 커스텀 기준으로 최대값:", max_point)
+                </code>
+            </pre>
+        </div>
+    </div>
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            min() 함수를 활용한 예제
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python" >   
+# 예제 1: 리스트 내의 최솟값 찾기
+number_list = [10, 20, 30, 40, 5]
+min_number = min(number_list)
+
+# 예제 2: 문자열 내의 최소 문자 찾기 (알파벳 순서로 가장 앞에 있는 문자)
+char_string = "helloworld"
+min_char = min(char_string)
+
+# 예제 3: 여러 개의 인자 중 최솟값 찾기
+min_of_args = min(1, 2, 3, 4, 5)
+
+# 예제 4: 키 함수를 사용하여 커스텀 기준으로 최솟값 찾기
+# 각 튜플의 두 번째 요소를 기준으로 최솟값을 찾습니다.
+points = [(1, 2), (3, 4), (5, 6), (0, 8)]
+min_point = min(points, key=lambda x: x[1])
+
+print("리스트 내의 최솟값:", min_number)
+print("문자열 내의 최소 문자:", min_char)
+print("여러 개의 인자 중 최솟값:", min_of_args)
+print("키 함수를 사용한 커스텀 기준으로 최솟값:", min_point)
+                </code>
+            </pre>
+        </div>
+    </div>
+    
+
+
+
+
+
+</div>
+<script>
+    function correct_answer(id, num){
+        quiz = "#"+id+" ul li:nth-child("+num+")"
+        const correctAnswer = document.querySelector(quiz);
+        correctAnswer.classList.add('correct-answer');
+    }
+</script>
+<script src="content.js"></script>
+

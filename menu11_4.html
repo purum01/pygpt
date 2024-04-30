@@ -1,0 +1,61 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />   
+
+
+<h3> 파일 합치기</h3>
+    <div>
+        <pre>
+다음과 같은 내용으로 구현된 파이썬 코드를 생성해주세요
+# 제목
+2020년 Covid 현황
+
+#조건
+1.  covid 디렉토리에 있는 모든 csv 파일이 작업 대상임
+2. 각 파일에서  'Country_Region', 'Confirmed' 컬럼만 추출함
+3. 'Country_Region' 컬럼의 값은 중복되면 안됨, 여러개가 있는 경우 그룹핑하고 'Confirmed' 컬럼 값의 합계를 구함
+4. 'Confirmed'  컬러명은 파일이름에서 확장자를 제외한 이름으로 변경함. 이때 '-'는 '/'로 변경함
+5. 각 파일들은 'Country_Region' 컬럼을 기준으로 병합함
+6. 병합한 내용을 Excel 파일로 저장함
+        </pre>
+        <pre>
+            <code class="language-python">
+import pandas as pd
+import os
+import glob
+
+# covid 디렉토리에서 모든 csv 파일 목록을 가져옴
+csv_files = glob.glob('covid/*.csv')
+
+# 병합된 데이터를 저장할 빈 데이터프레임 생성
+merged_df = pd.DataFrame()
+
+for file in csv_files:
+    # 파일에서 'Country_Region', 'Confirmed' 컬럼만 읽어옴
+    df = pd.read_csv(file, usecols=['Country_Region', 'Confirmed'])
+    
+    # 'Country_Region'별로 그룹핑하고 'Confirmed'의 합계를 구함
+    grouped_df = df.groupby('Country_Region', as_index=False).sum()
+    
+    # 파일 이름에서 확장자를 제거하고 '-'를 '/'로 변경함
+    column_name = os.path.basename(file).replace('.csv', '').replace('-', '/')
+    # 'Confirmed' 컬럼 이름을 변경함
+    grouped_df.columns = ['Country_Region', column_name]
+    
+    # 병합된 데이터프레임에 현재 데이터프레임을 병합함
+    if merged_df.empty:
+        merged_df = grouped_df
+    else:
+        merged_df = pd.merge(merged_df, grouped_df, on='Country_Region', how='outer')
+
+# NaN 값을 0으로 채움
+merged_df.fillna(0, inplace=True)
+
+# 병합된 데이터를 Excel 파일로 저장함
+merged_df.to_excel('2020_Covid_Status.xlsx', index=False)
+
+print("Excel 파일이 성공적으로 생성되었습니다.")
+            </code>
+        </pre>
+    </div>
+   

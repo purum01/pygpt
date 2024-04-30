@@ -1,0 +1,119 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+
+
+<div class="faq-container">
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            산술 연산자 예제 코드를 보여주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" id="c1">
+<pre>
+<code class="language-python"">
+# 변수 선언 및 초기화
+a = 10
+b = 3
+
+# 덧셈
+addition = a + b
+print("덧셈:", addition)
+
+# 뺄셈
+subtraction = a - b
+print("뺄셈:", subtraction)
+
+# 곱셈
+multiplication = a * b
+print("곱셈:", multiplication)
+
+# 나눗셈 (결과는 float 타입)
+division = a / b
+print("나눗셈:", division)
+
+# 정수 나눗셈 (결과는 정수 부분만)
+integer_division = a // b
+print("정수 나눗셈:", integer_division)
+
+# 나머지
+remainder = a % b
+print("나머지:", remainder)
+
+# 거듭제곱
+power = a ** b
+print("거듭제곱:", power)
+     
+</code>    
+</pre>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            다음 중 출력값이 잘못된 것은 무엇인가?
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" id="c2">
+            <ul>
+                <li>A) print(8 + 2 * 3) , 출력값 : 14    </li>
+                <li>B) print(9 / 2),      출력값 : 4.5  </li>
+                <li>C) print(9 // 2),     출력값 : 4 </li>
+                <li>D) print(9 % 4),      출력값 : 2 </li>
+                <li>E) print(2 ** 3),     출력값 : 8 </li>
+            </ul>
+            <button class="answer-btn" onclick="correct_answer('c2', 4)">정답</button>
+        </div>
+    </div> 
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png"width="30px" height="30"  >
+            파이썬으로 거스름돈 계산 프로그램을 구현해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python">
+# 거스름돈 계산 프로그램 구현
+
+# 설정값 사용
+item_cost = 2700  # 구매 아이템 비용
+paid_amount = 5000  # 고객이 낸 금액
+
+# 거스름돈 계산
+change_due = paid_amount - item_cost
+
+# 거스름돈 분배
+change_1000 = change_due // 1000
+change_due %= 1000
+
+change_500 = change_due // 500
+change_due %= 500
+
+change_100 = change_due // 100
+
+# 결과 출력
+print(f"거스름돈은 총 {paid_amount - item_cost}원 입니다.")
+print(f"1000원 지폐: {change_1000}장")
+print(f"500원 동전: {change_500}개")
+print(f"100원 동전: {change_100}개")
+            
+                </code>
+            </pre>
+        </div>
+    </div>    
+    
+   
+</div>
+<script>
+    function correct_answer(id, num){
+        quiz = "#"+id+" ul li:nth-child("+num+")"
+        const correctAnswer = document.querySelector(quiz);
+        correctAnswer.classList.add('correct-answer');
+    }
+</script>
+<script src="content.js"></script>
+

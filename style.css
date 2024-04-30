@@ -1,0 +1,97 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    background-color: #f4f4f4;
+}
+.faq-container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+.faq-section {
+    background-color: white;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+.faq-question {
+    padding: 15px 20px;
+    margin: 0;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+.faq-question:hover {
+    background-color: #0056b3;
+}
+.faq-question i {
+    transition: transform 0.3s ease;
+}
+.active .faq-question i {
+    transform: rotate(180deg);
+}
+.faq-answer {
+    padding: 20px;
+    background-color: #e9ecef;
+    display: none;
+}
+.faq-answer p {
+    margin: 0;
+}
+.correct-answer {
+    color: red;
+}
+
+.em{
+    font-weight: bold;
+}
+
+a {
+    color: inherit; /* 상위 요소로부터 글자 색상을 상속받습니다. */
+    text-decoration: none; /* 밑줄을 제거합니다. */
+}
+
+.highlight {
+    background-color: lightblue ;
+    padding: 2px 4px; /* 내용과 테두리 사이의 여백 */
+    border-radius: 4px; /* 모서리 둥글게 */
+    display: inline-block; /* 인라인 블록으로 표시 */
+    width: 80%; /* 너비 설정 */    
+    
+}
+
+/* "정답" 버튼의 스타일을 지정 */
+#answerButton {
+    float: right; /* 버튼을 오른쪽으로 이동 */
+    background-color: green; /* 배경 색상을 초록색으로 설정 */
+    color: white; /* 버튼 내 텍스트 색상을 흰색으로 설정 */
+    padding: 10px 20px; /* 내부 여백을 설정하여 버튼 크기 조정 */
+    border: none; /* 테두리 제거 */
+    border-radius: 5px; /* 버튼 모서리를 둥글게 */
+    cursor: pointer; /* 마우스 오버 시 커서 모양 변경 */
+}
+/* "정답" 버튼에 마우스를 올렸을 때의 스타일을 지정 */
+#answerButton:hover {
+    background-color: darkgreen; /* 마우스 오버 시 배경 색상을 어두운 초록색으로 변경 */
+}
+
+.answer{
+    margin-bottom : 20px;
+    width: 75%; /* 너비 설정 */    
+}
+
+.m1{
+    margin-top: 20px;
+}
+
+.mission > li {
+    font-weight: bold;
+}
+

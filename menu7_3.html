@@ -1,0 +1,151 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+
+
+<div class="faq-container">
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            동물원 소리 내기
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python" >   
+# 동물의 소리를 출력하는 함수를 정의합니다.
+def animal_sound(animal):
+    if animal == "고양이":
+        return "야옹"
+    elif animal == "개":
+        return "멍멍"
+    elif animal == "오리":
+        return "꽥꽥"
+    else:
+        return "저는 그 동물의 소리를 모르겠어요!"
+
+# 함수를 호출하여 동물의 소리를 들어봅시다.
+print("고양이가 무슨 소리를 낼까요?")
+print(animal_sound("고양이"))  # 출력: 야옹
+
+print("\n개가 무슨 소리를 낼까요?")
+print(animal_sound("개"))  # 출력: 멍멍
+
+print("\n오리가 무슨 소리를 낼까요?")
+print(animal_sound("오리"))  # 출력: 꽥꽥
+
+print("\n사자가 무슨 소리를 낼까요?")
+print(animal_sound("사자"))  # 출력: 저는 그 동물의 소리를 모르겠어요!
+                </code>
+            </pre>
+        </div>
+    </div>
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            과일 주스 바 
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python" >   
+# 과일 주스를 만드는 함수를 정의합니다.
+def make_juice(fruit):
+    juice_menu = {
+        "사과": "사과 주스가 준비되었습니다! 🍎",
+        "오렌지": "오렌지 주스가 준비되었습니다! 🍊",
+        "포도": "포도 주스가 준비되었습니다! 🍇",
+    }
+    
+    # 선택한 과일로 주스를 만듭니다.
+    if fruit in juice_menu:
+        return juice_menu[fruit]
+    else:
+        return f"죄송해요, 우리 주스 바에는 {fruit} 주스가 없어요. 다른 과일을 선택해 주세요!"
+
+# 함수를 호출하여 과일 주스를 주문해봅시다.
+print(make_juice("사과"))  # 출력: 사과 주스가 준비되었습니다! 🍎
+print(make_juice("오렌지"))  # 출력: 오렌지 주스가 준비되었습니다! 🍊
+print(make_juice("포도"))  # 출력: 포도 주스가 준비되었습니다! 🍇
+print(make_juice("바나나"))  # 출력: 죄송해요, 우리 주스 바에는 바나나 주스가 없어요. 다른 과일을 선택해 주세요!
+                </code>
+            </pre>
+        </div>
+    </div>
+
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            수학 퀴즈 게임
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python" >   
+def generate_question(question_index):
+    """사용자가 선택한 인덱스에 해당하는 수학 문제를 제시하고 답을 확인합니다."""
+    # 문제와 정답을 미리 정의
+    questions = [("3 + 5", 8), ("10 - 7", 3), ("4 * 6", 24), ("9 + 2", 11), ("8 - 4", 4)]
+
+    question, correct_answer = questions[question_index]
+
+    # 사용자에게 문제 제시 및 답 입력 요청
+    print(f"문제: {question}")
+    user_answer = int(input("답을 입력하세요: "))
+    # 정답 확인
+    if user_answer == correct_answer:
+        print("정답입니다!")
+    else:
+        print(f"틀렸습니다. 정답은 {correct_answer}입니다.")
+
+
+# 게임 시작 및 문제 선택
+print("수학 퀴즈 게임에 오신 것을 환영합니다!")
+problem_number = int(input("풀고 싶은 문제 번호를 입력하세요 (0 ~ 4): "))
+generate_question(problem_number)
+                </code>
+            </pre>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            온도 변환기
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python" >   
+def printOptions():
+    print("'c' 섭씨온도에서 화씨온도로 변환")
+    print("'f' 화씨온도에서 섭씨온도로 변환")
+    print(" 'q' 종료")
+
+def C2F(c_temp):
+    return 9.0 / 5.0 * c_temp + 32
+
+def F2C(f_temp):
+    return (f_temp - 32.0) *5.0 / 9.0
+
+printOptions()
+choice = input("메뉴에서 선택하세요.")    
+while choice != "q" :
+    if choice == "c":
+        temp = float(input('섭씨온도:'))
+        print('화씨온도:', C2F(temp))
+
+    elif choice == 'f':
+        temp = float(input('화씨온도:'))
+        print('섭씨온도:', F2C(temp))
+    printOptions()
+    choice = input("메뉴에서 선택하세요.")                        
+                </code>
+            </pre>
+        </div>
+    </div>
+
+</div>    
+
+<script src="content.js"></script>

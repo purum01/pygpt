@@ -1,0 +1,67 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+
+
+
+<div class="faq-container">
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px"  >
+            파이썬의 str 타입에 대해 설명해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <img src="gpt.png">
+            파이썬에서 str 타입은 문자열을 나타내는 데이터 타입입니다. 문자열은 문자들의 시퀀스(연속)로, 텍스트 데이터를 표현하기 위해 사용됩니다. 문자열은 따옴표로 둘러싸여 표현되며, 파이썬에서는 단일 따옴표(')나 이중 따옴표(") 모두 문자열을 정의하는 데 사용할 수 있습니다. 또한, 세 개의 단일 또는 이중 따옴표를 사용하여 여러 줄에 걸친 문자열을 정의할 수도 있습니다.
+
+            <h3>주요 특징: </h3>
+            <ul>
+                <li><b>불변성</b>: 파이썬의 문자열은 불변(immutable)입니다. 즉, 문자열이 생성된 후에는 그 내용을 변경할 수 없습니다. 문자열을 수정하려고 하면 새로운 문자열 객체가 생성됩니다.</li>
+                <li><b>인덱싱과 슬라이싱</b>: 문자열은 인덱싱을 통해 개별 문자에 접근할 수 있으며, 슬라이싱을 통해 부분 문자열을 추출할 수 있습니다.</li>
+                <li>다양한 메소드: 파이썬의 문자열은 다양한 내장 메소드를 지원하여 문자열을 조작하거나 정보를 얻는 데 사용할 수 있습니다. 예를 들어, .upper(), .lower(), .split(), .find(), .replace() 등이 있습니다.</li>
+            </ul>
+<pre>
+<code class="language-python">
+# 작은따옴표를 사용한 예
+greeting = 'Hello, world!'
+print(greeting)  # 출력: Hello, world!
+
+# 큰따옴표를 사용한 예
+name = "John Doe"
+print(name)  # 출력: John Doe
+
+# 삼중 작은따옴표를 사용한 여러 줄 문자열
+poem = '''Twinkle, twinkle, little star,
+How I wonder what you are!
+Up above the world so high,
+Like a diamond in the sky.'''
+print(poem)
+
+# 삼중 큰따옴표를 사용한 여러 줄 문자열
+address = """221B Baker Street
+London
+England"""
+print(address)        
+</code>    
+</pre>            
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png"width="30px" height="30"  >
+            '홍길동',    "Amy",    Tobey,   23,   '58'   중  str 타입에 해당하는 것은 무엇인가?
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <img src="gpt.png">
+            str 타입에 해당하는 것은 '홍길동', "Amy", 그리고 '58'입니다. 이 세 개의 값은 모두 따옴표로 둘러싸여 있어 문자열(str)로 처리됩니다.
+            <ul>
+                <li>Tobey와 23은 따옴표로 둘러싸이지 않았습니다. 여기서 Tobey는 변수로 간주될 수 있으나, 주어진 컨텍스트에서는 문자열이 아니라고 가정합니다. 23은 숫자이므로 int 타입에 해당합니다.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="content.js"></script>

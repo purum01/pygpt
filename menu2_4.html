@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>변수 연습 문제</title>
+</head>
+<body>
+    <h1 align="center">Bool 타입 연습문제</h1>
+    <ol>
+        <li> 다음 중 참으로 판단하는 코드를 모두 고르세요</li>
+            <ul>
+                <li><input type="radio" name="1"> 20 == 10
+                <li><input type="radio" name="1"> '학교' == '학생'
+                <li><input type="radio" name="1">  100 > 30
+                <li><input type="radio" name="1">  15 <= 15
+            </ul>
+        <li> bool 타입의 값을 출력하도록 빈칸을 채우세요</li>
+            <div class="highlight"> 
+                a = True <br>
+                print( ________ )
+            </div>   
+            <div>정답: <input type="text" size="80%" class="answer"></div>
+
+        <li> 다음 코드를 실행하면 True와 False 중 어떤 결과가 출력되는지 작성하세요</li>
+            <div class="highlight"> 
+                a = 20 <br>
+                b = '학교' <br>
+                print( a == b )
+            </div>   
+            <div>정답: <input type="text" size="80%" class="answer"></div>
+        
+        <li> 다음 코드를 실행하면 모두 False가 출력됩니다. 실행 결과가  True로 출력되도록 코드를 수정하세요.</li>
+            <div class="highlight"> 
+                print(2 == '2' ) <br>
+                print("3.14" == '2') <br>
+                print( 2 > 2) <br>
+                print(False)
+            </div>   
+            <div>정답:</div>
+            <div><textarea rows="6"  class="answer"></textarea></div>
+        
+        <li> 다음 코드를 실행하면 False가 출력됩니다. 그 이유를 설명하세요</li>
+            <div class="highlight"> print(3 == '3')
+            </div>   
+            <div>정답: <input type="text" size="80%" class="answer"></div>
+
+        <li> 다음 코드를 실행하면 'SyntaxError : expression cannot contain assignment'오류가 발생합니다. 그 이유를 보기에서 고르세요</li>
+            <div class="highlight"> print(3 = 3 )</div>   
+            <ul>
+                <li><input type="radio" name="2"> 숫자를 비교해서
+                <li><input type="radio" name="2"> print 함수의 괄호 안에 할당하는 코드가 포함되어서
+                <li><input type="radio" name="2"> 함수의 이름이 잘못되어서
+                <li><input type="radio" name="2"> 괄호 안에 변수를 사용하지 않아서
+            </ul>
+
+        <li> 다음 코드의 실행 결과가 False로 출력되도록 빈칸에 들어갈수 있는 값을 보기에서 모두 고르시요
+            <div class="highlight"> 
+                a = _________________ <br>
+                b = _________________ <br>
+                print( a > b) 
+            </div>   
+            <ul>
+                <li><input type="radio" name="3"> a = 10,   b = 5
+                <li><input type="radio" name="3"> a = 10,   b = 10
+                <li><input type="radio" name="3"> a = 10,   b=20
+                <li><input type="radio" name="3"> a = 5.12, b= 10
+            </ul>
+
+    </ol>
+
+
+
+    <button id="answerButton">정답</button>
+    <div id="answerText" style="display:none;">
+        <ul>
+            <li>(1) 100 > 30, 15 <= 15
+            <li>(2) print(a)
+            <li>(3) false
+            <li>(4) print(2==2); print('3.14'=='3.14'); print(3>2); print(True)
+            <li>(5) 숫자에 따옴표를 사용하면 문자형이 됩니다. 코드에서 숫자와 문자를 비교하므로 두 값이 서로 달라 False를 출력합니다.
+            <li>(6) print 함수의 괄호 안에 할당하는 코드가 포함되어서
+            <li>(7) a = 10, b = 10 ; a = 10, b=20 ; a = 5.12, b= 10
+
+        </ul>
+    </div>
+
+    <script>
+    // "정답" 버튼 클릭 시 메시지 토글
+    document.getElementById("answerButton").onclick = function() {
+        var answerText = document.getElementById("answerText");
+        if (answerText.style.display === "none") {
+            answerText.style.display = "block";
+        } else {
+            answerText.style.display = "none";
+        }
+    };
+    </script>
+
+</body>
+</html>

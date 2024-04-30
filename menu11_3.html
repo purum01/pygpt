@@ -1,0 +1,49 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />   
+
+
+<h3> 로또 번호 생성기</h3>
+    <div>
+        <pre>
+다음과 같은 내용으로 구현된 파이썬 코드를 생성해주세요
+#제목
+로또 생성기
+
+#조건
+1. 로또번호는 1부터 45사이의 정수값임
+2. 6개의 로또 번호 생성함
+3. 생성된  6개 로또 번호 오름차순 정렬함
+4. 6개의 로또번호를  5세트 생성함
+    </pre>
+    <pre>
+            <code class="language-python">
+# 파이썬에서 무작위로 숫자를 고르게 해주는 도구를 가져와요.
+import random
+
+# 로또 번호를 만드는 방법을 알려줄 거예요.
+def make_lotto_numbers():
+    # 1부터 45까지 숫자 중에서 6개를 골라요. 그리고 순서대로 나열해요.
+    numbers = random.sample(range(1, 46), 6)
+    numbers.sort()  # 고른 숫자를 순서대로 나열해요.
+    return numbers
+
+# 이제 5번 반복해서 로또 번호를 만들 거예요.
+def make_five_sets():
+    all_sets = []  # 여기에 만든 로또 번호를 모을 거예요.
+    for _ in range(5):  # 5번 반복해요.
+        lotto_numbers = make_lotto_numbers()  # 로또 번호를 만들어요.
+        all_sets.append(lotto_numbers)  # 만든 번호를 모아둘 곳에 추가해요.
+    return all_sets
+
+# 로또 번호 5세트를 만들어 봐요.
+lotto_sets = make_five_sets()
+
+# 만든 로또 번호를 화면에 보여줘요.
+print("만든 로또 번호들:")
+for set_number, lotto_set in enumerate(lotto_sets, start=1):
+    print(f"{set_number}번째 세트: {lotto_set}")
+                </code>
+            </pre>
+    </div>
+   

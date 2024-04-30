@@ -1,0 +1,159 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+
+
+<div class="faq-container">
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            in  과  not  in  연산자에 대해 설명해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            파이썬에서 in과 not in 연산자는 멤버십 연산자로 분류됩니다. 이 연산자들은 어떤 값이 시퀀스(예: 문자열, 리스트, 튜플, 집합 등) 내에 존재하는지 여부를 검사하는 데 사용됩니다. 결과는 불리언 값인 True 또는 False로 반환됩니다.
+            <table>
+                <tr><td colspan="2" class="em">in 연산자</td></tr>
+                <tr><td>
+                    <ul>
+                    <li>- in 연산자는 지정된 값이 시퀀스 내에 있을 경우 True를, 그렇지 않으면 False를 반환합니다.</li>
+                    <li>- 예제: "a" in "apple"은 True를 반환합니다.</li>
+                    </ul>
+                </td></tr>
+                <tr><td colspan="2" class="em">not in 연산자</td></tr>
+                <tr><td>
+                    <ul>
+                        <li>- not in 연산자는 지정된 값이 시퀀스 내에 없을 경우 True를, 존재할 경우 False를 반환합니다.</li>
+                        <li>- "b" not in "apple"은 True를 반환합니다.</li>
+                    </ul>
+                </td></tr>
+                
+            </table>
+<pre>
+<code class="language-python"">
+    # 문자열에서의 사용
+    print('p' in 'python')      # 출력: True
+    print('z' in 'python')      # 출력: False
+    
+    # 리스트에서의 사용
+    my_list = [1, 2, 3, 4, 5]
+    print(3 in my_list)         # 출력: True
+    print(6 in my_list)         # 출력: False
+    
+    # 리스트에서 not in 사용
+    print(3 not in my_list)     # 출력: False
+    print(6 not in my_list)     # 출력: True
+    
+    # 튜플에서의 사용
+    my_tuple = ('a', 'b', 'c')
+    print('a' in my_tuple)      # 출력: True
+    print('d' in my_tuple)      # 출력: False
+    
+    # 딕셔너리에서의 사용
+    # 딕셔너리에서 in/not in은 키를 기준으로 검사합니다.
+    my_dict = {'name': 'Alice', 'age': 25}
+    print('name' in my_dict)    # 출력: True
+    print('Alice' in my_dict)   # 출력: False, 'Alice'는 값이며 키가 아님
+    
+</code>    
+</pre>            
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png"width="30px" height="30"  >
+            연습문제
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <ol class="mission">
+                <li> 다음 코드의 실행 결과를 고르세요</li>
+                <div class="highlight"> 
+                    numbers = [1, 2, 3, 4, 5] <br>
+                    print(6 not in numbers)</td></tr>
+                </div> 
+                <ul>
+                    <li><input type="radio" name="1">  True</li> 
+                    <li><input type="radio" name="1">  False</li>                 
+                    <li><input type="radio" name="1">  None</li> 
+                    <li><input type="radio" name="1">  SyntaxError</li> 
+                </ul>
+
+                <li>다음 코드의 실행 결과를 고르세요</li>
+                <div class="highlight"> 
+                    sentence = "The quick brown fox jumps over the lazy dog"<br>
+                    print("fox" in sentence)
+                </div> 
+                <ul>
+                    <li><input type="radio" name="1">  True</li> 
+                    <li><input type="radio" name="1">  False</li>                 
+                    <li><input type="radio" name="1">  None</li> 
+                    <li><input type="radio" name="1">  SyntaxError</li> 
+                </ul>
+
+                <li>다음 코드의 실행 결과를 고르세요</li>
+                <div class="highlight"> 
+                    fruits = ("apple", "banana", "cherry")<br>
+                    print("apple" not in fruits)
+                </div> 
+                <ul>
+                    <li><input type="radio" name="1">  True</li> 
+                    <li><input type="radio" name="1">  False</li>                 
+                    <li><input type="radio" name="1">  None</li> 
+                    <li><input type="radio" name="1">  SyntaxError</li> 
+                </ul>
+
+                <li>주어진 딕셔너리에 대해, 'color'가 딕셔너리의 키로 존재하는지 확인하는 코드는 무엇입니까?</li>
+                <div class="highlight"> 
+                    car = {"brand": "Ford", "model": "Mustang", "year": 1964}
+                </div> 
+                <ul>
+                    <li><input type="radio" name="1">   print("color" in car.keys())</li>
+                    <li><input type="radio" name="1">   print("color" in car)</li>                
+                    <li><input type="radio" name="1">   print("color" not in car)</li>
+                    <li><input type="radio" name="1">   B와 C 모두 올바름</li>
+                </ul>
+
+                <li>다음 코드의 실행 결과를 고르세요</li>
+                <div class="highlight"> 
+                    a = 10 <br>
+                    b = [1, 2, 3, 4, 5] <br>
+                    print(a in b or 4 in b)
+                </div> 
+                <ul>
+                    <li><input type="radio" name="1">  True</li>
+                    <li><input type="radio" name="1">  False</li>                
+                    <li><input type="radio" name="1">  None</li>
+                    <li><input type="radio" name="1">  SyntaxError</li>
+                </ul>
+            </ol>
+            <button id="answerButton">정답</button>
+            <div id="answerText" style="display:none;">
+                <ul>
+                    <li>(1) True
+                    <li>(2) True
+                    <li>(3) False
+                    <li>(4) print('color' in car)
+                    <li>(5) True
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>    
+
+
+
+<script src="content.js"></script>
+<script>
+    // "정답" 버튼 클릭 시 메시지 토글
+    document.getElementById("answerButton").onclick = function() {
+        var answerText = document.getElementById("answerText");
+        if (answerText.style.display === "none") {
+            answerText.style.display = "block";
+        } else {
+            answerText.style.display = "none";
+        }
+    };
+    </script>
+

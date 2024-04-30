@@ -1,0 +1,121 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+
+
+<div class="faq-container">
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            파이썬의 변수에 대해 설명해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <img src="gpt.png">
+            파이썬에서 변수는 데이터를 저장하는 데 사용되는 이름이 붙은 저장 공간입니다. 변수를 사용하면 프로그램에서 데이터를 저장, 수정, 재사용할 수 있으며, 코드의 가독성과 유지 보수성이 향상됩니다. 파이썬에서 변수를 사용하는 방법은 매우 간단하며, 별도의 선언 없이 사용하려는 값으로 초기화함으로써 변수를 생성할 수 있습니다.
+
+            <h3>주요 특징: </h3>
+            <ul>
+                <li><b>동적 타이핑</b>: 파이썬은 동적 타입 언어로, 변수에 대한 타입 선언이 필요 없습니다. 변수의 타입은 할당된 값에 의해 자동으로 결정됩니다.</li>
+                <li><b>변수 이름 규칙</b>:
+                    <ol>
+                        <li>변수 이름은 문자(letter)나 밑줄(_)로 시작해야 하며, 숫자로 시작할 수 없습니다.</li>
+                        <li>변수 이름에는 문자, 숫자, 밑줄을 사용할 수 있지만, 공백이나 특수 문자, 키워드는 사용할 수 없습니다.</li>
+                        <li>파이썬에서는 대소문자를 구분합니다. 예를 들어, myVariable과 myvariable은 서로 다른 변수입니다.</li>
+                    </ol>
+                </li>
+                <li><b>값의 재할당 가능</b>: 한 번 생성된 변수에 다른 값이나 다른 타입의 값을 재할당할 수 있습니다.</li>
+            </ul>
+            <pre>
+                <code class="language-python" >
+# 정수형 변수 선언 및 할당
+age = 30
+
+# 문자열 변수 선언 및 할당
+name = "Alice"
+
+# 부동소수점 수 변수 선언 및 할당
+height = 1.75
+
+# 리스트 변수 선언 및 할당
+numbers = [1, 2, 3, 4, 5]
+
+# 딕셔너리 변수 선언 및 할당
+person_info = {"name": "Bob", "age": 25, "city": "New York"}
+
+# 출력하여 확인
+print(age)          # 출력: 30
+print(name)         # 출력: Alice
+print(height)       # 출력: 1.75
+print(numbers)      # 출력: [1, 2, 3, 4, 5]
+print(person_info)  # 출력: {'name': 'Bob', 'age': 25, 'city': 'New York'}
+                </code>   
+            </pre>               
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            파이썬으로 한번에 여러개의 변수를 선언하는 에제 코드를 작성해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python" >   
+# 한 번에 여러 개의 변수 선언하기
+
+# 방법 1: 쉼표를 사용하여 여러 변수에 값을 할당
+a, b, c = 1, 2, 3
+print("a:", a, "b:", b, "c:", c)
+
+# 방법 2: 같은 값을 여러 변수에 할당
+x = y = z = 100
+print("x:", x, "y:", y, "z:", z)
+
+# 방법 3: 리스트나 튜플의 요소를 변수에 할당 (unpacking)
+list_values = [4, 5, 6]
+d, e, f = list_values
+print("d:", d, "e:", e, "f:", f)
+
+tuple_values = (7, 8, 9)
+g, h, i = tuple_values
+print("g:", g, "h:", h, "i:", i)
+                </code>
+            </pre>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            두개의 변수 값을 교환하는 파이썬 코드를 작성해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" id="c3">
+            <pre>
+                <code class="language-python" > 
+# 두 개의 변수 값 교환하기
+
+# 초기 변수 값 설정
+a = 10
+b = 20
+print("교환 전 - a:", a, "b:", b)
+
+# Pythonic한 방법으로 두 변수의 값을 교환
+a, b = b, a
+print("교환 후 - a:", a, "b:", b)
+                </code>
+            </pre>
+        </div>
+    </div>    
+</div>
+<script>
+    function correct_answer(id, num){
+        quiz = "#"+id+" ul li:nth-child("+num+")"
+        const correctAnswer = document.querySelector(quiz);
+        correctAnswer.classList.add('correct-answer');
+    }
+</script>
+<script src="content.js"></script>
+

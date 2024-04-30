@@ -1,0 +1,239 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+
+
+<div class="faq-container">
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            파이썬 for문에 대해 설명해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <img src="gpt.png">
+            파이썬의 for 문은 시퀀스(리스트, 튜플, 문자열 등) 또는 그 외 반복 가능한(iterable) 객체를 순회하면서, 순회하는 각 항목에 대해 블록 내의 코드를 실행하는 반복문입니다. 파이썬의 for 문은 다른 언어의 for 문과 비교했을 때, 매우 유연하고 읽기 쉬운 구조를 가지고 있습니다.
+            <h3>기본 구조 : </h3>
+            <ul>
+                <li><img src="image/5-2_1.jpg" width="90%" height="90%"></li>
+                <li>변수: 시퀀스의 각 요소를 참조하는데 사용됩니다. 반복마다 시퀀스의 다음 요소가 이 변수에 할당됩니다.</li>
+                <li>시퀀스: 리스트, 튜플, 문자열, 또는 반복 가능한(iterable) 다른 객체가 올 수 있습니다.</li>
+            </ul>
+           
+            <h3>예제 : </h3>
+                        <pre>
+                            <code class="language-python">
+    # 리스트를 순회하는 예제
+    fruits = ['apple', 'banana', 'cherry']
+    for fruit in fruits:
+        print(fruit)
+    
+    # range() 함수를 사용한 반복 예제
+    for i in range(5):
+        print(i)
+    
+    # 문자열을 순회하는 예제
+    for char in "Hello":
+        print(char)
+    
+                            </code>
+                        </pre>
+              
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            구구단 출력하기
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python">
+    # 3단 출력하기
+    dan = 3
+    for i in range(1, 10):
+        print(f"{dan} * {i} = {dan * i}")
+                </code>
+            </pre>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            별(*)로 삼각형 그리기
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python">
+    # 별로 삼각형 그리기
+    for i in range(1, 6):
+        print('*' * i)
+                        
+                </code>
+            </pre>
+        </div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            숫자 맞추기 게임
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python">
+    secret_number = 5
+    print("1부터 10까지의 숫자 중 하나를 맞춰보세요.")
+    
+    for i in range(1, 5):  # 사용자에게 4번의 기회를 줍니다.
+        guess = int(input(f"{i}번째 시도: "))
+        if guess == secret_number:
+            print("정답입니다!")
+            break
+        else:
+            print("틀렸습니다.")
+                                        
+                </code>
+            </pre>
+        </div>
+    </div>
+    
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            연습 문제
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <ol class="mission">
+                <li class="m1"> 0부터 9까지 10개의 숫자가 출력되도록 아래 코드의 밑줄을 채우세요 </li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+for num in range(__________) :
+    print( num )
+                            </code>
+                        </pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>                    
+
+
+                <li class="m1">1부터 5까지의 5개의 숫자가 출력되도록 밑줄을 채우세요 </li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+for num in range(________) :
+    print( num )
+                            </code>
+                        </pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+
+                <li class="m1"> 아래 코드를 실행하면 "IndentationError:expected an indented block"라는 오류가 출력된다. 그 이유를 보기에서 고르세요</li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+for num in range(5) :
+print("Hello")
+                            </code>
+                        </pre>
+                    </div>
+                    <ul>
+                        <li><input type="radio" name="1"> num 변수를 사용하지 않아서 </li>
+                        <li><input type="radio" name="1"> num에 0을 할당하지 않아서</li>
+                        <li><input type="radio" name="1"> print('Hello')가 들여쓰기되지 않아서</li>
+                        <li><input type="radio" name="1"> while문을 사용하지 않아서 </li>                  
+                    </ul>                    
+
+                <li class="m1"> 1, 3, 5, 7, 9를 출력하도록 아래 코드의 밑줄을 채우세요</li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+for num in range(______________):
+    print(num)                                
+                            </code>
+                        </pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+
+                <li class="m1"> 아래 코드를 실행하면 어떤 결과가 출력되는지 설명하세요</li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+vallist = [10, 20, 30]
+for item in vallist:
+    print(item)           </code>
+                        </pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+            
+                <li class="m1"> my_expression 리스트의 각 항목이 출력되도록 아래 밑줄을 채우세요</li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+my_expression = ['Joy', 'Hope', 'Love', 'Angry']
+for item in  _______________:
+    print(item)
+                            </code>
+                        </pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+            
+                <li class="m1"> students 리스트에 학생 명단이 있습니다. 학생 수를 화면에 출력하기 위한 코드를 밑줄에 채우세요</li>
+                <div class="highlight">
+                    <pre>
+                        <code class="language-python">
+students = ['Joy', 'Hope', 'Love', 'Angry']
+print('학생수 :', _____________)
+                        </code>
+                    </pre>
+                </div>                
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+            
+            
+                <li class="m1"> 아래 코드를 실행하면 어떤 결과를 출력하는지 작성하세요</li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+alist = [10, 20, 30]
+sum = 150
+for a in alist :
+    sum = sum - a
+print(sum)
+                            </code>
+                        </pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>            
+            
+                <li class="m1"> 아래 코드를 작성하면 "NameError:name 'daylist' is not defined"오류가 발생합니다. 이를 해결하기 위해 어떤 코드를 추가해야 하는지 설명하세요</li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+count = 0
+for a in daylist :
+    count = count + 1
+    print(a)
+                            </code>
+                        </pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>            
+            
+            
+            
+            
+            
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+<script src="content.js"></script>

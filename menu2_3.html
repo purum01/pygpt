@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>변수 연습 문제</title>
+</head>
+<body>
+    <h1 align="center">변수 연습문제</h1>
+<ol>
+    <li>다음 중 정수형 변수인 것을 고르시오</li>
+        <ul>
+            <li><input type="radio" name="1"> age = 15</li>
+            <li><input type="radio" name="1"> name = '푸름' </li>
+            <li><input type="radio" name="1"> weight = 40.2</li>
+            <li><input type="radio" name="1"> age = '15'</li>
+        </ul>
+    <li>다음 중 변수의 이름으로 적절하지 않은 것을 고르시오</li>
+        <ul>
+            <li><input type="radio" name="2"> alist</li>
+            <li><input type="radio" name="2"> student_name </li>
+            <li><input type="radio" name="2"> myBook</li>
+            <li><input type="radio" name="2"> 2second</li>
+        </ul>
+    
+    <li>다음과 같이 코드를 작성하면 "사과 is not defined"라는 오류가 발생합니다. 그 이유를 설명하세요</li>
+    <div class="highlight"> name = 사과 </div>
+    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+    <li>변수에 '하늘'이라는 값을 할당하기 위해 아래 코드에서 무엇을 고쳐야 하는지 설명하세요</li>
+    <div class="highlight"> nameOfStudent == '하늘' </div>
+    <div>정답: <input type="text" size="80%" class="answer"></div>
+        
+    <li>문자형 변수가 정의 되도록 빈칸을 채우세요</li>
+    <div class="highlight"> student = ________________________ </div>   
+    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+    <li>정수형 변수가 정의 되도록 빈칸을 채우세요</li>
+    <div class="highlight"> num = ________________________  </div>
+    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+    <li>실수형 변수가 정의되도록 빈칸을 채우세요</li>
+    <div class="highlight"> temperature = ________________________  </div>    
+    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+    <li>다음 중 변수를 할당하는 코드를 고르세요</li>
+    <ul>
+        <li><input type="radio" name="3"> a == 0</li>
+        <li><input type="radio" name="3"> a = 0 </li>
+        <li><input type="radio" name="3"> a > 0</li>
+        <li><input type="radio" name="3"> a < 0</li>
+    </ul>
+
+    <li>다음과 같이 변수명을 작성하면 오류가 출력됩니다. 그 이유를 설명하세요</li>
+    <div class="highlight"> num of name = 10 </div>
+    <div>정답: <input type="text" size="80%" class="answer"></div>    
+</ol>
+
+<button id="answerButton">정답</button>
+<div id="answerText" style="display:none;">
+    <ul>
+        <li>(1) age = 15
+        <li>(2) 2second
+        <li>(3) '사과'라는 단어가 따옴표로 묶이지 않았습니다.
+        <li>(4) 등호가 두 번 사용되었습니다.
+        <li>(5) "홍길동"
+        <li>(6) 23
+        <li>(7) 13.2
+        <li>(8) a = 0
+        <li>(9) 변수의 이름에 공백이 들어가서
+</ul>
+</div>
+
+<script>
+// "정답" 버튼 클릭 시 메시지 토글
+document.getElementById("answerButton").onclick = function() {
+    var answerText = document.getElementById("answerText");
+    if (answerText.style.display === "none") {
+        answerText.style.display = "block";
+    } else {
+        answerText.style.display = "none";
+    }
+};
+</script>
+
+</body>
+</html>

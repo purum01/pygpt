@@ -1,0 +1,102 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+
+
+<div class="faq-container">
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            파이썬 함수 호출에 관한 예제 코드를 생성해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+
+
+            <h3>기본 함수 호출</h3>
+            <pre>
+                <code class="language-python" >   
+# 함수 정의
+def greet():
+    return "Hello, World!"
+
+# 함수 호출
+message = greet()
+print(message)  # 출력: Hello, World!
+                </code>
+            </pre>
+
+            <h3>매개변수와 함께 함수 호출</h3>
+            <pre>
+                <code class="language-python" >  
+# 함수 정의
+def add(a, b):
+    return a + b
+
+# 함수 호출
+result = add(3, 4)
+print(result)  # 출력: 7
+                </code>
+            </pre>
+
+            <h3>기본값을 가진 매개변수와 함께 함수 호출</h3>
+            <pre>
+                <code class="language-python" >  
+# 함수 정의
+def greet(name="World"):
+    return f"Hello, {name}!"
+
+# 기본값을 사용하여 함수 호출
+print(greet())  # 출력: Hello, World!
+
+# 매개변수 값을 제공하여 함수 호출
+print(greet("Python"))  # 출력: Hello, Python!
+                </code>
+            </pre>
+
+            <h3>키워드 인자를 사용한 함수 호출</h3>
+            <pre>
+                <code class="language-python" >  
+# 함수 정의
+def describe_pet(animal_type, pet_name):
+    print(f"I have a {animal_type} and its name is {pet_name}.")
+
+# 키워드 인자를 사용하여 함수 호출
+describe_pet(animal_type="hamster", pet_name="Harry")
+# 출력: I have a hamster and its name is Harry.
+
+# 키워드 인자의 순서를 바꿔서 호출
+describe_pet(pet_name="Harry", animal_type="hamster")
+# 출력: I have a hamster and its name is Harry.
+                </code>
+            </pre>
+
+            <h3>가변 매개변수를 사용한 함수 호출</h3>
+            <pre>
+                <code class="language-python" >  
+# 함수 정의
+def make_pizza(*toppings):
+    print("Making a pizza with the following toppings:")
+    for topping in toppings:
+        print(f"- {topping}")
+
+# 가변 매개변수를 사용하여 함수 호출
+make_pizza('pepperoni')
+# 출력: Making a pizza with the following toppings:
+#      - pepperoni
+
+make_pizza('mushrooms', 'green peppers', 'extra cheese')
+# 출력: Making a pizza with the following toppings:
+#      - mushrooms
+#      - green peppers
+#      - extra cheese                    
+                </code>
+            </pre>
+        </div>
+    </div>
+
+   
+    
+</div>    
+
+<script src="content.js"></script>

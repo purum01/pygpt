@@ -1,0 +1,232 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+
+
+<div class="faq-container">
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            파이썬 while문에 대해 설명해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <img src="gpt.png">
+            파이썬에서 while 문은 주어진 조건이 참(True)인 동안 코드 블록을 반복 실행하는 데 사용되는 기본적인 반복 제어 구조입니다. while 문의 조건이 거짓(False)가 되면, 반복 실행이 중단됩니다. 이는 특정 조건을 기반으로 반복 작업을 수행할 때 유용하게 사용됩니다.
+            <h3>기본 구조 : </h3>
+            <ul>
+                <li><img src="image/5-3_1.jpg" width="90%" height="90%"></li>
+                <li>조건: 이 조건이 참(True)인 동안, while 루프 아래에 있는 코드 블록이 반복 실행됩니다. 조건이 거짓(False)이 되면 반복이 중단됩니다.</li>
+            </ul>
+           
+            <h3>예제 코드 : </h3>
+                        <pre>
+                            <code class="language-python">
+# 카운터를 사용한 기본적인 while 루프
+count = 0
+while count < 5:
+    print("count:", count)
+    count += 1  # 카운터 증가
+
+# 무한 루프와 break 사용
+while True:
+    user_input = input("계속하려면 'y'를, 중단하려면 'n'을 입력하세요: ")
+    if user_input == 'n':
+        break  # 루프 중단
+
+# continue 사용
+n = 0
+while n < 10:
+    n += 1
+    if n % 2 == 0:
+        continue  # 짝수인 경우 아래 코드를 실행하지 않고 다음 반복으로 건너뜀
+    print(n)
+
+    
+                            </code>
+                        </pre>
+            <h3>주요 특징 : </h3>
+            <ul>
+                <li>while 루프는 조건이 참인 동안 코드 블록을 반복적으로 실행합니다.</li>
+                <li>무한 루프는 while True:를 사용하여 생성할 수 있으며, 이러한 루프를 제어하기 위해 </li>
+                <li>continue 문은 현재 반복의 남은 부분을 건너뛰고 다음 반복으로 넘어가게 합니다.</li>
+                <li>while 문을 사용할 때는 반복이 언젠가는 종료되도록 조건을 적절히 설정해야 합니다. 그렇지 않으면 프로그램이 무한히 실행될 수 있습니다.</li>
+            </ul>
+              
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            숫자 세기 게임
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python">
+# 사용자로부터 숫자 입력받기
+number = int(input("몇까지 세고 싶나요? "))
+current = 1
+
+# 1부터 시작하여 사용자가 입력한 숫자까지 세기
+while current <= number:
+    print(current)
+    current += 1
+                                        
+                </code>
+            </pre>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            간단한 덧셈 퀴즈
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python">
+# 정답 설정
+answer = 7  # 예를 들어, 3 + 4의 정답
+
+# 사용자가 정답을 맞출 때까지 반복
+while True:
+    guess = int(input("3 + 4는? "))
+    if guess == answer:
+        print("정답입니다!")
+        break
+    else:
+        print("틀렸습니다. 다시 시도해보세요.")
+                                        
+                </code>
+            </pre>
+        </div>
+    </div>
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            사용자가 '종료'를 입력할 때까지 메시지 받기
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python">
+while True:
+    message = input("메시지를 입력하세요(종료하려면 '종료' 입력): ")
+    if message == "종료":
+        print("프로그램을 종료합니다.")
+        break
+    else:
+        print(f"당신이 입력한 메시지: {message}")
+                                    
+                </code>
+            </pre>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            연습 문제
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <ol>
+                
+                <li class="m1"> 다음 코드를 실행하면 '날씨가 좋습니다'가 화면에 몇번 출력되는가?</li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+num = 0
+while num <= 3 :
+    print('날씨가 좋습니다.')
+    num = num + 1
+                            </code>
+                        </pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>                    
+
+
+                <li class="m1">다음 코드를 실행하면 어떤 결과가 출력되는지 작성하세요 </li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+num = 1
+while num < 4:
+    num = num + 1
+print(f'num은 {num}입니다.')
+                            </code>
+                        </pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+                <li class="m1"> 다음 코드를 실행하면 코드 실행이 멈추지 않습니다. 이유를 작성하세요</li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+while True :
+    num = num + 1
+print('while문을 실행하고 있습니다.')                            
+                            </code>
+                        </pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+                <li class="m1"> 다음 코드를 실행하면 "사과가 맛있습니다."라고 출력되지 않습니다. 그 이유를 설명하세요</li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+num = 0
+while False :
+    print("사과가 맛있습니다.")
+    num = num + 1  
+                            </code>
+                        </pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+                <li class="m1"> 다음 코드를 실행하면 어떻게 결과가 출력되는지 보기에서 고르세요</li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+num = 0
+while num < 10 :
+    print('딸기를 좋아합니다.')
+    num = num + 1
+    if num >= 3 :
+        break
+                            </code>
+                        </pre>
+                    </div>
+                    <ul>
+                        <li><input type="radio" name="1"> '딸기를 좋아합니다.'가 10번 출력된다.
+                        <li><input type="radio" name="1"> '딸기를 좋아합니다.'가 9번 출력된다.
+                        <li><input type="radio" name="1"> '딸기를 좋아합니다.'가 4번 출력된다.
+                        <li><input type="radio" name="1"> '딸기를 좋아합니다.'가 3번 출력된다.                   
+                    </ul>                    
+
+                <li class="m1"> count가 5보다 크면 코드 실행이 멈추도록 코드의 밑줄을 채우세요</li>
+                    <div class="highlight">
+                        <pre>
+                            <code class="language-python">
+count = 0
+while True :
+    count = count + 1
+    if ______________ :
+       ______________ 
+                            </code>
+                        </pre>
+                    </div>
+                    <div>정답: <input type="text" size="80%" class="answer"></div>
+
+
+            </ol>
+        </div>
+    </div>    
+
+</div>
+
+
+<script src="content.js"></script>

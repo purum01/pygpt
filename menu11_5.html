@@ -1,0 +1,230 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />   
+
+
+<h3> 숫자 맞추기 게임 만들기</h3>
+    <div>
+        <pre>
+파이썬으로 숫자 맞추기 게임을 만들거야 1~100까지 무작위 숫자를 생성하고 
+내가 숫자를 입력하면 무작위 숫자랑 비교해서 숫자가 큰지 작은지 알려줘, 
+숫자를 맞추면 몇 회만에 맞추었는지 알려주고 게임을 종료해
+        </pre>
+        <pre>
+            <code class="language-python">
+import random
+
+def 숫자_맞추기_게임():
+    # 1에서 100까지의 무작위 숫자 생성
+    정답 = random.randint(1, 100)
+    
+    회수 = 0
+
+    while True:
+        # 사용자로부터 숫자 입력 받기
+        사용자_입력 = int(input("1에서 100 사이의 숫자를 입력하세요: "))
+        
+        # 시도 회수 증가
+        회수 += 1
+
+        # 입력한 숫자와 정답 비교
+        if 사용자_입력 == 정답:
+            print(f"축하합니다! {회수}회 만에 숫자를 맞추셨습니다.")
+            break
+        elif 사용자_입력 < 정답:
+            print("입력한 숫자가 작습니다. 다시 시도해보세요.")
+        else:
+            print("입력한 숫자가 큽니다. 다시 시도해보세요.")
+
+# 게임 실행
+숫자_맞추기_게임()
+                
+            </code>
+        </pre>
+    </div>
+
+    <h3>컴퓨터의 외부 및 내부 IP 확인  </h3>
+    <div>
+        <pre>
+파이썬으로 컴퓨터의 내부 IP를 확인하는 코드를 작성해줘
+        </pre>
+        <pre>
+            <code class="language-python">
+import socket
+
+def get_internal_ip():
+    try:
+        # 호스트명을 얻어와서 내부 IP 주소를 확인
+        internal_ip = socket.gethostbyname(socket.gethostname())
+        return internal_ip
+    except socket.error:
+        return "Unable to get internal IP"
+
+if __name__ == "__main__":
+    internal_ip = get_internal_ip()
+    print("Internal IP Address:", internal_ip)
+            </code>
+        </pre>
+    </div>               
+
+<h3>텍스트를 음성으로 변환</h3>
+    <div>
+        <pre>
+파이썬을 이용해서 한글 테스트를 한글 음성으로 변환하는 코드를 작성해줘, 무료로 사용할 수 있는 라이브러리를 사용해줘
+        </pre>
+        
+        <pre>
+            <code class="language-python">
+# pip install gtts
+from gtts import gTTS
+import os
+
+def text_to_speech(text, lang='ko'):
+    tts = gTTS(text=text, lang=lang, slow=False)
+    tts.save("output.mp3")
+    os.system("start output.mp3")  # 윈도우에서는 이 명령어로 mp3 파일을 실행합니다.
+
+if __name__ == "__main__":
+    input_text = "안녕하세요. 파이썬을 이용해서 한글 텍스트를 음성으로 변환하는 예제입니다."
+    text_to_speech(input_text)
+            </code>
+        </pre>
+    </div>               
+
+<h3>QR 코드 생성기</h3>
+    <div>
+        <pre>
+파이썬으로 QR 코드를 생성하는 코드를 작성해줘
+        </pre>
+        <pre>
+            <code class="language-python">
+# pip install qrcode
+import qrcode
+
+def generate_qr_code(data, file_name="qrcode.png"):
+    # QR 코드 생성
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    qr.add_data(data)
+    qr.make(fit=True)
+
+    # QR 코드 이미지 생성
+    img = qr.make_image(fill_color="black", back_color="white")
+
+    # 이미지 저장
+    img.save(file_name)
+
+if __name__ == "__main__":
+    # 생성할 QR 코드에 입력될 데이터
+    data_to_encode = "https://www.example.com"
+
+    # QR 코드 생성 및 저장
+    generate_qr_code(data_to_encode)
+            </code>
+        </pre>
+    </div>               
+
+<h3>컴퓨터의 정보 확인</h3>
+    <div>
+        <pre>
+파이썬으로 CPU, RAM, 네트워크의 사용량을 1초마다 출력하는 프로그램을 작성해줘
+        </pre>
+        <pre>
+            <code class="language-python">
+# pip install psutil
+import psutil
+import time
+
+def monitor_system_resources():
+    while True:
+        # CPU 사용량 가져오기
+        cpu_percent = psutil.cpu_percent(interval=1)
+
+        # 메모리 사용량 가져오기
+        memory_info = psutil.virtual_memory()
+        used_memory_percent = memory_info.percent
+
+        # 네트워크 사용량 가져오기
+        network_info = psutil.net_io_counters()
+        bytes_sent = network_info.bytes_sent
+        bytes_received = network_info.bytes_recv
+
+        # 결과 출력
+        print(f"CPU 사용량: {cpu_percent}%")
+        print(f"메모리 사용량: {used_memory_percent}%")
+        print(f"전송된 데이터: {bytes_sent} bytes")
+        print(f"수신된 데이터: {bytes_received} bytes")
+        print("\n" + "="*30 + "\n")
+
+        # 1초마다 갱신
+        time.sleep(1)
+
+if __name__ == "__main__":
+    monitor_system_resources()
+            </code>
+        </pre>
+    </div>               
+
+<h3>파일 압축 프로그램 </h3>
+    <div>
+        <pre>
+C:\test\image 폴더에 있는 모든 파일들을  압축하는 파이썬 프로그램을 만들어줘
+        </pre>
+        <pre>
+            <code class="language-python">
+import os
+import zipfile
+
+def zip_files_in_folder(folder_path, zip_file_path):
+    with zipfile.ZipFile(zip_file_path, 'w') as zipf:
+        for foldername, subfolders, filenames in os.walk(folder_path):
+            for filename in filenames:
+                file_path = os.path.join(foldername, filename)
+                arcname = os.path.relpath(file_path, folder_path)
+                zipf.write(file_path, arcname)
+
+if __name__ == "__main__":
+    folder_path = r'C:\test\image'
+    zip_file_path = r'C:\test\image.zip'
+
+    zip_files_in_folder(folder_path, zip_file_path)
+    print(f'압축이 완료되었습니다. 압축 파일 경로: {zip_file_path}')
+            </code>
+        </pre>
+    </div>               
+
+<h3>이메일 수집 </h3>
+    <div>
+        <pre>
+파이썬으로 웹페이지에서 이메일을 수집하는 코드를 작성해줘            
+        </pre>        
+        <pre>
+            <code class="language-python">
+import requests
+from bs4 import BeautifulSoup
+import re
+
+def extract_emails(url):
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    # 정규표현식을 사용하여 이메일 주소 추출
+    email_pattern = re.compile(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b')
+    emails = re.findall(email_pattern, soup.get_text())
+
+    return emails
+
+# 웹사이트 URL을 넣어주세요
+website_url = 'https://v.daum.net/v/20230303140011566'
+extracted_emails = extract_emails(website_url)
+
+print("Extracted emails:")
+for email in extracted_emails:
+    print(email)
+            </code>
+        </pre>
+

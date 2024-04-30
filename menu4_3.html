@@ -1,0 +1,61 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+
+
+<div class="faq-container">
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            input( ) 함수에 대해 설명해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <img src="gpt.png">
+            input() 함수는 사용자로부터 입력을 받는 데 사용되는 파이썬의 내장 함수입니다. 이 함수는 실행 중인 프로그램이 사용자 입력을 기다리게 하고, 사용자가 입력한 내용을 문자열로 반환합니다. input() 함수는 대화형 프로그램이나 사용자의 데이터 입력이 필요한 스크립트를 작성할 때 유용합니다.
+            <h3>기본 사용법 : </h3>
+            <ul>
+                <li><img src="image/4_3_1.jpg" width="90%" height="90%"></li>
+                <li><b>prompt</b> : 사용자에게 보여줄 메시지 또는 입력 지시문입니다. 이 인자는 선택적이며, 제공되면 프롬프트로 사용됩니다.</li>
+                <li>함수는 사용자가 입력한 내용을 문자열(str)로 반환하며, 이를 변수에 할당하여 사용할 수 있습니다.</li>
+            </ul>
+            <h3>주의 사항 : </h3>
+            <ul>
+                <li>input() 함수는 사용자가 입력을 마치고 Enter 키를 누를 때까지 프로그램의 실행을 일시 중지합니다.</li>
+                <li>반환된 값은 항상 문자열 타입이므로, 다른 데이터 타입으로 사용하고자 할 때는 적절한 타입 변환 함수(예: int(), float())를 사용해야 합니다.</li>
+            </ul>            
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            input() 함수를 활용한 예제 코드를 생성해 주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <pre>
+                <code class="language-python">
+    # 사용자로부터 이름 입력 받기
+    name = input("What is your name? ")
+    
+    # 사용자로부터 나이 입력 받기
+    age = input("How old are you? ")
+    
+    # 입력 받은 정보를 활용하여 메시지 출력
+    print(f"Hello, {name}! You are {age} years old.")
+                                        
+                </code>
+            </pre>
+        </div>
+    </div>
+</div>
+<script>
+    function correct_answer(id, num){
+        quiz = "#"+id+" ul li:nth-child("+num+")"
+        const correctAnswer = document.querySelector(quiz);
+        correctAnswer.classList.add('correct-answer');
+    }
+</script>
+<script src="content.js"></script>
+

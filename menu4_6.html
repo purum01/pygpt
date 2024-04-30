@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>내장 함수 연습 문제</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+</head>
+<body>
+    <h1 align="center"> 내장 함수 연습문제</h1>
+<ol class="mission">
+
+    <li> msg 변수에 할당된 글자의 개수를 화면에 출력하도록 밑줄을 채우세요</li>
+    <div class="highlight">
+        msg = 'Hello' <br>
+        print( 'msg 의 글자수 :' , ________________ )
+    
+    </div>
+    <div>정답: <input type="text"  class="answer"></div>
+
+    <li>출력 결과와 같이 화면에 출력하도록 print 함수의 밑줄을 채우세요</li>
+    <div class="highlight"> 
+        name ="홍길동"  <br>
+        age = 23 <br>
+        addr = '서울' <br>
+        print( name, age, addr, _____________ ) <br><br> 
+
+        #출력 결과 <br>
+        홍길동 : 23 : 서울
+    </div>
+    <div>정답: <input type="text" class="answer"></div>
+
+
+    <li>다음 코드를 실행하면 "NameError: name '안녕하세요'is not defined" 오류가 발생합니다. 오류가 발생한 이유를 보기에서 2개 고르세요</li>
+        <div class="highlight"> print( 안녕하세요)</div>    
+        <ul>
+            <li><input type="radio" name="1"> 함수명이 잘못되어서</li>
+            <li><input type="radio" name="1"> 문자열이지만 따옴표를 사용하지 않아서</li>
+            <li><input type="radio" name="1"> 변수에 값이 할당되지 않아서</li>
+            <li><input type="radio" name="1"> name이라는 변수를 사용하지 않아서</li>
+        </ul>
+
+
+    <li>사용자가 입력한 값이 int 자료형으로 age 변수에 할당되도록 밑줄을 채우세요</li>
+    <div class="highlight">
+        age = <u>input("나이 입력 :") </u>
+    </div>
+    <div>정답: <input type="text" class="answer"></div>
+        
+
+    <li>다음과 같이 코드를 작성하면 어떤 결과가 출력되는지 보기에서 고르세요.</li>
+    <div class="highlight"> 
+        name = "제니" <br>
+        print(type(name))
+    </div>
+    <ul>
+        <li><input type="radio" name="3">  'int'</li>
+        <li><input type="radio" name="3">  'str'</li>
+        <li><input type="radio" name="3">  'float'</li>
+        <li><input type="radio" name="3">  'list'</li>
+    </ul>
+
+
+    <li>리스트 평균을 구하기 위해 밑줄에 들어갈 코드를 보기에서 고르세요 </li>
+    <div class="highlight"> 
+        numbers = [3,5,2,3,4]  <br>
+        print('평균', _____________)
+    </div>
+    <ul>
+        <li><input type="radio" name="1"> sum(numbers)</li>
+        <li><input type="radio" name="1"> len(numbers)</li>
+        <li><input type="radio" name="1"> len(numbers) / sum(numbers)</li>
+        <li><input type="radio" name="1">  sum(numbers) / len(numbers)</li>
+    </ul>
+
+    <li>다음과 같이 여러개의 함수가 사용될 경우, 함수의 실행 순서를 보기에서 고르세요</li>
+    <div class="highlight"> 
+        print(max(sorted([5, 4, 3, 2, 1])))
+    </div>
+    <ul>
+        <li><input type="radio" name="2"> sorted() -> max() -> print()</li>
+        <li><input type="radio" name="2"> max() -> sorted() -> print()</li>
+        <li><input type="radio" name="2"> print() -> max() -> sorted()</li>
+        <li><input type="radio" name="2"> sorted() -> print() -> max()</li>
+    </ul>
+
+
+    <li>다음 중 밑줄에 들어갈 수 없는 입력 인자를 보기에서 고르세요</li>
+    <div class="highlight"> 
+        val = max( ______________ )
+    </div>
+    <ul>
+        <li><input type="radio" name="3">  [90, 70, 80, 87] </li>
+        <li><input type="radio" name="3">  (90, 70, 80, 87)</li>
+        <li><input type="radio" name="3">  90</li>
+        <li><input type="radio" name="3">  ('90', '70', '80', '87')</li>
+    </ul>
+
+    <li> 실행 시 오류가 발생하는 코드를 보기에서 고르세요</li>
+    <ul>
+        <li><input type="radio" name="4">  int(10)</li>
+        <li><input type="radio" name="4">  int(10.0)</li>
+        <li><input type="radio" name="4">  int('10')</li>
+        <li><input type="radio" name="4">  int('안녕')</li>
+    </ul>   
+
+
+    <li>다음 코드를 사용하면 오류가 발생합니다. 오류가 발생한 이유를 설명하세요</li>
+        <div class="highlight"> a = input('값을', '입력하세요')</div>
+        <div>정답: <input type="text" size="80%" class="answer"></div>
+    </div>  
+
+   
+
+
+
+</ol>
+
+<button id="answerButton">정답</button>
+<div id="answerText" style="display:none;">
+    <ul>
+        <li>(1) len(msg) </li>
+        <li>(2) sep = ':'</li>
+        <li>(3) 문자열이지만 따옴표를 사용하지 않아서, 변수에 값이 할당되지 않아서</li>
+        <li>(4) int(input("나이 입력 :"))
+        <li>(5) 'str' </li>
+        <li>(6) sum(numbers) / len(numbers) </li>
+        <li>(7) sorted() -> max() -> print() </li>
+        <li>(8) 90</li>
+        <li>(9) int('안녕')</li>
+        <li>(10) input 함수는 인자를 0 또는 1개 이어야 함</li>
+
+</ul>
+</div>
+
+<script>
+// "정답" 버튼 클릭 시 메시지 토글
+document.getElementById("answerButton").onclick = function() {
+    var answerText = document.getElementById("answerText");
+    if (answerText.style.display === "none") {
+        answerText.style.display = "block";
+    } else {
+        answerText.style.display = "none";
+    }
+};
+</script>
+
+</body>
+</html>
