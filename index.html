@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>파이썬</title>
+<title>Python With ChatGPT</title>
 <style>
     body, html {
         margin: 0;
@@ -60,6 +60,7 @@
 <div class="container">
     <div class="side-menu">
         <ul id="menu">
+            <li onclick="event.stopPropagation(); showContent('menu0_0')">0. 개발 환경 구축</li>
             <li id="menu1" onclick="toggleNested(this)">1. 자료형
                 <ul class="nested">
                     <li onclick="event.stopPropagation(); showContent('menu1_4')">① str</li>
@@ -149,7 +150,7 @@
                     <li onclick="event.stopPropagation(); showContent('menu10_3');">연습 문제</li>
                 </ul>             
             </li>
-            <li id="menu11" onclick="toggleNested(this)">10. Chat GPT
+            <li id="menu11" onclick="toggleNested(this)">10. ChatGPT 활용
                 <ul class="nested">
                     <li onclick="event.stopPropagation(); showContent('menu11_3')">로또 생성</li>
                     <li onclick="event.stopPropagation(); showContent('menu11_4')">파일 병합</li>
@@ -158,13 +159,11 @@
                     
                 </ul>            
             </li>
-            <li><a href="book/ebook.pdf">교재</a></li>
-
 
         </ul>
     </div>
     <div class="content" id="content">
-        <img src = "image/logo3.webp" pwd="book20710">
+        <img src = "image/logo3.webp" >
     </div>
 </div>
 
