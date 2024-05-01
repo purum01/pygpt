@@ -95,3 +95,23 @@ a {
     font-weight: bold;
 }
 
+.title {
+    font-size: 36px;       /* 제목의 크기 */
+    color: grey;        /* 제목의 색상 */
+    font-family: 'Arial', sans-serif; /* 사용할 글꼴 */
+    text-align: center;    /* 텍스트 중앙 정렬 */
+    margin-top: 20px;      /* 위쪽 여백 */
+    margin-bottom: 20px;   /* 아래쪽 여백 */
+    font-weight: bold;     /* 글꼴 두께 */
+}
+
+.subtitle {
+    font-size: 24px;       /* 부제목의 크기 */
+    color: #666666;        /* 부제목의 색상 */
+    font-family: 'Arial', sans-serif; /* 사용할 글꼴 */
+    text-align: center;    /* 텍스트 중앙 정렬 */
+    margin-top: 10px;      /* 위쪽 여백 */
+    margin-bottom: 15px;   /* 아래쪽 여백 */
+    font-weight: normal;   /* 글꼴 두께 */
+    font-style: italic;    /* 이탤릭체 스타일 */
+}  
