@@ -1,0 +1,68 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+
+
+<code id="source-code" class="language-python">
+    
+#################  Streamlit 사용하여 유튜브 내용 요약하기  ###################
+
+#  https://www.youtube.com/watch?v=Pn-W41hC764
+
+import streamlit as st
+import os
+from langchain_community.document_loaders import YoutubeLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_openai import ChatOpenAI
+from langchain.prompts import PromptTemplate
+from langchain.chains.summarize import load_summarize_chain
+
+# Set up the Streamlit interface
+st.title("YouTube Video Summarizer")
+youtube_url = st.text_input("Enter the YouTube URL")
+api_key = st.text_input("Enter your OpenAI API Key", type="password")
+
+# This part handles the video display
+if youtube_url:
+    st.video(youtube_url)
+
+if st.button("Summarize Video"):
+    if not youtube_url or not api_key:
+        st.error("Please provide both a YouTube URL and an OpenAI API key.")
+    else:
+        try:
+            # Load the transcript from the YouTube video
+            loader = YoutubeLoader.from_youtube_url(youtube_url)
+            transcript = loader.load()
+
+            # Split the transcript into manageable parts
+            text_splitter = RecursiveCharacterTextSplitter(chunk_size=4000, chunk_overlap=0)
+            text = text_splitter.split_documents(transcript)
+
+            # Set up the LLM model
+            llm = ChatOpenAI(temperature=0, openai_api_key=api_key, max_tokens=3000, model="gpt-3.5-turbo", request_timeout=120)
+
+            # Set up prompts for summarization
+            prompt = PromptTemplate(
+                template="""Summarize the YouTube video whose transcript is provided within backticks ```{text}```""",
+                input_variables=["text"]
+            )
+            combine_prompt = PromptTemplate(
+                template="""Combine all the YouTube video transcripts provided within backticks ```{text}```
+                            Provide a concise summary between 8 to 10 sentences.""",
+                input_variables=["text"]
+            )
+
+            # Execute the summarization chain
+            chain = load_summarize_chain(llm, chain_type="map_reduce", verbose=False, map_prompt=prompt, combine_prompt=combine_prompt)
+            result = chain.invoke(text)
+
+            # Display the summary
+            st.write(result['output_text'])
+
+        except Exception as e:
+            st.error(f"An error occurred: {e}")
+
+</code>
+    
+    
