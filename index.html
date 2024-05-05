@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>파이썬</title>
+<title>Python With ChatGPT</title>
 <style>
     body, html {
         margin: 0;
@@ -60,89 +60,110 @@
 <div class="container">
     <div class="side-menu">
         <ul id="menu">
-            <li id="menu1" onclick="toggleNested(this)">1. 시작하기
+            <li onclick="event.stopPropagation(); showContent('menu0_0')">0. 개발 환경 구축</li>
+            <li id="menu1" onclick="toggleNested(this)">1. 자료형
                 <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu1_0');">업무자동화</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu1_1');">개발환경 구축하기</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu1_2');">ChatGPT 시작하기</li>
+                    <li onclick="event.stopPropagation(); showContent('menu1_4')">① str</li>
+                    <li onclick="event.stopPropagation(); showContent('menu1_1')">② int</li>                  
+                    <li onclick="event.stopPropagation(); showContent('menu1_2')">③ float</li>                  
+                    <li onclick="event.stopPropagation(); showContent('menu1_3')">④ bool</li>
+                    <li onclick="event.stopPropagation(); showContent('menu1_5')">⑤ list</li>
+                    <li onclick="event.stopPropagation(); showContent('menu1_6')">⑥ tuple</li>
+                    <li onclick="event.stopPropagation(); showContent('menu1_7')">⑦ set</li>
+                    <li onclick="event.stopPropagation(); showContent('menu1_8')">⑧ dict</li>
                 </ul>
             </li>
-            <li id="menu2" onclick="toggleNested(this)">2. 파일 정리하기
+            <li id ="menu2" onclick="toggleNested(this)">2. 변수
                 <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu2_1');">PDF 파일 생성하기</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu2_2');">파일 월별 정리하기</li>
+                    <li onclick="event.stopPropagation(); showContent('menu2_1');">변수 선언</li>                        
+                    <li onclick="event.stopPropagation(); showContent('menu2_3');">연습 문제</li>
                 </ul>
             </li>
-                <li id ="menu3" onclick="toggleNested(this)">3. 파일 합치기
+
+            <li id="menu3" onclick="toggleNested(this)">3. 연산자
                 <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu3_1');">연간 총합계 산출하기</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu3_2');">월별 및 연간 데이터 관리</li>
-                </ul>
-            </li>
-            
-            <li id="menu4" onclick="toggleNested(this)">4. Streamlit 활용하기
-                <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu4_1');">팬데믹 데이터 병합 및 분석</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu4_2');">Streamlit 사용</li>
-                    <li onclick="event.stopPropagation(); showContent('menu4_3');">Streamlit Develop</li>
+                    <li onclick="event.stopPropagation(); showContent('menu3_1');">산술연산자</li>                        
+                    <li onclick="event.stopPropagation(); showContent('menu3_2');">비교연산자</li>
+                    <li onclick="event.stopPropagation(); showContent('menu3_3');">논리연산자</li>
+                    <li onclick="event.stopPropagation(); showContent('menu3_4');">포함연산자</li>
                 </ul>            
             </li>
-            <li id="menu5" onclick="toggleNested(this)">5. 워드 다루기
+            <li id="menu4" onclick="toggleNested(this)">4. 내장함수
                 <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu5_1');">공문 자동생성</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu5_2');">Using Streamlit </li>                        
+                    <li></li>
+                    <li onclick="event.stopPropagation(); showContent('menu4_1');">형변환 함수</li>                        
+                    <li onclick="event.stopPropagation(); showContent('menu4_2');">type 함수 </li>                        
+                    <li onclick="event.stopPropagation(); showContent('menu4_3');">input 함수</li>
+                    <li onclick="event.stopPropagation(); showContent('menu4_4');">print 함수</li>
+                    <li onclick="event.stopPropagation(); showContent('menu4_5');">range 함수</li>
+                    <li onclick="event.stopPropagation(); showContent('menu4_8');">집계 함수</li>
+                    <li onclick="event.stopPropagation(); showContent('menu4_6');">연습 문제</li>
                 </ul>            
             </li>
-            <li id="menu6" onclick="toggleNested(this)">6. PDF 정보 추출하기
+            <li id="menu5" onclick="toggleNested(this)">5. 제어문
                 <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu6_1');">계약 금액 추출</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu6_2');">계약자 정보 추출</li>
-                    <li onclick="event.stopPropagation(); showContent('menu6_3');">Using Streamlit</li>
+                    <li onclick="event.stopPropagation(); showContent('menu5_1');">if문</li>                        
+                    <li onclick="event.stopPropagation(); showContent('menu5_2');">for문</li>
+                    <li onclick="event.stopPropagation(); showContent('menu5_3');">while문</li>
                 </ul>            
             </li>
-            <li id="menu7" onclick="toggleNested(this)">7. 이메일 자동화 시스템 구축
+            <li id="menu6" onclick="toggleNested(this)">6. Iterable 객체
                 <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu7_1');">이메일 자동화 1 </li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu7_2');">이메일 자동화 2</li>
-                    <li onclick="event.stopPropagation(); showContent('menu7_3');">이메일 자동화 3</li>
+                    <li onclick="event.stopPropagation(); showContent('menu6_6');">순서형</li>                        
+                    <li onclick="event.stopPropagation(); showContent('menu6_7');">사전형</li>                        
+                    <li onclick="event.stopPropagation(); showContent('menu6_1');">str</li>                        
+                    <li onclick="event.stopPropagation(); showContent('menu6_2');">list</li>
+                    <li onclick="event.stopPropagation(); showContent('menu6_3');">tuple</li>
+                    <li onclick="event.stopPropagation(); showContent('menu6_4');">set</li>
+                    <li onclick="event.stopPropagation(); showContent('menu6_5');">dict</li>
                 </ul>            
             </li>
-            <li id="menu8" onclick="toggleNested(this)">8. OpenAI API
+            <li id="menu7" onclick="toggleNested(this)">7. 함수
                 <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu8_1');">OpenAI API 준비</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu8_2');">OpenAI API 사용</li>
-                    <li onclick="event.stopPropagation(); showContent('menu8_3');">회의록 자동 요약</li>
+                    <li onclick="event.stopPropagation(); showContent('menu7_1');">함수 선언</li>                        
+                    <li onclick="event.stopPropagation(); showContent('menu7_2');">함수 호출</li>
+                    <li onclick="event.stopPropagation(); showContent('menu7_3');">함수 활용</li>
+                    <li onclick="event.stopPropagation(); showContent('menu7_4');">연습 문제1</li>
+                    <li onclick="event.stopPropagation(); showContent('menu7_5');">연습 문제2</li>
                 </ul>             
             </li>
-            <li id="menu9" onclick="event.stopPropagation(); showContent('menu9_1')">9. 광고문구 자동 생성하기</li>
-
-            <li id="menu10" onclick="toggleNested(this)">10. 유튜브 내용 요약하기
+<!--
+            <li id="menu8" onclick="toggleNested(this)">8. 클래스
                 <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu10_1');">LangChain OPENAI</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu10_2');">Youtube 내용 요약1</li>
-                    <li onclick="event.stopPropagation(); showContent('menu10_3');">Youtube 내용 요약2</li>
-                    <li onclick="event.stopPropagation(); showContent('menu10_4');">Using Streamlit</li>
+                    <li onclick="event.stopPropagation(); showContent('menu8_1');">클래스 선언</li>                        
+                    <li onclick="event.stopPropagation(); showContent('menu8_2');">인스턴스 생성</li>
+                    <li onclick="event.stopPropagation(); showContent('menu8_3');">인스턴스 활용</li>
                 </ul>            
             </li>
-            <li id="menu11" onclick="toggleNested(this)">11. PDF 기반 답변하기
+-->                        
+            <li id="menu9" onclick="toggleNested(this)">8. 오류 처리
                 <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu11_1')">Embedding</li>
-                    <li onclick="event.stopPropagation(); showContent('menu11_2')">PDF 추출</li>
-                    <li onclick="event.stopPropagation(); showContent('menu11_3');">Using Streamlit</li>
+                    <li onclick="event.stopPropagation(); showContent('menu9_1');">예외 객체</li>                        
+                    <li onclick="event.stopPropagation(); showContent('menu9_2');">try-except</li>
+                    <li onclick="event.stopPropagation(); showContent('menu9_3');">예외 발생</li>
+                </ul>              
+            </li>
+            <li id="menu10" onclick="toggleNested(this)">9. 모듈
+                <ul class="nested">
+                    <li onclick="event.stopPropagation(); showContent('menu10_1');">모듈 사용</li>                        
+                    <li onclick="event.stopPropagation(); showContent('menu10_2');">표준 모듈</li>
+                    <li onclick="event.stopPropagation(); showContent('menu10_3');">연습 문제</li>
+                </ul>             
+            </li>
+            <li id="menu11" onclick="toggleNested(this)">10. ChatGPT 활용
+                <ul class="nested">
+                    <li onclick="event.stopPropagation(); showContent('menu11_3')">로또 생성</li>
+                    <li onclick="event.stopPropagation(); showContent('menu11_4')">파일 병합</li>
+                    <li onclick="event.stopPropagation(); showContent('menu11_5')">모듈 활용</li>
+                    <li onclick="event.stopPropagation(); showContent('menu11_1')">연습 문제</li>                  
+                    
                 </ul>            
             </li>
-            <li id="menu12" onclick="toggleNested(this)">12. 음성 비서 프로그램
-                <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu12_1')">문자와 음성 변환</li>
-                    <li onclick="event.stopPropagation(); showContent('menu12_2')">Using Streamlit</li>
-                </ul>            
-            </li>
-
 
         </ul>
     </div>
     <div class="content" id="content">
-        <img src = "logo.webp">
+        <img src = "image/logo3.webp" >
     </div>
 </div>
 
