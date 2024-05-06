@@ -60,7 +60,13 @@
 <div class="container">
     <div class="side-menu">
         <ul id="menu">
-            <li onclick="event.stopPropagation(); showContent('menu0_0')">0. 개발 환경 구축</li>
+            <li id="menu0" onclick="toggleNested(this)")">0. 시작하기 
+                <ul class="nested">
+                    <li onclick="event.stopPropagation(); showContent('menu0_1');">개발 환경 구축</li>                        
+                    <li onclick="event.stopPropagation(); showContent('menu0_2');">ChatGPT 가입</li>
+                    <li onclick="event.stopPropagation(); showContent('menu0_3');">ChatGPT 로그인</li>
+                </ul>
+            </li>
             <li id="menu1" onclick="toggleNested(this)">1. 자료형
                 <ul class="nested">
                     <li onclick="event.stopPropagation(); showContent('menu1_4')">① str</li>
