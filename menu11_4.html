@@ -1,63 +1,142 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="style2.css">
 
-<h1 class="title">파일 합치기</h1>   
+<h1 class="title">공문 생성하기</h1>
 
-<div class="subtitle"> ChatGPT 질문</div>
-    <div>
-        <pre>
-다음과 같은 내용으로 구현된 파이썬 코드를 생성해주세요
+<div class="faq-container">
+    <!-- 질문 영역 -->
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleFaq(this)">
+            <img src="question.png" width="34px" height="34px">
+            질문
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <button class="copy-btn" onclick="copyCode('source-question')">📋 Copy</button>
+            <pre><code id="source-question">
+다수의 고객사에 동일한 내용의 공문을 작성하려고 합니다. 다음 조건에 따라 파이썬 코드를 생성해주세요.
+
 # 제목
-2020년 Covid 현황
+동일한 내용을 공문 작성
 
 #조건
-1.  covid 디렉토리에 있는 모든 csv 파일이 작업 대상임
-2. 각 파일에서  'Country_Region', 'Confirmed' 컬럼만 추출함
-3. 'Country_Region' 컬럼의 값은 중복되면 안됨, 여러개가 있는 경우 그룹핑하고 'Confirmed' 컬럼 값의 합계를 구함
-4. 'Confirmed'  컬러명은 파일이름에서 확장자를 제외한 이름으로 변경함. 이때 '-'는 '/'로 변경함
-5. 각 파일들은 'Country_Region' 컬럼을 기준으로 병합함
-6. 병합한 내용을 Excel 파일로 저장함
-        </pre>
-<div class="subtitle"> ChatGPT 답변</div>           
-        <pre>
-            <code class="language-python">
-import pandas as pd
-import os
-import glob
-
-# covid 디렉토리에서 모든 csv 파일 목록을 가져옴
-csv_files = glob.glob('covid/*.csv')
-
-# 병합된 데이터를 저장할 빈 데이터프레임 생성
-merged_df = pd.DataFrame()
-
-for file in csv_files:
-    # 파일에서 'Country_Region', 'Confirmed' 컬럼만 읽어옴
-    df = pd.read_csv(file, usecols=['Country_Region', 'Confirmed'])
-    
-    # 'Country_Region'별로 그룹핑하고 'Confirmed'의 합계를 구함
-    grouped_df = df.groupby('Country_Region', as_index=False).sum()
-    
-    # 파일 이름에서 확장자를 제거하고 '-'를 '/'로 변경함
-    column_name = os.path.basename(file).replace('.csv', '').replace('-', '/')
-    # 'Confirmed' 컬럼 이름을 변경함
-    grouped_df.columns = ['Country_Region', column_name]
-    
-    # 병합된 데이터프레임에 현재 데이터프레임을 병합함
-    if merged_df.empty:
-        merged_df = grouped_df
-    else:
-        merged_df = pd.merge(merged_df, grouped_df, on='Country_Region', how='outer')
-
-# NaN 값을 0으로 채움
-merged_df.fillna(0, inplace=True)
-
-# 병합된 데이터를 Excel 파일로 저장함
-merged_df.to_excel('2020_Covid_Status.xlsx', index=False)
-
-print("Excel 파일이 성공적으로 생성되었습니다.")
-            </code>
-        </pre>
+1. 고객사 명단은 customers.txt 에 저장되어 있음
+2. 작성할 공문 템플릿은 template.docx 을 사용함
+3. template.docx에서 { } 부분을 다음과 같이 대체함 
+    1) {company}는 "주식회사 푸른하늘" 로 대체
+    2) {number} 는"2023-12-Axx"  형식이며 xx 부분에 01부터 시작해서 1씩 증가되는 일련번호 부여
+    3) {receiver}는 customers.txt에 저장된 각 고객사 이름 부여
+    4) {sender}는 "푸른하늘(주) 데이터분석팀" 으로 대체
+    5) {title}은 "데이터 처리 및 분석을 위한 관련 자료 요청"으로 대체
+4. 위의 내용으로 처리된  docx 파일을 고객사 수만큼 "output" 폴더에 생성                    
+            </code></pre>
+        </div>
     </div>
-   
+
+    <!-- 답변 영역 -->
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleFaq(this)">
+            <img src="gpt.png" width="34px" height="34px">
+            답변
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+<pre><code class="language-python" >pip install python-docx</code></pre>
+                    
+            <button class="copy-btn" onclick="copyCode('source-code')">📋 Copy</button>
+            <pre><code id="source-code" class="language-python">
+import os
+from docx import Document  # docx 파일을 처리하기 위한 라이브러리
+
+# 1. 고객사 명단과 템플릿 파일 경로 설정
+customers_file = 'customers.txt'  # 고객사 명단 파일 경로
+template_file = 'template.docx'  # 템플릿 파일 경로
+output_folder = 'output'  # 결과 파일을 저장할 폴더
+
+# 2. 고정된 값 설정
+company_value = "주식회사 푸른하늘"  # 회사명
+sender_value = "푸른하늘(주) 데이터분석팀"  # 발신자
+title_value = "데이터 처리 및 분석을 위한 관련 자료 요청"  # 제목
+
+# 3. 출력 폴더가 없으면 생성
+if not os.path.exists(output_folder):
+    os.makedirs(output_folder)
+
+# 4. 고객사 명단 파일을 읽어옴
+with open(customers_file, 'r', encoding='utf-8') as file:
+    customers = [line.strip() for line in file.readlines()]  # 각 줄을 읽어 고객사 리스트 생성
+
+# 5. 템플릿을 기반으로 공문을 작성하는 함수
+def generate_document(customer, doc_number):
+    # 템플릿 파일 불러오기
+    doc = Document(template_file)
+    
+    # 템플릿 내의 { } 부분을 원하는 값으로 대체
+    for paragraph in doc.paragraphs:  # 문서의 모든 문단을 반복하여 처리
+        if '{company}' in paragraph.text:
+            paragraph.text = paragraph.text.replace('{company}', company_value)  # 회사명 대체
+        if '{number}' in paragraph.text:
+            paragraph.text = paragraph.text.replace('{number}', doc_number)  # 문서번호 대체
+        if '{receiver}' in paragraph.text:
+            paragraph.text = paragraph.text.replace('{receiver}', customer)  # 고객사 이름 대체
+        if '{sender}' in paragraph.text:
+            paragraph.text = paragraph.text.replace('{sender}', sender_value)  # 발신자 대체
+        if '{title}' in paragraph.text:
+            paragraph.text = paragraph.text.replace('{title}', title_value)  # 제목 대체
+    
+    # 공문 파일 이름을 '고객사명_공문.docx' 형식으로 지정
+    output_filename = f"{output_folder}/{customer}_공문.docx"
+    
+    # 파일 저장
+    doc.save(output_filename)
+    print(f"{output_filename} 파일이 생성되었습니다.")  # 파일 생성 여부를 콘솔에 출력
+
+# 6. 각 고객사별로 공문을 생성
+for i, customer in enumerate(customers, start=1):  # 고객사 목록을 반복하며 처리
+    # 문서번호는 "2023-12-A01", "2023-12-A02" 형식으로 생성
+    doc_number = f"2023-12-A{str(i).zfill(2)}"  # 01부터 시작하여 1씩 증가하는 일련번호 생성
+    generate_document(customer, doc_number)  # 각 고객사에 맞는 공문 생성
+                  
+            </code></pre>
+        </div>
+    </div>
+</div>
+
+<script>
+function copyCode(elementId) {
+    // 해당 요소의 텍스트를 선택하고 복사합니다.
+    var codeElement = document.getElementById(elementId);
+    var range = document.createRange();
+    range.selectNodeContents(codeElement);
+    var selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+
+    try {
+        document.execCommand('copy');
+        alert('코드가 클립보드에 복사되었습니다!');
+    } catch (err) {
+        alert('복사에 실패했습니다.');
+    }
+    
+    // 선택 해제
+    selection.removeAllRanges();
+}
+
+function toggleFaq(element) {
+    // 드롭다운 토글 기능
+    var answer = element.nextElementSibling;
+    var icon = element.querySelector('i');
+    if (answer.style.display === "block") {
+        answer.style.display = "none";
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
+    } else {
+        answer.style.display = "block";
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
+    }
+}
+</script>

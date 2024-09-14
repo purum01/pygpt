@@ -1,119 +1,115 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="style2.css">
 
-    <h1 class="title"> 파이썬 프로그램 구현</h1>
-    <ol class="mission">
-        <li> 임의의 숫자를 입력받아 100보다 크거나 같으면 '100보다 큽니다'라고 출력하고 100보다 작으면 '100보다 작습니다'라고 출력합니다.</li>
-        <textarea rows="6" class="answer"></textarea>
+<h1 class="title">로또번호 생성기</h1>
 
-        <li> 다음 설명에 따라 코드를 구현하세요</li>
-            <ul>
-                <li>- 키보드로부터 색상을 입력받습니다.</li>
-                <li>- RED 이거나 red 이면 '붉은색입니다'라고 출력합니다.</li>
-                <li>- 입력값이 BLUE 이거나 blue 이면 '파란색입니다'라고 출력합니다.</li>
-                <li>- 그 외의 값을 입력하면 '붉은색도 아니고 파란색도 아닙니다'라고 출력합니다.</li>
-            </ul>
-        
-        <textarea rows="6" class="answer"></textarea>
+<div class="faq-container">
+    <!-- 질문 영역 -->
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleFaq(this)">
+            <img src="question.png" width="34px" height="34px">
+            질문
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <button class="copy-btn" onclick="copyCode('source-question')">📋 Copy</button>
+            <pre><code id="source-question">
+다음과 같은 내용으로 구현된 파이썬 코드를 생성해주세요
+#제목
+로또번호 생성기
 
-        <li> 학점을 입력받아 A, B, C, D 중 하나이면 'Pass' 라고 출력하고, 그렇지 않으면 'Fall'이라고 출력합니다.</li>
-        <textarea rows="6" class="answer"></textarea>
+#조건
+1. 로또번호는 1부터 45사이의 정수값임
+2. 6개의 로또 번호 생성함
+3. 생성된  6개 로또 번호 오름차순 정렬함
+4. 6개의 로또번호를  5세트 생성함
+            </code></pre>
+        </div>
+    </div>
 
-        <li> 다음 설명에 따라 코드를 구현하세요</li>
-        <ul>
-            <li>- '원하는 주스를 입력하세요'라고 묻고 답변을 입력하면 juice 변수에 할당합니다.</li>
-            <li>- juice 변수값이 리스트에 이미 포함되어 있다면 '마트에 원하는 주스가 있습니다.'라고 출력합니다.
-                (리스트 목록은 임의로 생성하세요)
-            </li>
-            <li>- 그렇지 않으면 '마트에 원하는 주스가 없습니다'라고 출력합니다.</li>
-        </ul>
-        <textarea rows="6" class="answer"></textarea>
+    <!-- 답변 영역 -->
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleFaq(this)">
+            <img src="gpt.png" width="34px" height="34px">
+            답변
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <button class="copy-btn" onclick="copyCode('source-code')">📋 Copy</button>
+            <pre><code id="source-code" class="language-python">
+import random  # 파이썬의 랜덤 모듈을 가져옵니다. 랜덤한 숫자를 생성하는 데 사용합니다.
 
-        <li> input() 함수를 통해 입력값이 BTS 멤버이면 'BTS 멤버입니다'라고 출력하고 그렇지 않으면 'BTS 멤버가 아닙니다'라고 출력합니다.</li>
-        <textarea rows="6" class="answer"></textarea>        
+# 로또 번호를 생성하는 함수
+def generate_lotto_numbers():
+    # 1부터 45 사이의 숫자 중에서 6개의 숫자를 랜덤으로 선택합니다.
+    # 'sample' 함수는 중복 없이 6개의 숫자를 선택해 줍니다.
+    lotto_numbers = random.sample(range(1, 46), 6)
 
-        <li> 다음 설명에 따라 코드를 구현하세요</li>
-        <ul>
-            <li>- 키보드로부터 단어를 입력받습니다.</li>
-            <li>- 입력한 단어가 '학생'이면 '1층으로 가세요' 라고 출력합니다.</li>
-            <li>- 입력한 단어가 '선생님'이면 '2층으로 가세요' 라고 출력합니다.</li>
-            <li>- 입력한 단어가 '학부모'이면 '3층으로 가세요' 라고 출력합니다.</li>
-            <li>- 그밖에 단어를 입력하면 '입장할 수 없습니다'라고 출력합니다.</li>
+    # 선택된 6개의 숫자를 오름차순으로 정렬합니다.
+    lotto_numbers.sort()
 
-        </ul>
-        <textarea rows="6" class="answer"></textarea>
+    # 정렬된 번호를 반환합니다.
+    return lotto_numbers
 
-        <li> 다음 설명에 따라 코드를 구현하세요</li>
-        <ul>
-            <li>- input() 함수를 통해 특정 월을 입력받아 month 변수에 할당합니다.</li>
-            <li>- dayOfMonth = [31,28,31,30,31,30,30,31,30,31,30,31]  </li>
-            <li>- dayOfMonth 를 사용하여 해당 월에 맞는 달수를 출력합니다. 단, month 변수값은 1부터 12 사이여야 합니다. </li>
-            <li>- 입력값이 1이면 dayOfMonth 리스트의 첫번째 항목인 31을 가져와 '1월은 31일'이라고 출력합니다. </li>
-            <li>- 입력값이 2 이면 두번째 항목인 28일 가져와 '2월은 28일'이라고 출력합니다. </li>
-            <li>- 입력값이 1과 12사이에 있지 않으면 '잘못된 값을 입력했습니다'라고 출력합니다.</li>
-        </ul>
-        <textarea rows="6" class="answer"></textarea>
+# 여러 세트의 로또 번호를 생성하는 함수
+def generate_lotto_sets(num_sets=5):
+    # 비어 있는 리스트를 준비하여 각 세트의 로또 번호를 저장합니다.
+    lotto_sets = []
 
+    # 원하는 세트 수(num_sets)만큼 반복해서 로또 번호를 생성합니다.
+    for _ in range(num_sets):
+        # 로또 번호 한 세트를 생성하여 리스트에 추가합니다.
+        lotto_sets.append(generate_lotto_numbers())
 
-        <li> whil문을 사용하여 0 부터 100 까지 숫자를 출력하세요</li>
-        <textarea rows="6" class="answer"></textarea>
+    # 생성된 모든 로또 세트를 반환합니다.
+    return lotto_sets
 
-        <li> for문을 사용하여 day 리스트의 항목을 출력하세요</li>
-        <ul>
-            <li>day = ['월', '화','수','목','금','토','일']
-        </ul>
-        <textarea rows="6" class="answer"></textarea>
+# 로또 번호 5세트를 생성합니다.
+lotto_sets = generate_lotto_sets()
 
-        <li> for문을 사용하여 input() 함수를 3번 실행하고  입력값을 리스트에 추가하는 코드를 구현하세요</li>
-        <textarea rows="6" class="answer"></textarea>
+# 생성된 로또 번호 세트를 출력합니다.
+for i, lotto_set in enumerate(lotto_sets, 1):
+    print(f"Set {i}: {lotto_set}")
+            </code></pre>
+        </div>
+    </div>
+</div>
 
-        <li> for문을 사용하여 1부터 100까지 숫자 중 짝수만 출력하는 코드를 구현하세요</li>
-        <textarea rows="6" class="answer"></textarea>
+<script>
+function copyCode(elementId) {
+    // 해당 요소의 텍스트를 선택하고 복사합니다.
+    var codeElement = document.getElementById(elementId);
+    var range = document.createRange();
+    range.selectNodeContents(codeElement);
+    var selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
 
-        <li> for문을 사용하여 number 리스트에서 홀수 번째 항목만 출력하는 코드를 구현하세요</li>
-        <ul>
-            <li>number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-        </ul>
-        <textarea rows="6" class="answer"></textarea>
+    try {
+        document.execCommand('copy');
+        alert('코드가 클립보드에 복사되었습니다!');
+    } catch (err) {
+        alert('복사에 실패했습니다.');
+    }
+    
+    // 선택 해제
+    selection.removeAllRanges();
+}
 
-        <li> 다음 설명에 따라 코드를 구현하세요</li>
-        <ul>
-            <li>- family = ['아빠', '엄마', '아들', '딸'] 를 선언합니다.</li>
-            <li>- input() 함수를 통해 입력받은 값을 member 변수에 할당합니다.</li>
-            <li>- member 변수의 값이 family 리스트에 포함되어 있으면 '리스트에 있습니다.' 라고 출력합니다.
-                (BTS 멤버는 'RM','지민','진','제이홉','뷰' 입니다.)
-            </li>
-            <li>- 그렇지 않으면 '리스트에 없습니다.'라고 출력합니다.</li>
-        </ul>
-        <textarea rows="6" class="answer"></textarea>
-
-        <li>50에서 100사이의 숫자에서 3의 배수만 출력하는 코드를 구현하세요</li>
-        <textarea rows="6" class="answer"></textarea>        
-
-        <li>신장과 체중을 입력받아 체질량수(BMI)를 계산하고 다음 기준에 따라 비만, 과체중, 정상, 저체중을 출산하는 코드를 구현하세요</li>
-        <ul>
-            <li>- BMI = 체중 / 신장*신장 </li>
-            <li>
-                <table style="width:50%; text-align: center; border: 1px solid black;border-collapse: collapse;">
-                    <tr><td>저체중</td><td>20 미만</td></tr>
-                    <tr><td>정상</td><td>20~24</td></tr>
-                    <tr><td>과체중</td><td>25~26</td></tr>
-                    <tr><td>비만</td><td>30이상</td></tr>
-                </table>
-            </li>
-        </ul>
-        <textarea rows="6" class="answer"></textarea> 
-
-        <li>임의의 값을 입력받고 다음 기준에 따라 학점을 출력하는 코드를 작성합니다. 100보다 크거나 0보다 작으면 '입력값 오류'라고 출력합니다.</li>
-        <ul>
-            <li>- BMI = 체중 / 신장*신장 </li>
-            <li>
-                <table style="width:50%; text-align: center; border: 1px solid black;border-collapse: collapse;">
-                    <tr><td>90점이상</td><td>A</td></tr>
-                    <tr><td>80 - 89</td><td>B</td></tr>
-                    <tr><td>70 - 79</td><td>C</td></tr>
-                    <tr><td>60 - 69</td><td>D</td></tr>
-                    <tr><td>60미만</td><td>F</td></tr>
-                </table>
-            </li>
-        </ul>
-        <textarea rows="6" class="answer"></textarea> 
-    </ol>
+function toggleFaq(element) {
+    // 드롭다운 토글 기능
+    var answer = element.nextElementSibling;
+    var icon = element.querySelector('i');
+    if (answer.style.display === "block") {
+        answer.style.display = "none";
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
+    } else {
+        answer.style.display = "block";
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
+    }
+}
+</script>
