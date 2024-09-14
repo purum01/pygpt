@@ -1,4 +1,3 @@
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
@@ -8,7 +7,7 @@
 
     <li>다음은 random 모듈을 사용하여 무작위 수를 뽑는 코드입니다. 80부터 100까지 범위의 무작위 수를 10개 뽑아 리스트에 추가하도록 밑줄을 채우세요</li>
     <div class="highlight"> 
-        <pre>
+        <pre contenteditable="true">
             <code class="language-python" >   
 import random
 
@@ -25,7 +24,7 @@ print(alist)
 
     <li>다음은 random 모듈을 사용하여 학생 리스트에서 발표자를 중복없이 3명을 무작위로 뽑아 발표자 리스트에 추가하는 코드입니다. 코드를 완성하기 위해 밑줄을 채우세요</li>
     <div class="highlight"> 
-        <pre>
+        <pre contenteditable="true">
             <code class="language-python" >   
 import random
 
@@ -48,7 +47,7 @@ print(blist)
 
     <li>다음은 리스트에서 무작위로 8가지 항목을 뽑아 비밀 번호를 생성하는 코드입니다. 밑줄을 채워 코드를 완성하세요</li>
     <div class="highlight"> 
-        <pre>
+        <pre contenteditable="true">
             <code class="language-python" >   
 import random
 
@@ -64,7 +63,7 @@ print(pwdStr)
 
     <li>아래 코드를 실행하면 무작위값(1에서 9사이)을 생성하여 guess 변수에 할당합니다. guess 변수값을 맞추면 '정답입니다.' 라고 출력하고, 맞추지 못하면 '틀렸습니다. 다시 시도하세요.'라고 출력합니다. </li>
     <div class="highlight"> 
-        <pre>
+        <pre contenteditable="true">
             <code class="language-python" >   
 import random
 
@@ -84,9 +83,10 @@ while True :
 
     <li>다음은 현재 디렉토리의 파일 목록을 출력하기 위한 코드입니다. 밑줄을 채우세요 </li>
     <div class="highlight"> 
-        <pre>
+        <pre contenteditable="true">
             <code class="language-python" >   
 import os
+
 files = _____________  # 현재 디렉토리의 파일 목록을 가져옴
 print("현재 디렉토리의 파일 목록:")
 for file in files:
@@ -99,7 +99,7 @@ for file in files:
 
         <li>다음은 코드는 디렉터리 경로와 확장자를 입력받아 입력한 경로에서 해당 확장자 파일 목록만 추출하는 코드입니다. 밑줄을 채우세요</li>
         <div class="highlight"> 
-                    <pre>
+                    <pre contenteditable="true">
                         <code class="language-python" >                       
 import os
 
@@ -124,7 +124,7 @@ show_files_with_extension(directory, extension)
 
         <li>다음은 사용자가 입력한 경로에 새 디렉토리를 생성하는 코드입니다. 밑줄을 채우세요</li>
         <div class="highlight"> 
-                    <pre>
+                    <pre contenteditable="true">
                         <code class="language-python" >                       
 import os
 
@@ -146,60 +146,37 @@ create_directory(directory_path)
         </div>
         <div>정답: <input type="text" class="answer"></div> 
 
-        <li>다음은 오늘 날짜로 파일명을 만들기 위한 코드입니다. 밑줄을 채우세요
-            (<a href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes">서식문자</a>)
-        </li>
-        <div class="highlight"> 
-                    <pre>
-                        <code class="language-python" >                       
-import datetime
-
-def generate_filename():
-    current_date = datetime.datetime.now()
-    # current_date를 활용하여 '년월일' 정보를 만듬
-    current_date_str = ________________  
-    filename = f"data_{current_date_str}.txt"  # 예시로 "data_20240329.txt"와 같은 형식으로 생성
-    return filename
-
-
-filename = generate_filename()
-print("생성된 파일명:", filename)  #생성된 파일명: data_20240410.txt
-                        </code>
-                    </pre>            
-        </div>
-        <div>정답: <input type="text" class="answer"></div>        
-
+       
 
 
 </ol>
 
             <button id="answerButton">정답</button>
-            <div id="answerText" style="display:none;">
-                <ul>
-                    <li>(1) random.randint(80, 100)
-                    <li>(2) random.choice(alist)
-                    <li>(3) random.sample(letters, 5)
-                    <li>(4) random.randint(1, 9)
-                    <li>(5) os.listdir()
-                    <li>(6) os.path.isdir(directory)
-                    <li>(7) os.makedirs(directory_path)</li>
-                    <li>(8) current_date.strftime("%Y%m%d") </li>
-
-                </ul>
-            </div>
 
 <script>
-    // "정답" 버튼 클릭 시 메시지 토글
+    // 정답 목록
+    const answers = [
+        "random.randint(80, 100)",
+        "random.choice(alist)",
+        "random.sample(letters, 8)",
+        "random.randint(1, 9)",
+        "os.listdir()",
+        "os.path.isdir(directory)",
+        "os.makedirs(directory_path)",
+       
+    ];
+
     document.getElementById("answerButton").onclick = function() {
-        var answerText = document.getElementById("answerText");
-        if (answerText.style.display === "none") {
-            answerText.style.display = "block";
-        } else {
-            answerText.style.display = "none";
-        }
+        // 모든 정답 input 요소를 가져오기
+        const answerInputs = document.querySelectorAll("input.answer");
+        
+        // 각 input에 정답을 입력하고 빨간색으로 표시
+        answerInputs.forEach((input, index) => {
+            input.value = answers[index];
+            input.style.color = "red"; // 정답을 빨간색으로 표시
+        });
     };
 </script>
-            
             
 </body>
 </html>

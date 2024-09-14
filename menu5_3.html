@@ -12,7 +12,7 @@
         </div>
         <div class="faq-answer">
             <img src="gpt.png">
-            파이썬에서 while 문은 주어진 조건이 참(True)인 동안 코드 블록을 반복 실행하는 데 사용되는 기본적인 반복 제어 구조입니다. while 문의 조건이 거짓(False)가 되면, 반복 실행이 중단됩니다. 이는 특정 조건을 기반으로 반복 작업을 수행할 때 유용하게 사용됩니다.
+            파이썬에서 while 문은 주어진 조건이 참(True)인 동안 코드 블록을 반복 실행하는 데 사용되는 기본적인 반복 제어 구조입니다. while 문의 조건이 거짓(False)이 되면, 반복 실행이 중단됩니다. 이는 특정 조건을 기반으로 반복 작업을 수행할 때 유용하게 사용됩니다.
             <h3>기본 구조 : </h3>
             <ul>
                 <li><img src="image/5-3_1.jpg" width="90%" height="90%"></li>
@@ -53,29 +53,6 @@ while n < 10:
                 <li>while 문을 사용할 때는 반복이 언젠가는 종료되도록 조건을 적절히 설정해야 합니다. 그렇지 않으면 프로그램이 무한히 실행될 수 있습니다.</li>
             </ul>
               
-        </div>
-    </div>
-
-    <div class="faq-section">
-        <div class="faq-question">
-            <img  src="question.png" width="34px" height="34px" >
-            숫자 세기 게임
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-            <pre>
-                <code class="language-python">
-# 사용자로부터 숫자 입력받기
-number = int(input("몇까지 세고 싶나요? "))
-current = 1
-
-# 1부터 시작하여 사용자가 입력한 숫자까지 세기
-while current <= number:
-    print(current)
-    current += 1
-                                        
-                </code>
-            </pre>
         </div>
     </div>
 
@@ -135,98 +112,74 @@ while True:
         <div class="faq-answer">
             <ol>
                 
-                <li class="m1"> 다음 코드를 실행하면 '날씨가 좋습니다'가 화면에 몇번 출력되는가?</li>
+                <li class="m1"> '날씨가 좋습니다'문자열을 3번 출력하는 코드를 구현하세요</li>
                     <div class="highlight">
-                        <pre>
+                        <pre contenteditable="true">
                             <code class="language-python">
 num = 0
-while num <= 3 :
-    print('날씨가 좋습니다.')
-    num = num + 1
-                            </code>
+
+#여기에 while문을 작성하세요
+</code>
                         </pre>
                     </div>
-                    <div>정답: <input type="text" size="80%" class="answer"></div>                    
 
 
-                <li class="m1">다음 코드를 실행하면 어떤 결과가 출력되는지 작성하세요 </li>
+                <li class="m1"> 출력되는 num 변수의 값이 5가 되도록 코드를 완성하세요 </li>
                     <div class="highlight">
-                        <pre>
+                        <pre contenteditable="true">
                             <code class="language-python">
 num = 1
-while num < 4:
-    num = num + 1
-print(f'num은 {num}입니다.')
+
+#여기에 while문을 작성하세요
+
+print(num)
                             </code>
                         </pre>
                     </div>
-                    <div>정답: <input type="text" size="80%" class="answer"></div>
 
-                <li class="m1"> 다음 코드를 실행하면 코드 실행이 멈추지 않습니다. 이유를 작성하세요</li>
+                <li class="m1"> 출력되는 num 변수의 값이 10이 되도록 코드를 완성하세요</li>
                     <div class="highlight">
-                        <pre>
+                        <pre contenteditable="true">
                             <code class="language-python">
+num = 1                                
 while True :
-    num = num + 1
-print('while문을 실행하고 있습니다.')                            
+    # 코드를 작성하세요
+
+print(num)                            
                             </code>
                         </pre>
                     </div>
-                    <div>정답: <input type="text" size="80%" class="answer"></div>
+                   
 
-                <li class="m1"> 다음 코드를 실행하면 "사과가 맛있습니다."라고 출력되지 않습니다. 그 이유를 설명하세요</li>
+                <li class="m1"> 1부터 100까지의 숫자의 합을 구하는 프로그램을 작성하세요.</li>
                     <div class="highlight">
-                        <pre>
+                        <pre contenteditable="true">
                             <code class="language-python">
-num = 0
-while False :
-    print("사과가 맛있습니다.")
-    num = num + 1  
+num = 1
+total = 0
+
+# 여기에 while문을 작성하세요
+
+print("합계:", total)
                             </code>
                         </pre>
                     </div>
-                    <div>정답: <input type="text" size="80%" class="answer"></div>
 
-                <li class="m1"> 다음 코드를 실행하면 어떻게 결과가 출력되는지 보기에서 고르세요</li>
+                <li class="m1">1부터 20까지의 숫자 중에서 짝수만 출력하는 프로그램을 작성하세요.</li>
                     <div class="highlight">
-                        <pre>
+                        <pre contenteditable="true">
                             <code class="language-python">
-num = 0
-while num < 10 :
-    print('딸기를 좋아합니다.')
-    num = num + 1
-    if num >= 3 :
-        break
+num = 1
+
+# 여기에 while문을 작성하세요
                             </code>
                         </pre>
                     </div>
-                    <ul>
-                        <li><input type="radio" name="1"> '딸기를 좋아합니다.'가 10번 출력된다.
-                        <li><input type="radio" name="1"> '딸기를 좋아합니다.'가 9번 출력된다.
-                        <li><input type="radio" name="1"> '딸기를 좋아합니다.'가 4번 출력된다.
-                        <li><input type="radio" name="1"> '딸기를 좋아합니다.'가 3번 출력된다.                   
-                    </ul>                    
-
-                <li class="m1"> count가 5보다 크면 코드 실행이 멈추도록 코드의 밑줄을 채우세요</li>
-                    <div class="highlight">
-                        <pre>
-                            <code class="language-python">
-count = 0
-while True :
-    count = count + 1
-    if ______________ :
-       ______________ 
-                            </code>
-                        </pre>
-                    </div>
-                    <div>정답: <input type="text" size="80%" class="answer"></div>
-
 
             </ol>
         </div>
     </div>    
 
 </div>
-
 
 <script src="content.js"></script>

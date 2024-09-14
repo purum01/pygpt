@@ -1,0 +1,85 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+<style>
+    ol > li {
+        margin-top: 20px; /* 상단 마진 확보 */
+        font-weight: bold; /* 글자를 볼드체로 변경 */
+    }
+</style>
+
+<h1 class="title">클래스 선언</h1>
+
+<div class="faq-container">
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px" >
+            파이썬 클래스 선언에 대해 설명해주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <img src="gpt.png">
+            Python에서 클래스는 객체를 만들기 위한 설계도라고 할 수 있습니다. 클래스 선언은 관련된 데이터와 함수들을 하나의 구조로 묶어 보다 체계적이고 재사용 가능한 코드를 작성할 수 있게 해줍니다. 초보자를 위한 간단한 설명을 단계별로 알려드리겠습니다.
+            <ul>
+                <ol>
+                    <li>클래스란?</li>
+                    클래스는 관련된 데이터(속성)와 그 데이터를 다루는 동작(메서드)을 한 곳에 묶어둔 구조입니다. 예를 들어, "강아지"라는 클래스가 있다면, 이 강아지 클래스는 이름, 나이와 같은 정보를 가질 수 있고, 짖거나 먹는 행동을 할 수 있습니다.
+                   
+                    <li>클래스 선언 방법</li>
+                    클래스는 class 키워드를 사용하여 선언됩니다. 아래는 가장 기본적인 클래스의 구조입니다.
+                    <pre>
+                        <code class="language-python" > 
+class Dog:
+    pass  # 클래스가 비어 있을 때 사용하는 키워드
+                        </code>
+                    </pre>
+                    위 코드는 Dog라는 빈 클래스를 정의한 것입니다. 여기서 pass는 클래스를 빈 상태로 놔두겠다는 의미입니다.                        
+                    <li>클래스에 속성(데이터)과 메서드(동작) 추가하기</li>
+                    클래스에 속성(데이터)을 추가하려면 생성자라는 특별한 메서드가 필요합니다. 파이썬에서 생성자는 __init__이라는 이름을 가지고 있으며, 이 메서드는 객체를 만들 때 자동으로 호출됩니다.
+                    <pre>
+                        <code class="language-python" > 
+class Dog:
+    def __init__(self, name, age):
+        self.name = name  # 이름 속성
+        self.age = age    # 나이 속성
+                        </code>
+                    </pre>
+                    <ul>
+                        <li><b> __init__:</b> 객체가 만들어질 때 호출되는 메서드.</li>
+                        <li><b> self: </b>생성된 객체 자체를 가리킵니다. 이를 통해 객체에 속성을 추가할 수 있습니다.</li>
+                        <li><b> name, age:</b> Dog 클래스의 속성으로, 강아지의 이름과 나이를 저장합니다.</li>
+                    </ul>
+                   
+                    <li>메서드(동작) 정의하기</li>
+                    클래스 안에 함수(메서드)를 정의하여 객체가 할 수 있는 동작을 추가할 수 있습니다.
+                    <pre>
+                        <code class="language-python" > 
+class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def bark(self):  # 강아지가 짖는 동작
+        print(f"{self.name} is barking!")
+                        </code>
+                    </pre>                    
+                    <li>클래스 사용하기</li>
+                    이제 Dog 클래스를 사용해서 객체를 만들어보겠습니다. 객체를 만들 때는 클래스를 인스턴스화한다고 합니다.
+                    <pre>
+                        <code class="language-python" > 
+my_dog = Dog("Buddy", 3)  # Dog 클래스의 인스턴스 생성
+my_dog.bark()  # 출력: Buddy is barking!
+                        </code>
+                    </pre>
+                    <ul>
+                        <li><b> my_dog = Dog("Buddy", 3):</b>Dog 클래스를 이용해 이름이 "Buddy"이고 나이가 3살인 강아지 객체를 만듭니다.</li>
+                        <li><b>my_dog.bark():</b>강아지가 짖는 메서드를 호출하면 "Buddy is barking!"이라는 메시지가 출력됩니다.</li>
+                    </ul>                            
+                      
+                </ol>
+            </ul>
+            
+</div>    
+
+<script src="content.js"></script>

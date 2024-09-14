@@ -74,41 +74,7 @@ print(make_juice("바나나"))  # 출력: 죄송해요, 우리 주스 바에는 
     </div>
 
 
-    <div class="faq-section">
-        <div class="faq-question">
-            <img  src="question.png" width="34px" height="34px" >
-            수학 퀴즈 게임
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-            <pre>
-                <code class="language-python" >   
-def generate_question(question_index):
-    """사용자가 선택한 인덱스에 해당하는 수학 문제를 제시하고 답을 확인합니다."""
-    # 문제와 정답을 미리 정의
-    questions = [("3 + 5", 8), ("10 - 7", 3), ("4 * 6", 24), ("9 + 2", 11), ("8 - 4", 4)]
-
-    question, correct_answer = questions[question_index]
-
-    # 사용자에게 문제 제시 및 답 입력 요청
-    print(f"문제: {question}")
-    user_answer = int(input("답을 입력하세요: "))
-    # 정답 확인
-    if user_answer == correct_answer:
-        print("정답입니다!")
-    else:
-        print(f"틀렸습니다. 정답은 {correct_answer}입니다.")
-
-
-# 게임 시작 및 문제 선택
-print("수학 퀴즈 게임에 오신 것을 환영합니다!")
-problem_number = int(input("풀고 싶은 문제 번호를 입력하세요 (0 ~ 4): "))
-generate_question(problem_number)
-                </code>
-            </pre>
-        </div>
-    </div>
-
+  
     <div class="faq-section">
         <div class="faq-question">
             <img  src="question.png" width="34px" height="34px" >

@@ -101,16 +101,6 @@
     bool_to_int = int(True)
     print(bool_to_int)  # 출력: 1
 
-    # 진법 변환: 문자열 형태의 숫자를 해당하는 진법으로 변환
-    binary_to_int = int("1010", 2)  # 2진수 '1010'을 10진수로 변환
-    print(binary_to_int)  # 출력: 10
-
-    hex_to_int = int("A", 16)  # 16진수 'A'를 10진수로 변환
-    print(hex_to_int)  # 출력: 10
-
-    octal_to_int = int("12", 8)  # 8진수 '12'를 10진수로 변환
-    print(octal_to_int)  # 출력: 10
-
     # 문자열이 숫자 형태가 아니면 ValueError 예외 발생
     # 다음 코드는 예외를 발생시킵니다. 주석 처리를 해제하고 실행해 보세요.
     # invalid_str_to_int = int("Python")
@@ -241,14 +231,6 @@
     set_to_list = list({4, 5, 6})
     print(set_to_list)  # 출력: [4, 5, 6] 또는 다른 순서
     
-    # 딕셔너리의 키를 리스트로 변환
-    dict_keys_to_list = list({"name": "Alice", "age": 25})
-    print(dict_keys_to_list)  # 출력: ['name', 'age']
-    
-    # 딕셔너리의 값들을 리스트로 변환
-    dict_values_to_list = list({"name": "Alice", "age": 25}.values())
-    print(dict_values_to_list)  # 출력: ['Alice', 25]
-    
     # 빈 리스트 생성
     empty_list = list()
     print(empty_list)  # 출력: []
@@ -280,14 +262,6 @@
     set_to_tuple = tuple({5, 6, 7})
     print(set_to_tuple)  # 출력은 집합의 원소 순서에 따라 달라질 수 있음. 예: (5, 6, 7)
     
-    # 딕셔너리의 키를 튜플로 변환
-    dict_keys_to_tuple = tuple({"name": "Alice", "age": 25})
-    print(dict_keys_to_tuple)  # 출력: ('name', 'age')
-    
-    # 딕셔너리의 값들을 튜플로 변환
-    dict_values_to_tuple = tuple({"name": "Alice", "age": 25}.values())
-    print(dict_values_to_tuple)  # 출력: ('Alice', 25)
-    
     # 빈 튜플 생성
     empty_tuple = tuple()
     print(empty_tuple)  # 출력: ()
@@ -316,10 +290,6 @@
     # 튜플에서 집합 생성
     tuple_to_set = set((6, 7, 7, 8))
     print(tuple_to_set)  # 출력: {6, 7, 8}
-    
-    # 딕셔너리의 키를 사용하여 집합 생성
-    dict_to_set = set({"name": "Alice", "age": 25})
-    print(dict_to_set)  # 출력: {'name', 'age'}
     
     # 빈 집합 생성
     # 주의: 빈 집합을 만들기 위해서는 set() 함수를 사용해야 합니다. {}는 빈 딕셔너리를 의미합니다.
@@ -367,13 +337,6 @@
     dict_from_zip = dict(zip(keys, values))
     print(dict_from_zip)  # 출력: {'a': 1, 'b': 2, 'c': 3}
     
-    # fromkeys() 메소드 사용
-    # 주어진 키 목록으로, 모든 키에 대해 같은 값을 갖는 딕셔너리를 생성
-    keys = ['a', 'b', 'c']
-    default_value = 0
-    dict_from_keys = dict.fromkeys(keys, default_value)
-    print(dict_from_keys)  # 출력: {'a': 0, 'b': 0, 'c': 0}
-                                        
                 </code>
             </pre>
         </div>

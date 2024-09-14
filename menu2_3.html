@@ -1,73 +1,156 @@
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" /> 
 
 <h1 class="title">변수 연습문제</h1>
 <ol>
-    <li>다음 중 정수형 변수인 것을 고르시오</li>
+    <li>다음 중 정수형 값을 갖는 변수는 무엇인가?</li>
         <ul>
-            <li><input type="radio" name="1"> age = 15</li>
-            <li><input type="radio" name="1"> name = '푸름' </li>
-            <li><input type="radio" name="1"> weight = 40.2</li>
-            <li><input type="radio" name="1"> age = '15'</li>
+            <li><input type="radio" name="1" value="1"> <span>age = 15</span></li>
+            <li><input type="radio" name="1" value="2"> <span>name = '푸름'</span></li>
+            <li><input type="radio" name="1" value="3"> <span>weight = 40.2</span></li>
+            <li><input type="radio" name="1" value="4"> <span>score = '95'</span></li>
         </ul>
-    <li>다음 중 변수의 이름으로 적절하지 않은 것을 고르시오</li>
+    <li>다음 중 변수의 이름에 대한 설명으로 올바르지 않은 것은 무엇인가?</li>
         <ul>
-            <li><input type="radio" name="2"> alist</li>
-            <li><input type="radio" name="2"> student_name </li>
-            <li><input type="radio" name="2"> myBook</li>
-            <li><input type="radio" name="2"> 2second</li>
+            <li><input type="radio" name="2" value="1"> <span>영문자, 숫자 그리고 한글을 사용할수 있다.</span></li>
+            <li><input type="radio" name="2" value="2"> <span>2second 와 같이 숫자부터 시작할수 있다.</span></li>            
+            <li><input type="radio" name="2" value="3"> <span>대소문자를 구분한다.</span></li>
+            <li><input type="radio" name="2" value="4"> <span>if, for 와같은 파이썬 키워드를 사용할 수 없다.</span></li>
         </ul>
     
-    <li>다음과 같이 코드를 작성하면 "사과 is not defined"라는 오류가 발생합니다. 그 이유를 설명하세요</li>
-    <div class="highlight"> name = 사과 </div>
-    <div>정답: <input type="text" size="80%" class="answer"></div>
-
-    <li>변수에 '하늘'이라는 값을 할당하기 위해 아래 코드에서 무엇을 고쳐야 하는지 설명하세요</li>
-    <div class="highlight"> nameOfStudent == '하늘' </div>
-    <div>정답: <input type="text" size="80%" class="answer"></div>
-        
-    <li>문자형 변수가 정의 되도록 밑줄을 채우세요</li>
-    <div class="highlight"> student = ________________________ </div>   
-    <div>정답: <input type="text" size="80%" class="answer"></div>
-
-    <li>정수형 변수가 정의 되도록 밑줄을 채우세요</li>
-    <div class="highlight"> num = ________________________  </div>
-    <div>정답: <input type="text" size="80%" class="answer"></div>
-
-    <li>실수형 변수가 정의되도록 밑줄을 채우세요</li>
-    <div class="highlight"> temperature = ________________________  </div>    
-    <div>정답: <input type="text" size="80%" class="answer"></div>
-
-    <li>다음 중 변수를 할당하는 코드를 고르세요</li>
+    <li>다음 중 변수 선언이 올바른 것은 무엇인가?</li>
     <ul>
-        <li><input type="radio" name="3"> a == 0</li>
-        <li><input type="radio" name="3"> a = 0 </li>
-        <li><input type="radio" name="3"> a > 0</li>
-        <li><input type="radio" name="3"> a < 0</li>
+        <li><input type="radio" name="3" value="1"> <span>3name = "John"</span></li>
+        <li><input type="radio" name="3" value="2"> <span>name@ = "John"</span></li>
+        <li><input type="radio" name="3" value="3"> <span>my-name = "John"</span></li>
+        <li><input type="radio" name="3" value="4"> <span>_name = "John"</span></li>
     </ul>
 
-    <li>다음과 같이 변수명을 작성하면 오류가 출력됩니다. 그 이유를 설명하세요</li>
-    <div class="highlight"> num of name = 10 </div>
-    <div>정답: <input type="text" size="80%" class="answer"></div>    
+    <li>변수에 값을 할당하는 올바른 방법은 무엇인가?</li>
+    <ul>
+        <li><input type="radio" name="4" value="1"> <span>x == 10</span></li>
+        <li><input type="radio" name="4" value="2"> <span>10 = x</span></li>
+        <li><input type="radio" name="4" value="3"> <span>x = 10</span></li>
+        <li><input type="radio" name="4" value="4"> <span>x -> 10</span></li>
+    </ul>
+        
+    <li>다음 코드를 실행 후 변수 x의 값은 무엇인가?</li>
+    <pre>
+    <code class="language-python">
+        x = 5 
+        x = x + 2
+    </code>
+   </pre>
+    <ul>
+        <li><input type="radio" name="5" value="1"> <span>2</span></li>
+        <li><input type="radio" name="5" value="2"> <span>5</span></li>
+        <li><input type="radio" name="5" value="3"> <span>7</span></li>
+        <li><input type="radio" name="5" value="4"> <span>에러 발생</span></li>
+    </ul>
+
+    <li>다음 중 변수에 값이 없는 상태로 선언하는 방법은 무엇인가?</li>
+    <ul>
+        <li><input type="radio" name="6" value="1"> <span>x = None</span></li>
+        <li><input type="radio" name="6" value="2"> <span>x = ''</span></li>
+        <li><input type="radio" name="6" value="3"> <span>x = 0</span></li>
+        <li><input type="radio" name="6" value="4"> <span>x = 'None'</span></li>
+    </ul>
+
+    <li>다음 코드의 결과는 무엇인가?</li>
+    <pre>
+    <code class="language-python">
+        x, y = 5, 10
+        x, y = y, x
+        
+    </code>
+   </pre>
+    <ul>
+        <li><input type="radio" name="7" value="1"> <span>x는 5, y는 10</span></li>
+        <li><input type="radio" name="7" value="2"> <span>x는 10, y는 5</span></li>
+        <li><input type="radio" name="7" value="3"> <span>에러 발생</span></li>
+        <li><input type="radio" name="7" value="4"> <span>값이 변경되지 않는다.</span></li>
+    </ul>
+
+    <li>다음 코드의 결과는 무엇인가?</li>
+    <pre>
+    <code class="language-python">
+        a = 5
+        b = a
+        a = 10
+        print(b)
+    </code>
+   </pre>
+    <ul>
+        <li><input type="radio" name="8" value="1"> <span>5</span></li>
+        <li><input type="radio" name="8" value="2"> <span>10</span></li>
+        <li><input type="radio" name="8" value="3"> <span>에러 발생</span></li>
+        <li><input type="radio" name="8" value="4"> <span>None</span></li>
+    </ul>
+
+    <li>다음 중 변수 x와 y에 동시에 값을 할당하는 올바른 방법은 무엇인가?</li>
+    <ul>
+        <li><input type="radio" name="9" value="1"> <span>x, y == 10, 20</span></li>
+        <li><input type="radio" name="9" value="2"> <span>x = 10, y = 20</span></li>
+        <li><input type="radio" name="9" value="3"> <span>x, y = 10, 20</span></li>
+        <li><input type="radio" name="9" value="4"> <span>x == 10 and y == 20</span></li>
+    </ul>
+  
 </ol>
 
 <button id="answerButton">정답</button>
+<button id="resetButton">초기화</button>
 <div id="answerText" style="display:none;">
     <ul>
-        <li>(1) age = 15
-        <li>(2) 2second
-        <li>(3) '사과'라는 단어가 따옴표로 묶이지 않았습니다.
-        <li>(4) 등호가 두 번 사용되었습니다.
-        <li>(5) "홍길동"
-        <li>(6) 23
-        <li>(7) 13.2
-        <li>(8) a = 0
-        <li>(9) 변수의 이름에 공백이 들어가서
-</ul>
+        <li>(1) 1번 : age = 15</li>
+        <li>(2) 2번 : 2second 와 같이 숫자부터 시작할수 없다.</li>
+        <li>(3) 4번 :  _name = "John"</li>
+        <li>(4) 3번 : x = 10</li>
+        <li>(5) 3번 : 7</li>
+        <li>(6) 1번 : x = None</li>
+        <li>(7) 2번 : x는 10, y는 5</li>
+        <li>(8) 1번 : 5</li>
+        <li>(9) 3번 : x, y = 10, 20</li>
+    </ul>
 </div>
 
+<style>
+.correct-answer {
+    color: red;
+    font-weight: bold;
+}
+</style>
+
 <script>
-// "정답" 버튼 클릭 시 메시지 토글
+// "정답" 버튼 클릭 시 정답을 빨간색으로 표시
 document.getElementById("answerButton").onclick = function() {
+    var answers = {
+        1: "1",
+        2: "2",
+        3: "4",
+        4: "3",
+        5: "3",
+        6: "1",
+        7: "2",
+        8: "1",
+        9: "3"
+    };
+
+    // 정답을 빨간색으로 표시
+    for (var q in answers) {
+        var correctAnswer = answers[q];
+        var options = document.getElementsByName(q);
+        for (var i = 0; i < options.length; i++) {
+            var spanElement = options[i].nextElementSibling; // 라디오 버튼의 텍스트를 감싸는 span
+            if (options[i].value === correctAnswer) {
+                spanElement.classList.add("correct-answer");
+            } else {
+                spanElement.classList.remove("correct-answer");
+            }
+        }
+    }
+    
+    // 정답 메시지 토글
     var answerText = document.getElementById("answerText");
     if (answerText.style.display === "none") {
         answerText.style.display = "block";
@@ -75,5 +158,23 @@ document.getElementById("answerButton").onclick = function() {
         answerText.style.display = "none";
     }
 };
-</script>
 
+// "초기화" 버튼 클릭 시 상태를 초기화
+document.getElementById("resetButton").onclick = function() {
+    // 모든 라디오 버튼 선택 해제
+    var radios = document.querySelectorAll('input[type="radio"]');
+    radios.forEach(function(radio) {
+        radio.checked = false;
+    });
+
+    // 빨간색 정답 표시 제거
+    var spanElements = document.querySelectorAll('span');
+    spanElements.forEach(function(span) {
+        span.classList.remove("correct-answer");
+    });
+
+    // 정답 메시지 숨김
+    var answerText = document.getElementById("answerText");
+    answerText.style.display = "none";
+};
+</script>

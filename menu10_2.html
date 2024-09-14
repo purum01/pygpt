@@ -27,15 +27,6 @@
                <li>random.choice(seq): 주어진 시퀀스(리스트, 튜플 등)에서 무작위로 하나의 요소를 선택하여 반환합니다.
                <li>random.choices(population, weights=None, cum_weights=None, k=1): 시퀀스에서 가중치를 고려하여 하나 또는 여러 요소를 무작위로 선택합니다.
                <li>random.sample(population, k): 시퀀스에서 중복 없이 k개의 요소를 무작위로 선택합니다.
-               
-               <h3>시퀀스 무작위화</h3>
-               <li>random.shuffle(x[, random]): 시퀀스의 요소 순서를 무작위로 섞습니다. 이 연산은 제자리에서 수행됩니다 (즉, 원본 시퀀스가 변경됩니다).
-               
-               <h3>난수 생성기 설정</h3>
-               <li>random.seed(a=None, version=2): 난수 생성 알고리즘의 시작점(씨드)을 설정합니다. 동일한 씨드로 시작하면, 난수 생성기는 동일한 순서의 난수를 생성합니다. 이는 난수 생성 과정을 재현할 수 있게 하며, 디버깅과 테스팅에 유용합니다.               
-               </ul>
-
-
 
                <h3>예제 코드</h3>
                <pre>
@@ -76,20 +67,6 @@ print(f"Randomly selected items with weights: {selected_items}")
 sampled_items = random.sample(items, 3)
 print(f"Randomly sampled items without replacement: {sampled_items}")
 
-# 리스트 순서 섞기
-numbers = list(range(10))  # 0부터 9까지의 숫자 리스트 생성
-random.shuffle(numbers)
-print(f"Shuffled list: {numbers}")
-
-# 난수 생성기의 씨드 설정
-random.seed(1)
-print(f"First random number with seed 1: {random.random()}")
-random.seed(1)
-print(f"Second random number with the same seed 1: {random.random()}")
-
-# 다른 씨드 설정
-random.seed(2)
-print(f"Random number with seed 2: {random.random()}")
                                              </code>
                </pre>
           </div>
@@ -104,23 +81,6 @@ print(f"Random number with seed 2: {random.random()}")
           <div class="faq-answer">
                <img src="gpt.png">
                Python의 math 모듈은 수학적인 연산을 수행하기 위한 다양한 함수와 상수를 제공합니다. 이 모듈을 사용하여 근사값 계산, 삼각 함수, 로그 함수, 지수 함수 등과 같은 기본적인 수학 연산을 수행할 수 있습니다. math 모듈에 포함된 몇 가지 주요 기능을 소개합니다:
-               <h3>상수</h3>
-               <ul>
-                    <li>math.pi: 원주율 π의 값을 제공합니다.</li>
-                    <li>math.e: 자연 로그의 밑 e의 값을 제공합니다.</li>
-                    <li>math.tau: τ(2π)의 값을 제공합니다.</li>
-                    <li>math.inf: 무한대를 나타냅니다.</li>
-                    <li>math.nan: 정의할 수 없는 연산의 결과를 나타내는 'Not a Number' 값을 제공합니다.</li>
-               </ul>
-               <h3>함수</h3>
-               <ul>
-                    <li>math.sqrt(x): x의 제곱근을 반환합니다.</li>
-                    <li>math.pow(x, y): x의 y 제곱 값을 계산합니다. x**y와 같으나 math.pow는 항상 부동소수점 수를 반환합니다.</li>
-                    <li>math.log(x[, base]): x의 로그 값을 반환합니다. 기본적으로 자연로그를 계산하며, base를 지정할 수 있습니다.</li>
-                    <li>math.exp(x): e^x 값을 계산합니다.</li>
-                    <li>math.sin(x), math.cos(x), math.tan(x): 각각 x(라디안 단위)의 사인, 코사인, 탄젠트 값을 계산합니다.</li>
-                    <li>math.asin(x), math.acos(x), math.atan(x): 각각 x의 아크사인, 아크코사인, 아크탄젠트 값을 계산합니다.</li>
-               </ul>
                <h3>수학적 유틸리티</h3>
                <ul>
                     <li>math.ceil(x): x 이상의 최소 정수를 반환합니다.</li>
@@ -132,30 +92,6 @@ print(f"Random number with seed 2: {random.random()}")
                <pre>
                     <code class="language-python" >   
 import math
-
-# 원주율(pi)과 자연로그의 밑(e) 값 출력
-print("원주율 π의 값:", math.pi)
-print("자연로그의 밑 e의 값:", math.e)
-
-# 제곱근 계산하기
-print("16의 제곱근:", math.sqrt(16))
-
-# 제곱 계산하기
-print("2의 3제곱:", math.pow(2, 3))
-
-# 로그 계산하기 (기본적으로 자연로그)
-print("e의 자연로그 값:", math.log(math.e))
-print("100의 로그 값 (밑 10):", math.log10(100))
-
-# 삼각 함수 계산하기
-print("π/2의 사인 값:", math.sin(math.pi / 2))
-print("π의 코사인 값:", math.cos(math.pi))
-print("π/4의 탄젠트 값:", math.tan(math.pi / 4))
-
-# 역삼각 함수 계산하기
-print("1의 아크사인 값 (라디안):", math.asin(1))
-print("0의 아크코사인 값 (라디안):", math.acos(0))
-print("1의 아크탄젠트 값 (라디안):", math.atan(1))
 
 # 올림, 내림, 절대값 계산하기
 print("2.3의 올림 값:", math.ceil(2.3))
@@ -178,29 +114,29 @@ print("5의 팩토리얼:", math.factorial(5))
           <div class="faq-answer">
                <img src="gpt.png">
                Python의 os 모듈은 운영 체제와 상호 작용하기 위한 다양한 기능을 제공합니다. 이 모듈을 사용하면 파일 시스템을 탐색하고, 파일 및 디렉터리(폴더)를 관리하며, 운영 체제의 환경 변수에 접근하고, 프로세스 관리 등의 작업을 수행할 수 있습니다. os 모듈은 이식성 있는 코드를 작성하는 데 도움이 됩니다. 즉, 다양한 운영 체제에서 동일하게 작동하는 코드를 만들 수 있습니다. 여기 os 모듈의 주요 기능 몇 가지를 소개합니다:
-               <h3>파일 및 디렉터리 관리</h3>
+               <h3>[ 파일 및 디렉터리 관리 ]</h3>
                <ul>
-                    <li><b>os.listdir(path)</b>: 지정된 경로의 파일 및 디렉터리 목록을 반환합니다.
-                    <li><b>os.mkdir(path), os.makedirs(path)</b>: 디렉터리(폴더)를 생성합니다. makedirs는 중간에 없는 디렉터리도 함께 생성합니다.
-                    <li><b>os.rmdir(path), os.removedirs(path)</b>: 디렉터리를 삭제합니다. removedirs는 중간 디렉터리도 함께 삭제합니다.
-                    <li><b>os.rename(src, dst)</b>: 파일이나 디렉터리의 이름을 변경합니다.     
+                    <li><b>os.listdir(path)</b>: 지정된 경로의 파일 및 디렉터리 목록을 반환합니다.</li>
+                    <li><b>os.mkdir(path), os.makedirs(path)</b>: 디렉터리(폴더)를 생성합니다. makedirs는 중간에 없는 디렉터리도 함께 생성합니다.</li>
+                    <li><b>os.rmdir(path), os.removedirs(path)</b>: 디렉터리를 삭제합니다. removedirs는 중간 디렉터리도 함께 삭제합니다.</li>
+                    <li><b>os.rename(src, dst)</b>: 파일이나 디렉터리의 이름을 변경합니다.</li>     
                </ul>
-               <h3>파일 경로 관리</h3>
+               <h3>[ 파일 경로 관리 ]</h3>
                <ul>
-                    <li><b>os.path.join(path1[, path2[, ...]])</b>: 하나 이상의 경로 구성 요소를 결합합니다.
-                    <li><b>os.path.split(path)</b>: 경로를 디렉터리와 파일명으로 분리합니다.
-                    <li><b>os.path.exists(path)</b>: 경로가 존재하는지 확인합니다.
-                    <li><b>os.path.isfile(path), os.path.isdir(path)</b>: 경로가 파일인지 디렉터리인지 확인합니다.
+                    <li><b>os.path.join(path1[, path2[, ...]])</b>: 하나 이상의 경로 구성 요소를 결합합니다.</li> 
+                    <li><b>os.path.split(path)</b>: 경로를 디렉터리와 파일명으로 분리합니다.</li> 
+                    <li><b>os.path.exists(path)</b>: 경로가 존재하는지 확인합니다.</li> 
+                    <li><b>os.path.isfile(path), os.path.isdir(path)</b>: 경로가 파일인지 디렉터리인지 확인합니다.</li> 
                </ul>
-               <h3>환경 변수 접근</h3>
+               <h3>[ 환경 변수 접근 ]</h3>
                <ul>
-                    <li><b>os.environ</b>: 현재 환경 변수를 나타내는 사전(딕셔너리)입니다.
-                    <li><b>os.getenv(key, default=None)</b>: 환경 변수의 값을 가져옵니다.
+                    <li><b>os.environ</b>: 현재 환경 변수를 나타내는 사전(딕셔너리)입니다.</li> 
+                    <li><b>os.getenv(key, default=None)</b>: 환경 변수의 값을 가져옵니다.</li> 
                </ul>
-               <h3>기타 유틸리티</h3>
+               <h3>[ 기타 유틸리티 ]</h3>
                <ul>
-                    <li><b>os.getcwd()</b>: 현재 작업 디렉터리의 경로를 반환합니다.
-                    <li><b>os.chdir(path)</b>: 작업 디렉터리를 변경합니다.                    
+                    <li><b>os.getcwd()</b>: 현재 작업 디렉터리의 경로를 반환합니다.</li> 
+                    <li><b>os.chdir(path)</b>: 작업 디렉터리를 변경합니다.</li>                    
                </ul>
                <h3>예제 코드</h3>
                <pre>
@@ -216,20 +152,15 @@ directory_list = os.listdir('.')
 print("현재 디렉터리 목록:", directory_list)
 
 # 환경 변수 읽기
-# HOME 변수는 유닉스 계열 시스템에서 사용자의 홈 디렉터리를 가리킵니다.
-# Windows에서는 'USERPROFILE'을 사용하거나 'HOMEPATH'를 확인해야 할 수도 있습니다.
 home_directory = os.getenv('HOME')
 print("HOME 환경 변수:", home_directory)
 
-# 새로운 디렉터리 생성 후 삭제 예제 (실제로 실행하려면 주석을 해제하세요)
-# os.mkdir('new_directory')
-# print("'new_directory' 생성됨")
-# os.rmdir('new_directory')
-# print("'new_directory' 삭제됨")
+# 새로운 디렉터리 생성 및 삭제
+os.mkdir('new_directory')
+os.rmdir('new_directory')
 
-# 파일 이름 변경 예제 (실제로 실행하려면 주석을 해제하고, 존재하는 파일 이름을 제공하세요)
-# os.rename('old_name.txt', 'new_name.txt')
-# print("'old_name.txt'를 'new_name.txt'로 이름 변경됨")
+# 파일 이름 변경 예제 
+os.rename('old_name.txt', 'new_name.txt')
 
 # 파일 또는 디렉터리 존재 여부 확인
 file_exists = os.path.exists('example.txt')
@@ -247,122 +178,7 @@ print("example.txt는 파일입니까?:", is_file)
      </div>
 
 
-     <div class="faq-section">
-          <div class="faq-question">
-               <img  src="question.png" width="34px" height="34px" >
-               datetime 모듈
-               <i class="fas fa-chevron-down"></i>
-          </div>
-          <div class="faq-answer">
-               <img src="gpt.png">
-               파이썬의 datetime 모듈은 날짜와 시간을 다루기 위한 클래스와 함수를 제공합니다. 이 모듈을 사용하면 날짜와 시간을 생성하고 조작할 수 있습니다. 이를 통해 다양한 시간 기반 작업을 수행할 수 있습니다.
-               
-               <h3>date </h3>
-               <ul>
-                    <li>날짜를 표현합니다.
-                    <li>year, month, day 속성을 가집니다.
-                    <li>날짜를 생성하고 비교하는 등의 작업을 할 수 있습니다.                    
-               </ul>
-               <h3>time </h3>
-               <ul>
-                    <li>시간을 표현합니다.
-                    <li>hour, minute, second, microsecond 속성을 가집니다.
-                    <li>시간을 생성하고 비교하는 등의 작업을 할 수 있습니다.                    
-               </ul>
-               <h3>datetime </h3>
-               <ul>
-                    <li>날짜와 시간을 모두 포함하는 객체입니다.
-                    <li>year, month, day, hour, minute, second, microsecond 속성을 가집니다.
-                    <li>날짜 및 시간을 생성하고 비교하는 등의 작업을 할 수 있습니다.               
-               </ul>
-               <h3>timedelta</h3>
-               <ul>
-                    <li>두 날짜 또는 시간 사이의 시간 간격을 표현합니다.
-                    <li>일, 초, 마이크로초 단위 등을 포함합니다.
-                    <li>시간 간격을 더하고 빼는 등의 작업을 할 수 있습니다.               
-               </ul>
-               <h3>주요 함수와 속성:</h3>
-               <ul>
-                    <li>datetime.now(): 현재 날짜와 시간을 반환합니다.
-                    <li>datetime.combine(date, time): 날짜와 시간을 결합하여 datetime 객체를 생성합니다.
-                    <li>datetime.strptime(date_string, format): 문자열을 날짜로 변환합니다.
-                    <li>strftime(format): 날짜 및 시간을 포맷에 맞게 문자열로 반환합니다.
-                    <li>weekday(): 요일을 반환합니다. (월요일부터 0, 일요일까지 6)
-                    <li>isoweekday(): ISO 형식의 요일을 반환합니다. (월요일부터 1, 일요일까지 7)
-                    <li>timedelta(days, seconds, microseconds, milliseconds, minutes, hours, weeks): 시간 간격을 생성합니다. 
-               </ul>
-               <h3>예제 코드</h3>
-               <pre>
-                    <code class="language-python" > 
-import datetime
-
-# datetime 클래스 예제
-def datetime_example():
-     now = datetime.datetime.now()
-     print("현재 날짜와 시간:", now)
-
-# date 클래스 예제
-def date_example():
-     today = datetime.date.today()
-     print("오늘의 날짜:", today)
-     print("연도:", today.year)
-     print("월:", today.month)
-     print("일:", today.day)
-
-# time 클래스 예제
-def time_example():
-     current_time = datetime.datetime.now().time()
-     print("현재 시간:", current_time)
-     print("시:", current_time.hour)
-     print("분:", current_time.minute)
-     print("초:", current_time.second)
-
-# timedelta 클래스 예제
-def timedelta_example():
-     today = datetime.date.today()
-     future_date = today + datetime.timedelta(days=7)
-     print("현재 날짜:", today)
-     print("7일 후:", future_date)
-     time_difference = future_date - today
-     print("7일 후까지의 기간:", time_difference)
-
-
-print("--- datetime 클래스 예제 ---")
-datetime_example()
-
-print("--- date 클래스 예제 ---")
-date_example()
-
-
-print("--- time 클래스 예제 ---")
-time_example()
-
-
-print("--- timedelta 클래스 예제 ---")
-timedelta_example()
-# 출력 결과
-# --- datetime 클래스 예제 ---
-# 현재 날짜와 시간: 2024-04-10 21:52:34.307364
-# --- date 클래스 예제 ---
-# 오늘의 날짜: 2024-04-10
-# 연도: 2024
-# 월: 4
-# 일: 10
-# --- time 클래스 예제 ---
-# 현재 시간: 21:52:34.307364
-# 시: 21
-# 분: 52
-# 초: 34
-# --- timedelta 클래스 예제 ---
-# 현재 날짜: 2024-04-10
-# 7일 후: 2024-04-17
-# 7일 후까지의 기간: 7 days, 0:00:00
-
-                    </code>
-               </pre>
-          </div>
-     </div>
-              
+    
 
 
 

@@ -1,16 +1,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
 
 <h1 class="title">포함 연산자</h1>
 <div class="faq-container">
     <div class="faq-section">
         <div class="faq-question">
-            <img  src="question.png" width="34px" height="34px" >
+            <img src="question.png" width="34px" height="34px">
             in  과  not  in  연산자에 대해 설명해주세요
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer">
+        <div class="faq-answer" style="display: none;">
             파이썬에서 in과 not in 연산자는 멤버십 연산자로 분류됩니다. 이 연산자들은 어떤 값이 시퀀스(예: 문자열, 리스트, 튜플, 집합 등) 내에 존재하는지 여부를 검사하는 데 사용됩니다. 결과는 불리언 값인 True 또는 False로 반환됩니다.
             <table>
                 <tr><td colspan="2" class="em">in 연산자</td></tr>
@@ -30,7 +30,7 @@
                 
             </table>
 <pre>
-<code class="language-python"">
+<code class="language-python">
     # 문자열에서의 사용
     print('p' in 'python')      # 출력: True
     print('z' in 'python')      # 출력: False
@@ -54,7 +54,6 @@
     my_dict = {'name': 'Alice', 'age': 25}
     print('name' in my_dict)    # 출력: True
     print('Alice' in my_dict)   # 출력: False, 'Alice'는 값이며 키가 아님
-    
 </code>    
 </pre>            
         </div>
@@ -62,22 +61,21 @@
 
     <div class="faq-section">
         <div class="faq-question">
-            <img  src="question.png"width="30px" height="30"  >
+            <img src="question.png" width="30px" height="30">
             연습문제
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer">
+        <div class="faq-answer" style="display: none;">
             <ol class="mission">
                 <li> 다음 코드의 실행 결과를 고르세요</li>
                 <div class="highlight"> 
                     numbers = [1, 2, 3, 4, 5] <br>
-                    print(6 not in numbers)</td></tr>
-                </div> 
+                    print(6 not in numbers)</div>
                 <ul>
-                    <li><input type="radio" name="1">  True</li> 
-                    <li><input type="radio" name="1">  False</li>                 
-                    <li><input type="radio" name="1">  None</li> 
-                    <li><input type="radio" name="1">  SyntaxError</li> 
+                    <li><input type="radio" name="1" value="1"> <span>True</span></li> 
+                    <li><input type="radio" name="1" value="2"> <span>False</span></li>                 
+                    <li><input type="radio" name="1" value="3"> <span>None</span></li> 
+                    <li><input type="radio" name="1" value="4"> <span>SyntaxError</span></li> 
                 </ul>
 
                 <li>다음 코드의 실행 결과를 고르세요</li>
@@ -86,10 +84,10 @@
                     print("fox" in sentence)
                 </div> 
                 <ul>
-                    <li><input type="radio" name="1">  True</li> 
-                    <li><input type="radio" name="1">  False</li>                 
-                    <li><input type="radio" name="1">  None</li> 
-                    <li><input type="radio" name="1">  SyntaxError</li> 
+                    <li><input type="radio" name="2" value="1"> <span>True</span></li> 
+                    <li><input type="radio" name="2" value="2"> <span>False</span></li>                 
+                    <li><input type="radio" name="2" value="3"> <span>None</span></li> 
+                    <li><input type="radio" name="2" value="4"> <span>SyntaxError</span></li> 
                 </ul>
 
                 <li>다음 코드의 실행 결과를 고르세요</li>
@@ -98,10 +96,10 @@
                     print("apple" not in fruits)
                 </div> 
                 <ul>
-                    <li><input type="radio" name="1">  True</li> 
-                    <li><input type="radio" name="1">  False</li>                 
-                    <li><input type="radio" name="1">  None</li> 
-                    <li><input type="radio" name="1">  SyntaxError</li> 
+                    <li><input type="radio" name="3" value="1"> <span>True</span></li> 
+                    <li><input type="radio" name="3" value="2"> <span>False</span></li>                 
+                    <li><input type="radio" name="3" value="3"> <span>None</span></li> 
+                    <li><input type="radio" name="3" value="4"> <span>SyntaxError</span></li> 
                 </ul>
 
                 <li>주어진 딕셔너리에 대해, 'color'가 딕셔너리의 키로 존재하는지 확인하는 코드는 무엇입니까?</li>
@@ -109,10 +107,10 @@
                     car = {"brand": "Ford", "model": "Mustang", "year": 1964}
                 </div> 
                 <ul>
-                    <li><input type="radio" name="1">   print("color" in car.keys())</li>
-                    <li><input type="radio" name="1">   print("color" in car)</li>                
-                    <li><input type="radio" name="1">   print("color" not in car)</li>
-                    <li><input type="radio" name="1">   B와 C 모두 올바름</li>
+                    <li><input type="radio" name="4" value="1"> <span>print("color" in car.keys())</span></li>
+                    <li><input type="radio" name="4" value="2"> <span>print("color" in car)</span></li>                
+                    <li><input type="radio" name="4" value="3"> <span>print("color" not in car)</span></li>
+                    <li><input type="radio" name="4" value="4"> <span>B와 C 모두 올바름</span></li>
                 </ul>
 
                 <li>다음 코드의 실행 결과를 고르세요</li>
@@ -122,38 +120,96 @@
                     print(a in b or 4 in b)
                 </div> 
                 <ul>
-                    <li><input type="radio" name="1">  True</li>
-                    <li><input type="radio" name="1">  False</li>                
-                    <li><input type="radio" name="1">  None</li>
-                    <li><input type="radio" name="1">  SyntaxError</li>
+                    <li><input type="radio" name="5" value="1"> <span>True</span></li>
+                    <li><input type="radio" name="5" value="2"> <span>False</span></li>                
+                    <li><input type="radio" name="5" value="3"> <span>None</span></li>
+                    <li><input type="radio" name="5" value="4"> <span>SyntaxError</span></li>
                 </ul>
             </ol>
             <button id="answerButton">정답</button>
+            <button id="resetButton">초기화</button>
             <div id="answerText" style="display:none;">
                 <ul>
-                    <li>(1) True
-                    <li>(2) True
-                    <li>(3) False
-                    <li>(4) print('color' in car)
-                    <li>(5) True
+                    <li>(1) True</li>
+                    <li>(2) True</li>
+                    <li>(3) False</li>
+                    <li>(4) print("color" in car)</li>
+                    <li>(5) True</li>
                 </ul>
             </div>
         </div>
     </div>
-</div>    
+</div>
 
+<style>
+.correct-answer {
+    color: red;
+    font-weight: bold;
+}
+</style>
 
-
-<script src="content.js"></script>
 <script>
-    // "정답" 버튼 클릭 시 메시지 토글
-    document.getElementById("answerButton").onclick = function() {
-        var answerText = document.getElementById("answerText");
-        if (answerText.style.display === "none") {
-            answerText.style.display = "block";
+// 드롭다운 기능 구현
+document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', function() {
+        const answer = this.nextElementSibling;
+        if (answer.style.display === 'none' || answer.style.display === '') {
+            answer.style.display = 'block';
         } else {
-            answerText.style.display = "none";
+            answer.style.display = 'none';
         }
-    };
-    </script>
+    });
+});
 
+// "정답" 버튼 클릭 시 정답을 빨간색으로 표시
+document.getElementById("answerButton").onclick = function() {
+    var answers = {
+        1: "1",  // True
+        2: "1",  // True
+        3: "2",  // False
+        4: "2",  // print("color" in car)
+        5: "1"   // True
+    };
+
+    // 정답을 빨간색으로 표시
+    for (var q in answers) {
+        var correctAnswer = answers[q];
+        var options = document.getElementsByName(q);
+        for (var i = 0; i < options.length; i++) {
+            var spanElement = options[i].nextElementSibling; // 라디오 버튼의 텍스트를 감싸는 span
+            if (options[i].value === correctAnswer) {
+                spanElement.classList.add("correct-answer");
+            } else {
+                spanElement.classList.remove("correct-answer");
+            }
+        }
+    }
+
+    // 정답 메시지 토글
+    var answerText = document.getElementById("answerText");
+    if (answerText.style.display === "none") {
+        answerText.style.display = "block";
+    } else {
+        answerText.style.display = "none";
+    }
+};
+
+// "초기화" 버튼 클릭 시 상태를 초기화
+document.getElementById("resetButton").onclick = function() {
+    // 모든 라디오 버튼 선택 해제
+    var radios = document.querySelectorAll('input[type="radio"]');
+    radios.forEach(function(radio) {
+        radio.checked = false;
+    });
+
+    // 빨간색 정답 표시 제거
+    var spanElements = document.querySelectorAll('span');
+    spanElements.forEach(function(span) {
+        span.classList.remove("correct-answer");
+    });
+
+    // 정답 메시지 숨김
+    var answerText = document.getElementById("answerText");
+    answerText.style.display = "none";
+};
+</script>

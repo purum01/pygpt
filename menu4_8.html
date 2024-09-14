@@ -143,15 +143,10 @@ max_char = max(char_string)
 # 예제 3: 여러 개의 인자 중 최대값 찾기
 max_of_args = max(1, 2, 3, 4, 5)
 
-# 예제 4: 키 함수를 사용하여 커스텀 기준으로 최대값 찾기
-# 각 튜플의 두 번째 요소를 기준으로 최대값을 찾습니다.
-points = [(1, 2), (3, 4), (5, 6), (7, 8)]
-max_point = max(points, key=lambda x: x[1])
-
 print("리스트 내의 최대값:", max_number)
 print("문자열 내의 최대 문자:", max_char)
 print("여러 개의 인자 중 최대값:", max_of_args)
-print("키 함수를 사용한 커스텀 기준으로 최대값:", max_point)
+
                 </code>
             </pre>
         </div>
@@ -176,15 +171,9 @@ min_char = min(char_string)
 # 예제 3: 여러 개의 인자 중 최솟값 찾기
 min_of_args = min(1, 2, 3, 4, 5)
 
-# 예제 4: 키 함수를 사용하여 커스텀 기준으로 최솟값 찾기
-# 각 튜플의 두 번째 요소를 기준으로 최솟값을 찾습니다.
-points = [(1, 2), (3, 4), (5, 6), (0, 8)]
-min_point = min(points, key=lambda x: x[1])
-
 print("리스트 내의 최솟값:", min_number)
 print("문자열 내의 최소 문자:", min_char)
 print("여러 개의 인자 중 최솟값:", min_of_args)
-print("키 함수를 사용한 커스텀 기준으로 최솟값:", min_point)
                 </code>
             </pre>
         </div>

@@ -1,16 +1,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
 
 <h1 class="title">논리 연산자</h1>
 <div class="faq-container">
     <div class="faq-section">
         <div class="faq-question">
-            <img  src="question.png" width="34px" height="34px" >
+            <img src="question.png" width="34px" height="34px">
             파이썬의 논리연산자에 대해 설명해주세요
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer">
+        <div class="faq-answer" style="display: none;">
             <table>
                 <tr><td colspan="2" class="em">and 연산자</td></tr>
                 <tr><td>
@@ -36,16 +36,9 @@
                         <li>- 예: not True는 False를 반환합니다.</li>
                     </ul>
                 </td></tr>
-                <tr><td colspan="2" class="em">논리 연산자의 연산 우선순위</td></tr>
-                <tr><td>
-                    <ul>
-                        <li>- not 연산자가 가장 높은 우선순위를 가지며, 다음으로 and, 그리고 or 연산자의 순으로 우선순위가 낮아집니다.</li>
-                        <li>- 복잡한 논리 연산을 수행할 때는 괄호 ()를 사용하여 연산의 순서를 명확히 할 수 있습니다.</li>
-                    </ul>
-                </td></tr>
             </table>
 <pre>
-<code class="language-python"">
+<code class="language-python">
     x = True
     y = False
     
@@ -57,9 +50,6 @@
     
     # not 연산 예제
     print(not x)    # 출력: False
-    
-    # 복합 논리 연산 예제
-    print((x and y) or (not y))  # 출력: True
 </code>    
 </pre>            
         </div>
@@ -67,70 +57,119 @@
 
     <div class="faq-section">
         <div class="faq-question">
-            <img  src="question.png" width="34px" height="34px" >
+            <img src="question.png" width="34px" height="34px">
             연습문제
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer">
+        <div class="faq-answer" style="display: none;">
             <ol class="mission">
                 <li> 다음 코드의 출력 결과를 고르세요</li>
                 <div class="highlight"> print(True and False)</div>   
                     <ul>
-                        <li><input type="radio" name="1"> True</li>
-                        <li><input type="radio" name="1"> False</li>                
-                        <li><input type="radio" name="1"> None</li>
-                        <li><input type="radio" name="1"> SyntaxError</li>
+                        <li><input type="radio" name="1" value="1"> <span>True</span></li>
+                        <li><input type="radio" name="1" value="2"> <span>False</span></li>                
+                        <li><input type="radio" name="1" value="3"> <span>None</span></li>
+                        <li><input type="radio" name="1" value="4"> <span>SyntaxError</span></li>
                     </ul>
 
                 <li>다음 코드의 출력 결과를 고르세요</li>
                 <div class="highlight">print(False or True)</div>   
                 <ul>
-                    <li><input type="radio" name="2"> True</li>
-                    <li><input type="radio" name="2"> False</li>                
-                    <li><input type="radio" name="2"> None</li>
-                    <li><input type="radio" name="2"> SyntaxError</li>
+                    <li><input type="radio" name="2" value="1"> <span>True</span></li>
+                    <li><input type="radio" name="2" value="2"> <span>False</span></li>                
+                    <li><input type="radio" name="2" value="3"> <span>None</span></li>
+                    <li><input type="radio" name="2" value="4"> <span>SyntaxError</span></li>
                 </ul>        
 
                 <li>다음 코드의 출력 결과를 고르세요</li>
                 <div class="highlight">print(not True)</div>   
                 <ul>
-                    <li><input type="radio" name="3"> True</li>
-                    <li><input type="radio" name="3"> False</li>                
-                    <li><input type="radio" name="3"> None</li>
-                    <li><input type="radio" name="3"> SyntaxError</li>
-                </ul>        
-    
-                <li>다음 코드의 출력 결과를 고르세요</li>
-                <div class="highlight">print(True or False and not True)</div>   
-                <ul>
-                    <li><input type="radio" name="4"> True</li>
-                    <li><input type="radio" name="4"> False</li>                
-                    <li><input type="radio" name="4"> None</li>
-                    <li><input type="radio" name="4"> SyntaxError</li>
+                    <li><input type="radio" name="3" value="1"> <span>True</span></li>
+                    <li><input type="radio" name="3" value="2"> <span>False</span></li>                
+                    <li><input type="radio" name="3" value="3"> <span>None</span></li>
+                    <li><input type="radio" name="3" value="4"> <span>SyntaxError</span></li>
                 </ul>        
             </ol>
             <button id="answerButton">정답</button>
+            <button id="resetButton">초기화</button>
             <div id="answerText" style="display:none;">
                 <ul>
                     <li>(1) False</li>
                     <li>(2) True</li>
                     <li>(3) False</li>
-                    <li>(4) True</li>
                 </ul>
             </div>            
         </div>
     </div>
 </div>    
 
-<script src="content.js"></script>
+<style>
+.correct-answer {
+    color: red;
+    font-weight: bold;
+}
+</style>
+
 <script>
-    // "정답" 버튼 클릭 시 메시지 토글
-    document.getElementById("answerButton").onclick = function() {
-        var answerText = document.getElementById("answerText");
-        if (answerText.style.display === "none") {
-            answerText.style.display = "block";
+// 드롭다운 기능 구현
+document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', function() {
+        const answer = this.nextElementSibling;
+        if (answer.style.display === 'none' || answer.style.display === '') {
+            answer.style.display = 'block';
         } else {
-            answerText.style.display = "none";
+            answer.style.display = 'none';
         }
+    });
+});
+
+// "정답" 버튼 클릭 시 정답을 빨간색으로 표시
+document.getElementById("answerButton").onclick = function() {
+    var answers = {
+        1: "2",  // False
+        2: "1",  // True
+        3: "2"   // False
     };
-    </script>
+
+    // 정답을 빨간색으로 표시
+    for (var q in answers) {
+        var correctAnswer = answers[q];
+        var options = document.getElementsByName(q);
+        for (var i = 0; i < options.length; i++) {
+            var spanElement = options[i].nextElementSibling; // 라디오 버튼의 텍스트를 감싸는 span
+            if (options[i].value === correctAnswer) {
+                spanElement.classList.add("correct-answer");
+            } else {
+                spanElement.classList.remove("correct-answer");
+            }
+        }
+    }
+    
+    // 정답 메시지 토글
+    var answerText = document.getElementById("answerText");
+    if (answerText.style.display === "none") {
+        answerText.style.display = "block";
+    } else {
+        answerText.style.display = "none";
+    }
+};
+
+// "초기화" 버튼 클릭 시 상태를 초기화
+document.getElementById("resetButton").onclick = function() {
+    // 모든 라디오 버튼 선택 해제
+    var radios = document.querySelectorAll('input[type="radio"]');
+    radios.forEach(function(radio) {
+        radio.checked = false;
+    });
+
+    // 빨간색 정답 표시 제거
+    var spanElements = document.querySelectorAll('span');
+    spanElements.forEach(function(span) {
+        span.classList.remove("correct-answer");
+    });
+
+    // 정답 메시지 숨김
+    var answerText = document.getElementById("answerText");
+    answerText.style.display = "none";
+};
+</script>

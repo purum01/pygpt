@@ -1,5 +1,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
 
 <h1 class="title">비교 연산자</h1>
@@ -7,13 +7,13 @@
 <div class="faq-container">
     <div class="faq-section">
         <div class="faq-question">
-            <img  src="question.png" width="34px" height="34px" >
+            <img src="question.png" width="34px" height="34px">
             비교 연산자 예제 코드를 보여주세요
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer" id="c1">
+        <div class="faq-answer" id="c1" style="display: none;">
 <pre>
-<code class="language-python"">
+<code class="language-python">
 # 변수 선언 및 초기화
 a = 10
 b = 20
@@ -31,7 +31,6 @@ print("a < b:", a < b)   # True
 # 크거나 같음, 작거나 같음
 print("a >= b:", a >= b)  # False
 print("a <= b:", a <= b)  # True
-
 </code>    
 </pre>
         </div>
@@ -39,97 +38,177 @@ print("a <= b:", a <= b)  # True
 
     <div class="faq-section">
         <div class="faq-question">
-            <img  src="question.png"width="30px" height="30"  >
+            <img src="question.png" width="30px" height="30">
             연습문제
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer">
+        <div class="faq-answer" style="display: none;">
             <ol class="mission">
-                <li> 다음 중 비교식 결과값이 True 인 코드를 모두 고르세요</li>
+                <li> 다음 중 두 값이 같은지 비교하는 연산자는 무엇인가?</li>
                     <ul>
-                        <li><input type="checkbox" name="1"> 20 == 10
-                        <li><input type="checkbox" name="1"> '학교' == '학생'
-                        <li><input type="checkbox" name="1">  100 > 30
-                        <li><input type="checkbox" name="1">  15 <= 15
+                        <li><input type="radio" name="1" value="1"> <span>=</span></li>
+                        <li><input type="radio" name="1" value="2"> <span>==</span></li>
+                        <li><input type="radio" name="1" value="3"> <span>!=</span></li>
+                        <li><input type="radio" name="1" value="4"> <span><</span></li>
                     </ul>
 
-                <li> 다음 코드를 실행하면 True와 False 중 어떤 결과가 출력되는지 작성하세요</li>
-                    <div class="highlight"> 
-                        a = 홍길동 <br>
-                        b = '홍길동' <br>
-                        print( a == b )
-                    </div>   
-                    <div>정답: <input type="text" size="80%" class="answer"></div>
-                
-                <li> 다음 코드를 실행하면 모두 False가 출력됩니다. 실행 결과가  True로 출력되도록 코드를 수정하세요.</li>
-                    <div class="highlight"> 
-                        print(2 == '2' ) <br>
-                        print( 2 > 2) <br>
-                    </div>   
-                    <div>정답:</div>
-                    <div><textarea rows="6"  class="answer"></textarea></div>
-                
-                <li> 다음 코드를 실행하면 False가 출력됩니다. 그 이유를 설명하세요</li>
-                    <div class="highlight"> print(3 == '3')
-                    </div>   
-                    <div>정답: <input type="text" size="80%" class="answer"></div>
-
-                <li> 다음 코드를 실행하면 'SyntaxError : expression cannot contain assignment'오류가 발생합니다. 그 이유를 보기에서 고르세요</li>
-                    <div class="highlight"> print(3 = 3 )</div>   
-                    <ul>
-                        <li><input type="radio" name="2"> 숫자 비교를 하기 때문이다.
-                        <li><input type="radio" name="2"> print 함수의 괄호 안에 대입연산자(=)를 사용하기 때문이다.
-                        <li><input type="radio" name="2"> 선언되지 않은 함수(print)를 사용하기 때문이다.
-                        <li><input type="radio" name="2"> print 함수의 입력값(인수)로 변수를 사용하지 않기 때문이다.
-                    </ul>
-
-                <li> 다음 코드의 실행 결과가 False로 출력되도록 빈칸에 들어갈수 있는 값을 보기에서 모두 고르시요</li>
-                    <div class="highlight"> 
-                        a = _________________ <br>
-                        b = _________________ <br>
-                        print( a > b) 
-                    </div>   
-                    <ul>
-                        <li><input type="checkbox" name="3"> a = 10,   b = 5
-                        <li><input type="checkbox" name="3"> a = 10,   b = 10
-                        <li><input type="checkbox" name="3"> a = 10,   b = 20
-                        <li><input type="checkbox" name="3"> a = 5.12, b = 10
-                    </ul>
-                <li>다음 중 출력의 결과가 다른 하나는 무엇입니까?</li>
+                <li> 다음 코드의 실행결과는 무엇인가?</li>
+                <pre>
+                    <code class="language-python">
+                        x = 10
+                        y = 15
+                        print(x > y)
+                    </code>
+                </pre>  
                 <ul>
-                    <li><input type="radio" name="4"> print(10 == 10.0)</li>
-                    <li><input type="radio" name="4"> print("Python" != "python")</li>                
-                    <li><input type="radio" name="4"> print(2 <= 3 <= 4)</li>
-                    <li><input type="radio" name="4"> print( 5 > 5)</li>
+                    <li><input type="radio" name="2" value="1"> <span>True</span></li>
+                    <li><input type="radio" name="2" value="2"> <span>False</span></li>
+                    <li><input type="radio" name="2" value="3"> <span>10</span></li>
+                    <li><input type="radio" name="2" value="4"> <span>에러발생</span></li>
+                </ul>
+                    
+                <li> 다음 코드의 실행결과는 무엇인가?</li>
+                <pre>
+                    <code class="language-python">
+                        a = 5
+                        b = 5
+                        print(a <= b)
+                    </code>
+                </pre>  
+                <ul>
+                    <li><input type="radio" name="3" value="1"> <span>True</span></li>
+                    <li><input type="radio" name="3" value="2"> <span>False</span></li>
+                    <li><input type="radio" name="3" value="3"> <span>5</span></li>
+                    <li><input type="radio" name="3" value="4"> <span>에러발생</span></li>
                 </ul>
 
+                <li> 다음 코드의 실행 결과는 무엇인가?</li>
+                <pre>
+                    <code class="language-python">
+                        x = 7
+                        y = 10
+                        print(x == y)
+                    </code>
+                </pre>  
+                <ul>
+                    <li><input type="radio" name="4" value="1"> <span>True</span></li>
+                    <li><input type="radio" name="4" value="2"> <span>False</span></li>
+                    <li><input type="radio" name="4" value="3"> <span>7</span></li>
+                    <li><input type="radio" name="4" value="4"> <span>에러발생</span></li>
+                </ul>
+
+                <li> 다음 코드의 실행 결과는 무엇인가?</li>
+                <pre>
+                    <code class="language-python">
+                        print(3 == '3')
+                    </code>
+                </pre>  
+                <ul>
+                    <li><input type="radio" name="5" value="1"> <span>True</span></li>
+                    <li><input type="radio" name="5" value="2"> <span>False</span></li>
+                    <li><input type="radio" name="5" value="3"> <span>SyntaxError</span></li>
+                    <li><input type="radio" name="5" value="4"> <span>TypeError</span></li>
+                </ul>
+
+                <li> 다음 코드의 실행 결과는 무엇인가?</li>
+                <pre>
+                    <code class="language-python">
+                        print(3 = 3)
+                    </code>
+                </pre>  
+                <ul>
+                    <li><input type="radio" name="6" value="1"> <span>True</span></li>
+                    <li><input type="radio" name="6" value="2"> <span>False</span></li>
+                    <li><input type="radio" name="6" value="3"> <span>SyntaxError</span></li>
+                    <li><input type="radio" name="6" value="4"> <span>TypeError</span></li>
+                </ul>
             </ol>
             <button id="answerButton">정답</button>
+            <button id="resetButton">초기화</button>
             <div id="answerText" style="display:none;">
                 <ul>
-                    <li>(1) 100 > 30, 15 <= 15
-                    <li>(2) False
-                    <li>(3) print(2==2);  print(2>=2); 
-                    <li>(4) 숫자에 따옴표를 사용하면 문자형이 됩니다. 코드에서 숫자와 문자를 비교하므로 두 값이 서로 달라 False를 출력합니다.
-                    <li>(5) print 함수의 괄호 안에 대입연산자(=)를 사용하기 때문이다.
-                    <li>(6) a = 10, b = 10 ; a = 10, b=20 ; a = 5.12, b= 10
-                    <li>(7) print( 5 > 5)
+                    <li>(1) 2번 : ==</li>
+                    <li>(2) 2번 : False</li>
+                    <li>(3) 1번 : True</li>
+                    <li>(4) 2번 : False</li>
+                    <li>(5) 2번 : False</li>
+                    <li>(6) 3번 : SyntaxError</li>
                 </ul>
             </div>
         </div>
     </div>      
-   
 </div>
 
-<script src="content.js"></script>
+<style>
+.correct-answer {
+    color: red;
+    font-weight: bold;
+}
+</style>
+
 <script>
-    // "정답" 버튼 클릭 시 메시지 토글
-    document.getElementById("answerButton").onclick = function() {
-        var answerText = document.getElementById("answerText");
-        if (answerText.style.display === "none") {
-            answerText.style.display = "block";
+// 드롭다운 기능 구현
+document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', function() {
+        const answer = this.nextElementSibling;
+        if (answer.style.display === 'none' || answer.style.display === '') {
+            answer.style.display = 'block';
         } else {
-            answerText.style.display = "none";
+            answer.style.display = 'none';
         }
+    });
+});
+
+// "정답" 버튼 클릭 시 정답을 빨간색으로 표시
+document.getElementById("answerButton").onclick = function() {
+    var answers = {
+        1: "2",  // ==
+        2: "2",  // False
+        3: "1",  // True
+        4: "2",  // False
+        5: "2",  // False
+        6: "3"   // SyntaxError
     };
-    </script>
+
+    // 정답을 빨간색으로 표시
+    for (var q in answers) {
+        var correctAnswer = answers[q];
+        var options = document.getElementsByName(q);
+        for (var i = 0; i < options.length; i++) {
+            var spanElement = options[i].nextElementSibling; // 라디오 버튼의 텍스트를 감싸는 span
+            if (options[i].value === correctAnswer) {
+                spanElement.classList.add("correct-answer");
+            } else {
+                spanElement.classList.remove("correct-answer");
+            }
+        }
+    }
+
+    // 정답 메시지 토글
+    var answerText = document.getElementById("answerText");
+    if (answerText.style.display === "none") {
+        answerText.style.display = "block";
+    } else {
+        answerText.style.display = "none";
+    }
+};
+
+// "초기화" 버튼 클릭 시 상태를 초기화
+document.getElementById("resetButton").onclick = function() {
+    // 모든 라디오 버튼 선택 해제
+    var radios = document.querySelectorAll('input[type="radio"]');
+    radios.forEach(function(radio) {
+        radio.checked = false;
+    });
+
+    // 빨간색 정답 표시 제거
+    var spanElements = document.querySelectorAll('span');
+    spanElements.forEach(function(span) {
+        span.classList.remove("correct-answer");
+    });
+
+    // 정답 메시지 숨김
+    var answerText = document.getElementById("answerText");
+    answerText.style.display = "none";
+};
+</script>
