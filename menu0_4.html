@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .tab-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .tabs {
+            display: flex;
+            width: 100%;
+            background-color: #f1f1f1;
+            border-bottom: 1px solid #ddd;
+        }
+        .tabs button {
+            background-color: inherit;
+            border: none;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+            font-size: 16px;
+            cursor: pointer;
+            border-right: 1px solid #ddd;
+            flex-grow: 1; /* 각 버튼이 남는 공간을 채우도록 설정 */
+            white-space: nowrap; /* 버튼 내부의 텍스트가 줄 바꿈되지 않도록 설정 */
+        }
+        .tabs button:hover {
+            background-color: #ddd;
+        }
+        .tabs button.active {
+            background-color: #ccc;
+        }
+        .tab-content {
+            flex: 1;
+            padding: 20px;
+            display: none;
+            width: 100%;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+        }
+        .copy-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="tabs">
+    <button class="tablinks" onclick="openTab(event, 'tab1')">커맨드창 실행</button>
+    <button class="tablinks" onclick="openTab(event, 'tab2')">Jupyter Lab 실행 1</button>
+    <button class="tablinks" onclick="openTab(event, 'tab3')">Jupyter Lab 실행 2</button>
+    <button class="tablinks" onclick="openTab(event, 'tab4')">터미널창 열기</button>
+    <button class="tablinks" onclick="openTab(event, 'tab5')">스크립트 파일 생성</button>
+</div>
+
+<div class="tab-container">
+    <div id="tab1" class="tab-content">
+        <div class="login-guide-container">
+            <table>
+                <tr>
+                    <td><span class="step-number">1.</span> 키보드에서 windows + R 누른 후 cmd 입력 후 Enter</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_1.png" style="width: 50%; display: block; margin: 0 auto;"></td>
+                </tr>
+                <tr>
+                    <td><span class="step-number">2.</span> python 입력후 Enter</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_2.png" style="width: 50%; display: block; margin: 0 auto;"></td>
+                </tr>
+                <tr>
+                    <td><span class="step-number">3.</span> 파이썬 명령문 입력 후 Enter</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_3.png" style="width: 50%; display: block; margin: 0 auto;"></td>
+                </tr>
+                <tr>
+                    <td><span class="step-number">4.</span> 파이썬 실행 프로그램 종료 방법 : exit() 입력후 Enter</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_4.png" style="width: 50%; display: block; margin: 0 auto;"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="tab2" class="tab-content">
+        <div class="login-guide-container">
+            <table>
+                <tr>
+                    <td><span class="step-number">1.</span> 키보드에서 windows + R 누른 후 cmd 입력 후 Enter</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_1.png" style="width: 50%; display: block; margin: 0 auto;"></td>
+                </tr>
+                <tr>
+                    <td><span class="step-number">2.</span> cd c:\test 입력후 Enter (파일이 저장될 작업 폴더는 자유롭게 지정함)</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_5.png" style="width: 50%; display: block; margin: 0 auto;"></td>
+                </tr>
+                <tr>
+                    <td><span class="step-number">3.</span> jupyter lab 입력 후 Enter</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_6.png" style="width: 50%; display: block; margin: 0 auto;"></td>
+                </tr>
+                <tr>
+                    <td><span class="step-number">4.</span> jupyter lab을 실행시키는 프로그램 실행되고 웹브라우저 창이 열림(웹브라우저창 실행을 위해 터미널창을 종료하면 안됨)</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_7.png" style="width: 50%; display: block; margin: 0 auto;"></td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_8.png" ></td>
+                </tr>
+                <tr>
+                    <td><span class="step-number">5.</span> File > New > Notebook  선택</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_9.png" ></td>
+                </tr>
+                <tr>
+                    <td><span class="step-number">6.</span> 파이썬 명령문 입력후 Shift + Enter</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_10.png" ></td>
+                </tr>
+                <tr>
+                    <td><span class="step-number">7.</span> 파일 저장을 위해 Ctrl + S 누름 </td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_11.png" ></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="tab3" class="tab-content">
+        <div class="login-guide-container">
+            <table>
+                <tr>
+                    <td><span class="step-number">1.</span> 탐색기창에서 작업 폴더로 이동한 후 Shift + 마우스 오른쪽 버튼 클릭</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_12.png" style="width: 50%; display: block; margin: 0 auto;"></td>
+                </tr>
+                <tr>
+                    <td><span class="step-number">2.</span> 실행된 커맨드창에서 jupyter lab 입력 후 Enter</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_13.png" style="width: 50%; display: block; margin: 0 auto;"></td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_14.png" style="width: 50%; display: block; margin: 0 auto;"></td>
+                </tr>
+                <tr>
+                    <td><span class="step-number">3.</span>새로운 노트북 생성을 위해 File > New > Notebook 또는 다음 방법</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_15.png"></td>
+                </tr>
+                     
+            </table>
+        </div>
+    </div>
+    <div id="tab4" class="tab-content">
+        <div class="login-guide-container">
+            <table>
+                <tr>
+                    <td><span class="step-number">1.</span> File > New > Terminal 선택</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_16.png"></td>
+                </tr>
+                <tr>
+                    <td><span class="step-number">2.</span> 새로운 터미널 창 열림</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_17.png"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="tab5" class="tab-content">
+        <div class="login-guide-container">
+            <table>
+                <tr>
+                    <td><span class="step-number">1.</span> File > New > Python File 선택</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_18.png"></td>
+                </tr>
+                <tr>
+                    <td><span class="step-number">2.</span> 새로운 스크립트 파일 생성</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_19.png"></td>
+                </tr>
+                <tr>
+                    <td><span class="step-number">3.</span> Ctrl + S > 파일이름 입력 > Enter</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_20.png"></td>
+                </tr>
+                <tr>
+                    <td><span class="step-number">4.</span> 파이썬 명령문 입력 후 저장(Ctrl+S)</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_21.png"></td>
+                </tr>
+                <tr>
+                    <td><span class="step-number">5.</span> 새 탭(+) 클릭</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_22.png"></td>
+                </tr>
+                <tr>
+                    <td><span class="step-number">6.</span> Terminal 선택</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_23.png"></td>
+                </tr>
+                <tr>
+                    <td><span class="step-number">7.</span> python exam02.py 입력 후 Enter</td>
+                </tr>
+                <tr>
+                    <td><img src="image/0_4_24.png"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+
+    // 모든 탭 컨텐츠 숨기기
+    tabcontent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // 모든 탭 버튼에서 "active" 클래스 제거
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // 클릭한 탭 컨텐츠 표시 및 해당 탭 버튼에 "active" 클래스 추가
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// 기본적으로 첫 번째 탭을 열어줍니다.
+document.getElementsByClassName("tablinks")[0].click();
+</script>
+<style>
+    .login-guide-container {
+        font-family: 'Arial', sans-serif;
+        color: #333;
+    }
+    .login-guide-container h1 {
+        font-size: 1.8em;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    .login-guide-container table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .login-guide-container td {
+        padding: 10px;
+        vertical-align: top;
+        border-bottom: 1px solid #ddd;
+    }
+    .login-guide-container img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+    .login-guide-container .step-number {
+        font-weight: bold;
+        color: #0077cc;
+    }
+    .login-guide-container a {
+        color: #0077cc;
+        text-decoration: none;
+    }
+    .login-guide-container a:hover {
+        color: red;
+        text-decoration: underline;
+    }
+</style>
+</body>
+</html>
