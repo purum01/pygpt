@@ -114,6 +114,14 @@
                     <li onclick="event.stopPropagation(); showContent('menu5_3');">while문</li>
                 </ul>            
             </li>
+
+            <li id="menu12" onclick="toggleNested(this)">* ChatGPT 사용
+                <ul class="nested">
+                    <li onclick="event.stopPropagation(); showContent('menu12_1');">프로젝트 기반 실습</li>                        
+                    <li onclick="event.stopPropagation(); showContent('menu12_2');">코딩 챌린지</li>
+                </ul>             
+            </li>     
+                   
             <li id="menu6" onclick="toggleNested(this)">6. Iterable
                 <ul class="nested">
                     <li onclick="event.stopPropagation(); showContent('menu6_6');">sequence type</li>                        
@@ -125,12 +133,7 @@
                     <li onclick="event.stopPropagation(); showContent('menu6_5');">dict</li>
                 </ul>            
             </li>
-            <li id="menu12" onclick="toggleNested(this)">* ChatGPT 사용
-                <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu12_1');">프로젝트 기반 실습</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu12_2');">코딩 챌린지</li>
-                </ul>             
-            </li>
+
             <li id="menu7" onclick="toggleNested(this)">7. 함수
                 <ul class="nested">
                     <li onclick="event.stopPropagation(); showContent('menu7_1');">함수 선언</li>                        
