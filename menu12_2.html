@@ -1,0 +1,62 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="style2.css">
+
+<h1 class="title">코딩 챌린지</h1>
+
+<div class="faq-container">
+    <!-- 첫번째 실습 영역 -->
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleFaq(this)">
+            <img src="question.png" width="34px" height="34px">
+            숫자를 거꾸로 출력하기
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            숫자를 입력받아 그 숫자를 거꾸로 출력하는 프로그램입니다.
+           
+                <ul>
+                    <li>👉 입력: 12345 </li>
+                    <li>🖥️ 출력: 54321</li>                    
+                </ul>
+            </div>
+    </div>
+        
+    
+
+    <!-- 두번째 실습 영역 -->
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleFaq(this)">
+            <img src="question.png" width="34px" height="34px">
+            간단한 암호화 프로그램 만들기
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            입력된 알파벳을 한 글자씩 뒤로 밀어서 암호화하는 프로그램입니다. 
+            <ul>
+                <li>👉 입력 : abc </li>
+                <li>🖥️ 출력 : bcd</li>                    
+            </ul>
+            </div>            
+        </div>
+    </div>
+</div>
+
+<script>
+
+function toggleFaq(element) {
+    // 드롭다운 토글 기능
+    var answer = element.nextElementSibling;
+    var icon = element.querySelector('i');
+    if (answer.style.display === "block") {
+        answer.style.display = "none";
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
+    } else {
+        answer.style.display = "block";
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
+    }
+}
+</script>

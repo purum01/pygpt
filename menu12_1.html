@@ -1,0 +1,127 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="style2.css">
+
+<h1 class="title">ChatGPT 사용하기</h1>
+
+<div class="faq-container">
+    <!-- 첫번째 실습 영역 -->
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleFaq(this)">
+            <img src="question.png" width="34px" height="34px">
+            자기소개 프로그램 만들기
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <button class="copy-btn" onclick="copyCode('source-code1')">📋 Copy</button>
+<pre><code id="source-code1" class="language-python">
+name = input("이름을 입력하세요: ")
+age = input("나이를 입력하세요: ")
+hobby = input("취미를 입력하세요: ")
+
+print("\n[프로필]")
+print(f"이름: {name}")
+print(f"나이: {age}")
+print(f"취미: {hobby}")
+</code></pre>
+            <div>
+                <ul>
+                    <li>❓질문1 : "입력받은 나이를 숫자로 바꿔서, 다음 해의 나이를 출력하려면 어떻게 해야 할까요?"</li>
+                    <li>❓질문2 : "취미가 여러 개일 때는 어떻게 처리하면 좋을까요?"</li>                    
+                    <li>🤔 실습 : 다음 기능을 추가하세요
+                        <ol>
+                            <li> 나이를 계산한 후 "내년 나이는 XX 살입니다" 를 출력하는 기능 구현</li>
+                            <li> 취미를 여러개 입력받는 기능 구현</li>
+                        </ol>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div> 
+
+    <!-- 두번째 실습 영역 -->
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleFaq(this)">
+            <img src="question.png" width="34px" height="34px">
+            퀴즈 게임 제작
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <button class="copy-btn" onclick="copyCode('source-code2')">📋 Copy</button>
+            <pre><code id="source-code2" class="language-python">
+score = 0
+
+print("퀴즈를 시작합니다!")
+
+# 문제 1
+answer = input("파이썬의 창시자는 누구일까요? ")
+if answer == "귀도 반 로썸":
+    print("정답!")
+    score += 1
+else:
+    print("틀렸습니다.")
+
+# 문제 2
+answer = input("파이썬의 가장 최신 버전은 무엇일까요? (버전 번호만 입력하세요) ")
+if answer == "3.10":
+    print("정답!")
+    score += 1
+else:
+    print("틀렸습니다.")
+
+print(f"\n총 점수: {score}점")
+            </code></pre>
+        
+            <div>
+                <ul>
+                    <li>❓질문1 : "문제를 더 추가하고 싶어요. 문제 개수가 많아도 깔끔하게 처리하려면 어떻게 할까요?"</li>
+                    <li>❓질문2 : "정답을 틀렸을 때 힌트를 주는 기능을 추가하려면 어떻게 하면 좋을까요?"</li>                    
+                    <li>🤔 실습 : 다음 기능을 추가하세요
+                        <ol>
+                            <li> 점수에 따라 "A등급", "B등급" 등 성적을 매기는 기능 구현</li>
+                            <li> 여러 문제를 반복하여 출제하는 기능 추가</li>
+                        </ol>
+                    </li>
+                </ul>
+            </div>            
+        </div>
+    </div>
+</div>
+
+<script>
+function copyCode(elementId) {
+    // 해당 요소의 텍스트를 선택하고 복사합니다.
+    var codeElement = document.getElementById(elementId);
+    var range = document.createRange();
+    range.selectNodeContents(codeElement);
+    var selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+
+    try {
+        document.execCommand('copy');
+    } catch (err) {
+        alert('복사에 실패했습니다.');
+    }
+    
+    // 선택 해제
+    selection.removeAllRanges();
+}
+
+function toggleFaq(element) {
+    // 드롭다운 토글 기능
+    var answer = element.nextElementSibling;
+    var icon = element.querySelector('i');
+    if (answer.style.display === "block") {
+        answer.style.display = "none";
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
+    } else {
+        answer.style.display = "block";
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
+    }
+}
+</script>
