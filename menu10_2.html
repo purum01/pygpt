@@ -25,7 +25,6 @@
                
                <h3>시퀀스에서 요소 선택</h3>
                <li>random.choice(seq): 주어진 시퀀스(리스트, 튜플 등)에서 무작위로 하나의 요소를 선택하여 반환합니다.
-               <li>random.choices(population, weights=None, cum_weights=None, k=1): 시퀀스에서 가중치를 고려하여 하나 또는 여러 요소를 무작위로 선택합니다.
                <li>random.sample(population, k): 시퀀스에서 중복 없이 k개의 요소를 무작위로 선택합니다.
 
                <h3>예제 코드</h3>
@@ -58,10 +57,6 @@ items = ['apple', 'banana', 'cherry', 'date', 'fig']
 item = random.choice(items)
 print(f"Randomly selected item: {item}")
 
-# 가중치를 고려하여 여러 요소 선택 (중복 허용)
-weights = [10, 1, 1, 1, 1]
-selected_items = random.choices(items, weights=weights, k=2)
-print(f"Randomly selected items with weights: {selected_items}")
 
 # 중복 없이 여러 요소 무작위 선택
 sampled_items = random.sample(items, 3)
@@ -83,25 +78,42 @@ print(f"Randomly sampled items without replacement: {sampled_items}")
                Python의 math 모듈은 수학적인 연산을 수행하기 위한 다양한 함수와 상수를 제공합니다. 이 모듈을 사용하여 근사값 계산, 삼각 함수, 로그 함수, 지수 함수 등과 같은 기본적인 수학 연산을 수행할 수 있습니다. math 모듈에 포함된 몇 가지 주요 기능을 소개합니다:
                <h3>수학적 유틸리티</h3>
                <ul>
-                    <li>math.ceil(x): x 이상의 최소 정수를 반환합니다.</li>
-                    <li>math.floor(x): x 이하의 최대 정수를 반환합니다.</li>
-                    <li>math.fabs(x): x의 절대값을 부동소수점 수로 반환합니다.</li>
+                    <li>math.sqrt(x): 주어진 숫자 x의 제곱근을 반환합니다.</li>
+                    <li>math.pow(x, y): x의 y제곱근을 반환합니다.</li>
                     <li>math.factorial(x): x의 팩토리얼 값을 계산합니다.</li>
+                    <li>math.floor(x): x보다 작거나 같은 가장 큰 정수를 반환합니다.</li>
+                    <li>math.ceil(x): x보다 크거나 같은 가장 작은 정수를 반환합니다.</li>
                </ul>
                <h3> 예제 코드</h3>
-               <pre>
-                    <code class="language-python" >   
+ <pre><code class="language-python" >   
 import math
 
-# 올림, 내림, 절대값 계산하기
-print("2.3의 올림 값:", math.ceil(2.3))
-print("2.7의 내림 값:", math.floor(2.7))
-print("-4의 절대값:", math.fabs(-4))
+# 1. math.sqrt(x): 제곱근 계산
+number = 16
+sqrt_result = math.sqrt(16)
+print(f"{number}의 제곱근: {sqrt_result}") 
 
-# 팩토리얼 계산하기
-print("5의 팩토리얼:", math.factorial(5))
-                    </code>
-                </pre>               
+# 2. math.pow(x, y): x의 y 제곱 계산
+base = 2
+exponent = 3
+pow_result = math.pow(base, exponent)
+print(f"{base}의 {exponent} 제곱: {pow_result}")
+
+# 3. math.factorial(x): x의 팩토리얼 계산
+n = 5
+factorial_result = math.factorial(n)
+print(f"{n}의 팩토리얼: {factorial_result}")
+
+# 4. math.floor(x): 내림 계산 (x보다 작거나 같은 가장 큰 정수)
+decimal_number = 3.7
+floor_result = math.floor(decimal_number)
+print(f"{decimal_number}의 내림 값: {floor_result}")
+
+# 5. math.ceil(x): 올림 계산 (x보다 크거나 같은 가장 작은 정수)
+decimal_number = 3.1
+ceil_result = math.ceil(decimal_number)
+print(f"{decimal_number}의 올림 값: {ceil_result}")
+</code></pre>               
           </div>
      </div>
 
