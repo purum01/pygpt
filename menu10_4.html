@@ -237,12 +237,12 @@ print(sorted_by_score)
 
 <pre><code class="language-python">   
 # 새로운 열 추가
-df['Grade'] = df['Score'].apply(lambda x: 'A' if x >= 90 else 'B')
+df['Occupation'] = ['Engineer', 'Doctor', 'Artist', 'Lawyer']
 print(df)
 
 
 # 새로운 행 추가할 데이터 생성
-new_row = {'Name': 'Frank', 'Age': 28, 'City': 'San Francisco', 'Score': 87.0, 'Passed': True}
+new_row = {'Name': 'Frank', 'Age': 28, 'City': 'San Francisco', 'Score': 87.0, 'Occupation': 'Lawyer'}
 # 기존 DataFrame과 새로운 행을 결합
 df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
 print(df)
