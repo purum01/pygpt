@@ -43,33 +43,24 @@
             <button class="copy-btn" onclick="copyCode('source-code')">📋 Copy</button>
             <pre><code id="source-code" class="language-python">
 import os
-import shutil
+import pandas as pd
 
-# 현재 작업 폴더 하위에 "organized" 폴더 생성
-organized_folder = "organized"
-os.makedirs(organized_folder, exist_ok=True)
+PATH = 'covid/'
+file_list = os.listdir(PATH)
+first_doc = True
 
-# "scandata" 폴더의 파일들을 가져오기
-scandata_folder = "scandata"
-files = os.listdir(scandata_folder)
+for file in file_list:
+    doc = pd.read_csv(PATH+file)
+    doc = doc[['Country_Region', 'Confirmed']]
+    doc = doc.groupby('Country_Region').sum()
+    date_column = file.split(".")[0].lstrip('0').replace('-', '/') 
+    doc.columns = [date_column]
+    if first_doc:
+        final_doc, first_doc = doc, False
+    else:
+        final_doc = pd.merge(final_doc, doc, how='outer', left_index=True, right_index=True)
 
-# 파일들을 월별로 정리
-for file_name in files:
-    # 파일 이름에서 년도, 월 추출
-    year, month = map(int, file_name.split('_')[:2])
-
-    # 월별 폴더 경로 생성
-    month_folder = os.path.join(organized_folder, f"{year}_{month:02d}")
-
-    # 월별 폴더가 없으면 생성
-    os.makedirs(month_folder, exist_ok=True)
-
-    # 파일을 월별 폴더로 이동
-    source_path = os.path.join(scandata_folder, file_name)
-    destination_path = os.path.join(month_folder, file_name)
-    shutil.move(source_path, destination_path)
-
-print("파일 정리가 완료되었습니다.")     
+final_doc.to_excel('covid_2020.xlsx')
             </code></pre>
         </div>
     </div>
