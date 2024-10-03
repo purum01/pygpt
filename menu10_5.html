@@ -1,0 +1,65 @@
+<div class="faq-container">
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;            
+        }
+        h1 {
+            color: #333;
+        }
+        code {
+            background-color: #f4f4f4;
+            border: 0px solid #ddd;
+            padding: 2px 5px;
+            font-family: Consolas, "Courier New", monospace;
+        }
+        pre {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        ul > li > strong {
+            color: green;
+        }
+    </style>
+
+    <h1>pip 명령문에 대해 설명</h1>
+
+    <p><code>pip</code>는 파이썬 패키지 관리자(Python Package Installer)로, 파이썬 패키지나 라이브러리를 설치하고 관리하는 데 사용됩니다. <code>pip</code>를 사용하면 파이썬 패키지 인덱스(PyPI)에서 제공하는 다양한 패키지나 모듈을 간단하게 설치할 수 있습니다.</p>
+
+    <h2>주요 <code>pip</code> 명령어와 설명:</h2>
+    <ul>
+        <li><strong>패키지 설치:</strong>
+            <pre><code>pip install &lt;패키지명&gt;</code></pre>
+            <p>주어진 패키지를 설치합니다. 예를 들어, <code>requests</code> 패키지를 설치하려면:</p>
+            <pre><code>pip install requests</code></pre>
+        </li>
+        <li><strong>특정 버전의 패키지 설치:</strong>
+            <pre><code>pip install &lt;패키지명&gt;==&lt;버전&gt;</code></pre>
+            <p>특정 버전의 패키지를 설치할 때 사용합니다. 예를 들어, <code>requests</code> 패키지의 2.25.1 버전을 설치하려면:</p>
+            <pre><code>pip install requests==2.25.1</code></pre>
+        </li>
+        <li><strong>패키지 업데이트:</strong>
+            <pre><code>pip install --upgrade &lt;패키지명&gt;</code></pre>
+            <p>설치된 패키지를 최신 버전으로 업데이트합니다. 예를 들어, <code>numpy</code> 패키지를 최신 버전으로 업데이트하려면:</p>
+            <pre><code>pip install --upgrade numpy</code></pre>
+        </li>
+        <li><strong>패키지 제거:</strong>
+            <pre><code>pip uninstall &lt;패키지명&gt;</code></pre>
+            <p>설치된 패키지를 제거합니다. 예를 들어, <code>matplotlib</code> 패키지를 제거하려면:</p>
+            <pre><code>pip uninstall matplotlib</code></pre>
+        </li>
+        <li><strong>설치된 패키지 목록 확인:</strong>
+            <pre><code>pip list</code></pre>
+            <p>현재 설치된 모든 패키지의 목록과 버전을 확인할 수 있습니다.</p>
+        </li>
+        <li><strong>특정 패키지 정보 확인:</strong>
+            <pre><code>pip show &lt;패키지명&gt;</code></pre>
+            <p>특정 패키지에 대한 정보(설치 경로, 버전, 종속성 등)를 확인할 수 있습니다. 예를 들어, <code>pandas</code> 패키지의 정보를 확인하려면:</p>
+            <pre><code>pip show pandas</code></pre>
+        </li>
+       
+    </ul>
+</div>
