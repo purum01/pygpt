@@ -60,7 +60,7 @@
 <div class="container">
     <div class="side-menu">
         <ul id="menu">
-            <li id="menu0" onclick="toggleNested(this)")">0. 시작하기 
+            <li id="menu0" onclick="toggleNested(this)")">1. 시작하기 
                 <ul class="nested">
                     <li onclick="event.stopPropagation(); showContent('menu0_1');">개발 환경 구축</li>                                            
                     <li onclick="event.stopPropagation(); showContent('menu0_4');">파이썬 실행</li>                        
@@ -68,7 +68,7 @@
                     <li onclick="event.stopPropagation(); showContent('menu0_3');">ChatGPT 로그인</li>
                 </ul>
             </li>
-            <li id="menu1" onclick="toggleNested(this)">1. 자료형
+            <li id="menu1" onclick="toggleNested(this)">2. 자료형
                 <ul class="nested">
                     <li onclick="event.stopPropagation(); showContent('menu1_4')">① str</li>
                     <li onclick="event.stopPropagation(); showContent('menu1_1')">② int</li>                  
@@ -80,14 +80,14 @@
                     <li onclick="event.stopPropagation(); showContent('menu1_8')">⑧ dict</li>
                 </ul>
             </li>
-            <li id ="menu2" onclick="toggleNested(this)">2. 변수
+            <li id ="menu2" onclick="toggleNested(this)">3. 변수
                 <ul class="nested">
                     <li onclick="event.stopPropagation(); showContent('menu2_1');">변수 선언</li>                        
                     <li onclick="event.stopPropagation(); showContent('menu2_3');">연습 문제</li>
                 </ul>
             </li>
 
-            <li id="menu3" onclick="toggleNested(this)">3. 연산자
+            <li id="menu3" onclick="toggleNested(this)">4. 연산자
                 <ul class="nested">
                     <li onclick="event.stopPropagation(); showContent('menu3_1');">산술연산자</li>                        
                     <li onclick="event.stopPropagation(); showContent('menu3_2');">비교연산자</li>
@@ -95,7 +95,7 @@
                     <li onclick="event.stopPropagation(); showContent('menu3_4');">포함연산자</li>
                 </ul>            
             </li>
-            <li id="menu4" onclick="toggleNested(this)">4. 내장함수
+            <li id="menu4" onclick="toggleNested(this)">5. 내장함수
                 <ul class="nested">
                     <li></li>
                     <li onclick="event.stopPropagation(); showContent('menu4_1');">형변환 함수</li>                        
@@ -107,7 +107,7 @@
                     <li onclick="event.stopPropagation(); showContent('menu4_6');">연습 문제</li>
                 </ul>            
             </li>
-            <li id="menu5" onclick="toggleNested(this)">5. 제어문
+            <li id="menu5" onclick="toggleNested(this)">6. 제어문
                 <ul class="nested">
                     <li onclick="event.stopPropagation(); showContent('menu5_1');">if문</li>                        
                     <li onclick="event.stopPropagation(); showContent('menu5_2');">for문</li>
@@ -115,14 +115,14 @@
                 </ul>            
             </li>
 
-            <li id="menu12" onclick="toggleNested(this)">* ChatGPT 사용
+            <li id="menu12" onclick="toggleNested(this)">7 ChatGPT 사용
                 <ul class="nested">
                     <li onclick="event.stopPropagation(); showContent('menu12_1');">프로젝트 기반 실습</li>                        
                     <li onclick="event.stopPropagation(); showContent('menu12_2');">코딩 챌린지</li>
                 </ul>             
             </li>     
                    
-            <li id="menu6" onclick="toggleNested(this)">6. Iterable
+            <li id="menu6" onclick="toggleNested(this)">8. 반복가능객체(Iterable)
                 <ul class="nested">
                     <li onclick="event.stopPropagation(); showContent('menu6_6');">sequence type</li>                        
                     <li onclick="event.stopPropagation(); showContent('menu6_7');">dictionary type</li>                        
@@ -134,7 +134,7 @@
                 </ul>            
             </li>
 
-            <li id="menu7" onclick="toggleNested(this)">7. 함수
+            <li id="menu7" onclick="toggleNested(this)">9. 함수(Function)
                 <ul class="nested">
                     <li onclick="event.stopPropagation(); showContent('menu7_1');">함수 선언</li>                        
                     <li onclick="event.stopPropagation(); showContent('menu7_2');">함수 호출</li>
@@ -143,29 +143,30 @@
                 </ul>             
             </li>
 
-            <li id="menu8" onclick="toggleNested(this)">8. 클래스
+            <li id="menu8" onclick="toggleNested(this)">10. 클래스(Class)
                 <ul class="nested">
                     <li onclick="event.stopPropagation(); showContent('menu8_1');">클래스 선언 </li>                        
                     <li onclick="event.stopPropagation(); showContent('menu8_2');">인스턴스</li>                    
                 </ul>            
             </li>
                         
-            <li id="menu9" onclick="toggleNested(this)">9. 오류 처리
+            <li id="menu9" onclick="toggleNested(this)">11. 오류 처리(Error)
                 <ul class="nested">
                     <li onclick="event.stopPropagation(); showContent('menu9_1');">예외 객체</li>                        
                     <li onclick="event.stopPropagation(); showContent('menu9_2');">try-except</li>
                     <li onclick="event.stopPropagation(); showContent('menu9_3');">예외 강제 발생</li>
                 </ul>              
             </li>
-            <li id="menu10" onclick="toggleNested(this)">10. 모듈
+            <li id="menu10" onclick="toggleNested(this)">12. 라이브러리(Library)
                 <ul class="nested">
+                    <li onclick="event.stopPropagation(); showContent('menu10_5');">PIP</li>                        
                     <li onclick="event.stopPropagation(); showContent('menu10_1');">모듈 사용</li>                        
                     <li onclick="event.stopPropagation(); showContent('menu10_2');">표준 모듈</li>
                     <li onclick="event.stopPropagation(); showContent('menu10_3');">연습 문제</li>
                     <li onclick="event.stopPropagation(); showContent('menu10_4');">Pandas</li>
                 </ul>             
             </li>
-            <li id="menu11" onclick="toggleNested(this)">11. ChatGPT 활용
+            <li id="menu11" onclick="toggleNested(this)">13. ChatGPT 활용
                 <ul class="nested">
                     <li onclick="event.stopPropagation(); showContent('menu11_1')">01_로또번호 생성</li>
                     <li onclick="event.stopPropagation(); showContent('menu11_2')">02_파일 정리</li>
