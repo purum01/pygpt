@@ -1,0 +1,69 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+
+<h1 class="title"> PDF 파일 생성하기</h1>
+<div class="faq-container">
+    <div class="faq-section">
+        <div class="faq-question">
+            <img  src="question.png" width="34px" height="34px"  >
+            질문
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+            <code id="source-code">
+너는 유능한 파이썬 프로그래머야.
+다음에 제시된 조건에 따라 파이썬 코드를 생성해줘
+
+# 조건
+1. 현재 작업 폴더에 'scandata' 폴더를 생성해.
+2. scandata 폴더에 PDF 파일 100개를 생성해.
+3. 생성되는 파일 이름의 규칙은 "년도_월_일" 로 날짜 정보를 나타내.
+4. 파일이름의 년도는 2023으로 고정하고 "월"과 "일"은 랜덤하게 지정해.                    
+            </code>            
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="gpt.png"   width="34px" height="34px" >
+            답변
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">            
+            <code id="source-code" class="language-python">
+import os
+import random
+from datetime import datetime
+
+# 현재 작업 폴더에 "scandata" 폴더 생성
+output_folder = "scandata"
+os.makedirs(output_folder, exist_ok=True)
+
+# 년도는 2023으로 고정
+year = 2023
+
+# 100개의 PDF 파일 생성
+for i in range(1, 101):
+    # 월과 일을 랜덤으로 생성
+    month = random.randint(1, 12)
+    day = random.randint(1, 28)  # 간단하게 28일로 가정
+
+    # 파일 이름 형식에 맞게 포맷팅
+    file_name = f"{year}_{month:02d}_{day:02d}.pdf"
+
+    # 파일 생성
+    file_path = os.path.join(output_folder, file_name)
+    with open(file_path, 'w') as file:
+        # 파일 내용이 없으므로 pass
+        pass
+
+print("PDF 파일 생성이 완료되었습니다.")
+                                  
+            </code>
+        </div>
+    </div>
+</div>
+
+<script src="content.js"></script>
+
