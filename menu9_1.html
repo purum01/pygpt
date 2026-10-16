@@ -1,76 +1,285 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&display=swap">
 
-<h1 class="title">Exception(예외) 객체</h1>    
+<style>
+  :root {
+    --exc-line:    #d1d5db;
+    --exc-surface: #ffffff;
+    --exc-border:  #e2e6ed;
+
+    --exc-c-root:   #374151;
+    --exc-c-system: #6d28d9;
+    --exc-c-exc:    #1d4ed8;
+    --exc-c-arith:  #c2410c;
+    --exc-c-lookup: #047857;
+    --exc-c-os:     #b91c1c;
+    --exc-c-syn:    #9d174d;
+    --exc-c-common: #065f46;
+    --exc-c-warn:   #92400e;
+    --exc-c-other:  #4b5563;
+
+    --exc-bg-root:   #f3f4f6;
+    --exc-bg-system: #ede9fe;
+    --exc-bg-exc:    #dbeafe;
+    --exc-bg-arith:  #fff7ed;
+    --exc-bg-lookup: #d1fae5;
+    --exc-bg-os:     #fee2e2;
+    --exc-bg-syn:    #fce7f3;
+    --exc-bg-common: #ecfdf5;
+    --exc-bg-warn:   #fef3c7;
+    --exc-bg-other:  #f9fafb;
+  }
+
+  .exc-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding: 12px 14px;
+    background: var(--exc-surface);
+    border: 1px solid var(--exc-border);
+    border-radius: 10px;
+  }
+  .exc-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #6b7280;
+  }
+  .exc-legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .exc-tree-wrap {
+    background: var(--exc-surface);
+    border: 1px solid var(--exc-border);
+    border-radius: 12px;
+    padding: 20px 20px 20px 16px;
+    overflow-x: auto;
+  }
+
+  .exc-node {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 12.5px;
+    font-weight: 600;
+    white-space: nowrap;
+    margin: 2px 0;
+    cursor: default;
+    transition: filter 0.15s;
+  }
+  .exc-node:hover { filter: brightness(0.93); }
+
+  .exc-node.root   { background: var(--exc-bg-root);   color: var(--exc-c-root);   border: 1.5px solid currentColor; }
+  .exc-node.system { background: var(--exc-bg-system); color: var(--exc-c-system); }
+  .exc-node.exc    { background: var(--exc-bg-exc);    color: var(--exc-c-exc);    border: 1.5px solid currentColor; }
+  .exc-node.arith  { background: var(--exc-bg-arith);  color: var(--exc-c-arith);  }
+  .exc-node.lookup { background: var(--exc-bg-lookup); color: var(--exc-c-lookup); }
+  .exc-node.os     { background: var(--exc-bg-os);     color: var(--exc-c-os);     }
+  .exc-node.syn    { background: var(--exc-bg-syn);    color: var(--exc-c-syn);    }
+  .exc-node.common { background: var(--exc-bg-common); color: var(--exc-c-common); }
+  .exc-node.warn   { background: var(--exc-bg-warn);   color: var(--exc-c-warn);   }
+  .exc-node.other  { background: var(--exc-bg-other);  color: var(--exc-c-other);  }
+
+  .exc-star {
+    font-size: 10px;
+    background: #f59e0b;
+    color: white;
+    padding: 0 4px;
+    border-radius: 4px;
+    font-family: system-ui;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+
+  .exc-children {
+    margin-left: 14px;
+    padding-left: 18px;
+    border-left: 2px solid var(--exc-line);
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  .exc-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    position: relative;
+    margin: 1px 0;
+  }
+  .exc-row-inline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 2px 0;
+    position: relative;
+  }
+  .exc-row-inline .exc-node { margin: 0; }
+
+  .exc-children > .exc-row::before,
+  .exc-children > .exc-row-inline::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 11px;
+    width: 16px;
+    height: 2px;
+    background: var(--exc-line);
+  }
+</style>
+
+<h1 class="title">Exception(예외) 객체</h1>
 <div class="faq-container">
-     <div class="faq-section">
-          <div class="faq-question">
-               <img  src="question.png" width="34px" height="34px" >
-               파이썬의 예외 객체 계층적 구조를 보여주세요
-               <i class="fas fa-chevron-down"></i>
-          </div>
-     <div class="faq-answer">
-          <pre>
-               <code class="language-python" >   
-                    BaseException
-                    +-- SystemExit
-                    +-- KeyboardInterrupt
-                    +-- GeneratorExit
-                    +-- Exception
-                         +-- StopIteration
-                         +-- ArithmeticError
-                         |    +-- FloatingPointError
-                         |    +-- OverflowError
-                         |    +-- ZeroDivisionError
-                         +-- AssertionError
-                         +-- AttributeError
-                         +-- BufferError
-                         +-- EOFError
-                         +-- ImportError
-                              +-- ModuleNotFoundError
-                         +-- LookupError
-                              +-- IndexError
-                              +-- KeyError
-                         +-- MemoryError
-                         +-- NameError
-                              +-- UnboundLocalError
-                         +-- OSError
-                              +-- FileNotFoundError
-                              +-- InterruptedError
-                              +-- PermissionError
-                              +-- ...
-                         +-- RuntimeError
-                              +-- NotImplementedError
-                              +-- RecursionError
-                         +-- SyntaxError
-                              +-- IndentationError
-                                   +-- TabError
-                         +-- SystemError
-                         +-- TypeError
-                         +-- ValueError
-                              +-- UnicodeError
-                                   +-- UnicodeDecodeError
-                                   +-- UnicodeEncodeError
-                                   +-- UnicodeTranslateError
-                         +-- Warning
-                              +-- DeprecationWarning
-                              +-- PendingDeprecationWarning
-                              +-- RuntimeWarning
-                              +-- SyntaxWarning
-                              +-- UserWarning
-                              +-- FutureWarning
-                              +-- ImportWarning
-                              +-- UnicodeWarning
-                              +-- BytesWarning
-                              +-- ResourceWarning
-                       
-                </code>
-            </pre>
-        </div>    
 
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="34px" height="34px">
+            파이썬의 예외 객체 계층적 구조를 보여주세요
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <img src="gpt.png">
+            파이썬의 모든 예외는 <b>BaseException</b>을 최상위 부모로 가지는 계층 구조로 이루어져 있습니다.
+            일반적인 프로그램 오류는 <b>Exception</b> 아래에 분류되며, <span class="exc-star" style="display:inline-block;">⭐</span> 표시는 초보자가 자주 마주치는 예외입니다.
+            <br><br>
 
+            <div class="exc-legend">
+                <div class="exc-legend-item"><div class="exc-legend-dot" style="background:#6d28d9"></div> 시스템 종료</div>
+                <div class="exc-legend-item"><div class="exc-legend-dot" style="background:#1d4ed8"></div> Exception (기본)</div>
+                <div class="exc-legend-item"><div class="exc-legend-dot" style="background:#c2410c"></div> 산술 오류</div>
+                <div class="exc-legend-item"><div class="exc-legend-dot" style="background:#047857"></div> 조회 오류</div>
+                <div class="exc-legend-item"><div class="exc-legend-dot" style="background:#b91c1c"></div> OS/파일 오류</div>
+                <div class="exc-legend-item"><div class="exc-legend-dot" style="background:#9d174d"></div> 문법 오류</div>
+                <div class="exc-legend-item"><div class="exc-legend-dot" style="background:#065f46"></div> 타입/이름/값 오류</div>
+                <div class="exc-legend-item"><div class="exc-legend-dot" style="background:#92400e"></div> 경고 (Warning)</div>
+            </div>
 
-</div>    
+            <div class="exc-tree-wrap">
+
+                <div class="exc-row">
+                    <span class="exc-node root">BaseException</span>
+                    <div class="exc-children">
+
+                        <div class="exc-row-inline"><span class="exc-node system">SystemExit</span></div>
+                        <div class="exc-row-inline"><span class="exc-node system">KeyboardInterrupt</span></div>
+                        <div class="exc-row-inline"><span class="exc-node system">GeneratorExit</span></div>
+
+                        <div class="exc-row">
+                            <span class="exc-node exc">Exception</span>
+                            <div class="exc-children">
+
+                                <div class="exc-row">
+                                    <span class="exc-node arith">ArithmeticError</span>
+                                    <div class="exc-children">
+                                        <div class="exc-row-inline"><span class="exc-node arith">FloatingPointError</span></div>
+                                        <div class="exc-row-inline"><span class="exc-node arith">OverflowError</span></div>
+                                        <div class="exc-row-inline"><span class="exc-node arith">ZeroDivisionError</span><span class="exc-star">⭐</span></div>
+                                    </div>
+                                </div>
+
+                                <div class="exc-row">
+                                    <span class="exc-node lookup">LookupError</span>
+                                    <div class="exc-children">
+                                        <div class="exc-row-inline"><span class="exc-node lookup">IndexError</span><span class="exc-star">⭐</span></div>
+                                        <div class="exc-row-inline"><span class="exc-node lookup">KeyError</span><span class="exc-star">⭐</span></div>
+                                    </div>
+                                </div>
+
+                                <div class="exc-row">
+                                    <span class="exc-node os">OSError</span>
+                                    <div class="exc-children">
+                                        <div class="exc-row-inline"><span class="exc-node os">FileNotFoundError</span><span class="exc-star">⭐</span></div>
+                                        <div class="exc-row-inline"><span class="exc-node os">PermissionError</span></div>
+                                        <div class="exc-row-inline"><span class="exc-node os">InterruptedError</span></div>
+                                    </div>
+                                </div>
+
+                                <div class="exc-row">
+                                    <span class="exc-node syn">SyntaxError</span><span class="exc-star">⭐</span>
+                                    <div class="exc-children">
+                                        <div class="exc-row">
+                                            <span class="exc-node syn">IndentationError</span><span class="exc-star">⭐</span>
+                                            <div class="exc-children">
+                                                <div class="exc-row-inline"><span class="exc-node syn">TabError</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="exc-row">
+                                    <span class="exc-node other">ImportError</span>
+                                    <div class="exc-children">
+                                        <div class="exc-row-inline"><span class="exc-node common">ModuleNotFoundError</span><span class="exc-star">⭐</span></div>
+                                    </div>
+                                </div>
+
+                                <div class="exc-row">
+                                    <span class="exc-node common">NameError</span><span class="exc-star">⭐</span>
+                                    <div class="exc-children">
+                                        <div class="exc-row-inline"><span class="exc-node common">UnboundLocalError</span></div>
+                                    </div>
+                                </div>
+
+                                <div class="exc-row">
+                                    <span class="exc-node other">RuntimeError</span>
+                                    <div class="exc-children">
+                                        <div class="exc-row-inline"><span class="exc-node other">NotImplementedError</span></div>
+                                        <div class="exc-row-inline"><span class="exc-node other">RecursionError</span></div>
+                                    </div>
+                                </div>
+
+                                <div class="exc-row">
+                                    <span class="exc-node common">ValueError</span><span class="exc-star">⭐</span>
+                                    <div class="exc-children">
+                                        <div class="exc-row">
+                                            <span class="exc-node other">UnicodeError</span>
+                                            <div class="exc-children">
+                                                <div class="exc-row-inline"><span class="exc-node other">UnicodeDecodeError</span></div>
+                                                <div class="exc-row-inline"><span class="exc-node other">UnicodeEncodeError</span></div>
+                                                <div class="exc-row-inline"><span class="exc-node other">UnicodeTranslateError</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="exc-row-inline"><span class="exc-node common">TypeError</span><span class="exc-star">⭐</span></div>
+                                <div class="exc-row-inline"><span class="exc-node common">AttributeError</span><span class="exc-star">⭐</span></div>
+                                <div class="exc-row-inline"><span class="exc-node other">AssertionError</span></div>
+                                <div class="exc-row-inline"><span class="exc-node other">EOFError</span></div>
+                                <div class="exc-row-inline"><span class="exc-node other">MemoryError</span></div>
+                                <div class="exc-row-inline"><span class="exc-node other">StopIteration</span></div>
+                                <div class="exc-row-inline"><span class="exc-node other">SystemError</span></div>
+
+                                <div class="exc-row">
+                                    <span class="exc-node warn">Warning</span>
+                                    <div class="exc-children">
+                                        <div class="exc-row-inline"><span class="exc-node warn">DeprecationWarning</span></div>
+                                        <div class="exc-row-inline"><span class="exc-node warn">RuntimeWarning</span></div>
+                                        <div class="exc-row-inline"><span class="exc-node warn">SyntaxWarning</span></div>
+                                        <div class="exc-row-inline"><span class="exc-node warn">UserWarning</span></div>
+                                        <div class="exc-row-inline"><span class="exc-node warn">FutureWarning</span></div>
+                                        <div class="exc-row-inline"><span class="exc-node warn">ResourceWarning</span></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
 
 <script src="content.js"></script>

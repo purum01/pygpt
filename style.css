@@ -83,9 +83,39 @@ a {
     background-color: darkgreen; /* 마우스 오버 시 배경 색상을 어두운 초록색으로 변경 */
 }
 
-.answer{
-    margin-bottom : 20px;
-    width: 75%; /* 너비 설정 */    
+.answer-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 80%;
+    box-sizing: border-box;
+    background: #f1f8e9;
+    border: 1px solid #c8e6c9;
+    border-radius: 10px;
+    padding: 10px 16px;
+    margin: 12px 0 20px 0;
+    color: #2e7d32;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.answer {
+    flex: 1;
+    border: 2px solid #c8e6c9;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 0.95em;
+    font-weight: normal;
+    outline: none;
+    background: white;
+    margin-bottom: 0;
+    width: auto;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.answer:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.12);
 }
 
 .m1{

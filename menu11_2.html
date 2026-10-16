@@ -1,106 +1,105 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+﻿<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="style2.css">
+
+<style>
+.prompt-box {
+    background: #ffffff;
+    border-left: 4px solid #4f96e8;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    font-size: 14px;
+    line-height: 2;
+    color: #333;
+    white-space: pre-wrap;
+}
+.prompt-box .prompt-tag {
+    display: inline-block;
+    font-weight: 700;
+    color: #1d4ed8;
+}
+</style>
 
 <h1 class="title">파일 월별 정리하기</h1>
 
 <div class="faq-container">
-    <!-- 질문 영역 -->
+
     <div class="faq-section">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question">
             <img src="question.png" width="34px" height="34px">
             질문
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer">
-            <button class="copy-btn" onclick="copyCode('source-question')">📋 Copy</button>
-            <pre><code id="source-question">
-다음에 제시된 조건에 따라 파이썬 코드를 생성해주세요
+        <div class="faq-answer" style="display:none;">
+            <div class="prompt-box">
+다음 조건에 맞는 파이썬 코드를 생성해주세요
 
-# 조건
-1.  현재 작업 폴더 하위의  'scandata' 폴더에 있는 파일들을 월별로 정리할거야
-2.  날짜 정보는 파일이름으로 판별할 수 있어. 파일이름은  "년_월_일"로 구성되어 있어.
-3.  scandata  폴더에 있는 파일들을 현재 작업폴더 하위에 organized 폴더를 생성한 후 월별로 폴더를 생성해서 분류해줘                  
-</code></pre>
+<span class="prompt-tag">#제목</span>
+파일 월별 정리하기
+
+<span class="prompt-tag">#조건</span>
+1. 현재 작업 폴더 하위의 'scandata' 폴더에 있는 파일들을 월별로 정리
+2. 날짜 정보는 파일 이름으로 판별 — 파일 이름 형식은 "년_월_일"
+3. scandata 폴더의 파일들을 현재 작업 폴더 하위 'organized' 폴더에 월별 폴더를 만들어 분류
+4. 폴더가 없으면 자동 생성
+5. 파이썬 입문자가 이해할 수 있도록 주석 포함
+
+<span class="prompt-tag">#출력예시</span>
+organized/
+  ├── 2024_01/
+  │     ├── 2024_01_05.jpg
+  │     └── 2024_01_22.jpg
+  └── 2024_02/
+        └── 2024_02_10.jpg
+파일 정리가 완료되었습니다.
+            </div>
         </div>
     </div>
 
-    <!-- 답변 영역 -->
     <div class="faq-section">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question">
             <img src="gpt.png" width="34px" height="34px">
             답변
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer">
-            <button class="copy-btn" onclick="copyCode('source-code')">📋 Copy</button>
-            <pre><code id="source-code" class="language-python">
+        <div class="faq-answer" style="display:none;">
+            <pre><code class="language-python">
 import os
 import shutil
 
-# 현재 작업 폴더 하위에 "organized" 폴더 생성
+# 원본 폴더와 정리 폴더 경로 설정
+scandata_folder  = "scandata"
 organized_folder = "organized"
+
+# organized 폴더 생성 (이미 있으면 무시)
 os.makedirs(organized_folder, exist_ok=True)
 
-# "scandata" 폴더의 파일들을 가져오기
-scandata_folder = "scandata"
-files = os.listdir(scandata_folder)
+# scandata 폴더의 항목들을 순서대로 처리
+for file_name in os.listdir(scandata_folder):
+    source_path = os.path.join(scandata_folder, file_name)
 
-# 파일들을 월별로 정리
-for file_name in files:
-    # 파일 이름에서 년도, 월 추출
-    year, month = map(int, file_name.split('_')[:2])
+    # 파일이 아닌 항목(하위 폴더 등)은 건너뜀
+    if not os.path.isfile(source_path):
+        continue
 
-    # 월별 폴더 경로 생성
-    month_folder = os.path.join(organized_folder, f"{year}_{month:02d}")
+    # 파일 이름에서 년도와 월 추출 (예: "2024_01_15.jpg" → 2024, 1)
+    parts = file_name.split('_')
+    year  = parts[0]
+    month = parts[1]
 
-    # 월별 폴더가 없으면 생성
+    # 월별 폴더 경로 생성 및 폴더 만들기
+    month_folder = os.path.join(organized_folder, f"{year}_{int(month):02d}")
     os.makedirs(month_folder, exist_ok=True)
 
     # 파일을 월별 폴더로 이동
-    source_path = os.path.join(scandata_folder, file_name)
     destination_path = os.path.join(month_folder, file_name)
     shutil.move(source_path, destination_path)
 
-print("파일 정리가 완료되었습니다.")     
+print("파일 정리가 완료되었습니다.")
             </code></pre>
         </div>
     </div>
+
 </div>
 
-<script>
-function copyCode(elementId) {
-    // 해당 요소의 텍스트를 선택하고 복사합니다.
-    var codeElement = document.getElementById(elementId);
-    var range = document.createRange();
-    range.selectNodeContents(codeElement);
-    var selection = window.getSelection();
-    selection.removeAllRanges();
-    selection.addRange(range);
-
-    try {
-        document.execCommand('copy');
-    } catch (err) {
-        alert('복사에 실패했습니다.');
-    }
-    
-    // 선택 해제
-    selection.removeAllRanges();
-}
-
-function toggleFaq(element) {
-    // 드롭다운 토글 기능
-    var answer = element.nextElementSibling;
-    var icon = element.querySelector('i');
-    if (answer.style.display === "block") {
-        answer.style.display = "none";
-        icon.classList.remove('fa-chevron-up');
-        icon.classList.add('fa-chevron-down');
-    } else {
-        answer.style.display = "block";
-        icon.classList.remove('fa-chevron-down');
-        icon.classList.add('fa-chevron-up');
-    }
-}
-</script>
+<script src="content.js"></script>

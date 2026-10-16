@@ -1,157 +1,143 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
 
 <h1 class="title">함수 연습 문제</h1>
-<style>
-    ol.mission li {
-        margin-top: 20px; /* 각 li 요소 위에 공백을 추가 */
-    }
-</style>
+<div class="faq-container">
 
-<ol class="mission">
-
-    <li>다음 코드를 실행하면 오류가 발생합니다. 코드를 올바르게 수정하세요</li>
-        <div class="highlight"> 
-            <pre contenteditable="true" style="white-space: pre-wrap;">
-                <code class="language-python">   
-def f(a, b): 
-
-c1 = a + b 
-c2 = a - b 
-return c1, c2 
-
-f(1, 2)    
-                </code>
-            </pre>            
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="30px" height="30px">
+            연습문제
+            <i class="fas fa-chevron-down"></i>
         </div>
+        <div class="faq-answer">
+            <ol class="mission">
 
-    <li>다음 코드 실행 결과는 None이 출력됩니다. result 변수 값이 출력되도록 코드를 수정하세요</li>
-    <div class="highlight"> 
-        <pre contenteditable="true" style="white-space: pre-wrap;">
-            <code class="language-python">   
-def area(r) :
-    result = 3.14 * r * r 
+                <li>다음 코드를 실행하면 오류가 발생합니다. 코드를 올바르게 수정하세요</li>
+                <div class="highlight">
+                    <pre contenteditable="true" style="white-space: pre-wrap;"><code class="language-python">
+def f(a, b):
+
+c1 = a + b
+c2 = a - b
+return c1, c2
+
+f(1, 2)
+                    </code></pre>
+                </div>
+
+                <li>다음 코드 실행 결과는 None이 출력됩니다. result 변수 값이 출력되도록 코드를 수정하세요</li>
+                <div class="highlight">
+                    <pre contenteditable="true" style="white-space: pre-wrap;"><code class="language-python">
+def area(r):
+    result = 3.14 * r * r
 
 print(area(3))
-            </code>
-        </pre>            
-    </div>
- 
-    <li>다음 코드를 실행하며 어떤 결과가 출력되는지 작성하세요</li>
-    <div class="highlight"> 
-        <pre contenteditable="true" style="white-space: pre-wrap;">
-            <code class="language-python">   
-def cal(a, b, c) :
+                    </code></pre>
+                </div>
+
+                <li>다음 코드를 실행하면 어떤 결과가 출력되는지 작성하세요</li>
+                <div class="highlight">
+                    <pre contenteditable="true" style="white-space: pre-wrap;"><code class="language-python">
+def cal(a, b, c):
     return a * b - c
 
 print(cal(5, 4, 10))
-            </code>
-        </pre>            
-    </div>
-    <div>정답: <input type="text" class="answer"></div>
+                    </code></pre>
+                </div>
+                <div class="answer-wrap">정답: <input type="text" class="answer"></div>
 
-    <li>다음과 같이 함수가 정의되어 있을 때 함수를 호출하는 코드를 작성하세요</li>
-    <div class="highlight"> 
-        <pre contenteditable="true" style="white-space: pre-wrap;">
-            <code class="language-python">   
+                <li>다음과 같이 함수가 정의되어 있을 때 함수를 호출하는 코드를 작성하세요</li>
+                <div class="highlight">
+                    <pre contenteditable="true" style="white-space: pre-wrap;"><code class="language-python">
 def add(a, b):
     return a + b
-            </code>
-        </pre>            
-    </div>    
-    <div>정답: <input type="text" class="answer"></div>
 
-    <li>다음 코드를 실행하면 오류가 발생합니다. 그 이유는 무엇인가요?</li>
-    <div class="highlight"> 
-        <pre contenteditable="true" style="white-space: pre-wrap;">
-            <code class="language-python">   
-def wordlist(a, b, c) :
-    for item in [a, b, c] :
+# add 함수를 호출하여 3 + 7 결과를 출력하세요
+                    </code></pre>
+                </div>
+
+                <li>다음 코드를 실행하면 오류가 발생합니다. 그 이유는 무엇인가요?</li>
+                <div class="highlight">
+                    <pre contenteditable="true" style="white-space: pre-wrap;"><code class="language-python">
+def wordlist(a, b, c):
+    for item in [a, b, c]:
         print(item)
 
-wordlist(['사과','오렌지','포도'])
-            </code>
-        </pre>            
-    </div>    
-    <div>정답: <input type="text" class="answer"></div>
+wordlist(['사과', '오렌지', '포도'])
+                    </code></pre>
+                </div>
+                <div class="answer-wrap">정답: <input type="text" class="answer"></div>
 
-        <li> 두개의 수를 입력받아 곱한 값을 리턴하는 mul 함수를 선언하세요</li>
-        <div class="highlight">
-            <pre contenteditable="true" style="white-space: pre-wrap;">
-                <code class="language-python">
+                <li>두 수를 입력받아 곱한 값을 리턴하는 mul 함수를 선언하세요</li>
+                <div class="highlight">
+                    <pre contenteditable="true" style="white-space: pre-wrap;"><code class="language-python">
 # 더하기 함수 선언
 def plus(a, b):
-    result = a + b    
-    return result 
+    result = a + b
+    return result
 
-print('계산 결과:', plus(2,3))  # 5  
+print('계산 결과:', plus(2, 3))   # 5
 
 # mul 함수를 선언하세요
 
 
-print('계산 결과:', mul(2,3))   # 6  
-                </code>
-            </pre>
-        </div>
-       
-        <li> 한개의 정수를 입력받아 누적된 합을 리턴하는 sumValue 함수를 선언하세요</li>
-        <div class="highlight">
-            <pre contenteditable="true" style="white-space: pre-wrap;">
-                <code class="language-python">   
-# sumValue 함수를 선언하세요
+print('계산 결과:', mul(2, 3))    # 6
+                    </code></pre>
+                </div>
 
-print('계산 결과:', sumValue(10)) # 55
-                </code>
-            </pre>
-        </div>
-
-        <li>리스트를 입력받아 리스트 항목 중 짝수들의 합을 리턴하는 sumEvenValues 함수를 선언하세요</li>
-        <div class="highlight">
-            <pre contenteditable="true" style="white-space: pre-wrap;">
-                <code class="language-python">   
-# sumEvenValues 함수를 선언하세요
+                <li>정수 하나를 입력받아 1부터 그 수까지의 합을 리턴하는 sum_value 함수를 선언하세요</li>
+                <div class="highlight">
+                    <pre contenteditable="true" style="white-space: pre-wrap;"><code class="language-python">
+# sum_value 함수를 선언하세요
 
 
-# 함수 호출 부분                                   
-scores = [5, 6, 4, 7, 8, 2]                                 
-result = sumEvenValues(scores)                             
-print('계산 결과:', result) #계산 결과: 20
-                </code>
-            </pre>
-        </div>
+print('계산 결과:', sum_value(10))   # 55
+                    </code></pre>
+                </div>
 
-        <li> 리스트와 기준값을 입력 받아 리스트의 각 항목 중 기준값 이상만 반환하는 filtering 함수를 선언하세요</li>
-        <div class="highlight">
-            <pre contenteditable="true" style="white-space: pre-wrap;">
-                <code class="language-python">
+                <li>리스트를 입력받아 짝수들의 합만 리턴하는 sum_even_values 함수를 선언하세요</li>
+                <div class="highlight">
+                    <pre contenteditable="true" style="white-space: pre-wrap;"><code class="language-python">
+# sum_even_values 함수를 선언하세요
+
+
+scores = [5, 6, 4, 7, 8, 2]
+result = sum_even_values(scores)
+print('계산 결과:', result)   # 20
+                    </code></pre>
+                </div>
+
+                <li>리스트와 기준값을 입력받아 기준값 이상인 항목만 반환하는 filtering 함수를 선언하세요</li>
+                <div class="highlight">
+                    <pre contenteditable="true" style="white-space: pre-wrap;"><code class="language-python">
 # filtering 함수를 선언하세요
 
 
-# 함수 호출 부분
 alist = [90, 50, 65, 73, 100, 80]
 criteria = 90
-
 result = filtering(alist, criteria)
-print('반환값: ', result)  # 반환값:  [90, 100]
-                </code>
-            </pre>
+print('반환값:', result)   # [90, 100]
+                    </code></pre>
+                </div>
+
+                <li>리스트를 입력받아 중복을 제거한 리스트를 리턴하는 get_unique_value 함수를 선언하세요</li>
+                <div class="highlight">
+                    <pre contenteditable="true" style="white-space: pre-wrap;"><code class="language-python">
+# get_unique_value 함수를 선언하세요
+
+
+alist = [1, 2, 2, 3, 5, 4, 3, 1]
+result = get_unique_value(alist)
+print('반환값:', result)   # [1, 2, 3, 4, 5]
+                    </code></pre>
+                </div>
+
+            </ol>
         </div>
+    </div>
 
-        <li> 리스트를 입력받아 중복된 숫자가 없는 리스트로 리턴하는 getUniqueValue 함수를 선언하세요</li>
-        <div class="highlight">
-            <pre contenteditable="true" style="white-space: pre-wrap;">
-                <code class="language-python">
-# getUniqueValue 함수를 선언하세요
+</div>
 
-
-# 함수 호출 부분
-alist = [1,2,2,3,5,4,3,1]
-
-result = getUniqueValue(alist)
-print('반환값: ', result)  # 반환값 : [1,2,3,4,5]
-                </code>
-            </pre>
-        </div>
-
-</ol>
+<script src="content.js"></script>

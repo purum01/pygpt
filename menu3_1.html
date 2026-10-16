@@ -58,14 +58,14 @@ print("거듭제곱:", power)
             <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer" id="c2">
-            <ul>
-                <li>A) print(8 + 2 * 3) , 출력값 : 14    </li>
-                <li>B) print(9 / 2),      출력값 : 4.5  </li>
-                <li>C) print(9 // 2),     출력값 : 4 </li>
-                <li>D) print(9 % 4),      출력값 : 2 </li>
-                <li>E) print(2 ** 3),     출력값 : 8 </li>
-            </ul>
-            <button class="answer-btn" onclick="correct_answer('c2', 4)">정답</button>
+            <ol>
+                <li>print(8 + 2 * 3) , 출력값 : 14    </li>
+                <li>print(9 / 2),      출력값 : 4.5  </li>
+                <li>print(9 // 2),     출력값 : 4 </li>
+                <li> print(9 % 4),      출력값 : 2 </li>
+                <li>print(2 ** 3),     출력값 : 8 </li>
+            </ol>
+            
         </div>
     </div> 
 
@@ -109,12 +109,5 @@ print(f"100원 동전: {change_100}개")
     
    
 </div>
-<script>
-    function correct_answer(id, num){
-        quiz = "#"+id+" ul li:nth-child("+num+")"
-        const correctAnswer = document.querySelector(quiz);
-        correctAnswer.classList.add('correct-answer');
-    }
-</script>
-<script src="content.js"></script>
+
 

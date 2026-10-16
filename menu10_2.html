@@ -1,198 +1,328 @@
+<style>
+.answer-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 6px 0 4px 0;
+    padding: 5px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2563eb;
+    background: #eff6ff;
+    border: 1.5px solid #93c5fd;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+.answer-toggle-btn:hover {
+    background: #dbeafe;
+    border-color: #3b82f6;
+}
+.answer-toggle-btn.open {
+    color: #059669;
+    background: #ecfdf5;
+    border-color: #6ee7b7;
+}
+.answer-reveal {
+    margin: 0 0 10px 0;
+    border-left: 3px solid #34d399;
+    border-radius: 0 6px 6px 0;
+    background: #f0fdf4;
+    overflow: hidden;
+}
+.answer-reveal pre {
+    margin: 0;
+    padding: 0;
+}
+</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
 
-<h1 class="title">표준 모듈</h1> 
+<h1 class="title">표준 모듈</h1>
 <div class="faq-container">
 
-     <div class="faq-section">
-          <div class="faq-question">
-               <img  src="question.png" width="34px" height="34px" >
-               random 모듈
-               <i class="fas fa-chevron-down"></i>
-          </div>
-          <div class="faq-answer">
-               <img src="gpt.png">
-               파이썬의 random 모듈은 난수를 생성하기 위한 다양한 함수를 제공합니다. 이 모듈을 사용하여 프로그램에 무작위성을 추가할 수 있으며, 시뮬레이션, 게임, 보안, 데이터 분석 및 머신 러닝 실험 등 다양한 분야에서 활용됩니다. random 모듈의 주요 기능에는 다음과 같은 것들이 있습니다:
-               <ul>
-               <h3>기본 난수 생성</h3>
-               <li>random.random(): 0과 1 사이의 실수를 반환합니다. 이 실수는 0을 포함하고 1을 포함하지 않습니다.
-               <li>random.uniform(a, b): 주어진 두 값 사이의 무작위 실수를 반환합니다.
-               
-               <h3>정수 난수 생성</h3>
-               <li> random.randint(a, b): a와 b 사이의 무작위 정수를 반환합니다 (a와 b를 포함).
-               <li>random.randrange(start, stop[, step]): 주어진 범위에서 무작위 정수를 반환합니다. step을 설정하면, 그 단계의 수 중에서 선택합니다.
-               
-               <h3>시퀀스에서 요소 선택</h3>
-               <li>random.choice(seq): 주어진 시퀀스(리스트, 튜플 등)에서 무작위로 하나의 요소를 선택하여 반환합니다.
-               <li>random.sample(population, k): 시퀀스에서 중복 없이 k개의 요소를 무작위로 선택합니다.
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="34px" height="34px">
+            random 모듈
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <img src="gpt.png">
+            <b>random</b> 모듈은 무작위 값을 생성하는 기능을 제공합니다. 게임, 뽑기 프로그램, 퀴즈 출제 순서 섞기 등에 활용합니다.
 
-               <h3>예제 코드</h3>
-               <pre>
-                    <code class="language-python" >   
+            <h3>주요 함수</h3>
+            <ul>
+                <li><b>random.randint(a, b)</b> : a 이상 b 이하의 무작위 정수를 반환합니다.</li>
+                <li><b>random.choice(seq)</b> : 리스트·튜플에서 무작위로 요소 하나를 선택합니다.</li>
+                <li><b>random.sample(seq, k)</b> : 중복 없이 k개의 요소를 무작위로 선택합니다.</li>
+                <li><b>random.shuffle(seq)</b> : 리스트의 순서를 무작위로 섞습니다. (원본 변경)</li>
+            </ul>
+
+            <h3>예제 코드</h3>
+            <pre><code class="language-python">
 import random
 
-# 0과 1 사이의 무작위 실수 생성
-num = random.random()
-print(f"Random float between 0 and 1: {num}")
+# 1~6 사이의 무작위 정수 (주사위)
+dice = random.randint(1, 6)
+print(f"주사위 결과: {dice}")
 
-# a와 b 사이의 무작위 실수 생성
-a, b = 5, 10
-num = random.uniform(a, b)
-print(f"Random float between {a} and {b}: {num}")
+# 메뉴에서 오늘의 점심 뽑기
+menu = ["비빔밥", "된장찌개", "김치찌개", "불고기", "냉면"]
+today = random.choice(menu)
+print(f"오늘의 점심: {today}")
 
-# a와 b 사이의 무작위 정수 생성 (둘 다 포함)
-a, b = 1, 6
-num = random.randint(a, b)
-print(f"Random integer between {a} and {b}: {num}")
+# 발표자 3명 중복 없이 뽑기
+students = ["이준서", "김민지", "박서준", "최지우", "정하은"]
+presenters = random.sample(students, 3)
+print(f"발표자: {presenters}")
 
-# range() 함수와 유사한 방식으로 정수 생성
-start, stop, step = 2, 10, 2
-num = random.randrange(start, stop, step)
-print(f"Random integer from range({start}, {stop}, {step}): {num}")
+# 카드 순서 섞기
+cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+random.shuffle(cards)
+print(f"섞인 카드: {cards}")
+            </code></pre>
+        </div>
+    </div>
 
-items = ['apple', 'banana', 'cherry', 'date', 'fig']
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="34px" height="34px">
+            math 모듈
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <img src="gpt.png">
+            <b>math</b> 모듈은 수학 연산에 필요한 함수와 상수를 제공합니다.
 
-# 하나의 요소 무작위 선택
-item = random.choice(items)
-print(f"Randomly selected item: {item}")
+            <h3>주요 함수와 상수</h3>
+            <ul>
+                <li><b>math.sqrt(x)</b> : x의 제곱근을 반환합니다.</li>
+                <li><b>math.pow(x, y)</b> : x의 y제곱을 반환합니다.</li>
+                <li><b>math.floor(x)</b> : x를 내림한 정수를 반환합니다.</li>
+                <li><b>math.ceil(x)</b> : x를 올림한 정수를 반환합니다.</li>
+                <li><b>math.factorial(n)</b> : n의 팩토리얼(n!)을 반환합니다.</li>
+                <li><b>math.pi</b> : 원주율 π (3.14159…) 상수입니다.</li>
+            </ul>
 
-
-# 중복 없이 여러 요소 무작위 선택
-sampled_items = random.sample(items, 3)
-print(f"Randomly sampled items without replacement: {sampled_items}")
-
-                                             </code>
-               </pre>
-          </div>
-     </div>
-
-     <div class="faq-section">
-          <div class="faq-question">
-               <img  src="question.png" width="34px" height="34px"  >
-               math 모듈
-               <i class="fas fa-chevron-down"></i>
-          </div>
-          <div class="faq-answer">
-               <img src="gpt.png">
-               Python의 math 모듈은 수학적인 연산을 수행하기 위한 다양한 함수와 상수를 제공합니다. 이 모듈을 사용하여 근사값 계산, 삼각 함수, 로그 함수, 지수 함수 등과 같은 기본적인 수학 연산을 수행할 수 있습니다. math 모듈에 포함된 몇 가지 주요 기능을 소개합니다:
-               <h3>수학적 유틸리티</h3>
-               <ul>
-                    <li>math.sqrt(x): 주어진 숫자 x의 제곱근을 반환합니다.</li>
-                    <li>math.pow(x, y): x의 y제곱근을 반환합니다.</li>
-                    <li>math.factorial(x): x의 팩토리얼 값을 계산합니다.</li>
-                    <li>math.floor(x): x보다 작거나 같은 가장 큰 정수를 반환합니다.</li>
-                    <li>math.ceil(x): x보다 크거나 같은 가장 작은 정수를 반환합니다.</li>
-               </ul>
-               <h3> 예제 코드</h3>
- <pre><code class="language-python" >   
+            <h3>예제 코드</h3>
+            <pre><code class="language-python">
 import math
 
-# 1. math.sqrt(x): 제곱근 계산
-number = 16
-sqrt_result = math.sqrt(16)
-print(f"{number}의 제곱근: {sqrt_result}") 
+# 제곱근
+print(math.sqrt(25))       # 5.0
 
-# 2. math.pow(x, y): x의 y 제곱 계산
-base = 2
-exponent = 3
-pow_result = math.pow(base, exponent)
-print(f"{base}의 {exponent} 제곱: {pow_result}")
+# 거듭제곱
+print(math.pow(2, 10))     # 1024.0
 
-# 3. math.factorial(x): x의 팩토리얼 계산
-n = 5
-factorial_result = math.factorial(n)
-print(f"{n}의 팩토리얼: {factorial_result}")
+# 내림 / 올림
+print(math.floor(3.7))     # 3
+print(math.ceil(3.2))      # 4
 
-# 4. math.floor(x): 내림 계산 (x보다 작거나 같은 가장 큰 정수)
-decimal_number = 3.7
-floor_result = math.floor(decimal_number)
-print(f"{decimal_number}의 내림 값: {floor_result}")
+# 팩토리얼
+print(math.factorial(5))   # 120  (5! = 5×4×3×2×1)
 
-# 5. math.ceil(x): 올림 계산 (x보다 크거나 같은 가장 작은 정수)
-decimal_number = 3.1
-ceil_result = math.ceil(decimal_number)
-print(f"{decimal_number}의 올림 값: {ceil_result}")
-</code></pre>               
-          </div>
-     </div>
+# 원의 넓이 계산
+radius = 5
+area = math.pi * math.pow(radius, 2)
+print(f"반지름 {radius}인 원의 넓이: {area:.2f}")   # 78.54
+            </code></pre>
+        </div>
+    </div>
 
-     <div class="faq-section">
-          <div class="faq-question">
-               <img  src="question.png" width="34px" height="34px" >
-               os 모듈
-               <i class="fas fa-chevron-down"></i>
-          </div>
-          <div class="faq-answer">
-               <img src="gpt.png">
-               Python의 os 모듈은 운영 체제와 상호 작용하기 위한 다양한 기능을 제공합니다. 이 모듈을 사용하면 파일 시스템을 탐색하고, 파일 및 디렉터리(폴더)를 관리하며, 운영 체제의 환경 변수에 접근하고, 프로세스 관리 등의 작업을 수행할 수 있습니다. os 모듈은 이식성 있는 코드를 작성하는 데 도움이 됩니다. 즉, 다양한 운영 체제에서 동일하게 작동하는 코드를 만들 수 있습니다. 여기 os 모듈의 주요 기능 몇 가지를 소개합니다:
-               <h3>[ 파일 및 디렉터리 관리 ]</h3>
-               <ul>
-                    <li><b>os.listdir(path)</b>: 지정된 경로의 파일 및 디렉터리 목록을 반환합니다.</li>
-                    <li><b>os.mkdir(path), os.makedirs(path)</b>: 디렉터리(폴더)를 생성합니다. makedirs는 중간에 없는 디렉터리도 함께 생성합니다.</li>
-                    <li><b>os.rmdir(path), os.removedirs(path)</b>: 디렉터리를 삭제합니다. removedirs는 중간 디렉터리도 함께 삭제합니다.</li>
-                    <li><b>os.rename(src, dst)</b>: 파일이나 디렉터리의 이름을 변경합니다.</li>     
-               </ul>
-               <h3>[ 파일 경로 관리 ]</h3>
-               <ul>
-                    <li><b>os.path.join(path1[, path2[, ...]])</b>: 하나 이상의 경로 구성 요소를 결합합니다.</li> 
-                    <li><b>os.path.split(path)</b>: 경로를 디렉터리와 파일명으로 분리합니다.</li> 
-                    <li><b>os.path.exists(path)</b>: 경로가 존재하는지 확인합니다.</li> 
-                    <li><b>os.path.isfile(path), os.path.isdir(path)</b>: 경로가 파일인지 디렉터리인지 확인합니다.</li> 
-               </ul>
-               <h3>[ 환경 변수 접근 ]</h3>
-               <ul>
-                    <li><b>os.environ</b>: 현재 환경 변수를 나타내는 사전(딕셔너리)입니다.</li> 
-                    <li><b>os.getenv(key, default=None)</b>: 환경 변수의 값을 가져옵니다.</li> 
-               </ul>
-               <h3>[ 기타 유틸리티 ]</h3>
-               <ul>
-                    <li><b>os.getcwd()</b>: 현재 작업 디렉터리의 경로를 반환합니다.</li> 
-                    <li><b>os.chdir(path)</b>: 작업 디렉터리를 변경합니다.</li>                    
-               </ul>
-               <h3>예제 코드</h3>
-               <pre>
-                    <code class="language-python" >   
-import os
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="34px" height="34px">
+            datetime 모듈
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <img src="gpt.png">
+            <b>datetime</b> 모듈은 날짜와 시간을 다루는 기능을 제공합니다. 오늘 날짜 확인, 날짜 간 차이 계산, 디데이(D-day) 계산 등에 활용합니다.
 
-# 현재 작업 디렉터리 출력
-current_directory = os.getcwd()
-print("현재 작업 디렉터리:", current_directory)
+            <h3>주요 기능</h3>
+            <ul>
+                <li><b>datetime.now()</b> : 현재 날짜와 시간을 반환합니다.</li>
+                <li><b>datetime.today()</b> : 오늘 날짜를 반환합니다.</li>
+                <li><b>.year / .month / .day</b> : 연·월·일 속성에 접근합니다.</li>
+                <li><b>timedelta(days=n)</b> : 날짜 간격을 나타냅니다. 날짜 덧셈·뺄셈에 사용합니다.</li>
+            </ul>
 
-# 현재 디렉터리의 파일 및 서브 디렉터리 목록 출력
-directory_list = os.listdir('.')
-print("현재 디렉터리 목록:", directory_list)
+            <h3>예제 코드</h3>
+            <pre><code class="language-python">
+from datetime import datetime, timedelta
 
-# 환경 변수 읽기
-home_directory = os.getenv('HOME')
-print("HOME 환경 변수:", home_directory)
+# 현재 날짜와 시간
+now = datetime.now()
+print(f"현재 날짜: {now.year}년 {now.month}월 {now.day}일")
+print(f"현재 시간: {now.hour}시 {now.minute}분 {now.second}초")
 
-# 새로운 디렉터리 생성 및 삭제
-os.mkdir('new_directory')
-os.rmdir('new_directory')
+# 날짜 포맷 지정 출력
+print(now.strftime("%Y-%m-%d %H:%M"))   # 예: 2025-03-01 14:30
 
-# 파일 이름 변경 예제 
-os.rename('old_name.txt', 'new_name.txt')
+# D-day 계산 (시험까지 남은 날)
+exam_day = datetime(2025, 6, 20)
+today    = datetime.today()
+d_day    = (exam_day - today).days
+print(f"시험까지 D-{d_day}일")
 
-# 파일 또는 디렉터리 존재 여부 확인
-file_exists = os.path.exists('example.txt')
-print("example.txt 파일 존재 여부:", file_exists)
+# 30일 후 날짜
+future = today + timedelta(days=30)
+print(f"30일 후: {future.strftime('%Y-%m-%d')}")
+            </code></pre>
+        </div>
+    </div>
 
-# 경로가 디렉터리인지 파일인지 확인
-is_directory = os.path.isdir('.')
-is_file = os.path.isfile('example.txt')
-print("현재 경로는 디렉터리입니까?:", is_directory)
-print("example.txt는 파일입니까?:", is_file)
-                    </code>
-               </pre>
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="34px" height="34px">
+            time 모듈
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <img src="gpt.png">
+            <b>time</b> 모듈은 시간 측정과 지연(딜레이) 기능을 제공합니다. 코드 실행 시간 측정이나 타이머 프로그램에 활용합니다.
 
-          </div>
-     </div>
+            <h3>주요 함수</h3>
+            <ul>
+                <li><b>time.sleep(n)</b> : n초 동안 실행을 멈춥니다.</li>
+                <li><b>time.time()</b> : 현재 시각을 숫자(초 단위)로 반환합니다. 두 시점의 차이로 경과 시간을 계산합니다.</li>
+            </ul>
 
+            <h3>예제 코드</h3>
+            <pre><code class="language-python">
+import time
 
-    
+# 1초 대기 후 메시지 출력
+print("3초 카운트다운 시작!")
+for i in range(3, 0, -1):
+    print(f"{i}...")
+    time.sleep(1)
+print("완료!")
 
+# 코드 실행 시간 측정
+start = time.time()
 
+total = 0
+for i in range(1, 1000001):
+    total += i
 
-</div>     
+end = time.time()
+print(f"1부터 1,000,000까지의 합: {total}")
+print(f"실행 시간: {end - start:.4f}초")
+            </code></pre>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="30px" height="30px">
+            연습문제
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <ol class="mission">
+                <li>random 모듈을 사용하여 로또 번호 6개를 중복 없이 뽑아 오름차순으로 출력하세요<br>
+                    (1~45 범위, 힌트: sample + sorted)</li>
+                <div class="highlight">
+                    <pre contenteditable="true"><code class="language-python">
+import random
+
+# 로또 번호 6개를 뽑아 정렬하여 출력하세요
+                    </code></pre>
+                </div>
+                <button class="answer-toggle-btn" onclick="var r=this.nextElementSibling;var o=r.style.display!=='none';r.style.display=o?'none':'block';this.textContent=o?'💡 정답 보기':'🙈 정답 숨기기';this.classList.toggle('open',!o);if(!o&&window.Prism)Prism.highlightAllUnder(r);">💡 정답 보기</button>
+                <div class="answer-reveal" style="display:none;">
+                    <pre><code class="language-python">
+import random
+
+numbers = random.sample(range(1, 46), 6)
+print(sorted(numbers))
+                    </code></pre>
+                </div>
+
+                <li>math 모듈을 사용하여 직각삼각형의 빗변 길이를 구하세요<br>
+                    (밑변 a=3, 높이 b=4 → 빗변 = √(a²+b²))</li>
+                <div class="highlight">
+                    <pre contenteditable="true"><code class="language-python">
+import math
+
+a = 3
+b = 4
+# 빗변의 길이를 계산하여 출력하세요
+                    </code></pre>
+                </div>
+                <button class="answer-toggle-btn" onclick="var r=this.nextElementSibling;var o=r.style.display!=='none';r.style.display=o?'none':'block';this.textContent=o?'💡 정답 보기':'🙈 정답 숨기기';this.classList.toggle('open',!o);if(!o&&window.Prism)Prism.highlightAllUnder(r);">💡 정답 보기</button>
+                <div class="answer-reveal" style="display:none;">
+                    <pre><code class="language-python">
+import math
+
+a = 3
+b = 4
+hypotenuse = math.sqrt(a**2 + b**2)
+print(f"빗변의 길이: {hypotenuse}")   # 5.0
+                    </code></pre>
+                </div>
+
+                <li>datetime 모듈로 오늘부터 본인의 생일까지 남은 날수를 출력하세요</li>
+                <div class="highlight">
+                    <pre contenteditable="true"><code class="language-python">
+from datetime import datetime
+
+# 본인 생일로 변경하세요
+birthday = datetime(2025, 12, 25)
+today    = datetime.today()
+
+# 남은 날수를 계산하여 출력하세요
+                    </code></pre>
+                </div>
+                <button class="answer-toggle-btn" onclick="var r=this.nextElementSibling;var o=r.style.display!=='none';r.style.display=o?'none':'block';this.textContent=o?'💡 정답 보기':'🙈 정답 숨기기';this.classList.toggle('open',!o);if(!o&&window.Prism)Prism.highlightAllUnder(r);">💡 정답 보기</button>
+                <div class="answer-reveal" style="display:none;">
+                    <pre><code class="language-python">
+from datetime import datetime
+
+birthday  = datetime(2025, 12, 25)
+today     = datetime.today()
+days_left = (birthday - today).days
+print(f"생일까지 {days_left}일 남았습니다.")
+                    </code></pre>
+                </div>
+
+                <li>time 모듈을 사용하여 1부터 100까지 더하는 코드의 실행 시간을 측정하세요</li>
+                <div class="highlight">
+                    <pre contenteditable="true"><code class="language-python">
+import time
+
+# 시작 시간을 기록하세요
+
+total = 0
+for i in range(1, 101):
+    total += i
+
+# 종료 시간을 기록하고 실행 시간을 출력하세요
+                    </code></pre>
+                </div>
+                <button class="answer-toggle-btn" onclick="var r=this.nextElementSibling;var o=r.style.display!=='none';r.style.display=o?'none':'block';this.textContent=o?'💡 정답 보기':'🙈 정답 숨기기';this.classList.toggle('open',!o);if(!o&&window.Prism)Prism.highlightAllUnder(r);">💡 정답 보기</button>
+                <div class="answer-reveal" style="display:none;">
+                    <pre><code class="language-python">
+import time
+
+start = time.time()
+
+total = 0
+for i in range(1, 101):
+    total += i
+
+end = time.time()
+print(f"합계: {total}")
+print(f"실행 시간: {end - start:.6f}초")
+                    </code></pre>
+                </div>
+            </ol>
+        </div>
+    </div>
+
+</div>
+
 <script src="content.js"></script>

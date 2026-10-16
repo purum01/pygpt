@@ -1,106 +1,221 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
-<style>
-    ol > li {
-        margin-top: 20px; /* 상단 마진 확보 */
-        font-weight: bold; /* 글자를 볼드체로 변경 */
-    }
-</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
 
 <h1 class="title">인스턴스 사용</h1>
-
 <div class="faq-container">
 
     <div class="faq-section">
         <div class="faq-question">
-            <img  src="question.png" width="34px" height="34px" >
-            인스턴스 생성 및 활용에 대해 설명해주세요
+            <img src="question.png" width="34px" height="34px">
+            인스턴스 생성과 속성 접근
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer">
+        <div class="faq-answer" style="display:none;">
             <img src="gpt.png">
-            파이썬에서 인스턴스는 클래스(설계도)를 기반으로 실제로 만들어지는 객체입니다. 초보자를 위한 설명으로, 인스턴스 생성 및 활용 과정을 간단하게 단계별로 알아보겠습니다.
+            <b>인스턴스(instance)</b>는 클래스(설계도)로부터 실제로 만들어진 객체입니다.
+            <br><br>
+            클래스 이름을 함수처럼 호출하면 인스턴스가 생성되고, <b>__init__</b> 메서드가 자동으로 실행됩니다.
+
+            <pre><code class="language-python">
+class Student:
+    def __init__(self, name, grade):
+        self.name  = name
+        self.grade = grade
+
+# 인스턴스 생성
+student1 = Student("이준서", 2)
+student2 = Student("김민지", 3)
+
+# 속성 접근: 인스턴스.속성명
+print(student1.name)    # 이준서
+print(student1.grade)   # 2
+print(student2.name)    # 김민지
+            </code></pre>
+
             <ul>
-                <ol>
-                    <li>인스턴스란?</li>
-                    클래스는 설계도 또는 템플릿이라고 생각할 수 있습니다. 이 설계도를 바탕으로 인스턴스라는 실체를 만들어냅니다. 예를 들어, "강아지"라는 클래스가 있다면, "Buddy"나 "Charlie" 같은 강아지가 바로 그 클래스의 인스턴스입니다.
-                   
-                    <li>인스턴스 생성 방법</li>
-                    클래스로부터 인스턴스를 만들기 위해서는 클래스 이름을 함수처럼 호출하면 됩니다. 클래스는 새로운 인스턴스를 생성하고, 생성자 메서드(__init__)가 호출되어 인스턴스의 초기값을 설정합니다.
-                    <pre>
-                        <code class="language-python" > 
-class Dog:
-    def __init__(self, name, age):
-        self.name = name  # 이름 속성
-        self.age = age    # 나이 속성
-
-# Dog 클래스의 인스턴스 생성
-my_dog = Dog("Buddy", 3)
-                        </code>
-                    </pre>
-                    <ul>
-                        <li>Dog("Buddy", 3)는 Dog 클래스로부터 새로운 인스턴스를 생성하는 코드입니다.</li>
-                        <li>my_dog는 그 클래스에서 만들어진 실제 인스턴스를 가리킵니다.</li>
-                        <li>"Buddy"와 3은 인스턴스의 초기 값으로 name과 age 속성에 저장됩니다.</li>
-                    </ul>
-
-
-                    <li>인스턴스의 속성에 접근하기</li>
-                    인스턴스가 생성되면 그 인스턴스의 속성에 접근할 수 있습니다. 속성은 인스턴스명.속성명 형식으로 접근할 수 있습니다.
-                    <pre>
-                        <code class="language-python" > 
-print(my_dog.name)  # 출력: Buddy
-print(my_dog.age)   # 출력: 3
-                        </code>
-                    </pre>
-                    <ul>
-                        <li>y_dog.name: "Buddy"라는 이름을 가진 강아지 객체의 name 속성에 접근합니다.</li>
-                        <li>my_dog.age: 강아지 객체의 나이 속성에 접근합니다.</li>
-                    </ul>
-                   
-                    <li>인스턴스의 메서드 사용하기</li>
-                    클래스에서 정의된 메서드는 인스턴스에서 사용할 수 있습니다. 메서드는 인스턴스가 할 수 있는 행동을 정의한 함수입니다.
-                    <pre>
-                        <code class="language-python" > 
-class Dog:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-    
-    def bark(self):  # 강아지가 짖는 동작
-        print(f"{self.name} is barking!")
-
-# 인스턴스 생성 및 메서드 호출
-my_dog = Dog("Buddy", 3)
-my_dog.bark()  # 출력: Buddy is barking!
-                        </code>
-                    </pre>     
-                    <ul>
-                        <li>my_dog.bark()는 bark() 메서드를 호출합니다.</li>
-                        <li>이 메서드는 "Buddy is barking!"라는 메시지를 출력합니다. 여기서 self.name은 my_dog의 name 속성 값인 "Buddy"를 참조합니다.</li>
-                    </ul>                    
-                    
-
-                    <li>여러 인스턴스 생성</li>
-                    클래스를 사용하면 여러 개의 인스턴스를 쉽게 만들 수 있습니다. 각 인스턴스는 서로 독립적으로 동작하며, 클래스의 설계도에 따라 각각 다른 속성을 가질 수 있습니다.
-                    <pre>
-                        <code class="language-python" > 
-dog1 = Dog("Buddy", 3)
-dog2 = Dog("Charlie", 5)
-
-print(dog1.name)  # 출력: Buddy
-print(dog2.name)  # 출력: Charlie
-                        </code>
-                    </pre>
-                    <ul>
-                        <li>dog1과 dog2는 Dog 클래스의 서로 다른 인스턴스입니다.</li>
-                        <li>각 인스턴스는 독립적으로 name과 age 속성을 가지고 있으므로 서로 다른 정보를 담고 있습니다.</li>
-                    </ul>                            
-                        
-                </ol>
+                <li><b>student1 = Student("이준서", 2)</b> : 이름이 "이준서"이고 2학년인 학생 인스턴스를 생성합니다.</li>
+                <li><b>student1.name</b> : 인스턴스의 name 속성값을 읽습니다.</li>
+                <li>인스턴스는 각자 독립적인 속성 값을 가집니다.</li>
             </ul>
-            
-</div>    
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="34px" height="34px">
+            메서드 호출과 속성 변경
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <img src="gpt.png">
+            <h3>메서드 호출</h3>
+            인스턴스에서 메서드를 호출할 때는 <b>인스턴스.메서드명()</b> 형식을 사용합니다.
+
+            <pre><code class="language-python">
+class Student:
+    def __init__(self, name, grade):
+        self.name  = name
+        self.grade = grade
+
+    def introduce(self):
+        print(f"안녕하세요! 저는 {self.name}이고 {self.grade}학년입니다.")
+
+    def study(self, subject):
+        print(f"{self.name}이/가 {subject}을/를 공부합니다.")
+
+
+student1 = Student("이준서", 2)
+student1.introduce()           # 안녕하세요! 저는 이준서이고 2학년입니다.
+student1.study("수학")         # 이준서이/가 수학을/를 공부합니다.
+            </code></pre>
+
+            <h3>속성 값 변경</h3>
+            <pre><code class="language-python">
+student1 = Student("이준서", 2)
+print(student1.grade)   # 2
+
+student1.grade = 3      # 속성 값 변경
+print(student1.grade)   # 3
+            </code></pre>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="34px" height="34px">
+            여러 인스턴스 활용하기
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <img src="gpt.png">
+            같은 클래스에서 만든 인스턴스들은 <b>서로 독립적</b>이며 각자 다른 속성 값을 가집니다.
+
+            <pre><code class="language-python">
+class Student:
+    def __init__(self, name, grade, score):
+        self.name  = name
+        self.grade = grade
+        self.score = score
+
+    def introduce(self):
+        print(f"{self.name} ({self.grade}학년) - 점수: {self.score}점")
+
+
+student1 = Student("이준서", 2, 88)
+student2 = Student("김민지", 3, 95)
+student3 = Student("박서준", 1, 72)
+
+student1.introduce()   # 이준서 (2학년) - 점수: 88점
+student2.introduce()   # 김민지 (3학년) - 점수: 95점
+student3.introduce()   # 박서준 (1학년) - 점수: 72점
+
+# 리스트에 인스턴스를 담아 for 루프로 활용
+students = [student1, student2, student3]
+for s in students:
+    s.introduce()
+            </code></pre>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="34px" height="34px">
+            카페 메뉴 관리 프로그램
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <pre><code class="language-python">
+class MenuItem:
+    def __init__(self, name, price, category):
+        self.name     = name
+        self.price    = price
+        self.category = category
+
+    def show(self):
+        print(f"[{self.category}] {self.name} - {self.price}원")
+
+    def discount(self, rate):
+        discounted = self.price - self.price * rate // 100
+        print(f"{self.name} {rate}% 할인 → {discounted}원")
+
+
+americano  = MenuItem("아메리카노",  4000, "커피")
+latte      = MenuItem("카페라떼",    5000, "커피")
+green_tea  = MenuItem("녹차 케이크", 6500, "디저트")
+
+# 전체 메뉴 출력
+menu_list = [americano, latte, green_tea]
+for item in menu_list:
+    item.show()
+
+# 할인 적용
+americano.discount(10)   # 아메리카노 10% 할인 → 3600원
+            </code></pre>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="30px" height="30px">
+            연습문제
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <ol class="mission">
+                <li>아래 클래스로 인스턴스를 생성하고 메서드를 호출하세요</li>
+                <div class="highlight">
+                    <pre contenteditable="true"><code class="language-python">
+class Pet:
+    def __init__(self, name, kind):
+        self.name = name
+        self.kind = kind
+
+    def introduce(self):
+        print(f"저는 {self.name}이고 {self.kind}입니다.")
+
+# "코코", "강아지"로 인스턴스를 생성하세요
+
+# "나비", "고양이"로 인스턴스를 생성하세요
+
+# 두 인스턴스의 introduce() 메서드를 호출하세요
+                    </code></pre>
+                </div>
+
+                <li>아래 클래스에 increase_score 메서드를 추가하세요<br>
+                    (점수를 n만큼 올려서 "이준서의 점수가 88점 → 98점으로 올랐습니다." 형식으로 출력)</li>
+                <div class="highlight">
+                    <pre contenteditable="true"><code class="language-python">
+class Student:
+    def __init__(self, name, score):
+        self.name  = name
+        self.score = score
+
+    # increase_score(self, n) 메서드를 추가하세요
+
+
+s = Student("이준서", 88)
+s.increase_score(10)   # 이준서의 점수가 88점 → 98점으로 올랐습니다.
+                    </code></pre>
+                </div>
+
+                <li>다음 조건에 맞는 클래스를 작성하세요<br>
+                    클래스명: Product / 속성: name, price / 메서드: show() → "상품명: 노트북, 가격: 1200000원" 형식 출력</li>
+                <div class="highlight">
+                    <pre contenteditable="true"><code class="language-python">
+# Product 클래스를 선언하세요
+
+
+p1 = Product("노트북", 1200000)
+p2 = Product("마우스", 35000)
+p1.show()   # 상품명: 노트북, 가격: 1200000원
+p2.show()   # 상품명: 마우스, 가격: 35000원
+                    </code></pre>
+                </div>
+            </ol>
+        </div>
+    </div>
+
+</div>
 
 <script src="content.js"></script>

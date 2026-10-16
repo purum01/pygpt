@@ -1,32 +1,103 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+<h1 class="title">라이브러리 사용하기</h1>
 
+<p style="font-size:14px;line-height:1.8;color:var(--mute);margin:0 0 28px">
+  파이썬에서 라이브러리를 사용하려면 <code style="font-family:var(--mono);background:var(--accent-soft);color:var(--accent);border-radius:4px;padding:1px 6px;font-size:13px">import</code> 문으로 해당 라이브러리를 먼저 가져와야 합니다.
+  특정 기능만 필요한 경우 그 부분만 선택적으로 가져올 수도 있습니다.
+</p>
 
-<h1 class="title">라이브러리 사용하기</h1> 
-<div class="faq-container">
-파이썬에서 라이브러리를 사용하려면 먼저 import 문을 사용해 해당 라이브러리를 가져와야(import) 합니다. 라이브러리에서 특정 기능이나 모듈만 필요한 경우, 그 부분만 가져올(import) 수도 있습니다.
-               
-<h3>전체 라이브러리 가져오기</h3>
-<pre><code class="language-python" >import math
-print(math.sqrt(16))  # 16의 제곱근을 출력
-</code></pre>
-          
+<style>
+  .import-cards { display: flex; flex-direction: column; gap: 16px; }
 
-<h3>라이브러리에 별칭(alias) 사용하기</h3>
-<pre><code class="language-python" >import math as m
-print(m.sqrt(16))  # 16의 제곱근을 출력
-</code></pre>
+  .import-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--surface);
+  }
 
+  .import-card-header {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 18px;
+    background: var(--accent-soft);
+    border-bottom: 1px solid var(--border);
+  }
+  .import-card-badge {
+    flex-shrink: 0;
+    font-family: var(--mono); font-size: 11px; font-weight: 700;
+    color: var(--brand); background: #fff;
+    border: 1.5px solid var(--brand);
+    border-radius: 6px; padding: 2px 8px;
+    letter-spacing: 0.04em;
+  }
+  .import-card-title { font-size: 14px; font-weight: 700; color: var(--text); }
 
-<h3>특정 함수만 가져오기</h3>
-<pre><code class="language-python" >from math import sqrt
-print(sqrt(16))  # 16의 제곱근을 출력
-</code></pre>
+  .import-card-body { padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; }
 
+  .import-card-desc { font-size: 13px; line-height: 1.7; color: var(--mute); }
+  .import-card-desc code {
+    font-family: var(--mono); font-size: 12px;
+    background: #f0f0f0; border-radius: 4px; padding: 1px 5px; color: var(--text);
+  }
+
+  .import-tip {
+    display: flex; align-items: flex-start; gap: 8px;
+    background: #fffbeb; border: 1px solid #fcd34d; border-radius: 8px;
+    padding: 10px 14px; font-size: 13px; color: #78350f; line-height: 1.6;
+    margin-top: 4px;
+  }
+  .import-tip-icon { flex-shrink: 0; font-size: 15px; }
+  .import-tip code {
+    font-family: var(--mono); font-size: 12px;
+    background: rgba(0,0,0,0.06); border-radius: 4px; padding: 1px 5px;
+  }
+</style>
+
+<div class="import-cards">
+
+  <div class="import-card">
+    <div class="import-card-header">
+      <span class="import-card-badge">import</span>
+      <span class="import-card-title">전체 라이브러리 가져오기</span>
+    </div>
+    <div class="import-card-body">
+      <p class="import-card-desc">
+        라이브러리 전체를 가져옵니다. 이후 <code>라이브러리명.함수명</code> 형식으로 기능을 사용합니다.
+      </p>
+      <pre><code class="language-python">import math
+print(math.sqrt(16))  # 16의 제곱근을 출력</code></pre>
+    </div>
+  </div>
+
+  <div class="import-card">
+    <div class="import-card-header">
+      <span class="import-card-badge">as</span>
+      <span class="import-card-title">별칭(alias) 사용하기</span>
+    </div>
+    <div class="import-card-body">
+      <p class="import-card-desc">
+        라이브러리를 짧은 별칭으로 가져옵니다. 코드를 간결하게 작성할 수 있어 <code>numpy</code>, <code>pandas</code> 같이 자주 쓰는 라이브러리에서 많이 사용합니다.
+      </p>
+      <pre><code class="language-python">import math as m
+print(m.sqrt(16))  # 16의 제곱근을 출력</code></pre>
+      <div class="import-tip">
+        <span class="import-tip-icon">💡</span>
+        <span>관례적으로 <code>import numpy as np</code>, <code>import pandas as pd</code>처럼 약어를 사용합니다.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="import-card">
+    <div class="import-card-header">
+      <span class="import-card-badge">from</span>
+      <span class="import-card-title">특정 함수만 가져오기</span>
+    </div>
+    <div class="import-card-body">
+      <p class="import-card-desc">
+        라이브러리에서 필요한 함수나 클래스만 선택적으로 가져옵니다. 가져온 후에는 라이브러리명 없이 바로 함수를 사용할 수 있습니다.
+      </p>
+      <pre><code class="language-python">from math import sqrt
+print(sqrt(16))  # 16의 제곱근을 출력</code></pre>
+    </div>
+  </div>
 
 </div>
-
-
-
-

@@ -1,368 +1,331 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pandas 학습 가이드</title>
+﻿<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
 
-    <!-- Prism.js for syntax highlighting -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            background-color: #f9f9f9;
-        }
-        h1, h2 {
-            color: #333; /* 기본 텍스트 색상 */
-        }
-        pre {
-            background-color: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-        code {
-            font-family: "Courier New", Courier, monospace;
-        }
-
-        .faq-container {
-            margin-top: 20px;
-        }
-
-        .faq-section {
-            margin-bottom: 20px;
-        }
-
-        .faq-question {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            background-color: #ffffff;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 5px;
-            color: #333;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        /* 마우스를 올리지 않았을 때 스타일 */
-        .faq-question:hover {
-            background-color: #e0f7fa;
-            color: #00796b;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .faq-question img {
-            margin-right: 10px;
-        }
-
-        .faq-answer {
-            display: none;
-            padding: 15px;
-            background-color: #f0f0f0;
-            border-radius: 8px;
-            color: #333;
-        }
-
-        .faq-answer img {
-            width: 20px;
-            margin-right: 5px;
-        }
-
-        .faq-answer pre {
-            margin-top: 15px;
-        }
-
-        /* 전체적인 링크 스타일링 */
-        a {
-            color: #00796b;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        a:hover {
-            color: #004d40;
-        }
-        .description li::before {
-            content: '✔️';
-            margin-right: 10px;
-            color: #00796b;
-        }
-    </style>
-</head>
-<body>
-
-<h1 class="title">Pandas 학습 가이드</h1> 
+<h1 class="title">Pandas 기초</h1>
 <div class="faq-container">
 
-<!-- section start -->
-<div class="faq-section">
-    <div class="faq-question">
-        <img  src="question.png" width="34px" height="34px" >
-        DataFrame 생성, 파일 저장, 파일 읽기
-        <i class="fas fa-chevron-down"></i>
-    </div>
-    <div class="faq-answer">
-<pre><code class="language-python">   
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="34px" height="34px">
+            Pandas란? 설치 방법
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <img src="gpt.png">
+            <b>Pandas</b>는 파이썬에서 표(행·열) 형태의 데이터를 다루는 라이브러리입니다. 엑셀처럼 데이터를 읽고 필터링하고 분석할 수 있습니다.
+
+            <h3>설치 방법</h3>
+            Pandas는 표준 모듈이 아니므로 터미널에서 먼저 설치해야 합니다.
+            <pre><code class="language-python">
+pip install pandas
+            </code></pre>
+
+            <h3>DataFrame이란?</h3>
+            Pandas의 핵심 자료구조입니다. 행(row)과 열(column)로 이루어진 2차원 표입니다.
+            <pre><code class="language-python">
 import pandas as pd
 
-# 데이터 생성 (딕셔너리 형태)
 data = {
-    'Name': ['Alice', 'Bob', 'Charlie', 'David'],
-    'Age': [25, 30, 35, 40],
-    'City': ['New York', 'Los Angeles', 'Chicago', 'Houston'],
-    'Score': [88.5, 92.3, 85.6, 90.1]
+    '이름': ['이준서', '김민지', '박서준', '최지우'],
+    '나이': [25, 30, 35, 28],
+    '도시': ['서울', '부산', '대구', '인천'],
+    '점수': [88.5, 92.3, 85.6, 90.1]
 }
 
-# 딕셔너리 데이터를 DataFrame으로 변환
-doc = pd.DataFrame(data)
+df = pd.DataFrame(data)
+print(df)
+# 결과:
+#     이름  나이  도시    점수
+# 0  이준서  25  서울  88.5
+# 1  김민지  30  부산  92.3
+# 2  박서준  35  대구  85.6
+# 3  최지우  28  인천  90.1
+            </code></pre>
+        </div>
+    </div>
 
-# DataFrame 출력
-print(doc)    
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="34px" height="34px">
+            CSV 파일 저장과 읽기
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <img src="gpt.png">
+            실제 업무에서는 DataFrame을 CSV 파일로 저장하거나, CSV 파일을 불러와 DataFrame으로 만드는 작업이 가장 많습니다.
 
-# 처리된 데이터를 새로운 CSV 파일로 저장
-doc.to_csv('data.csv', index=False)
+            <h3>예제 코드</h3>
+            <pre><code class="language-python">
+import pandas as pd
+
+data = {
+    '이름': ['이준서', '김민지', '박서준', '최지우'],
+    '나이': [25, 30, 35, 28],
+    '도시': ['서울', '부산', '대구', '인천'],
+    '점수': [88.5, 92.3, 85.6, 90.1]
+}
+df = pd.DataFrame(data)
+
+# DataFrame을 CSV 파일로 저장 (index=False: 행 번호 제외)
+df.to_csv('students.csv', index=False, encoding='utf-8-sig')
+print("저장 완료!")
 
 # CSV 파일 불러오기
-df = pd.read_csv('data.csv')
+df2 = pd.read_csv('students.csv')
+print(df2)
+            </code></pre>
 
-# 데이터 확인
-print(df.head())</code></pre>
-
-</code></pre>
-</div>
-</div>
-<!-- section end -->
-
-
-<!-- section start -->
-    <div class="faq-section">
-        <div class="faq-question">
-            <img  src="question.png" width="34px" height="34px" >
-            데이터 확인하기
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-<pre><code class="language-python">   
-# 데이터의 첫 5행 출력
-print(df.head())
-
-# 데이터의 정보 출력
-print(df.info())
-
-# 각 열의 데이터 유형 확인
-print(df.dtypes)</code></pre>
-    </div>
-</div>
-<!-- section end -->
-
-<!-- section start -->
-<div class="faq-section">
-    <div class="faq-question">
-        <img  src="question.png" width="34px" height="34px" >
-        특정 열 선택 및 데이터 접근
-        <i class="fas fa-chevron-down"></i>
-    </div>
-    <div class="faq-answer">
-<pre><code class="language-python">   
-# 'Name' 열만 선택하여 출력
-print(df['Name'])
-
-# 여러 열 선택하기
-print(df[['Name', 'City']])
-
-# 특정 행의 데이터 선택 (loc를 이용한 인덱스 접근)
-print(df.loc[0])  # 첫 번째 행 출력
-</code></pre>
-    </div>
-</div>
-<!-- section end -->
-
-<!-- section start -->    
-    <div class="faq-section">
-        <div class="faq-question">
-            <img  src="question.png" width="34px" height="34px" >
-            Pandas 데이터 필터링
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-<pre><code class="language-python">   
-# 나이가 30 이상인 사람들만 필터링
-adults = df[df['Age'] >= 30]
-print(adults)
-
-</code></pre>
-    </div>
-</div>
-
-
-<!-- section start -->
-<div class="faq-section">
-    <div class="faq-question">
-        <img  src="question.png" width="34px" height="34px" >
-        데이터 정렬
-        <i class="fas fa-chevron-down"></i>
-    </div>
-    <div class="faq-answer">
-<pre><code class="language-python">   
-# 'Age' 열을 기준으로 오름차순 정렬
-sorted_by_age = df.sort_values(by='Age', ascending=True)
-print(sorted_by_age)
-
-# 'Score' 열을 기준으로 내림차순 정렬
-sorted_by_score = df.sort_values(by='Score', ascending=False)
-print(sorted_by_score)
-</code></pre>
-</div>
-</div>
-<!-- section end -->
-
-<!-- section start -->
-<div class="faq-section">
-    <div class="faq-question">
-        <img  src="question.png" width="34px" height="34px" >
-        데이터 추가 및 수정
-        <i class="fas fa-chevron-down"></i>
-    </div>
-    <div class="faq-answer">
-
-<pre><code class="language-python">   
-# 새로운 열 추가
-df['Occupation'] = ['Engineer', 'Doctor', 'Artist', 'Lawyer']
-print(df)
-
-
-# 새로운 행 추가할 데이터 생성
-new_row = {'Name': 'Frank', 'Age': 28, 'City': 'San Francisco', 'Score': 87.0, 'Occupation': 'Lawyer'}
-new_df =  pd.DataFrame([new_row])
-
-# 기존 DataFrame과 새로운 행을 결합
-df = pd.concat([df, new_df], ignore_index=True)
-print(df)
-
-</code></pre>
-</div>
-</div>
-<!-- section end -->
-
-<!-- section start -->
-<div class="faq-section">
-    <div class="faq-question">
-        <img  src="question.png" width="34px" height="34px" >
-        데이터 요약 및 통계 분석
-        <i class="fas fa-chevron-down"></i>
-    </div>
-    <div class="faq-answer">
-<pre><code class="language-python">   
-# 각 열에 대한 기본 통계 요약 정보
-print(df.describe())
-
-# 'Score' 열의 평균 구하기
-print(df['Score'].mean())
-
-# 'Age' 열의 최댓값과 최솟값 구하기
-print(df['Age'].max())
-print(df['Age'].min())
-</code></pre>
-
-        <div class="description">
             <ul>
-                <li><strong>count</strong>: 해당 열에 있는 값의 개수(결측값은 제외).</li>
-                <li><strong>mean</strong>: 평균값.</li>
-                <li><strong>std</strong>: 표준편차(데이터의 분산 정도).</li>
-                <li><strong>min</strong>: 최소값.</li>
-                <li><strong>25%</strong>: 1사분위수 (데이터의 25%가 이 값 이하).</li>
-                <li><strong>50% (중앙값)</strong>: 2사분위수 (데이터의 50%가 이 값 이하).</li>
-                <li><strong>75%</strong>: 3사분위수 (데이터의 75%가 이 값 이하).</li>
-                <li><strong>max</strong>: 최대값.</li>
+                <li><b>to_csv()</b> : DataFrame을 CSV 파일로 저장합니다.</li>
+                <li><b>read_csv()</b> : CSV 파일을 DataFrame으로 불러옵니다.</li>
+                <li><b>encoding='utf-8-sig'</b> : 한글이 포함된 경우 인코딩을 지정해 엑셀에서 깨지지 않도록 합니다.</li>
             </ul>
         </div>
     </div>
-</div>
-<!-- section end -->
-<!-- section start -->
-<div class="faq-section">
-    <div class="faq-question">
-        <img  src="question.png" width="34px" height="34px" >
-        DataFrame 병합
-        <i class="fas fa-chevron-down"></i>
-    </div>
-    <div class="faq-answer"><button class="copy-btn" onclick="copyCode('source-code')">📋 Copy</button>
-<pre><code class="language-python" id="source-code">   
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="34px" height="34px">
+            데이터 확인하기
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <img src="gpt.png">
+            데이터를 불러온 후 가장 먼저 하는 작업입니다. 데이터의 크기, 구조, 각 열의 타입을 파악합니다.
+
+            <h3>예제 코드</h3>
+            <pre><code class="language-python">
 import pandas as pd
 
-# 첫 번째 DataFrame 생성
-data1 = {
-    'ID': [1, 2, 3, 4],
-    'Name': ['Alice', 'Bob', 'Charlie', 'David'],
-    'Age': [25, 30, 35, 40]
+df = pd.read_csv('students.csv')
+
+print(df.shape)       # 행 수, 열 수 → (4, 4)
+print(df.head())      # 앞 5행 출력
+print(df.tail(2))     # 뒤 2행 출력
+print(df.info())      # 열 이름, 데이터 타입, 결측값 여부
+print(df.describe())  # 수치형 열의 통계 요약 (평균, 최대, 최소 등)
+            </code></pre>
+
+            <ul>
+                <li><b>shape</b> : (행 수, 열 수) 튜플을 반환합니다.</li>
+                <li><b>head(n)</b> : 앞 n행을 출력합니다. 기본값은 5입니다.</li>
+                <li><b>info()</b> : 열 이름, 데이터 타입, 결측값 개수를 보여줍니다.</li>
+                <li><b>describe()</b> : 수치형 열의 평균·표준편차·최소·최대 등을 요약합니다.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="34px" height="34px">
+            열 선택과 행 접근
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <img src="gpt.png">
+            DataFrame에서 원하는 열이나 행을 선택하는 방법입니다.
+
+            <h3>예제 코드</h3>
+            <pre><code class="language-python">
+import pandas as pd
+
+df = pd.read_csv('students.csv')
+
+# 특정 열 하나 선택 → Series 반환
+print(df['이름'])
+
+# 여러 열 선택 → DataFrame 반환
+print(df[['이름', '점수']])
+
+# loc: 인덱스 번호로 특정 행 선택
+print(df.loc[0])      # 첫 번째 행
+print(df.loc[1, '이름'])  # 1번 행의 '이름' 열 값
+            </code></pre>
+
+            <ul>
+                <li><b>df['열이름']</b> : 열 하나를 선택합니다.</li>
+                <li><b>df[['열1', '열2']]</b> : 여러 열을 선택합니다.</li>
+                <li><b>df.loc[행번호]</b> : 행 번호로 특정 행을 선택합니다.</li>
+                <li><b>df.loc[행번호, '열이름']</b> : 특정 행의 특정 열 값을 선택합니다.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="34px" height="34px">
+            데이터 필터링
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <img src="gpt.png">
+            조건에 맞는 행만 골라내는 작업입니다. 엑셀의 '필터' 기능과 같습니다.
+
+            <h3>예제 코드</h3>
+            <pre><code class="language-python">
+import pandas as pd
+
+df = pd.read_csv('students.csv')
+
+# 나이가 30 이상인 행만 선택
+print(df[df['나이'] >= 30])
+
+# 점수가 90 이상인 행만 선택
+print(df[df['점수'] >= 90])
+
+# 여러 조건 동시 적용 (&: 그리고, |: 또는)
+print(df[(df['나이'] >= 28) & (df['점수'] >= 90)])
+
+# 특정 도시의 데이터만 선택
+print(df[df['도시'] == '서울'])
+            </code></pre>
+
+            <ul>
+                <li>조건을 여러 개 쓸 때는 각 조건을 괄호로 묶고 <b>&amp;</b>(그리고) 또는 <b>|</b>(또는)로 연결합니다.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="34px" height="34px">
+            데이터 정렬
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <img src="gpt.png">
+            <b>sort_values()</b>로 특정 열을 기준으로 오름차순·내림차순 정렬할 수 있습니다.
+
+            <h3>예제 코드</h3>
+            <pre><code class="language-python">
+import pandas as pd
+
+df = pd.read_csv('students.csv')
+
+# 나이 기준 오름차순 정렬
+print(df.sort_values(by='나이'))
+
+# 점수 기준 내림차순 정렬
+print(df.sort_values(by='점수', ascending=False))
+
+# 여러 열 기준 정렬 (나이 오름차순 → 점수 내림차순)
+print(df.sort_values(by=['나이', '점수'], ascending=[True, False]))
+            </code></pre>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="34px" height="34px">
+            열 추가와 행 추가
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <img src="gpt.png">
+            DataFrame에 새로운 열이나 행을 추가하는 방법입니다.
+
+            <h3>예제 코드</h3>
+            <pre><code class="language-python">
+import pandas as pd
+
+df = pd.read_csv('students.csv')
+
+# 새로운 열 추가 (점수에 10점 보너스)
+df['보너스점수'] = df['점수'] + 10
+print(df)
+
+# 새로운 행 추가
+new_row = pd.DataFrame([{'이름': '정하은', '나이': 27, '도시': '광주', '점수': 94.0, '보너스점수': 104.0}])
+df = pd.concat([df, new_row], ignore_index=True)
+print(df)
+            </code></pre>
+
+            <ul>
+                <li><b>df['새열이름'] = 값</b> : 새로운 열을 추가합니다.</li>
+                <li><b>pd.concat()</b> : 두 DataFrame을 세로로 합칩니다. <b>ignore_index=True</b>로 인덱스를 새로 매깁니다.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="34px" height="34px">
+            통계 요약과 그룹 집계
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <img src="gpt.png">
+            데이터의 평균·합계 등 통계값을 구하거나, 특정 열을 기준으로 그룹별 집계를 할 수 있습니다.
+
+            <h3>기본 통계</h3>
+            <pre><code class="language-python">
+import pandas as pd
+
+df = pd.read_csv('students.csv')
+
+print(df['점수'].mean())   # 평균
+print(df['점수'].max())    # 최댓값
+print(df['점수'].min())    # 최솟값
+print(df['점수'].sum())    # 합계
+print(df.describe())       # 전체 통계 요약
+            </code></pre>
+
+            <h3>describe() 결과 항목 설명</h3>
+            <ul>
+                <li><b>count</b> : 결측값을 제외한 데이터 개수</li>
+                <li><b>mean</b> : 평균값</li>
+                <li><b>std</b> : 표준편차 (데이터가 평균에서 얼마나 퍼져 있는지)</li>
+                <li><b>min / max</b> : 최솟값 / 최댓값</li>
+                <li><b>25% / 50% / 75%</b> : 사분위수 (데이터를 4등분했을 때의 경계값)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="34px" height="34px">
+            결측값(NaN) 처리
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <img src="gpt.png">
+            실제 데이터에는 값이 없는 <b>결측값(NaN)</b>이 자주 있습니다. 결측값을 그냥 두면 계산 오류가 발생하므로 반드시 처리해야 합니다.
+
+            <h3>예제 코드</h3>
+            <pre><code class="language-python">
+import pandas as pd
+import numpy as np
+
+data = {
+    '이름': ['이준서', '김민지', '박서준', '최지우'],
+    '나이': [25, None, 35, 28],
+    '점수': [88.5, 92.3, None, 90.1]
 }
-df1 = pd.DataFrame(data1)
+df = pd.DataFrame(data)
 
-# 두 번째 DataFrame 생성
-data2 = {
-    'ID': [3, 4, 5, 6],
-    'City': ['Chicago', 'Houston', 'San Francisco', 'Los Angeles'],
-    'Score': [88.5, 92.3, 85.6, 90.1]
-}
-df2 = pd.DataFrame(data2)
+# 결측값 확인
+print(df.isnull())         # True/False 표로 표시
+print(df.isnull().sum())   # 열별 결측값 개수
 
-# 두 개의 DataFrame을 ID 열을 기준으로 병합
-merged_df = pd.merge(df1, df2, on='ID', how='inner')
-merged_df2 = pd.merge(df1, df2, on='ID', how='outer')
+# 결측값 제거 (결측값이 있는 행 전체 삭제)
+df_drop = df.dropna()
+print(df_drop)
 
-# 병합된 DataFrame 출력
-print(merged_df)
-print(merged_df2)
+# 결측값 채우기 (나이는 0, 점수는 평균으로)
+df['나이']  = df['나이'].fillna(0)
+df['점수'] = df['점수'].fillna(df['점수'].mean())
+print(df)
+            </code></pre>
 
-</code></pre>
-
-</div>
-</div>
-<!-- section end -->
-
-
-
-
-
+            <ul>
+                <li><b>isnull()</b> : 결측값 위치를 True/False로 반환합니다.</li>
+                <li><b>dropna()</b> : 결측값이 있는 행을 제거합니다.</li>
+                <li><b>fillna(값)</b> : 결측값을 지정한 값으로 채웁니다.</li>
+            </ul>
+        </div>
+    </div>
 
 </div>
 
-<script>
-    // FAQ toggle
-    document.querySelectorAll('.faq-question').forEach(item => {
-        item.addEventListener('click', event => {
-            let answer = item.nextElementSibling;
-            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
-        });
-    });
-
-    function copyCode(elementId) {
-        // 해당 요소의 텍스트를 선택하고 복사합니다.
-        var codeElement = document.getElementById(elementId);
-        var range = document.createRange();
-        range.selectNodeContents(codeElement);
-        var selection = window.getSelection();
-        selection.removeAllRanges();
-        selection.addRange(range);
-    
-        try {
-            document.execCommand('copy');
-        } catch (err) {
-            alert('복사에 실패했습니다.');
-        }
-        
-        // 선택 해제
-        selection.removeAllRanges();
-    }
-
-</script>
-
-</body>
-</html>
+<script src="content.js"></script>

@@ -1,19 +1,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
 
 <h1 class="title">함수 활용</h1>
 <div class="faq-container">
+
     <div class="faq-section">
         <div class="faq-question">
-            <img  src="question.png" width="34px" height="34px" >
+            <img src="question.png" width="34px" height="34px">
             동물원 소리 내기
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer">
-            <pre>
-                <code class="language-python" >   
-# 동물의 소리를 출력하는 함수를 정의합니다.
+        <div class="faq-answer" style="display:none;">
+            <pre><code class="language-python">
 def animal_sound(animal):
     if animal == "고양이":
         return "야옹"
@@ -24,94 +23,130 @@ def animal_sound(animal):
     else:
         return "저는 그 동물의 소리를 모르겠어요!"
 
-# 함수를 호출하여 동물의 소리를 들어봅시다.
 print("고양이가 무슨 소리를 낼까요?")
-print(animal_sound("고양이"))  # 출력: 야옹
+print(animal_sound("고양이"))   # 야옹
 
 print("\n개가 무슨 소리를 낼까요?")
-print(animal_sound("개"))  # 출력: 멍멍
+print(animal_sound("개"))       # 멍멍
 
 print("\n오리가 무슨 소리를 낼까요?")
-print(animal_sound("오리"))  # 출력: 꽥꽥
+print(animal_sound("오리"))     # 꽥꽥
 
 print("\n사자가 무슨 소리를 낼까요?")
-print(animal_sound("사자"))  # 출력: 저는 그 동물의 소리를 모르겠어요!
-                </code>
-            </pre>
+print(animal_sound("사자"))     # 저는 그 동물의 소리를 모르겠어요!
+            </code></pre>
         </div>
     </div>
+
     <div class="faq-section">
         <div class="faq-question">
-            <img  src="question.png" width="34px" height="34px" >
-            과일 주스 바 
+            <img src="question.png" width="34px" height="34px">
+            과일 주스 바
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer">
-            <pre>
-                <code class="language-python" >   
-# 과일 주스를 만드는 함수를 정의합니다.
+        <div class="faq-answer" style="display:none;">
+            <pre><code class="language-python">
 def make_juice(fruit):
     juice_menu = {
-        "사과": "사과 주스가 준비되었습니다! 🍎",
-        "오렌지": "오렌지 주스가 준비되었습니다! 🍊",
-        "포도": "포도 주스가 준비되었습니다! 🍇",
+        "사과": "사과 주스가 준비되었습니다!",
+        "오렌지": "오렌지 주스가 준비되었습니다!",
+        "포도": "포도 주스가 준비되었습니다!",
     }
-    
-    # 선택한 과일로 주스를 만듭니다.
+
     if fruit in juice_menu:
         return juice_menu[fruit]
     else:
-        return f"죄송해요, 우리 주스 바에는 {fruit} 주스가 없어요. 다른 과일을 선택해 주세요!"
+        return f"죄송해요, {fruit} 주스는 없어요. 다른 과일을 선택해 주세요!"
 
-# 함수를 호출하여 과일 주스를 주문해봅시다.
-print(make_juice("사과"))  # 출력: 사과 주스가 준비되었습니다! 🍎
-print(make_juice("오렌지"))  # 출력: 오렌지 주스가 준비되었습니다! 🍊
-print(make_juice("포도"))  # 출력: 포도 주스가 준비되었습니다! 🍇
-print(make_juice("바나나"))  # 출력: 죄송해요, 우리 주스 바에는 바나나 주스가 없어요. 다른 과일을 선택해 주세요!
-                </code>
-            </pre>
+print(make_juice("사과"))    # 사과 주스가 준비되었습니다!
+print(make_juice("오렌지"))  # 오렌지 주스가 준비되었습니다!
+print(make_juice("포도"))    # 포도 주스가 준비되었습니다!
+print(make_juice("바나나"))  # 죄송해요, 바나나 주스는 없어요. 다른 과일을 선택해 주세요!
+            </code></pre>
         </div>
     </div>
 
-
-  
     <div class="faq-section">
         <div class="faq-question">
-            <img  src="question.png" width="34px" height="34px" >
+            <img src="question.png" width="34px" height="34px">
             온도 변환기
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer">
-            <pre>
-                <code class="language-python" >   
-def printOptions():
-    print("'c' 섭씨온도에서 화씨온도로 변환")
-    print("'f' 화씨온도에서 섭씨온도로 변환")
-    print(" 'q' 종료")
+        <div class="faq-answer" style="display:none;">
+            <pre><code class="language-python">
+def print_options():
+    print("'c' 섭씨온도 → 화씨온도 변환")
+    print("'f' 화씨온도 → 섭씨온도 변환")
+    print("'q' 종료")
 
-def C2F(c_temp):
+def celsius_to_fahrenheit(c_temp):
     return 9.0 / 5.0 * c_temp + 32
 
-def F2C(f_temp):
-    return (f_temp - 32.0) *5.0 / 9.0
+def fahrenheit_to_celsius(f_temp):
+    return (f_temp - 32.0) * 5.0 / 9.0
 
-printOptions()
-choice = input("메뉴에서 선택하세요.")    
-while choice != "q" :
+print_options()
+choice = input("메뉴에서 선택하세요: ")
+while choice != "q":
     if choice == "c":
-        temp = float(input('섭씨온도:'))
-        print('화씨온도:', C2F(temp))
-
-    elif choice == 'f':
-        temp = float(input('화씨온도:'))
-        print('섭씨온도:', F2C(temp))
-    printOptions()
-    choice = input("메뉴에서 선택하세요.")                        
-                </code>
-            </pre>
+        temp = float(input("섭씨온도: "))
+        print("화씨온도:", celsius_to_fahrenheit(temp))
+    elif choice == "f":
+        temp = float(input("화씨온도: "))
+        print("섭씨온도:", fahrenheit_to_celsius(temp))
+    print_options()
+    choice = input("메뉴에서 선택하세요: ")
+            </code></pre>
         </div>
     </div>
 
-</div>    
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="30px" height="30px">
+            연습문제
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <ol class="mission">
+                <li>숫자를 입력받아 짝수면 "짝수", 홀수면 "홀수"를 반환하는 함수 check_odd_even(n)을 작성하세요</li>
+                <div class="highlight">
+                    <pre contenteditable="true"><code class="language-python">
+# check_odd_even 함수를 선언하세요
+
+print(check_odd_even(4))   # 짝수
+print(check_odd_even(7))   # 홀수
+                    </code></pre>
+                </div>
+
+                <li>점수를 입력받아 학점을 반환하는 함수 get_grade(score)를 작성하세요<br>
+                    (90 이상: 'A', 80 이상: 'B', 70 이상: 'C', 나머지: 'F')</li>
+                <div class="highlight">
+                    <pre contenteditable="true"><code class="language-python">
+# get_grade 함수를 선언하세요
+
+print(get_grade(95))   # A
+print(get_grade(82))   # B
+print(get_grade(73))   # C
+print(get_grade(55))   # F
+                    </code></pre>
+                </div>
+
+                <li>음료 이름을 입력받아 가격을 반환하는 함수 get_price(drink)를 작성하세요<br>
+                    (아메리카노: 4000, 카페라떼: 5000, 에이드: 5500, 그 외: "메뉴에 없습니다")</li>
+                <div class="highlight">
+                    <pre contenteditable="true"><code class="language-python">
+# get_price 함수를 선언하세요
+# 힌트: dict를 활용해 보세요
+
+print(get_price("아메리카노"))   # 4000
+print(get_price("카페라떼"))     # 5000
+print(get_price("주스"))         # 메뉴에 없습니다
+                    </code></pre>
+                </div>
+            </ol>
+        </div>
+    </div>
+
+</div>
 
 <script src="content.js"></script>

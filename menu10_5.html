@@ -1,69 +1,153 @@
-<div class="faq-container">
 <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;            
-        }
-        h1 {
-            color: #333;
-        }
-        code {
-            background-color: #f4f4f4;
-            border: 0px solid #ddd;
-            padding: 2px 5px;
-            font-family: Consolas, "Courier New", monospace;
-        }
-        pre {
-            background-color: #f4f4f4;
-            border: 1px solid #ddd;
-            padding: 10px;
-            overflow-x: auto;
-        }
-        ul > li > strong {
-            color: green;
-        }
-    </style>
+  .pip-intro {
+    background: var(--accent-soft);
+    border: 1px solid var(--brand);
+    border-left: 4px solid var(--brand);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+    margin: 0 0 28px;
+    font-size: 14px; line-height: 1.7; color: var(--text);
+  }
+  .pip-intro a { color: var(--brand); font-weight: 600; text-decoration: none; }
+  .pip-intro a:hover { text-decoration: underline; }
 
-    <h1>pip 명령문에 대해 설명</h1>
+  .pip-section-title {
+    font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--mute); margin: 0 0 14px;
+    padding-bottom: 6px; border-bottom: 1px solid var(--border);
+  }
 
-    <p><code>pip</code>는 파이썬 패키지 관리자(Python Package Installer)로, 파이썬 패키지나 라이브러리를 설치하고 관리하는 데 사용됩니다. <code>pip</code>를 사용하면 
-        <a href="https://pypi.org/">
-        파이썬 패키지 인덱스(PyPI)
-        </a>
-        에서 제공하는 다양한 패키지나 모듈을 간단하게 설치할 수 있습니다.</p>
+  .pip-cards { display: flex; flex-direction: column; gap: 14px; margin-bottom: 8px; }
 
-    <h2>주요 <code>pip</code> 명령어와 설명:</h2>
-    <ul>
-        <li><strong>패키지 설치:</strong>
-            <pre><code>pip install &lt;패키지명&gt;</code></pre>
-            <p>주어진 패키지를 설치합니다. 예를 들어, <code>requests</code> 패키지를 설치하려면:</p>
-            <pre><code>pip install requests</code></pre>
-        </li>
-        <li><strong>특정 버전의 패키지 설치:</strong>
-            <pre><code>pip install &lt;패키지명&gt;==&lt;버전&gt;</code></pre>
-            <p>특정 버전의 패키지를 설치할 때 사용합니다. 예를 들어, <code>requests</code> 패키지의 2.25.1 버전을 설치하려면:</p>
-            <pre><code>pip install requests==2.25.1</code></pre>
-        </li>
-        <li><strong>패키지 업데이트:</strong>
-            <pre><code>pip install --upgrade &lt;패키지명&gt;</code></pre>
-            <p>설치된 패키지를 최신 버전으로 업데이트합니다. 예를 들어, <code>numpy</code> 패키지를 최신 버전으로 업데이트하려면:</p>
-            <pre><code>pip install --upgrade numpy</code></pre>
-        </li>
-        <li><strong>패키지 제거:</strong>
-            <pre><code>pip uninstall &lt;패키지명&gt;</code></pre>
-            <p>설치된 패키지를 제거합니다. 예를 들어, <code>matplotlib</code> 패키지를 제거하려면:</p>
-            <pre><code>pip uninstall matplotlib</code></pre>
-        </li>
-        <li><strong>설치된 패키지 목록 확인:</strong>
-            <pre><code>pip list</code></pre>
-            <p>현재 설치된 모든 패키지의 목록과 버전을 확인할 수 있습니다.</p>
-        </li>
-        <li><strong>특정 패키지 정보 확인:</strong>
-            <pre><code>pip show &lt;패키지명&gt;</code></pre>
-            <p>특정 패키지에 대한 정보(설치 경로, 버전, 종속성 등)를 확인할 수 있습니다. 예를 들어, <code>pandas</code> 패키지의 정보를 확인하려면:</p>
-            <pre><code>pip show pandas</code></pre>
-        </li>
-       
-    </ul>
+  .pip-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+
+  .pip-card-header {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 16px;
+    background: var(--accent-soft);
+    border-bottom: 1px solid var(--border);
+  }
+  .pip-card-icon {
+    flex-shrink: 0; width: 28px; height: 28px; border-radius: 6px;
+    background: var(--brand); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; font-family: var(--mono);
+  }
+  .pip-card-title {
+    font-size: 14px; font-weight: 700; color: var(--text);
+  }
+
+  .pip-card-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+
+  .pip-cmd {
+    background: #1e1e2e; border-radius: 8px;
+    padding: 10px 14px;
+    font-family: var(--mono); font-size: 13px; color: #a6e3a1;
+    overflow-x: auto; white-space: pre;
+  }
+
+  .pip-card-desc { font-size: 13px; line-height: 1.65; color: var(--mute); }
+  .pip-card-desc code {
+    font-family: var(--mono); font-size: 12px;
+    background: #f0f0f0; border-radius: 4px; padding: 1px 5px; color: var(--text);
+  }
+  .pip-example-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+    color: var(--brand); margin-bottom: -4px;
+  }
+</style>
+
+<h1 class="title">pip 명령어</h1>
+
+<div class="pip-intro">
+  <code style="font-family:var(--mono);background:#e8faf0;border-radius:4px;padding:1px 6px;color:var(--accent);font-weight:700">pip</code>는
+  파이썬 패키지 관리자(Python Package Installer)로, 파이썬 패키지나 라이브러리를 설치하고 관리하는 데 사용됩니다.
+  <a href="https://pypi.org/" target="_blank">파이썬 패키지 인덱스(PyPI)</a>에서 제공하는 다양한 패키지를 간단하게 설치할 수 있습니다.
+</div>
+
+<p class="pip-section-title">주요 pip 명령어</p>
+
+<div class="pip-cards">
+
+  <div class="pip-card">
+    <div class="pip-card-header">
+      <div class="pip-card-icon">↓</div>
+      <span class="pip-card-title">패키지 설치</span>
+    </div>
+    <div class="pip-card-body">
+      <div class="pip-cmd">pip install &lt;패키지명&gt;</div>
+      <p class="pip-card-desc">주어진 패키지를 설치합니다.</p>
+      <span class="pip-example-label">예시</span>
+      <div class="pip-cmd">pip install requests</div>
+    </div>
+  </div>
+
+  <div class="pip-card">
+    <div class="pip-card-header">
+      <div class="pip-card-icon" style="font-size:11px">ver</div>
+      <span class="pip-card-title">특정 버전 설치</span>
+    </div>
+    <div class="pip-card-body">
+      <div class="pip-cmd">pip install &lt;패키지명&gt;==&lt;버전&gt;</div>
+      <p class="pip-card-desc">특정 버전의 패키지를 설치할 때 사용합니다.</p>
+      <span class="pip-example-label">예시</span>
+      <div class="pip-cmd">pip install requests==2.25.1</div>
+    </div>
+  </div>
+
+  <div class="pip-card">
+    <div class="pip-card-header">
+      <div class="pip-card-icon">↑</div>
+      <span class="pip-card-title">패키지 업데이트</span>
+    </div>
+    <div class="pip-card-body">
+      <div class="pip-cmd">pip install --upgrade &lt;패키지명&gt;</div>
+      <p class="pip-card-desc">설치된 패키지를 최신 버전으로 업데이트합니다.</p>
+      <span class="pip-example-label">예시</span>
+      <div class="pip-cmd">pip install --upgrade numpy</div>
+    </div>
+  </div>
+
+  <div class="pip-card">
+    <div class="pip-card-header">
+      <div class="pip-card-icon">✕</div>
+      <span class="pip-card-title">패키지 제거</span>
+    </div>
+    <div class="pip-card-body">
+      <div class="pip-cmd">pip uninstall &lt;패키지명&gt;</div>
+      <p class="pip-card-desc">설치된 패키지를 제거합니다.</p>
+      <span class="pip-example-label">예시</span>
+      <div class="pip-cmd">pip uninstall matplotlib</div>
+    </div>
+  </div>
+
+  <div class="pip-card">
+    <div class="pip-card-header">
+      <div class="pip-card-icon">≡</div>
+      <span class="pip-card-title">설치된 패키지 목록</span>
+    </div>
+    <div class="pip-card-body">
+      <div class="pip-cmd">pip list</div>
+      <p class="pip-card-desc">현재 설치된 모든 패키지의 목록과 버전을 확인할 수 있습니다.</p>
+    </div>
+  </div>
+
+  <div class="pip-card">
+    <div class="pip-card-header">
+      <div class="pip-card-icon">i</div>
+      <span class="pip-card-title">패키지 정보 확인</span>
+    </div>
+    <div class="pip-card-body">
+      <div class="pip-cmd">pip show &lt;패키지명&gt;</div>
+      <p class="pip-card-desc">특정 패키지의 설치 경로, 버전, 종속성 등 상세 정보를 확인합니다.</p>
+      <span class="pip-example-label">예시</span>
+      <div class="pip-cmd">pip show pandas</div>
+    </div>
+  </div>
+
 </div>

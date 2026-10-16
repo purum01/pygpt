@@ -1,212 +1,897 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Python With ChatGPT</title>
-<style>
-    body, html {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-    }
-    .container {
-        display: flex;
-        height: 100%;
-    }
-    .side-menu {
-        width: 15%;
-        background-color: #f0f0f0;
-        padding: 20px;
-    }
-    .content {
-        width: 75%;
-        padding: 20px;
-    }
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-    li {
-        margin-bottom: 10px;
-        cursor: pointer;
-    }
-    #menu > li:hover {
-        font-weight: bold;
-        background-color: gray;
-    }
-    .nested {
-        margin-left: 20px;
-        display: none;
-    }
-    .nested > li:hover {
-        font-weight: bold;
-        color:white;
-    }
-    .active {
-        display: block;
-    }
-</style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet"  href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python with ChatGPT</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js" defer></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+<style>
+/* ── tokens ── */
+:root {
+  --brand:       #03c75a;
+  --accent:      #00893a;
+  --accent-soft: #eafaf1;
+  --bg:          #f5f6f7;
+  --surface:     #ffffff;
+  --text:        #1a1a1a;
+  --mute:        #6b7280;
+  --border:      #e5e7eb;
+  --side-w:      260px;
+  --font:        'Noto Sans KR', sans-serif;
+  --mono:        'IBM Plex Mono', monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:          #0f1117;
+    --surface:     #1a1d27;
+    --text:        #e8eaf0;
+    --mute:        #9ca3af;
+    --border:      #2d3140;
+    --accent-soft: #0d2318;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:          #0f1117;
+  --surface:     #1a1d27;
+  --text:        #e8eaf0;
+  --mute:        #9ca3af;
+  --border:      #2d3140;
+  --accent-soft: #0d2318;
+}
 
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: var(--font);
+  font-size: 15px;
+  background: var(--bg);
+  color: var(--text);
+  border-top: 4px solid var(--brand);
+}
+
+/* ── layout ── */
+.wrap {
+  display: grid;
+  grid-template-columns: var(--side-w) minmax(0, 1fr);
+  min-height: calc(100vh - 4px);
+}
+
+/* ── sidebar ── */
+nav.side {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  height: calc(100vh - 4px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+nav.side::-webkit-scrollbar { width: 4px; }
+nav.side::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.nav-top {
+  padding: 18px 16px 12px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.nav-top h1 {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+.nav-top h1 span {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--mute);
+  font-family: var(--mono);
+  margin-top: 2px;
+}
+
+.nav-body { flex: 1; padding: 6px 0; }
+
+/* ── accordion chapter ── */
+.ch-item { }
+.ch-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 9px 14px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text);
+  gap: 8px;
+  transition: background .15s;
+}
+.ch-btn:hover { background: var(--bg); }
+.ch-btn.open { color: var(--accent); }
+.ch-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--mute);
+  min-width: 18px;
+  background: var(--border);
+  border-radius: 3px;
+  text-align: center;
+  padding: 1px 4px;
+}
+.ch-btn.open .ch-num { background: var(--accent-soft); color: var(--accent); }
+.ch-arrow {
+  margin-left: auto;
+  font-size: 10px;
+  color: var(--mute);
+  transition: transform .2s;
+  flex-shrink: 0;
+}
+.ch-btn.open .ch-arrow { transform: rotate(180deg); color: var(--accent); }
+
+.sub-list {
+  display: none;
+  list-style: none;
+  padding: 2px 0 6px 0;
+}
+.ch-btn.open + .sub-list { display: block; }
+
+.sub-list li a {
+  display: flex;
+  align-items: center;
+  padding: 6px 14px 6px 36px;
+  text-decoration: none;
+  color: var(--mute);
+  font-size: 12.5px;
+  transition: all .12s;
+  line-height: 1.4;
+}
+.sub-list li a:hover {
+  background: var(--bg);
+  color: var(--text);
+}
+.sub-list li a.on {
+  color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: inset 3px 0 0 var(--brand);
+  font-weight: 500;
+}
+
+.nav-owner {
+  padding: 14px 16px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--mute);
+  line-height: 1.9;
+  flex-shrink: 0;
+}
+.nav-owner a { color: var(--accent); text-decoration: none; font-size: 11.5px; }
+.nav-owner a:hover { text-decoration: underline; }
+
+/* ── main ── */
+main {
+  background: var(--bg);
+  min-height: calc(100vh - 4px);
+  padding: 32px 40px;
+}
+#content { max-width: 860px; }
+
+/* ── cover ── */
+.cover-wrap { text-align: center; padding: 20px 0; }
+.cover-wrap img { max-width: 100%; border-radius: 10px; }
+
+/* ── page title ── */
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+.subtitle {
+  font-size: 14px;
+  color: var(--mute);
+  margin-bottom: 20px;
+}
+.highlight { color: var(--brand); font-weight: 600; }
+.em { font-weight: 600; color: var(--accent); }
+.mission {
+  background: var(--accent-soft);
+  border-left: 3px solid var(--brand);
+  padding: 12px 16px;
+  border-radius: 0 6px 6px 0;
+  margin: 12px 0;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.answer { margin-top: 10px; }
+
+/* ── FAQ ── */
+.faq-container { margin-top: 8px; }
+.faq-section {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.faq-question {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 16px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text);
+  transition: background .15s;
+  user-select: none;
+}
+.faq-question:hover { background: var(--bg); }
+.faq-question img { flex-shrink: 0; border-radius: 4px; }
+.faq-question .fa-chevron-down {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--mute);
+  transition: transform .2s;
+  flex-shrink: 0;
+}
+.faq-section.active .faq-question { background: var(--accent-soft); }
+.faq-section.active .faq-question .fa-chevron-down { transform: rotate(180deg); color: var(--accent); }
+.faq-answer {
+  padding: 18px 20px;
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--text);
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+.faq-answer img[src="gpt.png"], .faq-answer img[src="question.png"] {
+  max-width: 36px;
+  margin-bottom: 8px;
+  display: block;
+}
+.faq-answer h3 { font-size: 14px; margin: 14px 0 6px; color: var(--accent); }
+.faq-answer h4 { font-size: 13.5px; margin: 12px 0 4px; color: var(--text); }
+.faq-answer ul, .faq-answer ol { padding-left: 22px; margin: 6px 0; }
+.faq-answer li { margin-bottom: 4px; }
+.faq-answer p { margin-bottom: 8px; }
+.faq-answer b, .faq-answer strong { font-weight: 600; }
+.faq-answer pre {
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 10px 0;
+  font-size: 13px;
+}
+.faq-answer code:not([class]) {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+}
+
+/* ── 연습문제 quiz ── */
+#content ol.quiz-list {
+  list-style: none; padding: 0;
+  display: flex; flex-direction: column; gap: 14px;
+  margin: 20px 0;
+}
+#content .quiz-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--brand);
+  border-radius: 0 12px 12px 0;
+  padding: 18px 20px 16px;
+}
+#content .quiz-q-num {
+  display: inline-block;
+  font-family: var(--mono); font-size: 11px; font-weight: 700;
+  color: var(--brand); letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+#content ul.quiz-options {
+  list-style: none; padding: 0; margin: 10px 0 0;
+  display: flex; flex-direction: column; gap: 7px;
+}
+#content .quiz-opt-li { display: flex; }
+#content .quiz-opt-li input[type="radio"] { display: none; }
+#content .quiz-opt-label {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 14px;
+  border: 1.5px solid var(--border); border-radius: 8px;
+  cursor: pointer; width: 100%;
+  font-size: 14px; line-height: 1.5;
+  transition: border-color .15s, background .15s;
+  user-select: none;
+}
+#content .quiz-opt-label:hover {
+  border-color: var(--brand); background: var(--accent-soft);
+}
+#content .quiz-opt-li input[type="radio"]:checked + .quiz-opt-label {
+  border-color: var(--brand); background: var(--accent-soft);
+}
+#content .quiz-opt-circle {
+  flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+  background: var(--border); color: var(--mute);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 12px; font-weight: 700;
+  transition: background .15s, color .15s;
+}
+#content .quiz-opt-li input[type="radio"]:checked + .quiz-opt-label .quiz-opt-circle {
+  background: var(--brand); color: #fff;
+}
+#content .quiz-opt-label.quiz-correct {
+  border-color: var(--brand) !important; background: var(--accent-soft) !important; font-weight: 600;
+}
+#content .quiz-opt-label.quiz-correct .quiz-opt-circle { background: var(--brand); color: #fff; }
+#content .quiz-opt-label.quiz-wrong { opacity: 0.38; }
+
+#content .quiz-btn-row { display: flex; gap: 10px; margin-top: 22px; }
+#content #answerButton, #content #resetButton {
+  padding: 9px 22px; border: none; border-radius: 8px;
+  cursor: pointer; font-family: var(--font); font-size: 14px; font-weight: 600;
+  transition: background .15s;
+}
+#content #answerButton { background: var(--brand); color: #fff; }
+#content #answerButton:hover { background: var(--accent); }
+#content #resetButton { background: var(--border); color: var(--text); }
+#content #resetButton:hover { background: var(--mute); color: #fff; }
+
+#content #answerText {
+  margin-top: 18px;
+  background: var(--accent-soft);
+  border: 1px solid var(--brand); border-radius: 10px;
+  padding: 14px 18px;
+}
+#content #answerText ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+#content #answerText li { font-size: 14px; color: var(--accent); font-weight: 500; }
+
+/* ── Tabs (menu0_4.html) ── */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.tabs .tablinks {
+  padding: 7px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 13px;
+  color: var(--mute);
+  transition: all .15s;
+}
+.tabs .tablinks:hover { border-color: var(--brand); color: var(--accent); }
+.tabs .tablinks.active { background: var(--brand); border-color: var(--brand); color: #fff; }
+.tab-container { }
+.tab-content { display: none; }
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--brand);
+  color: #fff;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 11px;
+  font-weight: 700;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+.login-guide-container table { width: 100%; border-collapse: collapse; }
+.login-guide-container td {
+  padding: 10px 6px;
+  font-size: 14px;
+  line-height: 1.75;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+.login-guide-container img {
+  max-width: 100%;
+  border-radius: 6px;
+  margin: 8px 0;
+  border: 1px solid var(--border);
+}
+
+/* copy button */
+.copy-btn {
+  padding: 4px 12px;
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: var(--font);
+  transition: background .15s;
+}
+.copy-btn:hover { background: var(--accent); }
+
+/* code block without <pre> wrapper */
+#content #source-code, #content code[id="source-code"] {
+  white-space: pre;
+  display: block;
+  font-family: var(--mono);
+  background: #ffffff;
+  color: #1e1e1e;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+/* <pre> blocks also use white background */
+#content .faq-answer pre[class*="language-"],
+#content pre[class*="language-"] {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb;
+}
+#content code[class*="language-"] {
+  text-shadow: none !important;
+  color: #1e1e1e !important;
+  background: none !important;
+}
+
+/* VSCode Light+ token colors */
+#content .token.comment,
+#content .token.prolog,
+#content .token.doctype,
+#content .token.cdata { color: #008000; font-style: italic; background: none !important; }
+#content .token.keyword,
+#content .token.boolean { color: #0000ff; background: none !important; }
+#content .token.string,
+#content .token.char,
+#content .token.attr-value { color: #a31515; background: none !important; }
+#content .token.number { color: #098658; background: none !important; }
+#content .token.function { color: #795e26; background: none !important; }
+#content .token.class-name { color: #267f99; background: none !important; }
+#content .token.operator { color: #000000; background: none !important; }
+#content .token.punctuation { color: #1e1e1e; background: none !important; }
+#content .token.builtin { color: #0070c1; background: none !important; }
+#content .token.decorator,
+#content .token.annotation { color: #795e26; background: none !important; }
+#content .token.namespace { color: #267f99; background: none !important; }
+
+/* wrapper that holds code block + copy button */
+.code-wrap { position: relative; }
+.code-wrap > .copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  opacity: 0;
+  transition: opacity .2s;
+  z-index: 2;
+  padding: 3px 10px;
+  font-size: 11px;
+}
+.code-wrap:hover > .copy-btn { opacity: 1; }
+
+/* error box */
+.err-box {
+  background: #fff8e1;
+  border: 1px solid #f59e0b;
+  border-left: 4px solid #f59e0b;
+  border-radius: 6px;
+  padding: 16px 20px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #78350f;
+}
+.err-box code { font-family: var(--mono); font-size: 12.5px; background: rgba(0,0,0,.06); padding: 1px 5px; border-radius: 3px; }
+.err-box a { color: var(--accent); }
+</style>
 </head>
 <body>
 
-<div class="container">
-    <div class="side-menu">
-        <ul id="menu">
-            <li id="menu0" onclick="toggleNested(this)")">1. 시작하기 
-                <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu0_1');">개발 환경 구축</li>                                            
-                    <li onclick="event.stopPropagation(); showContent('menu0_4');">파이썬 실행</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu0_2');">ChatGPT 가입</li>
-                    <li onclick="event.stopPropagation(); showContent('menu0_3');">ChatGPT 로그인</li>
-                </ul>
-            </li>
-            <li id="menu1" onclick="toggleNested(this)">2. 자료형
-                <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu1_4')">① str</li>
-                    <li onclick="event.stopPropagation(); showContent('menu1_1')">② int</li>                  
-                    <li onclick="event.stopPropagation(); showContent('menu1_2')">③ float</li>                  
-                    <li onclick="event.stopPropagation(); showContent('menu1_3')">④ bool</li>
-                    <li onclick="event.stopPropagation(); showContent('menu1_5')">⑤ list</li>
-                    <li onclick="event.stopPropagation(); showContent('menu1_6')">⑥ tuple</li>
-                    <li onclick="event.stopPropagation(); showContent('menu1_7')">⑦ set</li>
-                    <li onclick="event.stopPropagation(); showContent('menu1_8')">⑧ dict</li>
-                </ul>
-            </li>
-            <li id ="menu2" onclick="toggleNested(this)">3. 변수
-                <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu2_1');">변수 선언</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu2_3');">연습 문제</li>
-                </ul>
-            </li>
-
-            <li id="menu3" onclick="toggleNested(this)">4. 연산자
-                <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu3_1');">산술연산자</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu3_2');">비교연산자</li>
-                    <li onclick="event.stopPropagation(); showContent('menu3_3');">논리연산자</li>
-                    <li onclick="event.stopPropagation(); showContent('menu3_4');">포함연산자</li>
-                </ul>            
-            </li>
-            <li id="menu4" onclick="toggleNested(this)">5. 내장함수
-                <ul class="nested">
-                    <li></li>
-                    <li onclick="event.stopPropagation(); showContent('menu4_1');">형변환 함수</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu4_2');">type 함수 </li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu4_3');">input 함수</li>
-                    <li onclick="event.stopPropagation(); showContent('menu4_4');">print 함수</li>
-                    <li onclick="event.stopPropagation(); showContent('menu4_5');">range 함수</li>
-                    <li onclick="event.stopPropagation(); showContent('menu4_8');">집계 함수</li>
-                    <li onclick="event.stopPropagation(); showContent('menu4_6');">연습 문제</li>
-                </ul>            
-            </li>
-            <li id="menu5" onclick="toggleNested(this)">6. 제어문
-                <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu5_1');">if문</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu5_2');">for문</li>
-                    <li onclick="event.stopPropagation(); showContent('menu5_3');">while문</li>
-                </ul>            
-            </li>
-
-            <li id="menu12" onclick="toggleNested(this)">7 ChatGPT 사용
-                <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu12_1');">프로젝트 기반 실습</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu12_2');">코딩 챌린지</li>
-                </ul>             
-            </li>     
-                   
-            <li id="menu6" onclick="toggleNested(this)">8. 반복가능객체(Iterable)
-                <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu6_6');">sequence type</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu6_7');">dictionary type</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu6_1');">str</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu6_2');">list</li>
-                    <li onclick="event.stopPropagation(); showContent('menu6_3');">tuple</li>
-                    <li onclick="event.stopPropagation(); showContent('menu6_4');">set</li>
-                    <li onclick="event.stopPropagation(); showContent('menu6_5');">dict</li>
-                </ul>            
-            </li>
-
-            <li id="menu7" onclick="toggleNested(this)">9. 함수(Function)
-                <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu7_1');">함수 선언</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu7_2');">함수 호출</li>
-                    <li onclick="event.stopPropagation(); showContent('menu7_3');">함수 활용</li>
-                    <li onclick="event.stopPropagation(); showContent('menu7_4');">연습 문제</li>                    
-                </ul>             
-            </li>
-
-            <li id="menu8" onclick="toggleNested(this)">10. 클래스(Class)
-                <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu8_1');">클래스 선언 </li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu8_2');">인스턴스</li>                    
-                </ul>            
-            </li>
-                        
-            <li id="menu9" onclick="toggleNested(this)">11. 오류 처리(Error)
-                <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu9_1');">예외 객체</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu9_2');">try-except</li>
-                    <li onclick="event.stopPropagation(); showContent('menu9_3');">예외 강제 발생</li>
-                </ul>              
-            </li>
-            <li id="menu10" onclick="toggleNested(this)">12. 라이브러리(Library)
-                <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu10_5');">PIP</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu10_1');">모듈 사용</li>                        
-                    <li onclick="event.stopPropagation(); showContent('menu10_2');">표준 모듈</li>
-                    <li onclick="event.stopPropagation(); showContent('menu10_3');">연습 문제</li>
-                    <li onclick="event.stopPropagation(); showContent('menu10_4');">Pandas</li>
-                </ul>             
-            </li>
-            <li id="menu11" onclick="toggleNested(this)">13. ChatGPT 활용
-                <ul class="nested">
-                    <li onclick="event.stopPropagation(); showContent('menu11_1')">01_로또번호 생성</li>
-                    <li onclick="event.stopPropagation(); showContent('menu11_2')">02_파일 정리</li>
-                    <li onclick="event.stopPropagation(); showContent('menu11_3')">03_파일 병합</li>
-                    <li onclick="event.stopPropagation(); showContent('menu11_4')">04_공문 생성</li>                  
-                    <li onclick="event.stopPropagation(); showContent('menu11_5')">05_데이터 분석</li>                  
-                    <li onclick="event.stopPropagation(); showContent('menu11_6')">06_웹크롤링</li>                  
-                </ul>            
-            </li>
-
-        </ul>
+<div class="wrap">
+  <nav class="side">
+    <div class="nav-top">
+      <h1>Python with ChatGPT<span>오정임 · purum01@naver.com</span></h1>
     </div>
-    <div class="content" id="content">
-        <img src = "cover.png" >
-    </div>
+    <div class="nav-body" id="nav"></div>
+    <p class="nav-owner"><a href="../index.html">← 바로코드</a></p>
+  </nav>
+
+  <main>
+    <div id="content"></div>
+  </main>
 </div>
 
 <script>
-function showContent(menu) {
-    var filePath = menu + ".html"; // 예: 'menu1.html'
-    console.log(filePath)
+/* ── menu data ── */
+const CHAPTERS = [
+  { num:"1", title:"시작하기", items:[
+    { title:"개발 환경 구축", file:"menu0_1" },
+    { title:"파이썬 실행",    file:"menu0_4" },
+    
+  ]},
+  { num:"2", title:"자료형", items:[
+    { title:"① str",  file:"menu1_4" },
+    { title:"② int",  file:"menu1_1" },
+    { title:"③ float",file:"menu1_2" },
+    { title:"④ bool", file:"menu1_3" },
+    { title:"⑤ list", file:"menu1_5" },
+    { title:"⑥ tuple",file:"menu1_6" },
+    { title:"⑦ set",  file:"menu1_7" },
+    { title:"⑧ dict", file:"menu1_8" },
+  ]},
+  { num:"3", title:"변수", items:[
+    { title:"변수 선언", file:"menu2_1" },
+    { title:"연습 문제", file:"menu2_3" },
+  ]},
+  { num:"4", title:"연산자", items:[
+    { title:"산술연산자", file:"menu3_1" },
+    { title:"비교연산자", file:"menu3_2" },
+    { title:"논리연산자", file:"menu3_3" },
+    { title:"포함연산자", file:"menu3_4" },
+  ]},
+  { num:"5", title:"내장함수", items:[
+    { title:"형변환 함수", file:"menu4_1" },
+    { title:"type 함수",  file:"menu4_2" },
+    { title:"input 함수", file:"menu4_3" },
+    { title:"print 함수", file:"menu4_4" },
+    { title:"range 함수", file:"menu4_5" },
+    { title:"집계 함수",  file:"menu4_8" },
+    { title:"연습 문제",  file:"menu4_6" },
+  ]},
+  { num:"6", title:"제어문", items:[
+    { title:"if문",   file:"menu5_1" },
+    { title:"for문",  file:"menu5_2" },
+    { title:"while문",file:"menu5_3" },
+  ]},
+  { num:"7", title:"ChatGPT 사용", items:[
+    { title:"재미있는 프로그램 만들기", file:"menu12_1" },
+    { title:"논리적 챌린지",       file:"menu12_2" },
+  ]},
+  { num:"8", title:"컬렉션 자료형", items:[
+    { title:"순서형 타입",  file:"menu6_6" },
+    { title:"매핑 타입",file:"menu6_7" },
+    { title:"str",            file:"menu6_1" },
+    { title:"list",           file:"menu6_2" },
+    { title:"tuple",          file:"menu6_3" },
+    { title:"set",            file:"menu6_4" },
+    { title:"dict",           file:"menu6_5" },
+  ]},
+  { num:"9", title:"함수 (Function)", items:[
+    { title:"함수 선언", file:"menu7_1" },
+    { title:"함수 호출", file:"menu7_2" },
+    { title:"함수 활용", file:"menu7_3" },
+    { title:"연습 문제", file:"menu7_4" },
+  ]},
+  { num:"10", title:"클래스 (Class)", items:[
+    { title:"클래스 선언", file:"menu8_1" },
+    { title:"인스턴스",    file:"menu8_2" },
+  ]},
+  { num:"11", title:"오류 처리 (Error)", items:[
+    { title:"예외 객체",       file:"menu9_1" },
+    { title:"try-except",      file:"menu9_2" },
+    { title:"예외 강제 발생",  file:"menu9_3" },
+  ]},
+  { num:"12", title:"라이브러리 (Library)", items:[
+    { title:"PIP",      file:"menu10_5" },
+    { title:"모듈 사용", file:"menu10_1" },
+    { title:"표준 모듈", file:"menu10_2" },
+    { title:"연습 문제", file:"menu10_3" },
+    { title:"Pandas",   file:"menu10_4" },
+  ]},
+  { num:"13", title:"ChatGPT 활용", items:[
+    { title:"01_로또번호 생성", file:"menu11_1" },
+    { title:"02_파일 정리",    file:"menu11_2" },
+    { title:"03_파일 병합",    file:"menu11_3" },
+    { title:"04_공문 생성",    file:"menu11_4" },
+    { title:"05_데이터 분석",  file:"menu11_5" },
+    { title:"06_웹크롤링",     file:"menu11_6" },
+  ]},
+];
 
-    // jQuery의 load 메소드를 사용하여 외부 HTML 파일의 내용을 불러옵니다.
-    $("#content").load(filePath, function(response, status, xhr) {
-        if (status == "error") {
-            // 파일 로드 실패 시 처리
-            var msg = "<p>죄송합니다. 오류가 발생했습니다: </p>";
-            msg += "<p>" + xhr.status + " " + xhr.statusText + "</p>";  
-            $("#content").html(msg);
-        }
+/* ── globals for inline onclick in fetched content ── */
+window.openTab = function(evt, tabName) {
+  document.querySelectorAll('#content .tab-content').forEach(el => {
+    el.style.display = 'none';
+  });
+  document.querySelectorAll('#content .tablinks').forEach(el => {
+    el.classList.remove('active');
+  });
+  const tab = document.getElementById(tabName);
+  if (tab) tab.style.display = 'block';
+  if (evt && evt.currentTarget) evt.currentTarget.classList.add('active');
+};
+
+window.copyCode = function(button) {
+  const prev = button.previousElementSibling;
+  const codeEl = prev ? (prev.querySelector('code') || prev) : null;
+  const text = codeEl ? codeEl.innerText : '';
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = button.textContent;
+    button.textContent = '복사됨!';
+    setTimeout(() => { button.textContent = orig; }, 1500);
+  }).catch(() => {
+    const range = document.createRange();
+    if (codeEl) { range.selectNodeContents(codeEl); }
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  });
+};
+
+let currentFile = null;
+
+/* ── build sidebar ── */
+function renderNav() {
+  const nav = document.getElementById('nav');
+  nav.innerHTML = '';
+  CHAPTERS.forEach((ch, ci) => {
+    const div = document.createElement('div');
+    div.className = 'ch-item';
+    div.innerHTML =
+      `<button class="ch-btn" data-ci="${ci}">` +
+        `<span class="ch-num">${ch.num}</span>` +
+        `<span class="ch-title">${ch.title}</span>` +
+        `<i class="fas fa-chevron-down ch-arrow"></i>` +
+      `</button>` +
+      `<ul class="sub-list">` +
+        ch.items.map(item =>
+          `<li><a href="#" data-file="${item.file}">${item.title}</a></li>`
+        ).join('') +
+      `</ul>`;
+    nav.appendChild(div);
+  });
+
+  /* chapter toggle */
+  nav.querySelectorAll('.ch-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const wasOpen = btn.classList.contains('open');
+      nav.querySelectorAll('.ch-btn').forEach(b => b.classList.remove('open'));
+      if (!wasOpen) btn.classList.add('open');
     });
+  });
 
+  /* sub-item click */
+  nav.querySelectorAll('.sub-list a').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      loadPage(a.dataset.file);
+    });
+  });
 }
 
-function toggleNested(element) {
-    if (element.children.length > 0) {
-        element.children[0].classList.toggle("active");
+/* ── load content ── */
+function loadPage(file) {
+  if (file === currentFile) return;
+  currentFile = file;
+  try { localStorage.setItem('pygpt_file', file); } catch(e) {}
+
+  /* mark active link + open chapter */
+  document.querySelectorAll('.sub-list a').forEach(a => {
+    const isOn = a.dataset.file === file;
+    a.classList.toggle('on', isOn);
+    if (isOn) {
+      const btn = a.closest('.ch-item').querySelector('.ch-btn');
+      document.querySelectorAll('.ch-btn').forEach(b => b.classList.remove('open'));
+      btn.classList.add('open');
+      /* scroll sidebar to keep active item visible */
+      a.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     }
-}
-</script>
+  });
 
+  const area = document.getElementById('content');
+  area.innerHTML = '<p style="padding:24px 0;color:var(--mute);font-size:14px;">불러오는 중...</p>';
+
+  fetch(file + '.html', { cache: 'no-store' })
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(html => {
+      /* strip external script/link tags; inline scripts won't execute via innerHTML anyway */
+      html = html.replace(/<script\b[^>]*src=[^>]*><\/script>/gi, '');
+      html = html.replace(/<link\b[^>]*(prism|font-awesome|googleapis)[^>]*>/gi, '');
+      /* strip inline script blocks from fetched content */
+      html = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '');
+      area.innerHTML = html;
+
+      /* ── wire FAQ accordion ── */
+      area.querySelectorAll('.faq-question').forEach(q => {
+        const ans = q.nextElementSibling;
+        if (ans && ans.classList.contains('faq-answer')) {
+          ans.style.display = 'none';
+        }
+        q.addEventListener('click', () => {
+          const answer = q.nextElementSibling;
+          if (!answer) return;
+          const opening = answer.style.display !== 'block';
+          answer.style.display = opening ? 'block' : 'none';
+          q.closest('.faq-section').classList.toggle('active', opening);
+        });
+      });
+
+      /* ── init tabs: show first tab ── */
+      const allTabs = area.querySelectorAll('.tab-content');
+      if (allTabs.length) {
+        allTabs.forEach(t => t.style.display = 'none');
+        allTabs[0].style.display = 'block';
+        const firstBtn = area.querySelector('.tablinks');
+        if (firstBtn) firstBtn.classList.add('active');
+      }
+
+      /* ── Prism syntax highlight ── */
+      if (window.Prism) Prism.highlightAllUnder(area);
+
+      /* ── 연습문제 quiz 초기화 ── */
+      initQuiz(area);
+
+      /* auto-insert copy buttons on every code block */
+      area.querySelectorAll('pre, [id="source-code"]').forEach(el => {
+        if (el.closest('.code-wrap')) return;
+        const wrap = document.createElement('div');
+        wrap.className = 'code-wrap';
+        el.parentNode.insertBefore(wrap, el);
+        wrap.appendChild(el);
+        const btn = document.createElement('button');
+        btn.className = 'copy-btn';
+        btn.textContent = '복사';
+        btn.addEventListener('click', function() { copyCode(this); });
+        wrap.appendChild(btn);
+      });
+    })
+    .catch(() => {
+      area.innerHTML =
+        `<div class="err-box">` +
+          `<strong>콘텐츠를 불러올 수 없습니다.</strong><br>` +
+          `이 페이지는 HTTP 서버를 통해 실행해야 합니다.<br>` +
+          `<code>file://</code> 프로토콜에서는 fetch()가 차단됩니다.<br><br>` +
+          `터미널에서 다음 명령 실행 후 브라우저에서 접속하세요:<br>` +
+          `<code>python -m http.server 8000</code><br>` +
+          `→ <a href="http://localhost:8000/pygpt/" target="_blank">http://localhost:8000/pygpt/</a>` +
+        `</div>`;
+    });
+}
+
+/* ── 연습문제 quiz 엔진 ── */
+window.initQuiz = function initQuiz(area) {
+  if (!area.querySelector('#answerButton')) return;
+
+  // #answerText 에서 정답 파싱: "(1) 1번 : ..."  →  {"1": "1", ...}
+  var answerEl = area.querySelector('#answerText');
+  var answers = {};
+  if (answerEl) {
+    answerEl.querySelectorAll('li').forEach(function(li) {
+      var m = li.textContent.match(/\((\d+)\)\s+(\d+)번/);
+      if (m) answers[m[1]] = m[2];
+    });
+    answerEl.style.display = 'none';
+  }
+
+  // OL → quiz-list
+  var ol = area.querySelector('ol');
+  if (!ol) return;
+  ol.classList.add('quiz-list');
+
+  // ol.children 을 순서대로 순회: UL 이 LI 의 형제일 수 있어 별도 처리
+  var questions = [];
+  var curQ = null;
+  Array.from(ol.children).forEach(function(child) {
+    if (child.tagName === 'LI') {
+      questions.push(child);
+      curQ = child;
+      child.classList.add('quiz-item');
+      var badge = document.createElement('span');
+      badge.className = 'quiz-q-num';
+      badge.textContent = 'Q' + questions.length;
+      child.insertBefore(badge, child.firstChild);
+
+    } else if ((child.tagName === 'DIV' || child.tagName === 'PRE') && curQ) {
+      // 코드 블록을 질문 LI 안으로 이동 (보기 UL 보다 먼저)
+      curQ.appendChild(child);
+
+    } else if (child.tagName === 'UL' && curQ) {
+      // 형제 UL 을 질문 LI 안으로 이동
+      curQ.appendChild(child);
+      var qNum = questions.length.toString();
+      child.classList.add('quiz-options');
+      Array.from(child.querySelectorAll(':scope > li')).forEach(function(optLi) {
+        optLi.classList.add('quiz-opt-li');
+        var radio = optLi.querySelector('input[type="radio"]');
+        var span  = optLi.querySelector('span');
+        if (!radio || !span) return;
+
+        var uid = 'qz_q' + qNum + '_v' + radio.value;
+        radio.id = uid;
+
+        var label  = document.createElement('label');
+        label.className = 'quiz-opt-label';
+        label.htmlFor   = uid;
+
+        var circle = document.createElement('span');
+        circle.className = 'quiz-opt-circle';
+        circle.textContent = radio.value;
+
+        label.appendChild(circle);
+        label.appendChild(document.createTextNode(span.textContent));
+
+        optLi.innerHTML = '';
+        optLi.appendChild(radio);
+        optLi.appendChild(label);
+      });
+    }
+  });
+
+  // 버튼을 .quiz-btn-row 로 감싸기
+  var ansBtn   = area.querySelector('#answerButton');
+  var resetBtn = area.querySelector('#resetButton');
+  if (ansBtn && resetBtn) {
+    var row = document.createElement('div');
+    row.className = 'quiz-btn-row';
+    ansBtn.parentNode.insertBefore(row, ansBtn);
+    row.appendChild(ansBtn);
+    row.appendChild(resetBtn);
+    ansBtn.textContent  = '정답 보기';
+    resetBtn.textContent = '초기화';
+  }
+
+  var showing = false;
+
+  function applyHighlight(on) {
+    questions.forEach(function(li, idx) {
+      var correct = answers[(idx + 1).toString()];
+      li.querySelectorAll('.quiz-opt-li').forEach(function(optLi) {
+        var radio = optLi.querySelector('input[type="radio"]');
+        var label = optLi.querySelector('.quiz-opt-label');
+        if (!radio || !label) return;
+        label.classList.remove('quiz-correct', 'quiz-wrong');
+        if (on && correct) {
+          label.classList.add(radio.value === correct ? 'quiz-correct' : 'quiz-wrong');
+        }
+      });
+    });
+  }
+
+  if (ansBtn) {
+    ansBtn.onclick = function() {
+      showing = !showing;
+      ansBtn.textContent = showing ? '정답 숨기기' : '정답 보기';
+      if (answerEl) answerEl.style.display = showing ? 'block' : 'none';
+      applyHighlight(showing);
+    };
+  }
+  if (resetBtn) {
+    resetBtn.onclick = function() {
+      showing = false;
+      area.querySelectorAll('input[type="radio"]').forEach(function(r) { r.checked = false; });
+      applyHighlight(false);
+      if (answerEl) answerEl.style.display = 'none';
+      if (ansBtn) ansBtn.textContent = '정답 보기';
+    };
+  }
+}
+
+/* ── init ── */
+renderNav();
+
+try {
+  const saved = localStorage.getItem('pygpt_file');
+  loadPage(saved || CHAPTERS[0].items[0].file);
+} catch(e) { loadPage(CHAPTERS[0].items[0].file); }
+</script>
 </body>
 </html>

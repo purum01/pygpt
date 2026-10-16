@@ -1,196 +1,201 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
 
-<h1 class="title">dict Iterable</h1>
+<h1 class="title">dict</h1>
 <div class="faq-container">
+
     <div class="faq-section">
         <div class="faq-question">
-            <img  src="question.png" width="34px" height="34px" >
-            파이썬의 dict 객체가 가지는 메소드들에 대해 설명해주세요
+            <img src="question.png" width="34px" height="34px">
+            dict의 특징과 메소드를 설명해주세요
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer">
+        <div class="faq-answer" style="display:none;">
             <img src="gpt.png">
-            파이썬의 dict (사전) 객체는 키(key)와 값(value) 쌍을 요소로 가지는 컬렉션입니다. dict는 데이터를 효율적으로 저장하고 검색할 수 있도록 해줍니다. 파이썬 사전에는 데이터를 조작하고 접근하기 위한 다양한 메소드가 있습니다. 여기에는 dict 객체의 주요 메소드들에 대한 설명이 포함됩니다:
-            <h3>요소 추가 및 제거</h3>
+            dict는 <strong>키(key)와 값(value) 쌍</strong>으로 데이터를 저장하는 자료형입니다. 키로 값을 빠르게 검색할 수 있고, 키는 중복될 수 없습니다.
+            <br><br>
+            dict의 주요 특징은 다음과 같습니다.
             <ul>
-                <li>clear(): 사전의 모든 항목을 제거합니다.
-                <li>pop(key[, default]): 사전에서 키에 해당하는 항목을 제거하고, 그 값을 반환합니다. 키가 사전에 없는 경우 default를 반환합니다. default가 제공되지 않으면 KeyError가 발생합니다.
-                <li>popitem(): 사전에서 임의의 항목을 제거하고, (키, 값) 쌍으로 반환합니다.
-                <li>update([other]): 사전에 다른 사전 또는 키/값 쌍의 반복 가능한 객체의 내용을 추가합니다.         
+                <li>키(key)는 중복될 수 없으며, 값(value)은 중복될 수 있습니다.</li>
+                <li>키를 이용해 값을 빠르게 조회·추가·수정·삭제할 수 있습니다.</li>
+                <li>파이썬 3.7 이후부터 삽입 순서가 유지됩니다.</li>
             </ul>
-            <h3>요소 조회 및 검색</h3>
+            <h3>조회</h3>
             <ul>
-                <li>get(key[, default]): 사전에서 키에 해당하는 값을 반환합니다. 키가 사전에 없는 경우 default를 반환합니다.
-                <li>keys(): 사전의 모든 키를 담은 뷰(view)를 반환합니다.
-                <li>values(): 사전의 모든 값을 담은 뷰를 반환합니다.
-                <li>items(): 사전의 모든 키/값 쌍을 담은 뷰를 반환합니다.
-            </ul> 
-            <h3>복사</h3>
-            <ul>
-                <li>copy(): 사전의 얕은 복사본을 반환합니다.      
+                <li>get(key, default) : 키에 해당하는 값을 반환합니다. 키가 없으면 default를 반환합니다. (default 생략 시 None)</li>
+                <li>keys() : 모든 키를 반환합니다.</li>
+                <li>values() : 모든 값을 반환합니다.</li>
+                <li>items() : 모든 키-값 쌍을 (key, value) 형태로 반환합니다.</li>
             </ul>
-            <h3>기타</h3>
+            <h3>추가 및 수정</h3>
             <ul>
-               <li>setdefault(key[, default]): 사전에 키가 존재하면 그 값을 반환합니다. 키가 없는 경우, 키와 default 값을 사전에 추가하고 default를 반환합니다. default가 제공되지 않으면 None을 사용합니다.
-               <li>fromkeys(seq[, value]): 시퀀스 seq의 각 요소를 키로 하고, 모두 같은 값 value를 갖는 새로운 사전을 반환합니다.
+                <li>dict[key] = value : 키가 있으면 값을 수정하고, 없으면 새 항목을 추가합니다.</li>
+                <li>update(other) : 다른 딕셔너리의 내용을 현재 딕셔너리에 추가·수정합니다.</li>
             </ul>
-                     
+            <h3>제거</h3>
+            <ul>
+                <li>pop(key) : 키에 해당하는 항목을 제거하고 값을 반환합니다. 키가 없으면 KeyError가 발생합니다.</li>
+            </ul>
         </div>
     </div>
 
-
     <div class="faq-section">
         <div class="faq-question">
-            <img  src="question.png" width="30px" height="30" >
-            파이썬의 dict 객체의 메소드들을 학습하기 위한 예제코드를 작성해주세요
+            <img src="question.png" width="34px" height="34px">
+            dict 메소드 예제 코드를 보여주세요
             <i class="fas fa-chevron-down"></i>
         </div>
-
-        <div class="faq-answer">
-            <pre>
-                <code class="language-python" >                
-# 사전 생성
+        <div class="faq-answer" style="display:none;">
+            <pre><code class="language-python">
 person = {'name': 'Alice', 'age': 25}
 
-# 요소 추가
-person['city'] = 'New York'
-print("요소 추가 후:", person)
+# 추가 / 수정
+person['city'] = 'Seoul'          # 새 키 추가
+person['age']  = 26               # 기존 값 수정
+print(person)
 
-# 요소 조회
-print("이름:", person.get('name'))
-print("나이:", person['age'])
+# 조회
+print(person.get('name'))         # 'Alice'
+print(person.get('job', '없음'))  # 키가 없으면 '없음' 반환
 
-# 요소 제거
-removed_city = person.pop('city')
-print("제거된 도시:", removed_city)
-print("pop() 사용 후:", person)
+# keys / values / items
+print(list(person.keys()))        # ['name', 'age', 'city']
+print(list(person.values()))      # ['Alice', 26, 'Seoul']
+print(list(person.items()))       # [('name','Alice'), ('age',26), ('city','Seoul')]
 
-# 임의의 항목 제거
-key, value = person.popitem()
-print(f"popitem()으로 제거된 항목: {key} = {value}")
-print("popitem() 사용 후:", person)
+# for 루프와 items() 조합
+for key, value in person.items():
+    print(f"{key} : {value}")
 
-# 모든 요소 제거
-person.clear()
-print("모든 요소 제거 후:", person)
+# update
+person.update({'job': '개발자', 'age': 27})
+print(person)
 
-# 사전 업데이트
-person.update({'name': 'Bob', 'age': 30, 'city': 'Paris'})
-print("사전 업데이트 후:", person)
-
-# 키, 값, 항목 순회
-print("키 목록:", list(person.keys()))
-print("값 목록:", list(person.values()))
-print("항목 목록:", list(person.items()))
-
-# 사전 복사
-person_copy = person.copy()
-print("사전 복사본:", person_copy)
-
-# setdefault 사용
-person.setdefault('hobby', 'reading')
-print("setdefault() 사용 후:", person)
-
-# fromkeys() 사용
-keys = ['a', 'b', 'c']
-default_value = 0
-new_dict = dict.fromkeys(keys, default_value)
-print("fromkeys()로 생성된 사전:", new_dict)
-                </code>
-            </pre>
+# pop
+removed = person.pop('city')
+print(f"제거된 값: {removed}")
+print(person)
+            </code></pre>
         </div>
     </div>
 
-   
     <div class="faq-section">
         <div class="faq-question">
-            <img  src="question.png" width="34px" height="34px" >
+            <img src="question.png" width="34px" height="34px">
             좋아하는 색깔 조사하기
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer">
-            <pre>
-                <code class="language-python">
-# 학급 친구들의 좋아하는 색깔
+        <div class="faq-answer" style="display:none;">
+            <pre><code class="language-python">
 favorite_colors = {
     '영희': '파란색',
     '철수': '녹색',
     '민수': '빨간색'
 }
 
-# 새로운 친구의 좋아하는 색깔 추가하기
+# 새 친구 추가
 favorite_colors['지민'] = '노란색'
-print("지민이의 좋아하는 색깔 추가:", favorite_colors)
+print(f"지민 추가 후: {favorite_colors}")
 
-# 철수가 좋아하는 색깔 바꾸기
+# 철수의 색깔 변경
 favorite_colors['철수'] = '보라색'
-print("철수의 좋아하는 색깔 변경:", favorite_colors)
+print(f"철수 변경 후: {favorite_colors}")
 
-# 영희의 좋아하는 색깔 확인하기
-print("영희의 좋아하는 색깔:", favorite_colors.get('영희'))
-                     </code>
-            </pre>
+# 영희의 색깔 확인
+print(f"영희의 색깔: {favorite_colors.get('영희')}")
+
+# 없는 사람 조회 (기본값 반환)
+print(f"수진의 색깔: {favorite_colors.get('수진', '미응답')}")
+            </code></pre>
         </div>
-    </div>    
+    </div>
+
     <div class="faq-section">
         <div class="faq-question">
-            <img  src="question.png" width="34px" height="34px" >
-            동물원 동물 목록 만들기
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-            <pre>
-                <code class="language-python">
-# 동물원의 동물 수
-zoo_animals = {
-    '사자': 2,
-    '기린': 3,
-    '코끼리': 4
-}
-
-# 새로 도착한 동물 업데이트
-new_animals = {'판다': 2, '기린': 4}
-zoo_animals.update(new_animals)
-print("새로 도착한 동물 업데이트 후:", zoo_animals)
-
-# 동물 수 확인하기
-print("동물원에 있는 사자 수:", zoo_animals['사자'])
-                    </code>
-            </pre>
-        </div>
-    </div>    
-    <div class="faq-section">
-        <div class="faq-question">
-            <img  src="question.png" width="34px" height="34px" >
+            <img src="question.png" width="34px" height="34px">
             과일 가격표 만들기
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer">
-            <pre>
-                <code class="language-python">
-# 과일 가게의 과일 가격
+        <div class="faq-answer" style="display:none;">
+            <pre><code class="language-python">
 fruit_prices = {
     '사과': 1000,
     '바나나': 500,
     '오렌지': 1500
 }
 
-# 가격표 출력
+# 전체 가격표 출력
 for fruit, price in fruit_prices.items():
-    print(f"{fruit} 가격은 {price}원입니다.")
+    print(f"{fruit} : {price}원")
 
-# 특정 과일 가격 확인하기
-print("바나나 가격:", fruit_prices.get('바나나', '가격 정보가 없습니다.'))
-                    </code>
-            </pre>
+# 신규 과일 추가
+fruit_prices.update({'딸기': 2000, '포도': 3000})
+
+# 특정 과일 가격 확인
+print(f"\n딸기 가격: {fruit_prices.get('딸기', '정보 없음')}원")
+
+# 단종된 과일 제거
+fruit_prices.pop('바나나')
+print(f"바나나 제거 후: {list(fruit_prices.keys())}")
+            </code></pre>
         </div>
-    </div>    
+    </div>
 
-   
-    
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="30px" height="30px">
+            연습문제
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <ol class="mission">
+                <li>주어진 조건에 따라 코드를 작성하세요</li>
+                <div class="highlight">
+                    <pre contenteditable="true"><code class="language-python">
+student = {'name': '홍길동', 'grade': 3}
+
+# 'score' 키에 값 95를 추가하세요
+
+# 'grade' 값을 2로 수정하세요
+
+# 'name' 값을 출력하세요 (get 사용)
+
+# 없는 키 'hobby'를 get으로 조회하고, 없으면 '미입력'을 출력하세요
+                    </code></pre>
+                </div>
+
+                <li>주어진 조건에 따라 코드를 작성하세요</li>
+                <div class="highlight">
+                    <pre contenteditable="true"><code class="language-python">
+inventory = {'연필': 10, '지우개': 5, '자': 3}
+
+# items()를 사용해 "연필 : 10개" 형식으로 전체 목록을 출력하세요
+
+# update()를 사용해 '공책': 7 을 추가하세요
+
+# pop()으로 '자'를 제거하고, 제거된 값을 출력하세요
+
+# 최종 재고 목록의 키(keys)를 출력하세요
+                    </code></pre>
+                </div>
+
+                <li>주어진 조건에 따라 코드를 작성하세요</li>
+                <div class="highlight">
+                    <pre contenteditable="true"><code class="language-python">
+scores = {'수학': 88, '영어': 92, '과학': 75}
+
+# values()를 이용해 전체 점수의 합계를 출력하세요
+
+# values()를 이용해 전체 점수의 평균을 출력하세요
+
+# 최고 점수를 출력하세요
+                    </code></pre>
+                </div>
+            </ol>
+        </div>
+    </div>
+
 </div>
-
 
 <script src="content.js"></script>

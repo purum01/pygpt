@@ -1,102 +1,116 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script> 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
 
 <h1 class="title">함수 호출</h1>
 <div class="faq-container">
+
     <div class="faq-section">
         <div class="faq-question">
-            <img  src="question.png" width="34px" height="34px" >
-            파이썬 함수 호출에 관한 예제 코드를 생성해주세요
+            <img src="question.png" width="34px" height="34px">
+            기본 함수 호출과 매개변수 전달
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer">
-
+        <div class="faq-answer" style="display:none;">
 
             <h3>기본 함수 호출</h3>
-            <pre>
-                <code class="language-python" >   
-# 함수 정의
+            <pre><code class="language-python">
 def greet():
-    return "Hello, World!"
+    return "안녕하세요!"
 
-# 함수 호출
 message = greet()
-print(message)  # 출력: Hello, World!
-                </code>
-            </pre>
+print(message)   # 안녕하세요!
+            </code></pre>
 
-            <h3>매개변수와 함께 함수 호출</h3>
-            <pre>
-                <code class="language-python" >  
-# 함수 정의
+            <h3>매개변수와 함께 호출</h3>
+            <pre><code class="language-python">
 def add(a, b):
     return a + b
 
-# 함수 호출
 result = add(3, 4)
-print(result)  # 출력: 7
-                </code>
-            </pre>
+print(result)    # 7
+            </code></pre>
 
-            <h3>기본값을 가진 매개변수와 함께 함수 호출</h3>
-            <pre>
-                <code class="language-python" >  
-# 함수 정의
-def greet(name="World"):
-    return f"Hello, {name}!"
+            <h3>기본값(default) 매개변수로 호출</h3>
+            <pre><code class="language-python">
+def greet(name="친구"):
+    return f"안녕하세요, {name}님!"
 
-# 기본값을 사용하여 함수 호출
-print(greet())  # 출력: Hello, World!
+print(greet())          # 안녕하세요, 친구님!   ← 기본값 사용
+print(greet("홍길동"))   # 안녕하세요, 홍길동님! ← 기본값 대체
+            </code></pre>
 
-# 매개변수 값을 제공하여 함수 호출
-print(greet("Python"))  # 출력: Hello, Python!
-                </code>
-            </pre>
+            <h3>키워드 인자로 호출</h3>
+            <p>매개변수 이름을 직접 지정하면 순서와 상관없이 호출할 수 있습니다.</p>
+            <pre><code class="language-python">
+def describe_pet(animal, name):
+    print(f"저는 {name}이라는 이름의 {animal}을 키우고 있어요.")
 
-            <h3>키워드 인자를 사용한 함수 호출</h3>
-            <pre>
-                <code class="language-python" >  
-# 함수 정의
-def describe_pet(animal_type, pet_name):
-    print(f"I have a {animal_type} and its name is {pet_name}.")
+# 순서대로 전달
+describe_pet("강아지", "초코")
 
-# 키워드 인자를 사용하여 함수 호출
-describe_pet(animal_type="hamster", pet_name="Harry")
-# 출력: I have a hamster and its name is Harry.
+# 키워드 인자로 순서 변경 가능
+describe_pet(name="초코", animal="강아지")
+            </code></pre>
 
-# 키워드 인자의 순서를 바꿔서 호출
-describe_pet(pet_name="Harry", animal_type="hamster")
-# 출력: I have a hamster and its name is Harry.
-                </code>
-            </pre>
+            <h3>가변 매개변수로 호출 (*args)</h3>
+            <p>매개변수 앞에 *를 붙이면 개수에 상관없이 여러 값을 받을 수 있습니다.</p>
+            <pre><code class="language-python">
+def welcome(*names):
+    for name in names:
+        print(f"{name}님, 환영합니다!")
 
-            <h3>가변 매개변수를 사용한 함수 호출</h3>
-            <pre>
-                <code class="language-python" >  
-# 함수 정의
-def make_pizza(*toppings):
-    print("Making a pizza with the following toppings:")
-    for topping in toppings:
-        print(f"- {topping}")
-
-# 가변 매개변수를 사용하여 함수 호출
-make_pizza('pepperoni')
-# 출력: Making a pizza with the following toppings:
-#      - pepperoni
-
-make_pizza('mushrooms', 'green peppers', 'extra cheese')
-# 출력: Making a pizza with the following toppings:
-#      - mushrooms
-#      - green peppers
-#      - extra cheese                    
-                </code>
-            </pre>
+welcome("철수")
+welcome("영희", "민수", "지영")
+            </code></pre>
         </div>
     </div>
 
-   
-    
-</div>    
+    <div class="faq-section">
+        <div class="faq-question">
+            <img src="question.png" width="30px" height="30px">
+            연습문제
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer" style="display:none;">
+            <ol class="mission">
+                <li>아래 함수를 호출하여 두 수의 합을 출력하세요</li>
+                <div class="highlight">
+                    <pre contenteditable="true"><code class="language-python">
+def add(a, b):
+    return a + b
+
+# add 함수를 호출하여 10과 20의 합을 출력하세요
+
+# add 함수를 호출하여 결과를 변수에 저장한 뒤 출력하세요
+                    </code></pre>
+                </div>
+
+                <li>아래 함수를 기본값과 직접 값 두 가지 방식으로 호출하세요</li>
+                <div class="highlight">
+                    <pre contenteditable="true"><code class="language-python">
+def greet(name="친구"):
+    return f"안녕하세요, {name}님!"
+
+# 기본값을 사용하여 호출하세요
+
+# "김철수"를 인자로 전달하여 호출하세요
+                    </code></pre>
+                </div>
+
+                <li>아래 함수를 키워드 인자 방식으로 호출하세요</li>
+                <div class="highlight">
+                    <pre contenteditable="true"><code class="language-python">
+def introduce(name, age, city):
+    print(f"이름: {name}, 나이: {age}, 도시: {city}")
+
+# 키워드 인자를 사용해 순서를 바꿔서 호출하세요 (city → age → name 순서로)
+                    </code></pre>
+                </div>
+            </ol>
+        </div>
+    </div>
+
+</div>
 
 <script src="content.js"></script>

@@ -1,114 +1,89 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+﻿<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="style2.css">
+
+<style>
+.prompt-box {
+    background: #ffffff;
+    border-left: 4px solid #4f96e8;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    font-size: 14px;
+    line-height: 2;
+    color: #333;
+    white-space: pre-wrap;
+}
+.prompt-box .prompt-tag {
+    display: inline-block;
+    font-weight: 700;
+    color: #1d4ed8;
+}
+</style>
 
 <h1 class="title">로또번호 생성기</h1>
 
 <div class="faq-container">
-    <!-- 질문 영역 -->
+
     <div class="faq-section">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question">
             <img src="question.png" width="34px" height="34px">
             질문
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer">
-            <button class="copy-btn" onclick="copyCode('source-question')">📋 Copy</button>
-            <pre><code id="source-question">
-다음과 같은 내용으로 구현된 파이썬 코드를 생성해주세요
-#제목
+        <div class="faq-answer" style="display:none;">
+            <div class="prompt-box">
+다음 조건에 맞는 파이썬 코드를 생성해주세요
+
+<span class="prompt-tag">#제목</span>
 로또번호 생성기
 
-#조건
-1. 로또번호는 1부터 45사이의 정수값임
-2. 6개의 로또 번호 생성함
-3. 생성된  6개 로또 번호 오름차순 정렬함
-4. 6개의 로또번호를  5세트 생성함
-            </code></pre>
+<span class="prompt-tag">#조건</span>
+1. 로또번호는 1부터 45 사이의 정수
+2. 중복 없이 6개의 번호를 생성
+3. 생성된 6개 번호를 오름차순 정렬
+4. 6개의 로또번호를 5세트 생성
+5. 번호 생성은 함수로 구현
+6. 파이썬 입문자가 이해할 수 있도록 주석 포함
+
+<span class="prompt-tag">#출력예시</span>
+세트 1: [3, 12, 25, 33, 38, 44]
+세트 2: [7, 14, 21, 29, 36, 42]
+            </div>
         </div>
     </div>
 
-    <!-- 답변 영역 -->
     <div class="faq-section">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question">
             <img src="gpt.png" width="34px" height="34px">
             답변
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer">
-            <button class="copy-btn" onclick="copyCode('source-code')">📋 Copy</button>
-            <pre><code id="source-code" class="language-python">
-import random  # 파이썬의 랜덤 모듈을 가져옵니다. 랜덤한 숫자를 생성하는 데 사용합니다.
+        <div class="faq-answer" style="display:none;">
+            <pre><code class="language-python">
+import random
 
-# 로또 번호를 생성하는 함수
 def generate_lotto_numbers():
-    # 1부터 45 사이의 숫자 중에서 6개의 숫자를 랜덤으로 선택합니다.
-    # 'sample' 함수는 중복 없이 6개의 숫자를 선택해 줍니다.
+    # 1~45 중 중복 없이 6개 선택 후 오름차순 정렬
     lotto_numbers = random.sample(range(1, 46), 6)
-
-    # 선택된 6개의 숫자를 오름차순으로 정렬합니다.
     lotto_numbers.sort()
-
-    # 정렬된 번호를 반환합니다.
     return lotto_numbers
 
-# 여러 세트의 로또 번호를 생성하는 함수
 def generate_lotto_sets(num_sets=5):
-    # 비어 있는 리스트를 준비하여 각 세트의 로또 번호를 저장합니다.
+    # num_sets 만큼 로또 번호 세트를 생성하여 리스트로 반환
     lotto_sets = []
-
-    # 원하는 세트 수(num_sets)만큼 반복해서 로또 번호를 생성합니다.
     for _ in range(num_sets):
-        # 로또 번호 한 세트를 생성하여 리스트에 추가합니다.
         lotto_sets.append(generate_lotto_numbers())
-
-    # 생성된 모든 로또 세트를 반환합니다.
     return lotto_sets
 
-# 로또 번호 5세트를 생성합니다.
+# 5세트 생성 후 출력
 lotto_sets = generate_lotto_sets()
 
-# 생성된 로또 번호 세트를 출력합니다.
 for i, lotto_set in enumerate(lotto_sets, 1):
-    print(f"Set {i}: {lotto_set}")
+    print(f"세트 {i}: {lotto_set}")
             </code></pre>
         </div>
     </div>
+
 </div>
 
-<script>
-function copyCode(elementId) {
-    // 해당 요소의 텍스트를 선택하고 복사합니다.
-    var codeElement = document.getElementById(elementId);
-    var range = document.createRange();
-    range.selectNodeContents(codeElement);
-    var selection = window.getSelection();
-    selection.removeAllRanges();
-    selection.addRange(range);
-
-    try {
-        document.execCommand('copy');
-    } catch (err) {
-        alert('복사에 실패했습니다.');
-    }
-    
-    // 선택 해제
-    selection.removeAllRanges();
-}
-
-function toggleFaq(element) {
-    // 드롭다운 토글 기능
-    var answer = element.nextElementSibling;
-    var icon = element.querySelector('i');
-    if (answer.style.display === "block") {
-        answer.style.display = "none";
-        icon.classList.remove('fa-chevron-up');
-        icon.classList.add('fa-chevron-down');
-    } else {
-        answer.style.display = "block";
-        icon.classList.remove('fa-chevron-down');
-        icon.classList.add('fa-chevron-up');
-    }
-}
-</script>
+<script src="content.js"></script>

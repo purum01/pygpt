@@ -1,91 +1,99 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+﻿<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="style2.css">
+
 
 <h1 class="title">ChatGPT 사용하기</h1>
 
 <div class="faq-container">
     <!-- 첫번째 실습 영역 -->
     <div class="faq-section">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question">
             <img src="question.png" width="34px" height="34px">
-            자기소개 프로그램 만들기
+            BMI 계산기
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer">
-            <button class="copy-btn" onclick="copyCode('source-code1')">📋 Copy</button>
+        <div class="faq-answer" style="display:none;">
 <pre><code id="source-code1" class="language-python">
-name = input("이름을 입력하세요: ")
-age = input("나이를 입력하세요: ")
-hobby = input("취미를 입력하세요: ")
+print("⚖️ BMI 계산기")
 
-print("\n[프로필]")
-print(f"이름: {name}")
-print(f"나이: {age}")
-print(f"취미: {hobby}")
+name   = input("이름을 입력하세요: ")
+height = float(input("키를 입력하세요 (cm): "))
+weight = float(input("몸무게를 입력하세요 (kg): "))
+
+height_m = height / 100
+bmi      = weight / (height_m * height_m)
+bmi      = round(bmi, 1)
+
+print(f"\n{name}님의 BMI: {bmi}")
+
+if bmi < 18.5:
+    result = "저체중"
+elif bmi < 23.0:
+    result = "정상"
+elif bmi < 25.0:
+    result = "과체중"
+else:
+    result = "비만"
+
+print(f"판정 결과: {result}")
 </code></pre>
             <div>
                 <ul>
-                    <li>❓질문1 : 입력받은 나이를 숫자로 바꿔서, 다음 해의 나이를 출력하려면 어떻게 해야 할까요?</li>
-                    <li>❓질문2 : 취미가 여러 개일 때는 어떻게 처리하면 좋을까요?</li>                    
+                    <li>❓질문1 : bmi = round(bmi, 1) 에서 숫자 1은 무엇을 의미할까요?</li>
+                    <li>❓질문2 : 키가 0 이하로 입력됐을 때 오류 없이 처리하려면 어떻게 하면 좋을까요?</li>
                     <li>🤔 실습 : 다음 기능을 추가하세요
                         <ol>
-                            <li> 만 나이를 계산한 후 "만 나이는 XX 살입니다" 를 출력하는 기능 구현</li>
-                            <li> 취미를 여러개 입력받는 기능 구현</li>
+                            <li>판정 결과에 따라 운동 추천 메시지를 함께 출력하는 기능 구현</li>
+                            <li>여러 사람의 BMI를 반복 입력받아 마지막에 평균 BMI를 출력하는 기능 구현</li>
                         </ol>
                     </li>
                 </ul>
             </div>
         </div>
-        
-    </div> 
+    </div>
 
     <!-- 두번째 실습 영역 -->
     <div class="faq-section">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question">
             <img src="question.png" width="34px" height="34px">
-            퀴즈 게임 제작
+            가위바위보 게임 (2인용)
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer">
-            <button class="copy-btn" onclick="copyCode('source-code2')">📋 Copy</button>
+        <div class="faq-answer" style="display:none;">
             <pre><code id="source-code2" class="language-python">
-score = 0
+print("✊ 가위바위보 게임 (2인용)")
 
-print("퀴즈를 시작합니다!")
+player1 = input("1번 플레이어 이름: ")
+player2 = input("2번 플레이어 이름: ")
 
-# 문제 1
-answer = input("파이썬의 창시자는 누구일까요? ")
-if answer == "귀도 반 로썸":
-    print("정답!")
-    score += 1
+choice1 = input(f"{player1}의 선택 (가위/바위/보): ")
+choice2 = input(f"{player2}의 선택 (가위/바위/보): ")
+
+print(f"\n{player1}: {choice1}  vs  {player2}: {choice2}")
+
+if choice1 == choice2:
+    print("🤝 비겼습니다!")
+elif (choice1 == "바위" and choice2 == "가위") or \
+     (choice1 == "가위" and choice2 == "보") or \
+     (choice1 == "보"   and choice2 == "바위"):
+    print(f"🏆 {player1} 승리!")
 else:
-    print("틀렸습니다.")
-
-# 문제 2
-answer = input("파이썬의 가장 최신 버전은 무엇일까요? (버전 번호만 입력하세요) ")
-if answer == "3.10":
-    print("정답!")
-    score += 1
-else:
-    print("틀렸습니다.")
-
-print(f"\n총 점수: {score}점")
+    print(f"🏆 {player2} 승리!")
             </code></pre>
-        
+
             <div>
                 <ul>
-                    <li>❓질문1 : 문제를 더 추가하고 싶어요. 문제 개수가 많아도 깔끔하게 처리하려면 어떻게 할까요?</li>
-                    <li>❓질문2 : 정답을 틀렸을 때 힌트를 주는 기능을 추가하려면 어떻게 하면 좋을까요?</li>                    
+                    <li>❓질문1 : "가위", "바위", "보" 외의 다른 값을 입력했을 때 다시 입력받으려면 어떻게 할까요?</li>
+                    <li>❓질문2 : 3판 2선승제로 만들려면 어떻게 바꾸면 좋을까요?</li>
                     <li>🤔 실습 : 다음 기능을 추가하세요
                         <ol>
-                            <li> 점수에 따라 "A등급", "B등급" 등 성적을 매기는 기능 구현</li>
-                            <li> 여러 문제를 반복하여 출제하는 기능 추가</li>
+                            <li>각 플레이어의 점수를 기록하고 3판 후 최종 승자를 출력하는 기능 구현</li>
+                            <li>"그만"을 입력하면 게임을 종료하는 기능 구현</li>
                         </ol>
                     </li>
                 </ul>
-            </div>            
+            </div>
         </div>
     </div>
 </div>

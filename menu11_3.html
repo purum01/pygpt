@@ -1,103 +1,111 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+﻿<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="style2.css">
+
+<style>
+.prompt-box {
+    background: #ffffff;
+    border-left: 4px solid #4f96e8;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    font-size: 14px;
+    line-height: 2;
+    color: #333;
+    white-space: pre-wrap;
+}
+.prompt-box .prompt-tag {
+    display: inline-block;
+    font-weight: 700;
+    color: #1d4ed8;
+}
+</style>
 
 <h1 class="title">파일 병합하기</h1>
 
 <div class="faq-container">
-    <!-- 질문 영역 -->
+
     <div class="faq-section">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question">
             <img src="question.png" width="34px" height="34px">
             질문
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer">
-            <button class="copy-btn" onclick="copyCode('source-question')">📋 Copy</button>
-            <pre><code id="source-question">
-다음과 같은 내용으로 구현된 파이썬 코드를 생성해주세요
+        <div class="faq-answer" style="display:none;">
+            <div class="prompt-box">
+다음 조건에 맞는 파이썬 코드를 생성해주세요
 
-# 제목
+<span class="prompt-tag">#제목</span>
 2020년 Covid 현황
 
-#조건
-1.  covid 디렉토리에 있는 모든 csv 파일이 작업 대상임
-2. 각 파일에서  'Country_Region', 'Confirmed' 컬럼만 추출함
-3. 'Country_Region' 컬럼의 값은 중복되면 안됨, 여러개가 있는 경우 그룹핑하고 'Confirmed' 컬럼 값의 합계를 구함
-4. 'Confirmed'  컬러명은 파일이름에서 확장자를 제외한 이름으로 변경함. 이때 '-'는 '/'로 변경함
-5. 각 파일들은 'Country_Region' 컬럼을 기준으로 병합함
-6. 병합한 내용을 Excel 파일로 저장함                     
-</code></pre>
+<span class="prompt-tag">#조건</span>
+1. covid 디렉토리에 있는 모든 CSV 파일이 작업 대상
+2. 각 파일에서 'Country_Region', 'Confirmed' 컬럼만 추출
+3. 'Country_Region' 값이 중복되면 그룹핑하여 'Confirmed' 합계를 구함
+4. 'Confirmed' 컬럼명은 파일 이름에서 확장자를 제외한 이름으로 변경, '-'는 '/'로 변환
+5. 각 파일을 'Country_Region' 컬럼 기준으로 병합
+6. 병합 결과를 Excel 파일(covid_2020.xlsx)로 저장
+7. 파이썬 입문자가 이해할 수 있도록 주석 포함
+
+<span class="prompt-tag">#출력예시</span>
+Country_Region    1/22/2020  1/23/2020  ...
+Afghanistan             0.0        0.0
+Albania                 0.0        0.0
+...
+저장 완료: covid_2020.xlsx
+            </div>
         </div>
     </div>
 
-    <!-- 답변 영역 -->
     <div class="faq-section">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question">
             <img src="gpt.png" width="34px" height="34px">
             답변
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="faq-answer">
-            <button class="copy-btn" onclick="copyCode('source-code')">📋 Copy</button>
-            <pre><code id="source-code" class="language-python">
+        <div class="faq-answer" style="display:none;">
+            <pre><code class="language-python">
 import os
 import pandas as pd
 
 PATH = 'covid/'
-file_list = os.listdir(PATH)
+
+# CSV 파일만 필터링
+file_list = []
+for f in os.listdir(PATH):
+    if f.endswith('.csv'):
+        file_list.append(f)
+
 first_doc = True
 
 for file in file_list:
-    doc = pd.read_csv(PATH+file)
-    doc = doc[['Country_Region', 'Confirmed']]
-    doc = doc.groupby('Country_Region').sum()
-    date_column = file.split(".")[0].lstrip('0').replace('-', '/') 
-    doc.columns = [date_column]
-    if first_doc:
-        final_doc, first_doc = doc, False
-    else:
-        final_doc = pd.merge(final_doc, doc, how='outer', left_index=True, right_index=True)
+    # CSV 파일 읽기
+    doc = pd.read_csv(PATH + file)
 
+    # 필요한 컬럼만 추출
+    doc = doc[['Country_Region', 'Confirmed']]
+
+    # Country_Region 기준으로 그룹핑 후 Confirmed 합계
+    doc = doc.groupby('Country_Region').sum()
+
+    # 컬럼명을 파일 이름 기반으로 변경 (예: 01-22-2020.csv → 1/22/2020)
+    date_column = file.split('.')[0].lstrip('0').replace('-', '/')
+    doc.columns = [date_column]
+
+    # 첫 번째 파일은 기준 DataFrame으로, 이후 파일은 병합
+    if first_doc:
+        final_doc  = doc
+        first_doc  = False
+    else:
+        final_doc = pd.merge(final_doc, doc, how='outer',
+                             left_index=True, right_index=True)
+
+# 병합 결과를 Excel 파일로 저장
 final_doc.to_excel('covid_2020.xlsx')
+print("저장 완료: covid_2020.xlsx")
             </code></pre>
         </div>
     </div>
+
 </div>
 
-<script>
-function copyCode(elementId) {
-    // 해당 요소의 텍스트를 선택하고 복사합니다.
-    var codeElement = document.getElementById(elementId);
-    var range = document.createRange();
-    range.selectNodeContents(codeElement);
-    var selection = window.getSelection();
-    selection.removeAllRanges();
-    selection.addRange(range);
-
-    try {
-        document.execCommand('copy');
-    } catch (err) {
-        alert('복사에 실패했습니다.');
-    }
-    
-    // 선택 해제
-    selection.removeAllRanges();
-}
-
-function toggleFaq(element) {
-    // 드롭다운 토글 기능
-    var answer = element.nextElementSibling;
-    var icon = element.querySelector('i');
-    if (answer.style.display === "block") {
-        answer.style.display = "none";
-        icon.classList.remove('fa-chevron-up');
-        icon.classList.add('fa-chevron-down');
-    } else {
-        answer.style.display = "block";
-        icon.classList.remove('fa-chevron-down');
-        icon.classList.add('fa-chevron-up');
-    }
-}
-</script>
+<script src="content.js"></script>
